@@ -1,0 +1,15 @@
+# Auto-generated folders
+Awesomenauts 2/Temp/
+Awesomenauts 2/Library/
+Awesomenauts 2/Logs/
+Awesomenauts 2/Packages/
+Awesomenauts 2/obj/
+
+# Solution and Project files
+*.sln
+*.csproj
+*.DotSettings
+
+# Auto-generated IDE folders
+*.vs
+*.idea
