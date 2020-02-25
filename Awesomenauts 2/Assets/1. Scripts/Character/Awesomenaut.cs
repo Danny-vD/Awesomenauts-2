@@ -1,13 +1,20 @@
-﻿using VDFramework;
+﻿using UnityEngine;
+using VDFramework;
 
 namespace Character
 {
-    public abstract class Awesomenaut : BetterMonoBehaviour
+	[RequireComponent(typeof(NautMovement))]
+    public class Awesomenaut : BetterMonoBehaviour
     {
-		public uint MaxHealth { get; protected set; }
-		
-		public uint Health { get; protected set; }
-		
-		public string Name { get; protected set; }
-    }
+		[SerializeField]
+		private string nautName;
+
+		public string Name
+		{
+			get => nautName;
+			private set => nautName = value;
+		}
+
+		//private List<Ability> abilities = new List<Ability>();
+	}
 }
