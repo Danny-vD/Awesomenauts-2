@@ -6,7 +6,7 @@ using UnityEngine;
 namespace CustomInspector
 {
 	[CustomEditor(typeof(NautAudioClips)), CanEditMultipleObjects]
-	public abstract class AudioClipsEditor : Editor
+	public class NautAudioClipsEditor : Editor
 	{
 		private SerializedProperty clipsPerSoundType;
 
@@ -20,7 +20,7 @@ namespace CustomInspector
 		public override void OnInspectorGUI()
 		{
 			OnEnable();
-			
+
 			serializedObject.Update();
 
 			ShowAudioClipDictionary();

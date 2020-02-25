@@ -10,10 +10,10 @@ namespace CameraScript
 		private bool followPlayer = true;
 
 		[SerializeField]
-		private Vector3 offset;
+		private Vector3 offset = new Vector3(0.0f, 8.0f, -20.0f);
 
 		[SerializeField]
-		private GameObject cameraPrefab;
+		private GameObject cameraPrefab = null;
 
 		private GameObject cameraToMove;
 
