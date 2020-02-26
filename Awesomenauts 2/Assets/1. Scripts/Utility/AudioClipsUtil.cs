@@ -8,17 +8,17 @@ namespace Utility
 {
 	public static class FakeDictionaryUtil
 	{
-		public static void PopulateEnumDictionary<TKeyValuePair, TKey, TValue>(ref List<TKeyValuePair> list)
-			where TKeyValuePair : IKeyValuePair<TKey, TValue>, new()
-			where TKey : struct, Enum
+		public static void PopulateEnumDictionary<TKeyValuePair, TEnum, TValue>(ref List<TKeyValuePair> list)
+			where TKeyValuePair : IKeyValuePair<TEnum, TValue>, new()
+			where TEnum : struct, Enum
 		{
 			if (list == null)
 			{
 				list = new List<TKeyValuePair>();
 			}
 
-			TKey @enum = default;
-			TKey[] enumValues = @enum.GetValues().ToArray();
+			TEnum @enum = default;
+			TEnum[] enumValues = @enum.GetValues().ToArray();
 
 			// Remove the keys that are no longer in the enum
 			if (list.Count >= enumValues.Length)
@@ -26,9 +26,9 @@ namespace Utility
 				list.RemoveRange(enumValues.Length, list.Count - enumValues.Length);
 			}
 
-			foreach (TKey enumValue in enumValues)
+			foreach (TEnum enumValue in enumValues)
 			{
-				if (ContainsKey<TKeyValuePair, TKey, TValue>(list, enumValue))
+				if (ContainsKey<TKeyValuePair, TEnum, TValue>(list, enumValue))
 				{
 					continue;
 				}
@@ -37,11 +37,10 @@ namespace Utility
 			}
 		}
 
-		private static bool ContainsKey<TKeyValuePair, TKey, TValue>(IEnumerable<TKeyValuePair> list, TKey enumValue)
-			where TKeyValuePair : IKeyValuePair<TKey, TValue>, new()
-			where TKey : struct, Enum
+		private static bool ContainsKey<TKeyValuePair, TKey, TValue>(IEnumerable<TKeyValuePair> collection, TKey key)
+			where TKeyValuePair : IKeyValuePair<TKey, TValue>
 		{
-			return list.Any(pair => Equals(pair.Key, enumValue));
+			return collection.Any(pair => Equals(pair.Key, key));
 		}
 	}
 }

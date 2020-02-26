@@ -37,12 +37,6 @@ namespace Audio
 				ref announcerClips);
 		}
 
-		private void AddListeners()
-		{
-			EventManager.Instance.AddListener<PlayAudioTypeEvent<NautSound, Awesomenaut>>(OnPlayAudioTypeEvent);
-			EventManager.Instance.AddListener<PlayAudioTypeEvent<AnnouncerSound, Announcer>>(OnPlayAudioTypeEvent);
-		}
-
 		private static void OnPlayAudioTypeEvent<TAudioType, TAudioSet>(PlayAudioTypeEvent<TAudioType, TAudioSet> obj)
 			where TAudioType : struct, Enum
 			where TAudioSet : struct, Enum
@@ -50,7 +44,13 @@ namespace Audio
 			print($"{obj.SoundTypeToPlay}: {obj.SetToUse}");
 		}
 
-		private void RemoveListeners()
+		private static void AddListeners()
+		{
+			EventManager.Instance.AddListener<PlayAudioTypeEvent<NautSound, Awesomenaut>>(OnPlayAudioTypeEvent);
+			EventManager.Instance.AddListener<PlayAudioTypeEvent<AnnouncerSound, Announcer>>(OnPlayAudioTypeEvent);
+		}
+		
+		private static void RemoveListeners()
 		{
 			if (!EventManager.IsInitialized)
 			{
