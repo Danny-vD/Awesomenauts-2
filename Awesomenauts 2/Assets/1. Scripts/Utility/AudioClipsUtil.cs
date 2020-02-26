@@ -1,47 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Interfaces.Audio;
+using Interfaces;
 using VDFramework.Extensions;
 
 namespace Utility
 {
-	public static class AudioClipsUtil
+	public static class FakeDictionaryUtil
 	{
-		public static void PopulateDictionary<TEnum, TStruct>(ref List<TStruct> list)
-			where TEnum : struct, Enum
-			where TStruct : IAudioClipsPerEnum<TEnum>, new()
+		public static void PopulateEnumDictionary<TKeyValuePair, TKey, TValue>(ref List<TKeyValuePair> list)
+			where TKeyValuePair : IKeyValuePair<TKey, TValue>, new()
+			where TKey : struct, Enum
 		{
 			if (list == null)
 			{
-				list = new List<TStruct>();
+				list = new List<TKeyValuePair>();
 			}
 
-			TEnum @enum = default;
-			TEnum[] enumValues = @enum.GetValues().ToArray();
+			TKey @enum = default;
+			TKey[] enumValues = @enum.GetValues().ToArray();
 
-			//Remove the keys that are no longer in the enum
+			// Remove the keys that are no longer in the enum
 			if (list.Count >= enumValues.Length)
 			{
 				list.RemoveRange(enumValues.Length, list.Count - enumValues.Length);
 			}
 
-			foreach (TEnum soundType in enumValues)
+			foreach (TKey enumValue in enumValues)
 			{
-				if (ContainsKey(list, soundType))
+				if (ContainsKey<TKeyValuePair, TKey, TValue>(list, enumValue))
 				{
 					continue;
 				}
 
-				list.Add(new TStruct {Key = soundType});
+				list.Add(new TKeyValuePair {Key = enumValue});
 			}
 		}
 
-		private static bool ContainsKey<TEnum, TStruct>(IEnumerable<TStruct> list, TEnum soundType)
-			where TEnum : struct, Enum
-			where TStruct : IAudioClipsPerEnum<TEnum>, new()
+		private static bool ContainsKey<TKeyValuePair, TKey, TValue>(IEnumerable<TKeyValuePair> list, TKey enumValue)
+			where TKeyValuePair : IKeyValuePair<TKey, TValue>, new()
+			where TKey : struct, Enum
 		{
-			return list.Any(pair => Equals(pair.Key, soundType));
+			return list.Any(pair => Equals(pair.Key, enumValue));
 		}
 	}
 }

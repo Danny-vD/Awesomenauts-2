@@ -11,10 +11,11 @@ namespace ScriptableObjects
 	{
 		[SerializeField]
 		private List<AnnouncerClipsPerSoundType> clipsPerEnum;
-		
+
 		public override void PopulateDictionary()
 		{
-			AudioClipsUtil.PopulateDictionary<AnnouncerSound, AnnouncerClipsPerSoundType>(ref clipsPerEnum);
+			FakeDictionaryUtil.PopulateEnumDictionary<AnnouncerClipsPerSoundType, AnnouncerSound, List<AudioClip>>(
+				ref clipsPerEnum);
 		}
 
 		protected override List<AnnouncerClipsPerSoundType> GetAudioClipsPerSoundType() => clipsPerEnum;

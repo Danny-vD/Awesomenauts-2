@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using Enums.Audio;
+using Interfaces;
 using Interfaces.Audio;
 using UnityEngine;
 
 namespace Structs.Audio
 {
 	[Serializable]
-	public struct NautClipsPerSoundType : IEquatable<NautClipsPerSoundType>, IAudioClipsPerEnum<NautSound>
+	public struct NautClipsPerSoundType : IAudioClipsPerEnum<NautSound>
 	{
 		public NautSound Key
 		{
@@ -49,9 +50,6 @@ namespace Structs.Audio
 		}
 
 		// Used by List<AudioClipsPerSoundType>.Contains(AudioClipsPerSoundType);
-		bool IEquatable<NautClipsPerSoundType>.Equals(NautClipsPerSoundType other)
-		{
-			return Equals(SoundType, other.SoundType);
-		}
+		public bool Equals(IKeyValuePair<NautSound, List<AudioClip>> other) => other != null && Key == other.Key;
 	}
 }

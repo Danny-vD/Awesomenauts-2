@@ -24,7 +24,7 @@ namespace ScriptableObjects
 		
 		/// <summary>
 		/// Will fill the list with every value of the enum.
-		/// <para>Use <see cref="AudioClipsUtil"/> class when overriding.</para> 
+		/// <para>Use <see cref="FakeDictionaryUtil"/> class when overriding.</para> 
 		/// </summary>
 		public abstract void PopulateDictionary();
 

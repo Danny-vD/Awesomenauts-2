@@ -6,6 +6,7 @@ using Enums.Audio;
 using Enums.Character;
 using Events.Audio;
 using UnityEngine;
+using Utility;
 using VDFramework.EventSystem;
 using VDFramework.Singleton;
 
@@ -27,6 +28,13 @@ namespace Audio
 		private void OnDisable()
 		{
 			RemoveListeners();
+		}
+
+		public void PopulateDictionary()
+		{
+			FakeDictionaryUtil.PopulateEnumDictionary<NautClipSetPerNaut, Awesomenaut, ScriptableObject>(ref nautClips);
+			FakeDictionaryUtil.PopulateEnumDictionary<AnnouncerClipSetPerAnnouncer, Announcer, ScriptableObject>(
+				ref announcerClips);
 		}
 
 		private void AddListeners()

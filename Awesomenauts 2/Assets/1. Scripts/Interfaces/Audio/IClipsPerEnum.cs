@@ -4,13 +4,9 @@ using UnityEngine;
 
 namespace Interfaces.Audio
 {
-	public interface IAudioClipsPerEnum<TEnum>
+	public interface IAudioClipsPerEnum<TEnum> : IKeyValuePair<TEnum, List<AudioClip>>
 		where TEnum : struct, Enum
 	{
-		TEnum Key { get; set; }
-		
-		List<AudioClip> Value { get; }
-		
 		bool ShouldLoop { get; }
 	}
 }

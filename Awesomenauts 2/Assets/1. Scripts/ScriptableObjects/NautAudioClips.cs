@@ -20,17 +20,12 @@ namespace ScriptableObjects
 			}
 		}
 
-		[ContextMenu("Refresh lists")]
-		private void Refresh()
-		{
-			PopulateDictionary();
-		}
-		
 		protected override List<NautClipsPerSoundType> GetAudioClipsPerSoundType() => clipsPerEnum;
 
 		public override void PopulateDictionary()
 		{
-			AudioClipsUtil.PopulateDictionary<NautSound, NautClipsPerSoundType>(ref clipsPerEnum);
+			FakeDictionaryUtil.PopulateEnumDictionary<NautClipsPerSoundType, NautSound, List<AudioClip>>(
+				ref clipsPerEnum);
 		}
 	}
 }

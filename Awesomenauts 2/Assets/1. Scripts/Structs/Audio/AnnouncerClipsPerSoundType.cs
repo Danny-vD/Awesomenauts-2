@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using Enums.Audio;
+using Interfaces;
 using Interfaces.Audio;
 using UnityEngine;
 
 namespace Structs.Audio
 {
 	[Serializable]
-	public struct AnnouncerClipsPerSoundType : IEquatable<AnnouncerClipsPerSoundType>, IAudioClipsPerEnum<AnnouncerSound>
+	public struct AnnouncerClipsPerSoundType : IAudioClipsPerEnum<AnnouncerSound>
 	{
 		public AnnouncerSound Key
 		{
@@ -34,7 +35,7 @@ namespace Structs.Audio
 			Clips = null;
 			IsLooping = false;
 		}
-		
+
 		public AnnouncerClipsPerSoundType(AnnouncerSound soundType, params AudioClip[] clips)
 		{
 			SoundType = soundType;
@@ -49,9 +50,6 @@ namespace Structs.Audio
 		}
 
 		// Used by List<AudioClipsPerSoundType>.Contains(AudioClipsPerSoundType);
-		bool IEquatable<AnnouncerClipsPerSoundType>.Equals(AnnouncerClipsPerSoundType other)
-		{
-			return Equals(SoundType, other.SoundType);
-		}
+		public bool Equals(IKeyValuePair<AnnouncerSound, List<AudioClip>> other) => other != null && Key == other.Key;
 	}
 }

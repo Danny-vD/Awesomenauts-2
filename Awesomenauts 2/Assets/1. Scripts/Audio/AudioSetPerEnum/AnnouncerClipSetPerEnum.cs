@@ -1,5 +1,6 @@
 ﻿using System;
 using Enums.Announcer;
+using Interfaces;
 using Interfaces.Audio;
 using UnityEngine;
 
@@ -8,9 +9,17 @@ namespace Audio.AudioSetPerEnum
 	[Serializable]
 	public class AnnouncerClipSetPerAnnouncer : IAudioSetPerEnum<Announcer>
 	{
-		public Announcer Key => key;
+		public Announcer Key
+		{
+			get => key;
+			set => key = value;
+		}
 
-		public ScriptableObject Value => value;
+		public ScriptableObject Value
+		{
+			get => value;
+			set => this.value = value;
+		}
 
 		[SerializeField]
 		private Announcer key = default;
@@ -18,6 +27,6 @@ namespace Audio.AudioSetPerEnum
 		[SerializeField]
 		private ScriptableObject value = default;
 
-		public bool Equals(IAudioSetPerEnum<Announcer> other) => throw new System.NotImplementedException();
+		public bool Equals(IKeyValuePair<Announcer, ScriptableObject> other) => other != null && Key == other.Key;
 	}
 }
