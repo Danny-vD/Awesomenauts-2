@@ -6,5 +6,5 @@ using UnityEditor;
 namespace CustomInspector.AudioClips
 {
 	[CustomEditor(typeof(NautAudioClips)), CanEditMultipleObjects]
-	public class NautAudioClipsEditor : AAudioClipsEditor<NautSoundType, NautClipsPerSoundType> { }
+	public class NautAudioClipsEditor : AAudioClipsEditor<NautSound, NautClipsPerSoundType> { }
 }

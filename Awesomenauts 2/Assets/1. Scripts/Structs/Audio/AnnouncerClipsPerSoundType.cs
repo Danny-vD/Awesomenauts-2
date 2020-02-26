@@ -7,9 +7,9 @@ using UnityEngine;
 namespace Structs.Audio
 {
 	[Serializable]
-	public struct AnnouncerClipsPerSoundType : IEquatable<AnnouncerClipsPerSoundType>, IAudioClipsPerEnum<AnnouncerSoundType>
+	public struct AnnouncerClipsPerSoundType : IEquatable<AnnouncerClipsPerSoundType>, IAudioClipsPerEnum<AnnouncerSound>
 	{
-		public AnnouncerSoundType Key
+		public AnnouncerSound Key
 		{
 			get => SoundType;
 			set => SoundType = value;
@@ -23,19 +23,19 @@ namespace Structs.Audio
 
 		public bool ShouldLoop => IsLooping;
 
-		public AnnouncerSoundType SoundType;
+		public AnnouncerSound SoundType;
 		public List<AudioClip> Clips;
 
 		public bool IsLooping;
 
-		public AnnouncerClipsPerSoundType(AnnouncerSoundType soundType = default)
+		public AnnouncerClipsPerSoundType(AnnouncerSound soundType = default)
 		{
 			SoundType = soundType;
 			Clips = null;
 			IsLooping = false;
 		}
 		
-		public AnnouncerClipsPerSoundType(AnnouncerSoundType soundType, params AudioClip[] clips)
+		public AnnouncerClipsPerSoundType(AnnouncerSound soundType, params AudioClip[] clips)
 		{
 			SoundType = soundType;
 			Clips = new List<AudioClip>();

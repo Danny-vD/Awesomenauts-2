@@ -1,6 +1,11 @@
-﻿using Character;
+﻿using Audio;
+using Character;
+using Enums.Audio;
+using Events.Audio;
 using UnityEngine;
 using VDFramework;
+using VDFramework.EventSystem;
+using Awesomenaut = Enums.Character.Awesomenaut;
 
 namespace InputScripts
 {

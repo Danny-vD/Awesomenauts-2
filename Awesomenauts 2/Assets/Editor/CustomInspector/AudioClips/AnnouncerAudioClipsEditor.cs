@@ -6,5 +6,5 @@ using UnityEditor;
 namespace CustomInspector.AudioClips
 {
 	[CustomEditor(typeof(AnnouncerAudioClips)), CanEditMultipleObjects]
-	public class AnnouncerAudioClipsEditor : AAudioClipsEditor<AnnouncerSoundType, AnnouncerClipsPerSoundType> { }
+	public class AnnouncerAudioClipsEditor : AAudioClipsEditor<AnnouncerSound, AnnouncerClipsPerSoundType> { }
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6ac584710bf410e9951dfe1a95f649f, type: 3}
-  m_Name: New Announcer Audio Clips
+  m_Name: Borbl Birk
   m_EditorClassIdentifier: 
   clipsPerEnum:
   - SoundType: 0

@@ -1,15 +1,13 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Enums.Audio;
 using Structs.Audio;
 using UnityEngine;
 using Utility;
-using VDFramework.Extensions;
 
 namespace ScriptableObjects
 {
 	[CreateAssetMenu(menuName = "Scriptable Objects/Audio/NautClips")]
-	public class NautAudioClips : AAudioClips<NautSoundType, NautClipsPerSoundType>
+	public class NautAudioClips : AAudioClips<NautSound, NautClipsPerSoundType>
 	{
 		[SerializeField]
 		private List<NautClipsPerSoundType> clipsPerEnum = new List<NautClipsPerSoundType>();
@@ -32,7 +30,7 @@ namespace ScriptableObjects
 
 		public override void PopulateDictionary()
 		{
-			AudioClipsUtil.PopulateDictionary<NautSoundType, NautClipsPerSoundType>(ref clipsPerEnum);
+			AudioClipsUtil.PopulateDictionary<NautSound, NautClipsPerSoundType>(ref clipsPerEnum);
 		}
 	}
 }
