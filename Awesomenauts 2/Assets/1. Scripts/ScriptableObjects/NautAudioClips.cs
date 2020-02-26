@@ -1,26 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Enums;
-using Interfaces.Audio;
+using Enums.Audio;
 using Structs.Audio;
 using UnityEngine;
 using Utility;
+using VDFramework.Extensions;
 
 namespace ScriptableObjects
 {
 	[CreateAssetMenu(menuName = "Scriptable Objects/Audio/NautClips")]
-	public class NautAudioClips : AAudioClips<NautSoundType>
+	public class NautAudioClips : AAudioClips<NautSoundType, NautClipsPerSoundType>
 	{
 		[SerializeField]
-		private List<NautClipsPerSoundType> clipsPerSoundType = new List<NautClipsPerSoundType>();
+		private List<NautClipsPerSoundType> clipsPerEnum = new List<NautClipsPerSoundType>();
 
-		protected override List<IAudioClipsPerEnum<NautSoundType>> GetAudioClipsPerSoundType() =>
-			clipsPerSoundType.Select(@struct => (IAudioClipsPerEnum<NautSoundType>) @struct).ToList();
-
-		public void PopulateDictionary()
+		private void Awake()
 		{
-			AudioClipsUtil.PopulateDictionary<NautSoundType, NautClipsPerSoundType>(ref clipsPerSoundType);
+			if (clipsPerEnum == null)
+			{
+				clipsPerEnum = new List<NautClipsPerSoundType>();
+			}
+		}
+
+		[ContextMenu("Refresh lists")]
+		private void Refresh()
+		{
+			PopulateDictionary();
+		}
+		
+		protected override List<NautClipsPerSoundType> GetAudioClipsPerSoundType() => clipsPerEnum;
+
+		public override void PopulateDictionary()
+		{
+			AudioClipsUtil.PopulateDictionary<NautSoundType, NautClipsPerSoundType>(ref clipsPerEnum);
 		}
 	}
 }

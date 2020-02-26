@@ -37,7 +37,7 @@ namespace Utility
 			}
 		}
 
-		private static bool ContainsKey<TEnum, TStruct>(List<TStruct> list, TEnum soundType)
+		private static bool ContainsKey<TEnum, TStruct>(IEnumerable<TStruct> list, TEnum soundType)
 			where TEnum : struct, Enum
 			where TStruct : IAudioClipsPerEnum<TEnum>, new()
 		{

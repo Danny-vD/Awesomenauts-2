@@ -1,4 +1,4 @@
-﻿namespace Enums
+﻿namespace Enums.Audio
 {
 	public enum NautSoundType
 	{
@@ -7,5 +7,6 @@
 		Damage,
 		Death,
 		Spawn,
+		Selected,
 	}
 }

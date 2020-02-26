@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using Interfaces.Audio;
 using UnityEngine;
+using Utility;
 using VDFramework.Extensions;
 
 namespace ScriptableObjects
 {
-	public abstract class AAudioClips<TEnum> : ScriptableObject
+	public abstract class AAudioClips<TEnum, TStruct> : ScriptableObject
 		where TEnum : struct, Enum
+		where TStruct : IAudioClipsPerEnum<TEnum>, new()
 	{
-		private List<IAudioClipsPerEnum<TEnum>> clipsPerSoundType;
+		private List<TStruct> clipsPerSoundType;
 
 		public AudioClip this[TEnum soundType] => GetClip(soundType, out _);
 		public AudioClip this[TEnum soundType, int index] => GetClip(soundType, out _, index);
@@ -19,8 +21,12 @@ namespace ScriptableObjects
 		{
 			clipsPerSoundType = GetAudioClipsPerSoundType();
 		}
-
-		protected abstract List<IAudioClipsPerEnum<TEnum>> GetAudioClipsPerSoundType();
+		
+		/// <summary>
+		/// Will fill the list with every value of the enum.
+		/// <para>Use <see cref="AudioClipsUtil"/> class when overriding.</para> 
+		/// </summary>
+		public abstract void PopulateDictionary();
 
 		public AudioClip GetClip(TEnum soundType, out bool shouldLoop, int index = -1)
 		{
@@ -62,9 +68,11 @@ namespace ScriptableObjects
 			return GetAudioClips(soundType).Count;
 		}
 
+		protected abstract List<TStruct> GetAudioClipsPerSoundType();
+
 		private List<AudioClip> GetAudioClips(TEnum soundType, out bool shouldLoop)
 		{
-			foreach (IAudioClipsPerEnum<TEnum> pair in clipsPerSoundType.Where(pair => Equals(pair.Key, soundType)))
+			foreach (TStruct pair in clipsPerSoundType.Where(pair => Equals(pair.Key, soundType)))
 			{
 				shouldLoop = pair.ShouldLoop;
 
