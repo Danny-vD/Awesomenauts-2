@@ -7,9 +7,9 @@ using UnityEngine;
 namespace Structs.Audio
 {
 	[Serializable]
-	public struct NautClipsPerSoundType : IEquatable<NautClipsPerSoundType>, IAudioClipsPerEnum<NautSoundType>
+	public struct AnnouncerClipsPerSoundType : IEquatable<AnnouncerClipsPerSoundType>, IAudioClipsPerEnum<AnnouncerSoundType>
 	{
-		public NautSoundType Key
+		public AnnouncerSoundType Key
 		{
 			get => SoundType;
 			set => SoundType = value;
@@ -23,19 +23,19 @@ namespace Structs.Audio
 
 		public bool ShouldLoop => IsLooping;
 
-		public NautSoundType SoundType;
+		public AnnouncerSoundType SoundType;
 		public List<AudioClip> Clips;
 
 		public bool IsLooping;
 
-		public NautClipsPerSoundType(NautSoundType soundType = default)
+		public AnnouncerClipsPerSoundType(AnnouncerSoundType soundType = default)
 		{
 			SoundType = soundType;
 			Clips = null;
 			IsLooping = false;
 		}
 		
-		public NautClipsPerSoundType(NautSoundType soundType, params AudioClip[] clips)
+		public AnnouncerClipsPerSoundType(AnnouncerSoundType soundType, params AudioClip[] clips)
 		{
 			SoundType = soundType;
 			Clips = new List<AudioClip>();
@@ -49,7 +49,7 @@ namespace Structs.Audio
 		}
 
 		// Used by List<AudioClipsPerSoundType>.Contains(AudioClipsPerSoundType);
-		bool IEquatable<NautClipsPerSoundType>.Equals(NautClipsPerSoundType other)
+		bool IEquatable<AnnouncerClipsPerSoundType>.Equals(AnnouncerClipsPerSoundType other)
 		{
 			return Equals(SoundType, other.SoundType);
 		}
