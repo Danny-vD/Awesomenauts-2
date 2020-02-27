@@ -1,8 +1,8 @@
 ﻿namespace Enums.Audio
 {
-	public enum NautSoundType
+	public enum NautSound
 	{
-		Attack,
+		BoughtItem,
 		Walk,
 		Damage,
 		Death,

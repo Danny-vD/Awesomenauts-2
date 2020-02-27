@@ -7,9 +7,9 @@ namespace Character
     public class Awesomenaut : BetterMonoBehaviour
     {
 		[SerializeField]
-		private string nautName;
+		private Enums.Character.Awesomenaut nautName;
 
-		public string Name
+		public Enums.Character.Awesomenaut Name
 		{
 			get => nautName;
 			private set => nautName = value;

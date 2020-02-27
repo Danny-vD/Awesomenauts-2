@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fb1363f5bc6c9140851ed04949c2248, type: 3}
-  m_Name: Sheriff Lonestar
+  m_Name: Voltar
   m_EditorClassIdentifier: 
-  clipDataPerSet:
+  clipDataPerSound:
   - SoundType: 0
     ClipData:
-      AudioClips: []
+      AudioClips:
+      - {fileID: 0}
+      - {fileID: 0}
       ShouldLoop: 0
   - SoundType: 1
     ClipData:

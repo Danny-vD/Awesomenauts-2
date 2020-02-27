@@ -1,6 +1,6 @@
 ﻿namespace Enums.Audio
 {
-	public enum AnnouncerSoundType
+	public enum AnnouncerSound
 	{
 		Death,
 		Kill,

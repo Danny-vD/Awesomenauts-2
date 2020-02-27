@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using VDFramework;
 
 namespace Character
@@ -10,7 +11,7 @@ namespace Character
 
 		[SerializeField, Range(0.001f, 1.0f)]
 		private float drag = 0.02f;
-
+		
 		private CharacterController characterController;
 
 		private Vector3 movementVector = Vector3.zero;

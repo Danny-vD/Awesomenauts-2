@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5288d396acd18e241b0932cf4ba9c8a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 8, z: -20}
+  offset: {x: 0, y: 3, z: -20}
   cameraPrefab: {fileID: 6562189248111777477, guid: 5afa0bd1f1a5adf489907700de8a416a,
     type: 3}
 --- !u!114 &76113746
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543c64644d5a6c643a9934e0207a8d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nautName: Sheriff Lonestar
+  nautName: 0
 --- !u!65 &76113747
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -644,7 +644,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 3.0092666e-36, y: 1.009742e-28, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0.0000008142067, y: 6.323129e-19, z: 6337696, w: NaN}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1071,3 +1071,66 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195158887}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1729087710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1729087712}
+  - component: {fileID: 1729087711}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1729087711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729087710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 192818366e274e34969aa4b801ee7558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nautClips:
+  - key: 1
+    value: {fileID: 11400000, guid: 2da0436f68dd2944e957bded2a10c16e, type: 2}
+  - key: 0
+    value: {fileID: 11400000, guid: d9d28d70f0eed434486608e8b1ff6170, type: 2}
+  - key: 2
+    value: {fileID: 0}
+  - key: 3
+    value: {fileID: 11400000, guid: d9d28d70f0eed434486608e8b1ff6170, type: 2}
+  - key: 4
+    value: {fileID: 0}
+  announcerClips:
+  - key: 2
+    value: {fileID: 11400000, guid: 9039350da91f924478b4cc09172019cd, type: 2}
+  - key: 0
+    value: {fileID: 11400000, guid: b6aadaad78aca6e48a0042c1343441ef, type: 2}
+  - key: 1
+    value: {fileID: 11400000, guid: 584c99b5d54dbcc4faf75139fc75d5dc, type: 2}
+  - key: 3
+    value: {fileID: 0}
+--- !u!4 &1729087712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729087710}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 40.166965, y: 2.8049808, z: -7.056239}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
