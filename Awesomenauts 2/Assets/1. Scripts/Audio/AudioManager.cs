@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using Enums.Announcer;
 using Enums.Audio;
@@ -63,7 +64,7 @@ namespace Audio
 					return setPerEnum.Value.GetAudioClipData(sound);
 				}
 				
-				return AudioClipData.Null;
+				throw new InvalidEnumArgumentException($"{typeof(TSoundToPlay)} is not a NautSound");
 			}
 
 			if (@event.EnumName is Announcer announcer)
@@ -75,10 +76,10 @@ namespace Audio
 					return setPerEnum.Value.GetAudioClipData(sound);
 				}
 
-				return AudioClipData.Null;
+				throw new InvalidEnumArgumentException($"{typeof(TSoundToPlay)} is not an AnnouncerSound");
 			}
-
-			return AudioClipData.Null;
+			
+			throw new InvalidEnumArgumentException($"{typeof(TEnum)} is not valid");
 		}
 
 		private void AddListeners()
