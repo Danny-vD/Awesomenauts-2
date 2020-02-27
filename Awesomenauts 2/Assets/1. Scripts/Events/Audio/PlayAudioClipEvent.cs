@@ -1,15 +1,15 @@
-﻿using UnityEngine;
+﻿using Structs.Audio;
 using VDFramework.EventSystem;
 
 namespace Events.Audio
 {
 	public class PlayAudioClipEvent : VDEvent
 	{
-		public readonly AudioClip ClipToPlay;
+		public readonly AudioClipData ClipData;
 		
-		public PlayAudioClipEvent(AudioClip clipToPlay)
+		public PlayAudioClipEvent(AudioClipData clipData)
 		{
-			ClipToPlay = clipToPlay;
+			ClipData = clipData;
 		}
 	}
 }

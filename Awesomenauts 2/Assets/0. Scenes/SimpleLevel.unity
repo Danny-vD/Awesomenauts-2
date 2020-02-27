@@ -1113,11 +1113,11 @@ MonoBehaviour:
     value: {fileID: 0}
   announcerClips:
   - key: 2
-    value: {fileID: 11400000, guid: b6aadaad78aca6e48a0042c1343441ef, type: 2}
+    value: {fileID: 11400000, guid: 9039350da91f924478b4cc09172019cd, type: 2}
   - key: 0
-    value: {fileID: 0}
+    value: {fileID: 11400000, guid: b6aadaad78aca6e48a0042c1343441ef, type: 2}
   - key: 1
-    value: {fileID: 0}
+    value: {fileID: 11400000, guid: 584c99b5d54dbcc4faf75139fc75d5dc, type: 2}
   - key: 3
     value: {fileID: 0}
 --- !u!4 &1729087712

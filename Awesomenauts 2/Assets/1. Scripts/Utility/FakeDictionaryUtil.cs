@@ -8,7 +8,7 @@ namespace Utility
 {
 	public static class FakeDictionaryUtil
 	{
-		public static void PopulateEnumDictionary<TKeyValuePair, TEnum, TValue>(ref List<TKeyValuePair> list)
+		public static void PopulateEnumDictionary<TKeyValuePair, TEnum, TValue>(List<TKeyValuePair> list)
 			where TKeyValuePair : IKeyValuePair<TEnum, TValue>, new()
 			where TEnum : struct, Enum
 		{

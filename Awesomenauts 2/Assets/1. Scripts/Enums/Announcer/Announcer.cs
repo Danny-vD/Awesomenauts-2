@@ -5,6 +5,6 @@
 		BorblBirk,
 		SlowWolf,
 		RenegadeCommander,
-		RingMaster,
+		Ringmaster,
 	}
 }

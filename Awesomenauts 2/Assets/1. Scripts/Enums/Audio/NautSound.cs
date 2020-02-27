@@ -2,7 +2,7 @@
 {
 	public enum NautSound
 	{
-		Attack,
+		BoughtItem,
 		Walk,
 		Damage,
 		Death,

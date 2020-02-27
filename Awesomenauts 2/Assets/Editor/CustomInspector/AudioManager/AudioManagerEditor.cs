@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Enums.Announcer;
 using Enums.Character;
@@ -9,10 +10,16 @@ using VDFramework.Extensions;
 namespace CustomInspector.AudioManager
 {
 	using AudioManager = Audio.AudioManager;
-	
+
 	[CustomEditor(typeof(AudioManager))]
 	public class AudioManagerEditor : Editor
 	{
+		private static readonly Dictionary<Type, bool> foldoutData = new Dictionary<Type, bool>()
+		{
+			{typeof(Awesomenaut), false},
+			{typeof(Announcer), false},
+		};
+
 		private SerializedProperty nautClips;
 		private SerializedProperty announcerClips;
 
@@ -28,10 +35,24 @@ namespace CustomInspector.AudioManager
 		{
 			serializedObject.Update();
 
-			ShowListEnumScriptableObject<Awesomenaut>(nautClips);
-			ShowListEnumScriptableObject<Announcer>(announcerClips);
+			if (HandleFoldOut<Awesomenaut>())
+			{
+				ShowListEnumScriptableObject<Awesomenaut>(nautClips);
+			}
+
+			if (HandleFoldOut<Announcer>())
+			{
+				ShowListEnumScriptableObject<Announcer>(announcerClips);
+			}
 
 			serializedObject.ApplyModifiedProperties();
+		}
+
+		private static bool HandleFoldOut<TEnum>()
+		{
+			Type type = typeof(TEnum);
+
+			return foldoutData[type] = EditorGUILayout.Foldout(foldoutData[type], type.Name);
 		}
 
 		private static void ShowListEnumScriptableObject<TEnum>(SerializedProperty property)
@@ -49,7 +70,7 @@ namespace CustomInspector.AudioManager
 
 				ShowVariables(enumString, audioSet);
 
-				GUILayout.Space(20.0f);
+				GUILayout.Space(10.0f);
 			}
 		}
 
@@ -58,8 +79,6 @@ namespace CustomInspector.AudioManager
 			EditorGUILayout.LabelField(new GUIContent($"{enumString.InsertSpaceBeforeCapitals()}"),
 				EditorStyles.boldLabel,
 				GUILayout.MaxWidth(100.0f));
-
-			GUILayout.Space(8.0f);
 
 			EditorGUILayout.PropertyField(audioSet, new GUIContent("Audio Set"), true);
 		}

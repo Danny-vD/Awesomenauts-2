@@ -1,5 +1,5 @@
 ﻿using Events.Audio;
-using UnityEngine;
+using Structs.Audio;
 
 namespace Interfaces.Audio
 {
@@ -10,6 +10,6 @@ namespace Interfaces.Audio
 	{
 		void OnPlayAudioClip(PlayAudioClipEvent playAudioClipEvent);
 
-		void PlayAudio(AudioClip clip);
+		void PlayAudio(AudioClipData clip);
 	}
 }

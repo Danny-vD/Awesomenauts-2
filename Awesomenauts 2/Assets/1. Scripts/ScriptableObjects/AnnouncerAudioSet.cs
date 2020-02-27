@@ -11,12 +11,12 @@ namespace ScriptableObjects
 	public class AnnouncerAudioSet : AAudioSet<AnnouncerSound, ClipDataPerAnnouncerSound>
 	{
 		[SerializeField]
-		private List<ClipDataPerAnnouncerSound> clipDataPerSound;
+		private List<ClipDataPerAnnouncerSound> clipDataPerSound = new List<ClipDataPerAnnouncerSound>();
 
 		public override void PopulateDictionary()
 		{
 			FakeDictionaryUtil.PopulateEnumDictionary<ClipDataPerAnnouncerSound, AnnouncerSound, AudioClipData>(
-				ref clipDataPerSound);
+				clipDataPerSound);
 		}
 
 		protected override List<ClipDataPerAnnouncerSound> GetClipDataPerSoundType() => clipDataPerSound;

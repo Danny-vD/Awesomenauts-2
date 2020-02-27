@@ -3,19 +3,19 @@ using VDFramework.EventSystem;
 
 namespace Events.Audio
 {
-	/// <typeparam name="TAudioType">e.g. NautSoundType.attack</typeparam>
-	/// <typeparam name="TAudioSet">e.g. Awesomenaut.Voltar</typeparam>
-	public class PlayAudioTypeEvent<TAudioType, TAudioSet> : VDEvent
-		where TAudioType : struct, Enum
-		where TAudioSet : struct, Enum
+	/// <typeparam name="TEnum">e.g. Awesomenaut.Scoop</typeparam>
+	/// <typeparam name="TSoundToPlay">e.g. NautSound.Spawn</typeparam>
+	public class PlayAudioTypeEvent<TEnum, TSoundToPlay> : VDEvent
+		where TEnum : struct, Enum
+		where TSoundToPlay : struct, Enum
 	{
-		public readonly TAudioType SoundTypeToPlay;
-		public readonly TAudioSet SetToUse;
+		public readonly TEnum EnumName;
+		public readonly TSoundToPlay SoundTypeToPlay;
 
-		public PlayAudioTypeEvent(TAudioType soundTypeToPlay, TAudioSet setToUse)
+		public PlayAudioTypeEvent(TEnum enumName, TSoundToPlay soundTypeToPlay)
 		{
 			SoundTypeToPlay = soundTypeToPlay;
-			SetToUse = setToUse;
+			EnumName = enumName;
 		}
 	}
 }

@@ -26,7 +26,7 @@ namespace ScriptableObjects
 		public override void PopulateDictionary()
 		{
 			FakeDictionaryUtil.PopulateEnumDictionary<ClipDataPerNautSound, NautSound, AudioClipData>(
-				ref clipDataPerSound);
+				clipDataPerSound);
 		}
 	}
 }

@@ -12,22 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ac584710bf410e9951dfe1a95f649f, type: 3}
   m_Name: Renegade Commander
   m_EditorClassIdentifier: 
-  clipsPerEnum:
+  clipDataPerSound:
   - SoundType: 0
-    Clips: []
-    IsLooping: 0
+    ClipData:
+      AudioClips: []
+      ShouldLoop: 0
   - SoundType: 1
-    Clips: []
-    IsLooping: 0
+    ClipData:
+      AudioClips: []
+      ShouldLoop: 0
   - SoundType: 2
-    Clips: []
-    IsLooping: 0
+    ClipData:
+      AudioClips: []
+      ShouldLoop: 0
   - SoundType: 3
-    Clips: []
-    IsLooping: 0
+    ClipData:
+      AudioClips: []
+      ShouldLoop: 0
   - SoundType: 4
-    Clips: []
-    IsLooping: 0
+    ClipData:
+      AudioClips: []
+      ShouldLoop: 0
   - SoundType: 5
-    Clips: []
-    IsLooping: 0
+    ClipData:
+      AudioClips: []
+      ShouldLoop: 0
