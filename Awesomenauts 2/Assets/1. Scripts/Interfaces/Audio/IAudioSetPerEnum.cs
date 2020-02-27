@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Interfaces.Audio
 {
-	public interface IAudioSetPerEnum<TEnum> : IKeyValuePair<TEnum, ScriptableObject>
-		where TEnum : struct, Enum { }
+	public interface IAudioSetPerEnum<TEnum, TAudioSet> : IKeyValuePair<TEnum, TAudioSet>
+		where TEnum : struct, Enum
+		where TAudioSet : IAudioSet { }
 }

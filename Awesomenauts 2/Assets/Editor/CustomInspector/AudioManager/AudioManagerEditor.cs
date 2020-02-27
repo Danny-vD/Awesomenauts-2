@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Audio.AudioSetPerEnum;
 using Enums.Announcer;
 using Enums.Character;
 using UnityEditor;
@@ -9,7 +8,9 @@ using VDFramework.Extensions;
 
 namespace CustomInspector.AudioManager
 {
-	[CustomEditor(typeof(Audio.AudioManager))]
+	using AudioManager = Audio.AudioManager;
+	
+	[CustomEditor(typeof(AudioManager))]
 	public class AudioManagerEditor : Editor
 	{
 		private SerializedProperty nautClips;
@@ -17,7 +18,7 @@ namespace CustomInspector.AudioManager
 
 		private void OnEnable()
 		{
-			(target as Audio.AudioManager)?.PopulateDictionary();
+			(target as AudioManager)?.UpdateDictioneries();
 
 			nautClips = serializedObject.FindProperty("nautClips");
 			announcerClips = serializedObject.FindProperty("announcerClips");
@@ -42,25 +43,25 @@ namespace CustomInspector.AudioManager
 			{
 				SerializedProperty pair = property.GetArrayElementAtIndex(i);
 				SerializedProperty enumType = pair.FindPropertyRelative("key");
-				SerializedProperty scriptableObject = pair.FindPropertyRelative("value");
+				SerializedProperty audioSet = pair.FindPropertyRelative("value");
 
 				string enumString = ConvertIntToEnumString<TEnum>(enumType.enumValueIndex);
 
-				ShowVariables(enumString, scriptableObject);
+				ShowVariables(enumString, audioSet);
 
 				GUILayout.Space(20.0f);
 			}
 		}
 
-		private static void ShowVariables(string enumString, SerializedProperty scriptableObject)
+		private static void ShowVariables(string enumString, SerializedProperty audioSet)
 		{
 			EditorGUILayout.LabelField(new GUIContent($"{enumString.InsertSpaceBeforeCapitals()}"),
 				EditorStyles.boldLabel,
 				GUILayout.MaxWidth(100.0f));
-			
+
 			GUILayout.Space(8.0f);
-			
-			EditorGUILayout.PropertyField(scriptableObject, new GUIContent("ClipSet"), true);
+
+			EditorGUILayout.PropertyField(audioSet, new GUIContent("Audio Set"), true);
 		}
 
 		private static string ConvertIntToEnumString<TEnum>(int integer)

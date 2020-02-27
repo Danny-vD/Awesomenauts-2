@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Audio.AudioSetPerEnum;
 using Enums.Announcer;
 using Enums.Audio;
 using Enums.Character;
 using Events.Audio;
+using ScriptableObjects;
+using Structs.Audio.AudioSetPerEnum;
 using UnityEngine;
 using Utility;
 using VDFramework.EventSystem;
@@ -15,10 +16,10 @@ namespace Audio
 	public class AudioManager : Singleton<AudioManager>
 	{
 		[SerializeField]
-		private List<NautClipSetPerNaut> nautClips;
+		private List<NautSetPerNaut> nautClips;
 
 		[SerializeField]
-		private List<AnnouncerClipSetPerAnnouncer> announcerClips;
+		private List<AnnouncerSetPerAnnouncer> announcerClips;
 
 		private void OnEnable()
 		{
@@ -30,10 +31,10 @@ namespace Audio
 			RemoveListeners();
 		}
 
-		public void PopulateDictionary()
+		public void UpdateDictioneries()
 		{
-			FakeDictionaryUtil.PopulateEnumDictionary<NautClipSetPerNaut, Awesomenaut, ScriptableObject>(ref nautClips);
-			FakeDictionaryUtil.PopulateEnumDictionary<AnnouncerClipSetPerAnnouncer, Announcer, ScriptableObject>(
+			FakeDictionaryUtil.PopulateEnumDictionary<NautSetPerNaut, Awesomenaut, NautAudioSet>(ref nautClips);
+			FakeDictionaryUtil.PopulateEnumDictionary<AnnouncerSetPerAnnouncer, Announcer, AnnouncerAudioSet>(
 				ref announcerClips);
 		}
 

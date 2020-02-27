@@ -12,22 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb1363f5bc6c9140851ed04949c2248, type: 3}
   m_Name: Sheriff Lonestar
   m_EditorClassIdentifier: 
-  clipsPerEnum:
+  clipDataPerSet:
   - SoundType: 0
-    Clips: []
-    IsLooping: 0
+    ClipData:
+      AudioClips: []
+      ShouldLoop: 0
   - SoundType: 1
-    Clips: []
-    IsLooping: 0
+    ClipData:
+      AudioClips: []
+      ShouldLoop: 0
   - SoundType: 2
-    Clips: []
-    IsLooping: 0
+    ClipData:
+      AudioClips: []
+      ShouldLoop: 0
   - SoundType: 3
-    Clips: []
-    IsLooping: 0
+    ClipData:
+      AudioClips: []
+      ShouldLoop: 0
   - SoundType: 4
-    Clips: []
-    IsLooping: 0
+    ClipData:
+      AudioClips: []
+      ShouldLoop: 0
   - SoundType: 5
-    Clips: []
-    IsLooping: 0
+    ClipData:
+      AudioClips: []
+      ShouldLoop: 0
