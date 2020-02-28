@@ -6,7 +6,6 @@ using Enums.Announcer;
 using Enums.Audio;
 using Enums.Character;
 using Events.Audio;
-using Interfaces;
 using ScriptableObjects;
 using Structs.Audio;
 using Structs.Audio.AudioSetPerEnum;
@@ -49,12 +48,12 @@ namespace Audio
 			EventManager.Instance.RaiseEvent(new PlayAudioClipEvent(GetCorrectClipData(@event)));
 		}
 
-		//TEnum: awesomenaut.Scoop
-		//TSoundToPlay nautSound.attack
 		private AudioClipData GetCorrectClipData<TEnum, TSoundToPlay>(PlayAudioTypeEvent<TEnum, TSoundToPlay> @event)
 			where TEnum : struct, Enum
 			where TSoundToPlay : struct, Enum
 		{
+			//TODO: make proper, this is garbage
+			
 			if (@event.EnumName is Awesomenaut awesomenaut)
 			{
 				NautSetPerNaut setPerEnum = nautClips.First(set => set.Key == awesomenaut);
