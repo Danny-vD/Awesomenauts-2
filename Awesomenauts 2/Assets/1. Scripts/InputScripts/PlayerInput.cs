@@ -4,14 +4,14 @@ using VDFramework;
 
 namespace InputScripts
 {
-	[RequireComponent(typeof(NautMovement))]
+	[RequireComponent(typeof(CharacterMovement))]
 	public class PlayerInput : BetterMonoBehaviour
 	{
-		private NautMovement nautMovement;
+		private CharacterMovement nautMovement;
 
 		private void Awake()
 		{
-			nautMovement = GetComponent<NautMovement>();
+			nautMovement = GetComponent<CharacterMovement>();
 		}
 
 		private void Update()

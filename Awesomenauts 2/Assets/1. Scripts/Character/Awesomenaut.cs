@@ -3,7 +3,7 @@ using VDFramework;
 
 namespace Character
 {
-	[RequireComponent(typeof(NautMovement))]
+	[RequireComponent(typeof(CharacterMovement))]
     public class Awesomenaut : BetterMonoBehaviour
     {
 		[SerializeField]

@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using VDFramework;
+using VDFramework.UnityExtensions;
 
 namespace Character
 {
-	public class NautMovement : BetterMonoBehaviour
+	public class CharacterMovement : BetterMonoBehaviour
 	{
 		[SerializeField]
 		private AnimationCurve movementCurve = null;
@@ -13,15 +13,18 @@ namespace Character
 		private float drag = 0.02f;
 		
 		private CharacterController characterController;
-
 		private Vector3 movementVector = Vector3.zero;
 
 		private bool hasMoved;
 		private float time;
 
+		private CharacterRotation rotation;
+
 		private void Awake()
 		{
 			characterController = GetComponent<CharacterController>();
+
+			rotation = this.EnsureComponent<CharacterRotation>();
 		}
 		
 		private void Update()
@@ -35,6 +38,8 @@ namespace Character
 			hasMoved = false;
 			
 			ApplyGravity();
+			
+			rotation.UpdateRotation(movementVector.x);
 		}
 
 		public void Move(Vector2 deltaMovement)
