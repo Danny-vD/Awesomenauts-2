@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using Enums.Audio;
-using Interfaces.Audio;
 using Structs.Audio;
 using UnityEngine;
 using Utility;
 
-namespace ScriptableObjects
+namespace ScriptableObjects.Audio.AudioSet
 {
 	[CreateAssetMenu(menuName = "Scriptable Objects/Audio/AnnouncerClips")]
 	public class AnnouncerAudioSet : AAudioSet<AnnouncerSound, ClipDataPerAnnouncerSound>

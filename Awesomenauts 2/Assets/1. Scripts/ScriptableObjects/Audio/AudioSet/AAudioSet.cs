@@ -6,7 +6,7 @@ using Structs.Audio;
 using UnityEngine;
 using Utility;
 
-namespace ScriptableObjects
+namespace ScriptableObjects.Audio.AudioSet
 {
 	public abstract class AAudioSet<TSoundType, TClipDataPerSoundType> : ScriptableObject, IAudioSet
 		where TSoundType : struct, Enum

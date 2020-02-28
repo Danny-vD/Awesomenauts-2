@@ -3,6 +3,7 @@ using Enums.Character;
 using Interfaces;
 using Interfaces.Audio;
 using ScriptableObjects;
+using ScriptableObjects.Audio.AudioSet;
 using UnityEngine;
 
 namespace Structs.Audio.AudioSetPerEnum
