@@ -15,9 +15,7 @@ MonoBehaviour:
   clipDataPerSound:
   - SoundType: 0
     ClipData:
-      AudioClips:
-      - {fileID: 0}
-      - {fileID: 0}
+      AudioClips: []
       ShouldLoop: 0
   - SoundType: 1
     ClipData:

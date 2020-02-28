@@ -6,7 +6,6 @@ using Enums.Announcer;
 using Enums.Audio;
 using Enums.Character;
 using Events.Audio;
-using ScriptableObjects;
 using ScriptableObjects.Audio.AudioSet;
 using Structs.Audio;
 using Structs.Audio.AudioSetPerEnum;

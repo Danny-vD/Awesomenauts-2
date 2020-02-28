@@ -1,4 +1,5 @@
 ﻿using System;
+using Enums.Audio;
 using VDFramework.EventSystem;
 
 namespace Events.Audio
