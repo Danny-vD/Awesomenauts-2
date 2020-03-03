@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Animation;
+using UnityEngine;
 using VDFramework;
 
 namespace Character
 {
-	[RequireComponent(typeof(CharacterMovement))]
+	[RequireComponent(typeof(CharacterMovement), typeof(NautAnimation))]
     public class Awesomenaut : BetterMonoBehaviour
     {
 		[SerializeField]
@@ -14,7 +15,5 @@ namespace Character
 			get => nautName;
 			private set => nautName = value;
 		}
-
-		//private List<Ability> abilities = new List<Ability>();
 	}
 }

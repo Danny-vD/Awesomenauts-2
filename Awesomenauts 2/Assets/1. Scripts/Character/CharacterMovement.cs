@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Animation;
+using UnityEngine;
 using VDFramework;
 using VDFramework.UnityExtensions;
 
@@ -19,10 +20,12 @@ namespace Character
 		private float time;
 
 		private CharacterRotation rotation;
+		private NautAnimation nautAnimation;
 
 		private void Awake()
 		{
 			characterController = GetComponent<CharacterController>();
+			nautAnimation = GetComponent<NautAnimation>();
 
 			rotation = this.EnsureComponent<CharacterRotation>();
 		}
@@ -45,6 +48,7 @@ namespace Character
 		public void Move(Vector2 deltaMovement)
 		{
 			AddForce(deltaMovement.normalized * GetMovementSpeed());
+			nautAnimation.Walk();
 			hasMoved = true;
 		}
 
@@ -60,9 +64,14 @@ namespace Character
 
 			movementVector *= 1 - drag;
 
-			if (movementVector.magnitude < 0.1f)
+			if (movementVector.magnitude < 0.15f)
 			{
 				movementVector = Vector3.zero;
+				nautAnimation.Idle();
+			}
+			else
+			{
+				nautAnimation.Drag();
 			}
 		}
 		

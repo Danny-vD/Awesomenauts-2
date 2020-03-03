@@ -229,8 +229,10 @@ GameObject:
   - component: {fileID: 76113746}
   - component: {fileID: 76113748}
   - component: {fileID: 76113749}
+  - component: {fileID: 76113743}
+  - component: {fileID: 76113742}
   m_Layer: 0
-  m_Name: Awesomenaut
+  m_Name: Sheriff Lonestar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -254,6 +256,37 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &76113742
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76113740}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3fcf11d7025fd024ebf7bcc80d1317de, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &76113743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76113740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a66343e217945d24a913c824b4854336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &76113744
 Transform:
   m_ObjectHideFlags: 0
@@ -328,17 +361,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 16
-      outSlope: 16
+      inSlope: 16.432
+      outSlope: 16.432
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.5
-      value: 8
-      inSlope: 16
-      outSlope: 16
+      value: 8.216
+      inSlope: 16.432
+      outSlope: 16.432
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -893,14 +926,14 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1000
-  m_Sprite: {fileID: 21300000, guid: bce60187affef99448d5f06dfab65e0c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dae11b9efeb4db6489da8f2cafda3772, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 1.4, y: 1.55}
   m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
+  m_SpriteTileMode: 1
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

@@ -53,7 +53,7 @@ namespace Audio
 			where TSoundToPlay : struct, Enum
 		{
 			//TODO: make proper, this is garbage
-			
+
 			if (@event.EnumName is Awesomenaut awesomenaut)
 			{
 				NautSetPerNaut setPerEnum = nautClips.First(set => set.Key == awesomenaut);
@@ -62,7 +62,7 @@ namespace Audio
 				{
 					return setPerEnum.Value.GetAudioClipData(sound);
 				}
-				
+
 				throw new InvalidEnumArgumentException($"{typeof(TSoundToPlay)} is not a NautSound");
 			}
 
@@ -77,7 +77,7 @@ namespace Audio
 
 				throw new InvalidEnumArgumentException($"{typeof(TSoundToPlay)} is not an AnnouncerSound");
 			}
-			
+
 			throw new InvalidEnumArgumentException($"{typeof(TEnum)} is not valid");
 		}
 
