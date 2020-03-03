@@ -357,7 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 8.216
   timeForMaxSpeed: 0.5
-  drag: 0.02
+  hasGravity: 1
 --- !u!114 &76113749
 MonoBehaviour:
   m_ObjectHideFlags: 0

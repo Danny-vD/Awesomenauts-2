@@ -100,6 +100,15 @@ namespace Character
 		private void ApplyGravity()
 		{
 			characterController.Move(Physics.gravity * Time.deltaTime);
+			
+			if (characterController.isGrounded)
+			{
+				nautAnimation.Grounded();
+			}
+			else
+			{
+				nautAnimation.Fall();
+			}
 		}
 
 		private float GetMovementSpeed()

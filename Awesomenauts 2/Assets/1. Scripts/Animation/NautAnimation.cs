@@ -58,7 +58,12 @@ namespace Animation
 
 		public void Fall()
 		{
-			SetTrigger(State.IsFalling);
+			SetBool(State.IsFalling, true);
+		}
+
+		public void Grounded()
+		{
+			SetBool(State.IsFalling, false);
 		}
 
 		public void Teleport()
@@ -94,6 +99,11 @@ namespace Animation
 			}
 			
 			animator.SetTrigger(triggerIDs[trigger]);
+		}
+
+		private void SetBool(State state, bool value)
+		{
+			animator.SetBool(triggerIDs[state], value);
 		}
 	}
 }
