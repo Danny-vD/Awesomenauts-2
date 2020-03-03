@@ -1,26 +1,39 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using VDFramework;
+using VDFramework.Extensions;
 
 namespace Animation
 {
 	[RequireComponent(typeof(Animator))]
 	public class NautAnimation : BetterMonoBehaviour
 	{
+		private enum State
+		{
+			IsWalking,
+			Drag,
+			IsFalling,
+			IsIdle,
+			IsTeleporting,
+			IsStunned,
+			AbilityStart,
+			AbilityPerform,
+			AbilityEnd,
+		}
+		
 		private Animator animator;
 		
-		private static readonly int isWalking = Animator.StringToHash("IsWalking");
-		private static readonly int drag = Animator.StringToHash("Drag");
-		private static readonly int isFalling = Animator.StringToHash("IsFalling");
-		private static readonly int isIdle = Animator.StringToHash("IsIdle");
-		private static readonly int isTeleporting = Animator.StringToHash("IsTeleporting");
-		private static readonly int isStunned = Animator.StringToHash("IsStunned");
-		private static readonly int abilityStart = Animator.StringToHash("AbilityStart");
-		private static readonly int abilityPerform = Animator.StringToHash("AbilityPerform");
-		private static readonly int abilityEnd = Animator.StringToHash("AbilityEnd");
+		private static readonly Dictionary<State, int> triggerIDs = new Dictionary<State, int>();
 
 		private void Awake()
 		{
 			animator = GetComponent<Animator>();
+
+			foreach (State state in State.Drag.GetValues())
+			{
+				triggerIDs.Add(state, Animator.StringToHash(state.ToString()));
+			}
 		}
 
 		public void Default()
@@ -30,52 +43,57 @@ namespace Animation
 
 		public void Idle()
 		{
-			SetTrigger(isIdle);
+			SetTrigger(State.IsIdle);
 		}
 		
 		public void Walk()
 		{
-			SetTrigger(isWalking);
+			SetTrigger(State.IsWalking);
 		}
 
 		public void Drag()
 		{
-			SetTrigger(drag);
+			SetTrigger(State.Drag);
 		}
 
 		public void Fall()
 		{
-			SetTrigger(isFalling);
+			SetTrigger(State.IsFalling);
 		}
 
 		public void Teleport()
 		{
-			SetTrigger(isTeleporting);
+			SetTrigger(State.IsTeleporting);
 		}
 
 		public void Stunned()
 		{
-			SetTrigger(isStunned);
+			SetTrigger(State.IsStunned);
 		}
 
 		public void AbilityStart()
 		{
-			SetTrigger(abilityStart);
+			SetTrigger(State.AbilityStart);
 		}
 		
 		public void AbilityPerform()
 		{
-			SetTrigger(abilityPerform);
+			SetTrigger(State.AbilityPerform);
 		}
 		
 		public void AbilityEnd()
 		{
-			SetTrigger(abilityEnd);
+			SetTrigger(State.AbilityEnd);
 		}
 		
-		private void SetTrigger(int trigger)
+		private void SetTrigger(State trigger)
 		{
-			animator.SetTrigger(trigger);
+			foreach (int id in triggerIDs.Values)
+			{
+				animator.ResetTrigger(id);
+			}
+			
+			animator.SetTrigger(triggerIDs[trigger]);
 		}
 	}
 }

@@ -355,30 +355,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069bb8d905e9df94e901bf85fb183994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 16.432
-      outSlope: 16.432
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.5
-      value: 8.216
-      inSlope: 16.432
-      outSlope: 16.432
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  maxSpeed: 8.216
+  timeForMaxSpeed: 0.5
   drag: 0.02
 --- !u!114 &76113749
 MonoBehaviour:
@@ -652,7 +630,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0.0000008142067, y: 6.323129e-19, z: 6337696, w: NaN}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0

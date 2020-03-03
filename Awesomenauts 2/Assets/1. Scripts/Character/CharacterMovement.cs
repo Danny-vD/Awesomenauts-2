@@ -8,17 +8,24 @@ namespace Character
 	public class CharacterMovement : BetterMonoBehaviour
 	{
 		[SerializeField]
-		private AnimationCurve movementCurve = null;
+		private float maxSpeed = 8.0f;
 
-		[SerializeField, Range(0.001f, 1.0f)]
-		private float drag = 0.02f;
-		
-		private CharacterController characterController;
+		[SerializeField]
+		private float timeForMaxSpeed = 0.5f;
+
+		[SerializeField]
+		private bool hasGravity = true;
+
+		private readonly AnimationCurve movementCurve = new AnimationCurve();
+
 		private Vector3 movementVector = Vector3.zero;
 
 		private bool hasMoved;
-		private float time;
+		
+		private float movementTime;
+		private float dragTime;
 
+		private CharacterController characterController;
 		private CharacterRotation rotation;
 		private NautAnimation nautAnimation;
 
@@ -28,43 +35,48 @@ namespace Character
 			nautAnimation = GetComponent<NautAnimation>();
 
 			rotation = this.EnsureComponent<CharacterRotation>();
+
+			movementCurve.AddKey(0, 0);
+			movementCurve.AddKey(timeForMaxSpeed, maxSpeed);
 		}
-		
+
 		private void Update()
 		{
 			if (!hasMoved)
 			{
-				time = 0;
+				movementTime = 0;
 				ApplyDrag();
 			}
-			
+			else
+			{
+				dragTime = 0;
+			}
+
 			hasMoved = false;
-			
-			ApplyGravity();
-			
+
+			if (hasGravity)
+			{
+				ApplyGravity();
+			}
+
 			rotation.UpdateRotation(movementVector.x);
 		}
 
 		public void Move(Vector2 deltaMovement)
 		{
-			AddForce(deltaMovement.normalized * GetMovementSpeed());
+			movementVector = deltaMovement.normalized * GetMovementSpeed();
+			AddForce(movementVector);
+
 			nautAnimation.Walk();
 			hasMoved = true;
 		}
 
-		private void AddForce(Vector2 force)
+		private void DragMove(Vector2 deltaMovement)
 		{
-			movementVector = force;
-			characterController.Move(force * Time.deltaTime);
-		}
+			AddForce(deltaMovement.normalized * GetDragSpeed());
+			nautAnimation.Drag();
 
-		private void ApplyDrag()
-		{
-			characterController.Move(movementVector * Time.deltaTime);
-
-			movementVector *= 1 - drag;
-
-			if (movementVector.magnitude < 0.15f)
+			if (dragTime >= 1)
 			{
 				movementVector = Vector3.zero;
 				nautAnimation.Idle();
@@ -74,7 +86,17 @@ namespace Character
 				nautAnimation.Drag();
 			}
 		}
-		
+
+		private void AddForce(Vector2 force)
+		{
+			characterController.Move(force * Time.deltaTime);
+		}
+
+		private void ApplyDrag()
+		{
+			DragMove(movementVector);
+		}
+
 		private void ApplyGravity()
 		{
 			characterController.Move(Physics.gravity * Time.deltaTime);
@@ -82,8 +104,15 @@ namespace Character
 
 		private float GetMovementSpeed()
 		{
-			time += Time.deltaTime;
-			return movementCurve.Evaluate(time);
+			movementTime += Time.deltaTime;
+			return movementCurve.Evaluate(movementTime);
+		}
+
+		private float GetDragSpeed()
+		{
+			dragTime += Time.deltaTime;
+
+			return movementCurve.Evaluate(timeForMaxSpeed - dragTime);
 		}
 	}
 }
