@@ -342,8 +342,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   Prefab: {fileID: 3746690491115016632, guid: 1a656ace90262364c8a9aabb3c3687f7, type: 3}
-  DragWhenMoving: 0.7
+  DragWhenMoving: 0.1
   DragWhenSnapping: 0.1
+  DragIntertiaMultiplier: 15
+  MaxIntertia: 25
 --- !u!1001 &425629562
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -16,6 +16,9 @@ public class CardPlacer : MonoBehaviour
 	[Range(0, 1f)]
 	public float DragWhenSnapping = 0.1f;
 
+	public float DragIntertiaMultiplier = 1;
+	public float MaxIntertia = 25;
+
 	private bool dragging;
 	private float Drag => snapping ? DragWhenSnapping : DragWhenMoving;
 	private bool snapping;
@@ -46,10 +49,19 @@ public class CardPlacer : MonoBehaviour
 			}
 			else
 			{
-
 				Vector3 dir = GetCardPosition() - draggedObject.position;
+				float m = Mathf.Clamp(dir.magnitude * DragIntertiaMultiplier, 0, MaxIntertia);
+
+
+
 				dir *= Drag;
 				draggedObject.position += dir;
+				Vector3 axis = Vector3.Cross(Vector3.up, dir);
+				Quaternion q = Quaternion.AngleAxis(m, axis);
+
+
+
+				draggedObject.rotation = q;
 			}
 
 		}
@@ -61,9 +73,10 @@ public class CardPlacer : MonoBehaviour
 		if (HasPlacedCard(out RaycastHit socketPlace))
 		{
 			snapping = true;
-			return socketPlace.transform.position + Vector3.up;
+			Vector3 socketPos = socketPlace.transform.position + Vector3.up;
+			return socketPos;
 		}
-
+		
 		snapping = false;
 		return GetMousePositionOnDragLayer();
 	}
