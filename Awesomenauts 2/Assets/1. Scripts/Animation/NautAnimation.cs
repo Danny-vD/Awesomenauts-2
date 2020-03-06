@@ -71,9 +71,9 @@ namespace Animation
 			SetTrigger(State.IsTeleporting);
 		}
 
-		public void Stunned()
+		public void Stunned(bool isStunned)
 		{
-			SetTrigger(State.IsStunned);
+			SetBool(State.IsStunned, isStunned);
 		}
 
 		public void AbilityStart()
