@@ -1,5 +1,43 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5116193443877617624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1978680733418053258}
+  m_Layer: 0
+  m_Name: BlueCardSockets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1978680733418053258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5116193443877617624}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.224227, y: -5.035224, z: -14.33497}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5491867751625798539}
+  - {fileID: 5491867751425373950}
+  - {fileID: 5491867749872267747}
+  - {fileID: 5491867751684915987}
+  - {fileID: 5491867751611122118}
+  - {fileID: 5491867750984884599}
+  - {fileID: 5491867751308946101}
+  - {fileID: 5491867751232355374}
+  m_Father: {fileID: 5491867751144003617}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5491867749620429277
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,7 +51,7 @@ GameObject:
   - component: {fileID: 5491867749620429250}
   - component: {fileID: 5491867749620429251}
   m_Layer: 0
-  m_Name: Cube (50)
+  m_Name: CardSocketRedRight3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,6 +93,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -105,7 +144,7 @@ GameObject:
   - component: {fileID: 5491867749648435122}
   - component: {fileID: 5491867749648435123}
   m_Layer: 0
-  m_Name: Cube (41)
+  m_Name: CardSocketRedLeft2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,6 +186,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -215,7 +255,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867749652723782
 MeshFilter:
@@ -239,6 +279,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -307,7 +348,7 @@ Transform:
   m_LocalScale: {x: 2.500001, y: 0.15273, z: 3.500002}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867749712040968
 MeshFilter:
@@ -331,6 +372,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -396,7 +438,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 29
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &5491867749722828331
 GameObject:
@@ -428,7 +470,7 @@ Transform:
   m_LocalScale: {x: 9.75519, y: 2.9682186, z: 9.75519}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 67
+  m_RootOrder: 60
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867749722828328
 MeshFilter:
@@ -452,6 +494,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -489,7 +532,7 @@ GameObject:
   - component: {fileID: 5491867749779526040}
   - component: {fileID: 5491867749779526041}
   m_Layer: 0
-  m_Name: Cube (51)
+  m_Name: CardSocketRedLeft4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -531,6 +574,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -599,7 +643,7 @@ Transform:
   m_LocalScale: {x: 2.500002, y: 0.15273, z: 3.5000021}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: -0.814, y: 190.486, z: 0.657}
 --- !u!33 &5491867749780803709
 MeshFilter:
@@ -623,6 +667,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -691,7 +736,7 @@ Transform:
   m_LocalScale: {x: 2.500001, y: 0.15273, z: 3.500002}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 35
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867749786544410
 MeshFilter:
@@ -715,6 +760,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -782,7 +828,7 @@ Transform:
   m_LocalScale: {x: 3.9887996, y: 1.2136749, z: 3.9887996}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 38
+  m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867749829078472
 MeshFilter:
@@ -806,6 +852,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -843,7 +890,7 @@ GameObject:
   - component: {fileID: 5491867749872267745}
   - component: {fileID: 5491867749872267746}
   m_Layer: 0
-  m_Name: Cube (47)
+  m_Name: CardSocketBlueRight2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -857,11 +904,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5491867749872267772}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -6.7620106, y: -1.745224, z: -14.187542}
+  m_LocalPosition: {x: -11.986238, y: 3.29, z: 0.14742851}
   m_LocalScale: {x: 2.5, y: 0.15273, z: 3.5}
   m_Children: []
-  m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 43
+  m_Father: {fileID: 1978680733418053258}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867749872267744
 MeshFilter:
@@ -885,6 +932,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -953,7 +1001,7 @@ Transform:
   m_LocalScale: {x: 22.721273, y: 5.697928, z: 6.452295}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867749888337363
 MeshFilter:
@@ -977,6 +1025,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1045,7 +1094,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867749940650069
 MeshFilter:
@@ -1069,6 +1118,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1137,7 +1187,7 @@ Transform:
   m_LocalScale: {x: 2.500001, y: 0.15273, z: 3.500002}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 36
+  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867749941232570
 MeshFilter:
@@ -1161,6 +1211,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1229,7 +1280,7 @@ Transform:
   m_LocalScale: {x: 2.938501, y: 0.17951885, z: 4.113902}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 34
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: -22.465, y: -20.924002, z: 5.8880005}
 --- !u!33 &5491867749969642588
 MeshFilter:
@@ -1253,6 +1304,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1318,7 +1370,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &5491867750026790561
 GameObject:
@@ -1351,7 +1403,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867750026790565
 MeshFilter:
@@ -1375,6 +1427,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1443,7 +1496,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867750031031782
 MeshFilter:
@@ -1467,6 +1520,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1534,7 +1588,7 @@ Transform:
   m_LocalScale: {x: 9.75519, y: 2.9682186, z: 9.75519}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867750063650749
 MeshFilter:
@@ -1558,6 +1612,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1613,7 +1668,7 @@ Transform:
   m_LocalScale: {x: 4.0308847, y: 3.16734, z: 17.958878}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 50.966, z: 0}
 --- !u!33 &5491867750087683878
 MeshFilter:
@@ -1637,6 +1692,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1705,7 +1761,7 @@ Transform:
   m_LocalScale: {x: 4.0308847, y: 3.16734, z: 17.958878}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: -50.966003, z: 0}
 --- !u!33 &5491867750222769723
 MeshFilter:
@@ -1729,6 +1785,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1797,7 +1854,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 62
+  m_RootOrder: 55
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867750245155345
 MeshFilter:
@@ -1821,6 +1878,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1889,7 +1947,7 @@ Transform:
   m_LocalScale: {x: 4.0308847, y: 3.16734, z: 17.958878}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 54
+  m_RootOrder: 47
   m_LocalEulerAnglesHint: {x: 0, y: -50.966003, z: 0}
 --- !u!33 &5491867750282166027
 MeshFilter:
@@ -1913,6 +1971,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1981,7 +2040,7 @@ Transform:
   m_LocalScale: {x: 4.9829516, y: 5.561557, z: 5.1686864}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867750392887195
 MeshFilter:
@@ -2005,6 +2064,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2073,7 +2133,7 @@ Transform:
   m_LocalScale: {x: 2.938502, y: 0.17951886, z: 4.113903}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 32
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: -18.984001, y: 15.843, z: -7.1960006}
 --- !u!33 &5491867750416224689
 MeshFilter:
@@ -2097,6 +2157,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2165,7 +2226,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867750427561950
 MeshFilter:
@@ -2189,6 +2250,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2257,7 +2319,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 60
+  m_RootOrder: 53
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867750518671815
 MeshFilter:
@@ -2281,6 +2343,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2349,7 +2412,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 58
+  m_RootOrder: 51
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867750545839104
 MeshFilter:
@@ -2373,6 +2436,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2441,7 +2505,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 61
+  m_RootOrder: 54
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867750583535591
 MeshFilter:
@@ -2465,6 +2529,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2533,7 +2598,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867750649787841
 MeshFilter:
@@ -2557,6 +2622,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2625,7 +2691,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 59
+  m_RootOrder: 52
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867750657418733
 MeshFilter:
@@ -2649,6 +2715,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2717,7 +2784,7 @@ Transform:
   m_LocalScale: {x: 4.923262, y: 5.561557, z: 5.1686864}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 52
+  m_RootOrder: 45
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867750664647295
 MeshFilter:
@@ -2741,6 +2808,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2809,7 +2877,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 57
+  m_RootOrder: 50
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867750677354305
 MeshFilter:
@@ -2833,6 +2901,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2901,7 +2970,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 56
+  m_RootOrder: 49
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867750688318534
 MeshFilter:
@@ -2925,6 +2994,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2993,7 +3063,7 @@ Transform:
   m_LocalScale: {x: 2.9385006, y: 0.17951885, z: 4.1139016}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 33
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: -23.162, y: -8.552, z: 1.075}
 --- !u!33 &5491867750761837142
 MeshFilter:
@@ -3017,6 +3087,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3085,7 +3156,7 @@ Transform:
   m_LocalScale: {x: 4.0308847, y: 3.16734, z: 35.66872}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 64
+  m_RootOrder: 57
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867750767296215
 MeshFilter:
@@ -3109,6 +3180,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3159,7 +3231,7 @@ GameObject:
   - component: {fileID: 5491867750796162429}
   - component: {fileID: 5491867750796162430}
   m_Layer: 0
-  m_Name: Cube (45)
+  m_Name: CardSocketRedRight2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3201,6 +3273,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3251,7 +3324,7 @@ GameObject:
   - component: {fileID: 5491867750818717514}
   - component: {fileID: 5491867750818717515}
   m_Layer: 0
-  m_Name: Cube (30)
+  m_Name: CardSocketRedLeft1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3293,6 +3366,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3361,7 +3435,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 50
+  m_RootOrder: 43
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867750823265124
 MeshFilter:
@@ -3385,6 +3459,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3453,7 +3528,7 @@ Transform:
   m_LocalScale: {x: 22.721273, y: 5.697928, z: 6.452295}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 37
+  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867750865798948
 MeshFilter:
@@ -3477,6 +3552,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3545,7 +3621,7 @@ Transform:
   m_LocalScale: {x: 4.0308847, y: 3.16734, z: 17.958878}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 55
+  m_RootOrder: 48
   m_LocalEulerAnglesHint: {x: 0, y: 50.966, z: 0}
 --- !u!33 &5491867750866470387
 MeshFilter:
@@ -3569,6 +3645,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3637,7 +3714,7 @@ Transform:
   m_LocalScale: {x: 2.938501, y: 0.17951886, z: 4.113902}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 31
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: -19.388, y: 12.144001, z: -5.979}
 --- !u!33 &5491867750980692387
 MeshFilter:
@@ -3661,6 +3738,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3711,7 +3789,7 @@ GameObject:
   - component: {fileID: 5491867750984884597}
   - component: {fileID: 5491867750984884598}
   m_Layer: 0
-  m_Name: Cube (53)
+  m_Name: CardSocketBlueLeft4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3725,11 +3803,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5491867750984884592}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 11.761988, y: -2.1552238, z: -5.107541}
+  m_LocalPosition: {x: 6.5377607, y: 2.88, z: 9.227429}
   m_LocalScale: {x: 2.5, y: 0.15273, z: 3.5}
   m_Children: []
-  m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 46
+  m_Father: {fileID: 1978680733418053258}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867750984884596
 MeshFilter:
@@ -3753,6 +3831,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3821,7 +3900,7 @@ Transform:
   m_LocalScale: {x: 4.0308847, y: 3.16734, z: 34.065033}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 51
+  m_RootOrder: 44
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751005375419
 MeshFilter:
@@ -3845,6 +3924,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3913,7 +3993,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751020761219
 MeshFilter:
@@ -3937,6 +4017,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4002,7 +4083,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5491867751045053028
 GameObject:
@@ -4035,7 +4116,7 @@ Transform:
   m_LocalScale: {x: 4.0308847, y: 3.16734, z: 34.065033}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751045053033
 MeshFilter:
@@ -4059,6 +4140,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4127,7 +4209,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751126889277
 MeshFilter:
@@ -4151,6 +4233,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4201,7 +4284,7 @@ GameObject:
   - component: {fileID: 5491867751132044906}
   - component: {fileID: 5491867751132044907}
   m_Layer: 0
-  m_Name: Cube (55)
+  m_Name: CardSocketRedRight4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4243,6 +4326,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4311,7 +4395,7 @@ Transform:
   m_LocalScale: {x: 2.500003, y: 0.15273, z: 3.5000057}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: -0.85300004, y: 194.00299, z: 0.606}
 --- !u!33 &5491867751140660995
 MeshFilter:
@@ -4335,6 +4419,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4400,6 +4485,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5491867751379891116}
+  - {fileID: 1978680733418053258}
   - {fileID: 5491867751045009172}
   - {fileID: 5491867751126889272}
   - {fileID: 5491867749652723777}
@@ -4440,14 +4526,6 @@ Transform:
   - {fileID: 5491867749829078479}
   - {fileID: 5491867751589029664}
   - {fileID: 5491867751485147737}
-  - {fileID: 5491867751625798539}
-  - {fileID: 5491867751425373950}
-  - {fileID: 5491867749872267747}
-  - {fileID: 5491867751684915987}
-  - {fileID: 5491867751611122118}
-  - {fileID: 5491867750984884599}
-  - {fileID: 5491867751308946101}
-  - {fileID: 5491867751232355374}
   - {fileID: 5491867751719218201}
   - {fileID: 5491867750823265127}
   - {fileID: 5491867751005375414}
@@ -4501,7 +4579,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751176836656
 MeshFilter:
@@ -4525,6 +4603,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4575,7 +4654,7 @@ GameObject:
   - component: {fileID: 5491867751232355372}
   - component: {fileID: 5491867751232355373}
   m_Layer: 0
-  m_Name: Cube (35)
+  m_Name: CardSocketBlueLeft1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4589,11 +4668,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5491867751232355375}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 11.761988, y: -1.4352236, z: -18.76654}
+  m_LocalPosition: {x: 6.5377607, y: 3.6000004, z: -4.43157}
   m_LocalScale: {x: 2.5, y: 0.15273, z: 3.5}
   m_Children: []
-  m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 48
+  m_Father: {fileID: 1978680733418053258}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751232355347
 MeshFilter:
@@ -4617,6 +4696,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4685,7 +4765,7 @@ Transform:
   m_LocalScale: {x: 2.5000057, y: 0.15273, z: 3.500006}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: -3.4840002, y: 171.02, z: 0.86500007}
 --- !u!33 &5491867751274636842
 MeshFilter:
@@ -4709,6 +4789,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4759,7 +4840,7 @@ GameObject:
   - component: {fileID: 5491867751308946107}
   - component: {fileID: 5491867751308946100}
   m_Layer: 0
-  m_Name: Cube (56)
+  m_Name: CardSocketBlueRight4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4773,11 +4854,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5491867751308946102}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -6.7620106, y: -2.1552238, z: -5.107542}
+  m_LocalPosition: {x: -11.986238, y: 2.88, z: 9.227428}
   m_LocalScale: {x: 2.5, y: 0.15273, z: 3.5}
   m_Children: []
-  m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 47
+  m_Father: {fileID: 1978680733418053258}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751308946106
 MeshFilter:
@@ -4801,6 +4882,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4869,7 +4951,7 @@ Transform:
   m_LocalScale: {x: 2.5000045, y: 0.15272991, z: 3.500005}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: -3.2440002, y: 159.58101, z: 1.5380001}
 --- !u!33 &5491867751324242416
 MeshFilter:
@@ -4893,6 +4975,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4960,7 +5043,7 @@ Transform:
   m_LocalScale: {x: 3.9887996, y: 1.2136749, z: 3.9887996}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 65
+  m_RootOrder: 58
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751348305651
 MeshFilter:
@@ -4984,6 +5067,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5018,7 +5102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5491867751379891116}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: RedCardSockets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5077,7 +5161,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751423377653
 MeshFilter:
@@ -5101,6 +5185,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5169,7 +5254,7 @@ Transform:
   m_LocalScale: {x: 4.0308847, y: 3.16734, z: 35.66872}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751423972303
 MeshFilter:
@@ -5193,6 +5278,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5243,7 +5329,7 @@ GameObject:
   - component: {fileID: 5491867751425373948}
   - component: {fileID: 5491867751425373949}
   m_Layer: 0
-  m_Name: Cube (43)
+  m_Name: CardSocketBlueLeft2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5257,11 +5343,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5491867751425373951}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 11.761988, y: -1.745224, z: -14.18754}
+  m_LocalPosition: {x: 6.5377607, y: 3.29, z: 0.14743042}
   m_LocalScale: {x: 2.5, y: 0.15273, z: 3.5}
   m_Children: []
-  m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 42
+  m_Father: {fileID: 1978680733418053258}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751425373923
 MeshFilter:
@@ -5285,6 +5371,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5352,7 +5439,7 @@ Transform:
   m_LocalScale: {x: 3.9887996, y: 1.2136749, z: 3.9887996}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 66
+  m_RootOrder: 59
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751452913712
 MeshFilter:
@@ -5376,6 +5463,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5431,7 +5519,7 @@ Transform:
   m_LocalScale: {x: 2.5000086, y: 0.15272991, z: 3.5000126}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: -0.671, y: 179.27101, z: 0.80300003}
 --- !u!33 &5491867751468952578
 MeshFilter:
@@ -5455,6 +5543,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5520,7 +5609,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 40
+  m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &5491867751514721753
 GameObject:
@@ -5553,7 +5642,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 63
+  m_RootOrder: 56
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751514721757
 MeshFilter:
@@ -5577,6 +5666,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5645,7 +5735,7 @@ Transform:
   m_LocalScale: {x: 4.9829516, y: 5.561557, z: 5.1686864}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 53
+  m_RootOrder: 46
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751515551620
 MeshFilter:
@@ -5669,6 +5759,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5737,7 +5828,7 @@ Transform:
   m_LocalScale: {x: 4.923262, y: 5.561557, z: 5.1686864}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751528581024
 MeshFilter:
@@ -5761,6 +5852,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5811,7 +5903,7 @@ GameObject:
   - component: {fileID: 5491867751552317866}
   - component: {fileID: 5491867751552317867}
   m_Layer: 0
-  m_Name: Cube (40)
+  m_Name: CardSocketRedRight1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5853,6 +5945,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5921,7 +6014,7 @@ Transform:
   m_LocalScale: {x: 2.500001, y: 0.15273, z: 3.500002}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751575988454
 MeshFilter:
@@ -5945,6 +6038,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6012,7 +6106,7 @@ Transform:
   m_LocalScale: {x: 3.9887996, y: 1.2136749, z: 3.9887996}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 39
+  m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751589029665
 MeshFilter:
@@ -6036,6 +6130,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6073,7 +6168,7 @@ GameObject:
   - component: {fileID: 5491867751602490139}
   - component: {fileID: 5491867751602490132}
   m_Layer: 0
-  m_Name: Cube (46)
+  m_Name: CardSocketRedLeft3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6115,6 +6210,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6165,7 +6261,7 @@ GameObject:
   - component: {fileID: 5491867751611122116}
   - component: {fileID: 5491867751611122117}
   m_Layer: 0
-  m_Name: Cube (52)
+  m_Name: CardSocketBlueRight3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6179,11 +6275,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5491867751611122119}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -6.7620106, y: -1.9652243, z: -9.647541}
+  m_LocalPosition: {x: -11.986238, y: 3.0699997, z: 4.6874294}
   m_LocalScale: {x: 2.5, y: 0.15273, z: 3.5}
   m_Children: []
-  m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 45
+  m_Father: {fileID: 1978680733418053258}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751611122123
 MeshFilter:
@@ -6207,6 +6303,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6275,7 +6372,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751625554912
 MeshFilter:
@@ -6299,6 +6396,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6349,7 +6447,7 @@ GameObject:
   - component: {fileID: 5491867751625798537}
   - component: {fileID: 5491867751625798538}
   m_Layer: 0
-  m_Name: Cube (42)
+  m_Name: CardSocketBlueRight1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6363,11 +6461,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5491867751625798532}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -6.7620106, y: -1.4352236, z: -18.76654}
+  m_LocalPosition: {x: -11.986238, y: 3.6000004, z: -4.43157}
   m_LocalScale: {x: 2.5, y: 0.15273, z: 3.5}
   m_Children: []
-  m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 41
+  m_Father: {fileID: 1978680733418053258}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751625798536
 MeshFilter:
@@ -6391,6 +6489,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6441,7 +6540,7 @@ GameObject:
   - component: {fileID: 5491867751684915985}
   - component: {fileID: 5491867751684915986}
   m_Layer: 0
-  m_Name: Cube (48)
+  m_Name: CardSocketBlueLeft3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6455,11 +6554,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5491867751684916012}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 11.761988, y: -1.9652243, z: -9.647541}
+  m_LocalPosition: {x: 6.5377607, y: 3.0699997, z: 4.6874294}
   m_LocalScale: {x: 2.5, y: 0.15273, z: 3.5}
   m_Children: []
-  m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 44
+  m_Father: {fileID: 1978680733418053258}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751684915984
 MeshFilter:
@@ -6483,6 +6582,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6551,7 +6651,7 @@ Transform:
   m_LocalScale: {x: 2.9385014, y: 0.17951886, z: 4.1139035}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 30
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: -20.165, y: 0.252, z: -1.9430001}
 --- !u!33 &5491867751700555205
 MeshFilter:
@@ -6575,6 +6675,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6643,7 +6744,7 @@ Transform:
   m_LocalScale: {x: 4.015103, y: 1.4284337, z: 4.208}
   m_Children: []
   m_Father: {fileID: 5491867751144003617}
-  m_RootOrder: 49
+  m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5491867751719218206
 MeshFilter:
@@ -6667,6 +6768,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
