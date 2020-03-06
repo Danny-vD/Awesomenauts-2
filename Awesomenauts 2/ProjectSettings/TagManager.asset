@@ -13,10 +13,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - CardSocketsTeamRed
+  - CardSocketsTeamBlue
+  - Card
+  - CardDragLayer
   - 
   - 
   - 
