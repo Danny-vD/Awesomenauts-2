@@ -809,7 +809,7 @@ PrefabInstance:
     - target: {fileID: 2898413456239240707, guid: f783dffd58400dc439f1530840443467,
         type: 3}
       propertyPath: m_Name
-      value: PlayerBlue
+      value: PlayerBlue1
       objectReference: {fileID: 0}
     - target: {fileID: 2898413456239240709, guid: f783dffd58400dc439f1530840443467,
         type: 3}
@@ -1153,7 +1153,7 @@ PrefabInstance:
     - target: {fileID: 2898413456239240707, guid: f783dffd58400dc439f1530840443467,
         type: 3}
       propertyPath: m_Name
-      value: PlayerRed
+      value: PlayerRed1
       objectReference: {fileID: 0}
     - target: {fileID: 2898413456239240709, guid: f783dffd58400dc439f1530840443467,
         type: 3}
@@ -1449,11 +1449,11 @@ RectTransform:
   m_Father: {fileID: 546907693}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &1207700683
 MonoBehaviour:
   m_ObjectHideFlags: 0

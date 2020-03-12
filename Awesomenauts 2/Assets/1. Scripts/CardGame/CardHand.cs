@@ -41,7 +41,7 @@ public class CardHand : IHand
 	{
 		if (!Cards.Contains(card))
 		{
-			card.CardTransform.gameObject.layer = HandLayer;
+			card.CardTransform.gameObject.layer = CardGameBoard.UnityTrashWorkaround(HandLayer);
 			Cards.Add(card);
 		}
 	}

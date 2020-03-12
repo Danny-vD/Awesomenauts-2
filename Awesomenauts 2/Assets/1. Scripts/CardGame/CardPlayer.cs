@@ -99,6 +99,7 @@ public class CardPlayer : MonoBehaviour, IPlayer
 
 	public void Fill()
 	{
+        Debug.Log("Player: "+ gameObject.name);
 		while (Hand.CanAddCard())
 			Hand.AddCard(Deck.DrawCard());
 	}

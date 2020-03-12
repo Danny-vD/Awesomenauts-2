@@ -32,20 +32,34 @@ public class CardGameBoard : MonoBehaviour, IGameBoard
 	// Start is called before the first frame update
 	void Start()
 	{
-
-		InitializePlayer(PlayerBlue, GameSettings.PlayerBlueCardSettings, LayerMask.GetMask("HandCardLayerBlue"));
-		InitializePlayer(PlayerRed, GameSettings.PlayerRedCardSettings, LayerMask.GetMask("HandCardLayerRed"));
+		InitializePlayer(PlayerBlue, GameSettings.PlayerBlueCardSettings);
+		InitializePlayer(PlayerRed, GameSettings.PlayerRedCardSettings);
 	}
 
-	private void InitializePlayer(IPlayer player, PlayerCardSettingsObject settings, LayerMask mask)
+	private void InitializePlayer(IPlayer player, PlayerCardSettingsObject settings)
 	{
-		string layerName = LayerMask.LayerToName(mask);
-		Debug.Log($"Hand Layer({mask.value}):{layerName}");
+		string layerName = LayerMask.LayerToName(UnityTrashWorkaround(settings.HandLayer));
+		Debug.Log($"Hand Layer({settings.HandLayer.value}):{layerName}");
 
 		settings.Deck = new CardDeck(GameSettings, InitializePrefabs(settings.Cards));
-		settings.Hand = new CardHand(GameSettings, settings.RotationOffset, player, settings.Deck, mask);
+		settings.Hand = new CardHand(GameSettings, settings.RotationOffset, player, settings.Deck, settings.HandLayer);
 		player.Initialize(GameSettings, settings.Hand, settings.Deck);
 	}
+
+	public static int UnityTrashWorkaround(LayerMask lm)
+	{
+		int m = lm.value;
+		int i = 1;
+		if (lm == 0) return 0;
+		while ((m = m >> 1) != 1)
+		{
+			i++;
+		}
+
+		return i;
+	}
+
+
 
 
 	private ICard[] InitializePrefabs(ICard[] cards)
