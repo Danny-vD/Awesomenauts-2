@@ -15,10 +15,10 @@ TagManager:
   - 
   - CardSocketsTeamRed
   - CardSocketsTeamBlue
-  - Card
   - CardDragLayer
-  - HandCardLayerBlue
   - HandCardLayerRed
+  - HandCardLayerBlue
+  - 
   - 
   - 
   - 

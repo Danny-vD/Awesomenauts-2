@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FatigueCard: {fileID: 7733630826899120947, guid: 1a656ace90262364c8a9aabb3c3687f7,
     type: 3}
-  PlayerRedCardSettings: {fileID: 11400000, guid: 480178fd2a2500045b8a56ba54eb0ce7,
+  PlayerRedCardSettings: {fileID: 11400000, guid: 3aaddb3bdebdd1a43affe970defb8db1,
     type: 2}
-  PlayerBlueCardSettings: {fileID: 11400000, guid: 1842b3e5bf24c98429290e5776545f5c,
+  PlayerBlueCardSettings: {fileID: 11400000, guid: 725506efb6aebe244bb11a668e2a9313,
     type: 2}

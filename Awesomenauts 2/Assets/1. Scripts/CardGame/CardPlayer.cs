@@ -17,14 +17,14 @@ public class CardPlayer : MonoBehaviour, IPlayer
 		//TODO Empty for now.
 		Hand = hand;
 		Deck = deck;
-		Debug.Log("Player Socket ID: " + Socket.value);
-		Debug.Log("Player Socket: " + LayerMask.LayerToName(CardHand.UnityTrashWorkaround(Socket)));
-		Debug.Log("Player CardDragLayer ID: " + CardDragLayer.value);
-		Debug.Log("Player v: " + LayerMask.LayerToName(CardHand.UnityTrashWorkaround(CardDragLayer)));
-		Debug.Log("Player Card Hand Layer ID: " + PlayerCardLayer.value);
-		Debug.Log("Player Card Hand Layer: " + LayerMask.LayerToName(CardHand.UnityTrashWorkaround(PlayerCardLayer)));
-		Hand.SetLayer(PlayerCardLayer);
-		Hand.SetAnchor(HandAnchorPoint);
+		//Debug.Log("Player Socket ID: " + Socket.value);
+		//Debug.Log("Player Socket: " + LayerMask.LayerToName(CardHand.UnityTrashWorkaround(Socket)));
+		//Debug.Log("Player CardDragLayer ID: " + CardDragLayer.value);
+		//Debug.Log("Player v: " + LayerMask.LayerToName(CardHand.UnityTrashWorkaround(CardDragLayer)));
+		//Debug.Log("Player Card Hand Layer ID: " + PlayerHandLayer.value);
+		//Debug.Log("Player Card Hand Layer: " + LayerMask.LayerToName(CardHand.UnityTrashWorkaround(PlayerHandLayer)));
+
+        Hand.SetAnchor(HandAnchorPoint);
 		Fill();
 
 	}
@@ -32,7 +32,7 @@ public class CardPlayer : MonoBehaviour, IPlayer
 
 	//Card Placing Code
 	public LayerMask Socket;
-	public LayerMask PlayerCardLayer;
+	public LayerMask PlayerHandLayer;
 	public LayerMask CardDragLayer;
 	[Range(0, 1f)]
 	public float DragWhenMoving = 0.7f;
@@ -99,7 +99,6 @@ public class CardPlayer : MonoBehaviour, IPlayer
 
 	public void Fill()
 	{
-		Debug.Log("Filling Deck: "+PlayerCamera.gameObject.name);
 		while (Hand.CanAddCard())
 			Hand.AddCard(Deck.DrawCard());
 	}
@@ -121,6 +120,7 @@ public class CardPlayer : MonoBehaviour, IPlayer
 	private Vector3 GetMousePositionOnDragLayer()
 	{
 		Ray r = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+		//Debug.Log("AAAA"+LayerMask.LayerToName(CardDragLayer));
 		if (Physics.Raycast(r, out RaycastHit info, float.MaxValue, CardDragLayer))
 		{
 			return info.point;
@@ -133,7 +133,7 @@ public class CardPlayer : MonoBehaviour, IPlayer
 	{
 		Ray r = PlayerCamera.ScreenPointToRay(Input.mousePosition);
 		info = new RaycastHit();
-		bool ret = Physics.Raycast(r, out info, float.MaxValue, PlayerCardLayer);
+		bool ret = Physics.Raycast(r, out info, float.MaxValue, PlayerHandLayer);
 
 		return Input.GetMouseButtonDown(0) && ret;
 	}

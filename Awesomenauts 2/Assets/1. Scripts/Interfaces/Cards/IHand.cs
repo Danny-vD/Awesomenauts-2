@@ -14,7 +14,6 @@ public interface IHand
 	void UpdateCardPositions();
 	void RemoveCard(ICard card);
 	void SetSelectedCard(ICard card);
-	void SetLayer(LayerMask layer);
 	bool CanAddCard();
 	bool IsCardFromHand(ICard card);
 	int GetCardCount();

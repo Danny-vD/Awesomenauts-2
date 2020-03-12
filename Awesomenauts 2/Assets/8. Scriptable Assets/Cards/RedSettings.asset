@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc6654ea987e0e346aa5a6837b442641, type: 3}
-  m_Name: TestPlayerRed
+  m_Name: RedSettings
   m_EditorClassIdentifier: 
+  RotationOffset: 0
   Cards:
   - {fileID: 7733630826899120947, guid: 1a656ace90262364c8a9aabb3c3687f7, type: 3}
   - {fileID: 7733630826899120947, guid: 1a656ace90262364c8a9aabb3c3687f7, type: 3}
@@ -43,4 +44,6 @@ MonoBehaviour:
   - {fileID: 7733630826899120947, guid: 1a656ace90262364c8a9aabb3c3687f7, type: 3}
   - {fileID: 7733630826899120947, guid: 1a656ace90262364c8a9aabb3c3687f7, type: 3}
   - {fileID: 7733630826899120947, guid: 1a656ace90262364c8a9aabb3c3687f7, type: 3}
-  Hand: {fileID: 3813157078579265229, guid: 61c16b802e1e7274083210fce8fd6f06, type: 3}
+  HandLayer:
+    serializedVersion: 2
+    m_Bits: 2048

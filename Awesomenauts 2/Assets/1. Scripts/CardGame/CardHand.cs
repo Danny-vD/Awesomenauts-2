@@ -13,18 +13,15 @@ public class CardHand : IHand
 	public float Drag => 0.1f;
 	public Transform Anchor;
 
-	private LayerMask CardLayer;
+	private LayerMask HandLayer;
 	private IPlayer Player;
 	private List<ICard> Cards = new List<ICard>();
 	private ICard SelectedCard;
 
-	public void SetLayer(LayerMask layer)
+	public CardHand(GameSettingsObject settings, float rotationOffset, IPlayer player, IDeck deck, LayerMask handLayer)
 	{
-		CardLayer = layer;
-	}
-
-	public CardHand(GameSettingsObject settings, float rotationOffset, IPlayer player, IDeck deck)
-	{
+		HandLayer = handLayer;
+		
 		RotationOffset = rotationOffset;
 		Initialize(settings, player, deck);
 	}
@@ -44,23 +41,23 @@ public class CardHand : IHand
 	{
 		if (!Cards.Contains(card))
 		{
-			Debug.Log("LayerMask :" + UnityTrashWorkaround(CardLayer));
-			card.CardTransform.gameObject.layer = UnityTrashWorkaround(CardLayer);
+			card.CardTransform.gameObject.layer = HandLayer;
 			Cards.Add(card);
 		}
 	}
 
-	public static int UnityTrashWorkaround(LayerMask lm)
-	{
-		int m = lm.value;
-		int i = 0;
-		while ((m = m >> 1) != 1)
-		{
-			i++;
-		}
+	//public static int UnityTrashWorkaround(LayerMask lm)
+	//{
+	//	int m = lm.value;
+	//	int i = 0;
+	//	if (lm.value == 0) return 0;
+	//	while ((m = m >> 1) != 1)
+	//	{
+	//		i++;
+	//	}
 
-		return i;
-	}
+	//	return i;
+	//}
 
 	public void RemoveCard(ICard card)
 	{
@@ -73,7 +70,6 @@ public class CardHand : IHand
 	public void SetSelectedCard(ICard card)
 	{
 		SelectedCard = card;
-		Debug.Log("Selected: " + SelectedCard);
 	}
 
 	public bool CanAddCard()

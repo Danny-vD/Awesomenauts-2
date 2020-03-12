@@ -7,7 +7,7 @@ public class PlayerCardSettingsObject : ScriptableObject
 {
 	public float RotationOffset;
 	public Card[] Cards;
-
+	public LayerMask HandLayer;
 	public CardDeck Deck;
 
 	public CardHand Hand;
