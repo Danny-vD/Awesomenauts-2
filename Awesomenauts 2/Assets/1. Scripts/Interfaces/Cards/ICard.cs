@@ -5,6 +5,8 @@ using UnityEngine;
 public interface ICard
 {
 	//TODO
-	object PlayerStatistics { get; }
+	int CardID { get; }
+	CardInfo PlayerStatistics { get; }
 	IEffect[] CardEffects { get; }
+	Transform CardTransform { get; }
 }

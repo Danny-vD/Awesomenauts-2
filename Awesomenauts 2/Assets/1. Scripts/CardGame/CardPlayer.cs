@@ -1,16 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
+using System.Data;
 using UnityEngine;
 
-public class CardPlacer : MonoBehaviour
+public class CardPlayer : MonoBehaviour, IPlayer
 {
-	public Camera camera;
-	public LayerMask Socket;
-	public LayerMask CardLayer;
-	public LayerMask CardDragLayer;
-	public GameObject Prefab;
+	//IPlayer Implementation
+	public IHand Hand { get; set; }
+	public IDeck Deck { get; set; }
+	public Camera PlayerCamera;
+	public Transform CameraTransform => PlayerCamera.transform;
+	public Transform HandAnchorPoint => transform;
 
+	public void Initialize(GameSettingsObject settings, IHand hand, IDeck deck)
+	{
+		//TODO Empty for now.
+		Hand = hand;
+		Deck = deck;
+		Debug.Log("Player Socket ID: " + Socket.value);
+		Debug.Log("Player Socket: " + LayerMask.LayerToName(CardHand.UnityTrashWorkaround(Socket)));
+		Debug.Log("Player CardDragLayer ID: " + CardDragLayer.value);
+		Debug.Log("Player v: " + LayerMask.LayerToName(CardHand.UnityTrashWorkaround(CardDragLayer)));
+		Debug.Log("Player Card Hand Layer ID: " + PlayerCardLayer.value);
+		Debug.Log("Player Card Hand Layer: " + LayerMask.LayerToName(CardHand.UnityTrashWorkaround(PlayerCardLayer)));
+		Hand.SetLayer(PlayerCardLayer);
+		Hand.SetAnchor(HandAnchorPoint);
+		Fill();
+
+	}
+
+
+	//Card Placing Code
+	public LayerMask Socket;
+	public LayerMask PlayerCardLayer;
+	public LayerMask CardDragLayer;
 	[Range(0, 1f)]
 	public float DragWhenMoving = 0.7f;
 
@@ -26,8 +49,6 @@ public class CardPlacer : MonoBehaviour
 
 	private Transform draggedObject;
 
-	// Start is called before the first frame update
-	private void Start() { }
 
 	// Update is called once per frame
 	private void Update()
@@ -37,6 +58,7 @@ public class CardPlacer : MonoBehaviour
 			if (HasClickedOnCard(out RaycastHit cardHit))
 			{
 				dragging = true;
+				Hand.SetSelectedCard(cardHit.transform.GetComponent<Card>());
 				draggedObject = cardHit.transform;
 				Debug.Log("Clicked On Card");
 			}
@@ -46,6 +68,15 @@ public class CardPlacer : MonoBehaviour
 			if (!Input.GetMouseButton(0))
 			{
 				dragging = false;
+				if (!snapping)
+				{
+					Hand.SetSelectedCard(null);
+				}
+				else
+				{
+					Hand.RemoveCard(draggedObject.GetComponent<Card>());
+					Hand.SetSelectedCard(null);
+				}
 				Debug.Log("Released Card");
 			}
 			else
@@ -62,6 +93,15 @@ public class CardPlacer : MonoBehaviour
 				draggedObject.rotation = q;
 			}
 		}
+
+		Hand.UpdateCardPositions();
+	}
+
+	public void Fill()
+	{
+		Debug.Log("Filling Deck: "+PlayerCamera.gameObject.name);
+		while (Hand.CanAddCard())
+			Hand.AddCard(Deck.DrawCard());
 	}
 
 	private Vector3 GetCardPosition()
@@ -80,7 +120,7 @@ public class CardPlacer : MonoBehaviour
 
 	private Vector3 GetMousePositionOnDragLayer()
 	{
-		Ray r = camera.ScreenPointToRay(Input.mousePosition);
+		Ray r = PlayerCamera.ScreenPointToRay(Input.mousePosition);
 		if (Physics.Raycast(r, out RaycastHit info, float.MaxValue, CardDragLayer))
 		{
 			return info.point;
@@ -91,14 +131,16 @@ public class CardPlacer : MonoBehaviour
 
 	private bool HasClickedOnCard(out RaycastHit info)
 	{
-		Ray r = camera.ScreenPointToRay(Input.mousePosition);
+		Ray r = PlayerCamera.ScreenPointToRay(Input.mousePosition);
 		info = new RaycastHit();
-		return Input.GetMouseButtonDown(0) && Physics.Raycast(r, out info, float.MaxValue, CardLayer);
+		bool ret = Physics.Raycast(r, out info, float.MaxValue, PlayerCardLayer);
+
+		return Input.GetMouseButtonDown(0) && ret;
 	}
 
 	private bool HasPlacedCard(out RaycastHit info)
 	{
-		Ray r = camera.ScreenPointToRay(Input.mousePosition);
+		Ray r = PlayerCamera.ScreenPointToRay(Input.mousePosition);
 		info = new RaycastHit();
 		return Physics.Raycast(r, out info, float.MaxValue, Socket);
 	}
