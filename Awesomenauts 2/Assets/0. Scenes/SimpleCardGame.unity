@@ -871,6 +871,11 @@ PrefabInstance:
       propertyPath: PlayerCamera
       value: 
       objectReference: {fileID: 1224876212}
+    - target: {fileID: 3012178266820626326, guid: f783dffd58400dc439f1530840443467,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f783dffd58400dc439f1530840443467, type: 3}
 --- !u!114 &181916503 stripped
@@ -880,7 +885,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 181916502}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c436f75f47f0384b9ad67e26aacb5bb, type: 3}
   m_Name: 
