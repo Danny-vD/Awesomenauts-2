@@ -10,6 +10,7 @@ public class CardPlacer : MonoBehaviour
 	public LayerMask CardLayer;
 	public LayerMask CardDragLayer;
 	public GameObject Prefab;
+
 	[Range(0, 1f)]
 	public float DragWhenMoving = 0.7f;
 
@@ -52,20 +53,15 @@ public class CardPlacer : MonoBehaviour
 				Vector3 dir = GetCardPosition() - draggedObject.position;
 				float m = Mathf.Clamp(dir.magnitude * DragIntertiaMultiplier, 0, MaxIntertia);
 
-
-
 				dir *= Drag;
 				draggedObject.position += dir;
 				Vector3 axis = Vector3.Cross(Vector3.up, dir);
 				Quaternion q = Quaternion.AngleAxis(m, axis);
 
 
-
 				draggedObject.rotation = q;
 			}
-
 		}
-
 	}
 
 	private Vector3 GetCardPosition()
@@ -76,7 +72,7 @@ public class CardPlacer : MonoBehaviour
 			Vector3 socketPos = socketPlace.transform.position + Vector3.up;
 			return socketPos;
 		}
-		
+
 		snapping = false;
 		return GetMousePositionOnDragLayer();
 	}
@@ -89,6 +85,7 @@ public class CardPlacer : MonoBehaviour
 		{
 			return info.point;
 		}
+
 		return Vector3.zero;
 	}
 
