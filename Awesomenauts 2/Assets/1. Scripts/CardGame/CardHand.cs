@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class CardHand : IHand
@@ -45,19 +44,7 @@ public class CardHand : IHand
 			Cards.Add(card);
 		}
 	}
-
-	//public static int UnityTrashWorkaround(LayerMask lm)
-	//{
-	//	int m = lm.value;
-	//	int i = 0;
-	//	if (lm.value == 0) return 0;
-	//	while ((m = m >> 1) != 1)
-	//	{
-	//		i++;
-	//	}
-
-	//	return i;
-	//}
+	
 
 	public void RemoveCard(ICard card)
 	{

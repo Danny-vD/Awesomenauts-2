@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class CardGameBoard : MonoBehaviour, IGameBoard
 {
+	public float SocketAnimationSpeed;
+	public float SocketAnimationIntensity;
+	public float SocketAnimationOffset;
+	public CardSocket[] SocketsBlue;
+	public CardSocket[] SocketsRed;
 	public GameSettingsObject GameSettings;
 	public CardPlayer playerBlue;
 	public IPlayer PlayerBlue => playerBlue;
+
+	public bool BlueTurn { get; set; }
 
 	public CardPlayer playerRed;
 	public IPlayer PlayerRed => playerRed;
@@ -34,17 +41,33 @@ public class CardGameBoard : MonoBehaviour, IGameBoard
 	{
 		InitializePlayer(PlayerBlue, GameSettings.PlayerBlueCardSettings);
 		InitializePlayer(PlayerRed, GameSettings.PlayerRedCardSettings);
+
+		InitializeSockets(SocketsBlue);
+		InitializeSockets(SocketsRed);
+
+		EndTurn(); //Begins the First Turn
 	}
 
 	private void InitializePlayer(IPlayer player, PlayerCardSettingsObject settings)
 	{
 		string layerName = LayerMask.LayerToName(UnityTrashWorkaround(settings.HandLayer));
-		Debug.Log($"Hand Layer({settings.HandLayer.value}):{layerName}");
+		//Debug.Log($"Hand Layer({settings.HandLayer.value}):{layerName}");
 
 		settings.Deck = new CardDeck(GameSettings, InitializePrefabs(settings.Cards));
 		settings.Hand = new CardHand(GameSettings, settings.RotationOffset, player, settings.Deck, settings.HandLayer);
 		player.Initialize(GameSettings, settings.Hand, settings.Deck);
 	}
+
+	private void InitializeSockets(CardSocket[] sockets)
+	{
+
+		for (int j = 0; j < sockets.Length; j++)
+		{
+			sockets[j].SetOffsetAndSpeed(j * SocketAnimationOffset, SocketAnimationSpeed, SocketAnimationIntensity);
+		}
+
+	}
+
 
 	public static int UnityTrashWorkaround(LayerMask lm)
 	{
@@ -60,7 +83,31 @@ public class CardGameBoard : MonoBehaviour, IGameBoard
 	}
 
 
+	public void EndTurn()
+	{
+		BlueTurn = !BlueTurn;
 
+		Debug.Log($"Active Player: {(BlueTurn ? "Blue" : "Red")}");
+
+		PlayerBlue.ToggleInteractions(BlueTurn);
+		AnimatePlayer(SocketsBlue, BlueTurn);
+		PlayerRed.ToggleInteractions(!BlueTurn);
+		AnimatePlayer(SocketsRed, !BlueTurn);
+	}
+
+	private float ActiveTime;
+	private float MaxActiveTime;
+
+	private void AnimatePlayer(CardSocket[] sockets, bool animState)
+	{
+
+		for (int j = 0; j < sockets.Length; j++)
+		{
+			sockets[j].Animate(animState);
+		}
+
+
+	}
 
 	private ICard[] InitializePrefabs(ICard[] cards)
 	{

@@ -8,5 +8,6 @@ public interface IPlayer
 	Transform HandAnchorPoint { get; }
 	IHand Hand { get; set; }
 	IDeck Deck { get; set; }
+	void ToggleInteractions(bool active);
 	void Initialize(GameSettingsObject settings, IHand hand, IDeck deck);
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface IGameBoard
 {
+	bool BlueTurn { get; set; }
 	IPlayer PlayerRed { get; }
 	IPlayer PlayerBlue { get; }
 	void Enqueue(IGameAction action);

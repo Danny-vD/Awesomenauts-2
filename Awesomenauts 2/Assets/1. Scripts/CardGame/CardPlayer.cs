@@ -9,6 +9,7 @@ public class CardPlayer : MonoBehaviour, IPlayer
 	public IHand Hand { get; set; }
 	public IDeck Deck { get; set; }
 	public Camera PlayerCamera;
+	private bool activeInteractions;
 	public Transform CameraTransform => PlayerCamera.transform;
 	public Transform HandAnchorPoint => transform;
 
@@ -24,7 +25,7 @@ public class CardPlayer : MonoBehaviour, IPlayer
 		//Debug.Log("Player Card Hand Layer ID: " + PlayerHandLayer.value);
 		//Debug.Log("Player Card Hand Layer: " + LayerMask.LayerToName(CardHand.UnityTrashWorkaround(PlayerHandLayer)));
 
-        Hand.SetAnchor(HandAnchorPoint);
+		Hand.SetAnchor(HandAnchorPoint);
 		Fill();
 
 	}
@@ -53,44 +54,48 @@ public class CardPlayer : MonoBehaviour, IPlayer
 	// Update is called once per frame
 	private void Update()
 	{
-		if (!dragging)
+		if(activeInteractions)
 		{
-			if (HasClickedOnCard(out RaycastHit cardHit))
+			if (!dragging)
 			{
-				dragging = true;
-				Hand.SetSelectedCard(cardHit.transform.GetComponent<Card>());
-				draggedObject = cardHit.transform;
-				Debug.Log("Clicked On Card");
-			}
-		}
-		else
-		{
-			if (!Input.GetMouseButton(0))
-			{
-				dragging = false;
-				if (!snapping)
+				if (HasClickedOnCard(out RaycastHit cardHit))
 				{
-					Hand.SetSelectedCard(null);
+					dragging = true;
+					Hand.SetSelectedCard(cardHit.transform.GetComponent<Card>());
+					draggedObject = cardHit.transform;
+					Debug.Log("Clicked On Card");
 				}
-				else
-				{
-					Hand.RemoveCard(draggedObject.GetComponent<Card>());
-					Hand.SetSelectedCard(null);
-				}
-				Debug.Log("Released Card");
 			}
 			else
 			{
-				Vector3 dir = GetCardPosition() - draggedObject.position;
-				float m = Mathf.Clamp(dir.magnitude * DragIntertiaMultiplier, 0, MaxIntertia);
+				if (!Input.GetMouseButton(0))
+				{
+					dragging = false;
+					if (!snapping)
+					{
+						Hand.SetSelectedCard(null);
+					}
+					else
+					{
+						Hand.RemoveCard(draggedObject.GetComponent<Card>());
+						Hand.SetSelectedCard(null);
+					}
 
-				dir *= Drag;
-				draggedObject.position += dir;
-				Vector3 axis = Vector3.Cross(Vector3.up, dir);
-				Quaternion q = Quaternion.AngleAxis(m, axis);
+					Debug.Log("Released Card");
+				}
+				else
+				{
+					Vector3 dir = GetCardPosition() - draggedObject.position;
+					float m = Mathf.Clamp(dir.magnitude * DragIntertiaMultiplier, 0, MaxIntertia);
+
+					dir *= Drag;
+					draggedObject.position += dir;
+					Vector3 axis = Vector3.Cross(Vector3.up, dir);
+					Quaternion q = Quaternion.AngleAxis(m, axis);
 
 
-				draggedObject.rotation = q;
+					draggedObject.rotation = q;
+				}
 			}
 		}
 
@@ -99,10 +104,21 @@ public class CardPlayer : MonoBehaviour, IPlayer
 
 	public void Fill()
 	{
-        Debug.Log("Player: "+ gameObject.name);
+		//Debug.Log("Player: "+ gameObject.name);
 		while (Hand.CanAddCard())
 			Hand.AddCard(Deck.DrawCard());
 	}
+
+	public void ToggleInteractions(bool active)
+	{
+		activeInteractions = active;
+		if (activeInteractions)
+		{
+			if (Hand.CanAddCard())
+				Hand.AddCard(Deck.DrawCard()); //Draw One Card
+		}
+	}
+
 
 	private Vector3 GetCardPosition()
 	{
@@ -121,7 +137,7 @@ public class CardPlayer : MonoBehaviour, IPlayer
 	private Vector3 GetMousePositionOnDragLayer()
 	{
 		Ray r = PlayerCamera.ScreenPointToRay(Input.mousePosition);
-		//Debug.Log("AAAA"+LayerMask.LayerToName(CardDragLayer));
+		Debug.Log("DragLayer: " + LayerMask.LayerToName(CardGameBoard.UnityTrashWorkaround(CardDragLayer)));
 		if (Physics.Raycast(r, out RaycastHit info, float.MaxValue, CardDragLayer))
 		{
 			return info.point;
@@ -134,8 +150,8 @@ public class CardPlayer : MonoBehaviour, IPlayer
 	{
 		Ray r = PlayerCamera.ScreenPointToRay(Input.mousePosition);
 		info = new RaycastHit();
+		if (!activeInteractions) return false;
 		bool ret = Physics.Raycast(r, out info, float.MaxValue, PlayerHandLayer);
-
 		return Input.GetMouseButtonDown(0) && ret;
 	}
 
@@ -143,6 +159,7 @@ public class CardPlayer : MonoBehaviour, IPlayer
 	{
 		Ray r = PlayerCamera.ScreenPointToRay(Input.mousePosition);
 		info = new RaycastHit();
+		if (!activeInteractions) return false;
 		return Physics.Raycast(r, out info, float.MaxValue, Socket);
 	}
 }
