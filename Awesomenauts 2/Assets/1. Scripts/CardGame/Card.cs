@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+public class Card : MonoBehaviour, ICard
 {
 	public CardInfo CardInfo;
+	public CardInfo PlayerStatistics => CardInfo;
+	public Transform CardTransform => transform;
+	public int CardID => GetInstanceID();
+
+	public IEffect[] Effects;
+	public IEffect[] CardEffects => Effects;
 
 	public MeshRenderer iconMeshR;
 
