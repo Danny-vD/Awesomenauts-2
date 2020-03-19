@@ -8,6 +8,9 @@ namespace Utility
 {
 	public static class FakeDictionaryUtil
 	{
+		/// <summary>
+		/// Will add a KeyValuePair for every enumValue to the list
+		/// </summary>
 		public static void PopulateEnumDictionary<TKeyValuePair, TEnum, TValue>(List<TKeyValuePair> list)
 			where TKeyValuePair : IKeyValuePair<TEnum, TValue>, new()
 			where TEnum : struct, Enum
