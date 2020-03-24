@@ -92,6 +92,8 @@ GameObject:
   - component: {fileID: 3746690491115016613}
   - component: {fileID: 3746690491115016634}
   - component: {fileID: 7733630826899120947}
+  - component: {fileID: 7732081714068459932}
+  - component: {fileID: 5673593467744638914}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -194,3 +196,37 @@ MonoBehaviour:
     CardIcon: {fileID: 2800000, guid: d41cdc7c4bf23ab42ab4481515c72bd2, type: 3}
     CardDesign: {fileID: 11400000, guid: 90b90eb15f78ac949b48d90a7922f7bb, type: 2}
   iconMeshR: {fileID: 3234775467542799653}
+--- !u!114 &7732081714068459932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3746690491115016632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+--- !u!114 &5673593467744638914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3746690491115016632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
+  compressRotation: 1

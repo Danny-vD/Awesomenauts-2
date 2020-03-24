@@ -1,25 +1,51 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
+using VDFramework.Singleton;
 
-public class CardGameBoard : MonoBehaviour, IGameBoard
+public class CardGameBoard : NetworkBehaviour, IGameBoard
 {
+	public Camera EnemyCamera;
 	public float SocketAnimationSpeed;
 	public float SocketAnimationIntensity;
-	public float SocketAnimationOffset;
+	public float SocketAnimationYOffset;
+	public float SocketCardYOffset;
+	public float SocketAnimationTimingOffset;
 	public CardSocket[] SocketsBlue;
 	public CardSocket[] SocketsRed;
 	public GameSettingsObject GameSettings;
 	public CardPlayer playerBlue;
 	public IPlayer PlayerBlue => playerBlue;
 
-	public bool BlueTurn { get; set; }
+	private static CardGameBoard instance;
+	public static CardGameBoard Instance
+	{
+		get
+		{
+			if (instance == null) throw new Exception("No Card Board");
+			return instance;
+		}
+	}
+
+	private bool blueTurn;
+	public bool BlueTurn
+	{
+		get => blueTurn;
+		set => blueTurn = value;
+	}
 
 	public CardPlayer playerRed;
 	public IPlayer PlayerRed => playerRed;
 
 	private Queue<IGameAction> ActionQueue = new Queue<IGameAction>();
 
+
+	void Awake()
+	{
+		instance = this;
+	}
 
 	public void Enqueue(IGameAction action)
 	{
@@ -39,21 +65,21 @@ public class CardGameBoard : MonoBehaviour, IGameBoard
 	// Start is called before the first frame update
 	void Start()
 	{
-		InitializePlayer(PlayerBlue, GameSettings.PlayerBlueCardSettings);
-		InitializePlayer(PlayerRed, GameSettings.PlayerRedCardSettings);
+		//InitializePlayer(PlayerBlue, GameSettings.PlayerBlueCardSettings);
+		//InitializePlayer(PlayerRed, GameSettings.PlayerRedCardSettings);
 
 		InitializeSockets(SocketsBlue);
 		InitializeSockets(SocketsRed);
 
-		EndTurn(); //Begins the First Turn
+		//EndTurn(); //Begins the First Turn
 	}
 
-	private void InitializePlayer(IPlayer player, PlayerCardSettingsObject settings)
+	public void InitializePlayer(IPlayer player, PlayerCardSettingsObject settings, NetworkConnection conn)
 	{
 		string layerName = LayerMask.LayerToName(UnityTrashWorkaround(settings.HandLayer));
 		//Debug.Log($"Hand Layer({settings.HandLayer.value}):{layerName}");
-
-		settings.Deck = new CardDeck(GameSettings, InitializePrefabs(settings.Cards));
+		Card[] cards = InitializePrefabs(settings.Cards);
+		settings.Deck = new CardDeck(GameSettings, cards);
 		settings.Hand = new CardHand(GameSettings, settings.RotationOffset, player, settings.Deck, settings.HandLayer);
 		player.Initialize(GameSettings, settings.Hand, settings.Deck);
 	}
@@ -63,7 +89,7 @@ public class CardGameBoard : MonoBehaviour, IGameBoard
 
 		for (int j = 0; j < sockets.Length; j++)
 		{
-			sockets[j].SetOffsetAndSpeed(j * SocketAnimationOffset, SocketAnimationSpeed, SocketAnimationIntensity);
+			sockets[j].SetOffsetAndSpeed(j * SocketAnimationTimingOffset, SocketAnimationSpeed, SocketAnimationIntensity, SocketAnimationYOffset, SocketCardYOffset);
 		}
 
 	}
@@ -83,22 +109,12 @@ public class CardGameBoard : MonoBehaviour, IGameBoard
 	}
 
 
-	public void EndTurn()
-	{
-		BlueTurn = !BlueTurn;
-
-		Debug.Log($"Active Player: {(BlueTurn ? "Blue" : "Red")}");
-
-		PlayerBlue.ToggleInteractions(BlueTurn);
-		AnimatePlayer(SocketsBlue, BlueTurn);
-		PlayerRed.ToggleInteractions(!BlueTurn);
-		AnimatePlayer(SocketsRed, !BlueTurn);
-	}
 
 	private float ActiveTime;
 	private float MaxActiveTime;
 
-	private void AnimatePlayer(CardSocket[] sockets, bool animState)
+
+	public void AnimatePlayer(CardSocket[] sockets, bool animState)
 	{
 
 		for (int j = 0; j < sockets.Length; j++)
@@ -109,9 +125,17 @@ public class CardGameBoard : MonoBehaviour, IGameBoard
 
 	}
 
-	private ICard[] InitializePrefabs(ICard[] cards)
+	public void RequestEndTurn()
 	{
-		ICard[] ret = new ICard[cards.Length];
+		Debug.Log("Turn End Request: " + isClient);
+		(NetworkManager.singleton as TestNetworkManager).script.CmdEndTurn(BlueTurn);
+	}
+
+	
+
+	private Card[] InitializePrefabs(ICard[] cards)
+	{
+		Card[] ret = new Card[cards.Length];
 		for (int i = 0; i < cards.Length; i++)
 		{
 			GameObject instance = Instantiate(cards[i].CardTransform.gameObject);

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using Mirror;
+using Mirror.Examples.Basic;
 using UnityEngine;
 
 public class CardPlayer : MonoBehaviour, IPlayer
@@ -13,21 +15,33 @@ public class CardPlayer : MonoBehaviour, IPlayer
 	public Transform CameraTransform => PlayerCamera.transform;
 	public Transform HandAnchorPoint => transform;
 
+	void Awake()
+	{
+		if (transform.name.Contains("Red"))
+			//Hack For now.
+			CardGameBoard.Instance.InitializePlayer(this, CardGameBoard.Instance.GameSettings.PlayerRedCardSettings, (NetworkManager.singleton as TestNetworkManager).RedPlayer);
+		else
+			CardGameBoard.Instance.InitializePlayer(this, CardGameBoard.Instance.GameSettings.PlayerBlueCardSettings, (NetworkManager.singleton as TestNetworkManager).BluePlayer);
+	}
+
 	public void Initialize(GameSettingsObject settings, IHand hand, IDeck deck)
 	{
 		//TODO Empty for now.
 		Hand = hand;
 		Deck = deck;
-		//Debug.Log("Player Socket ID: " + Socket.value);
-		//Debug.Log("Player Socket: " + LayerMask.LayerToName(CardHand.UnityTrashWorkaround(Socket)));
-		//Debug.Log("Player CardDragLayer ID: " + CardDragLayer.value);
-		//Debug.Log("Player v: " + LayerMask.LayerToName(CardHand.UnityTrashWorkaround(CardDragLayer)));
-		//Debug.Log("Player Card Hand Layer ID: " + PlayerHandLayer.value);
-		//Debug.Log("Player Card Hand Layer: " + LayerMask.LayerToName(CardHand.UnityTrashWorkaround(PlayerHandLayer)));
+		if (transform.name.Contains("Red"))
+		{
+			CardGameBoard.Instance.playerRed = this;
+			PlayerCamera = Camera.main;
+		}
+		else
+		{
 
+			CardGameBoard.Instance.playerBlue = this;
+			PlayerCamera = CardGameBoard.Instance.EnemyCamera;
+		}
 		Hand.SetAnchor(HandAnchorPoint);
 		Fill();
-
 	}
 
 
@@ -54,7 +68,7 @@ public class CardPlayer : MonoBehaviour, IPlayer
 	// Update is called once per frame
 	private void Update()
 	{
-		if(activeInteractions)
+		if (activeInteractions)
 		{
 			if (!dragging)
 			{
@@ -99,7 +113,7 @@ public class CardPlayer : MonoBehaviour, IPlayer
 			}
 		}
 
-		Hand.UpdateCardPositions();
+		Hand?.UpdateCardPositions();
 	}
 
 	public void Fill()

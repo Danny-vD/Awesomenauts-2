@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
-public class Card : MonoBehaviour, ICard
+public class Card : NetworkBehaviour, ICard
 {
 	public CardInfo CardInfo;
 	public CardInfo PlayerStatistics => CardInfo;
