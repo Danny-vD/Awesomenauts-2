@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/0. Scenes/SimpleCardGame.unity
-    guid: ac60aee21d1dd5247820256f44619407
+    path: Assets/0. Scenes/StartScene.unity
+    guid: 69eb3455be9fe5a47bf05d1753541d13
+  - enabled: 1
+    path: Assets/0. Scenes/MenuScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/0. Scenes/GameScene.unity
+    guid: 8ba04c1500002ba428a2d7c9c4e4634c
   m_configObjects: {}
