@@ -1,18 +1,18 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+public class Card : NetworkBehaviour
 {
+	public MeshRenderer CoverUpRenderer;
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+	    if (isClient && !hasAuthority)
+	    {
+		    Debug.Log("Enable Cover Up Renderer");
+		    CoverUpRenderer.enabled = true;
+	    }
     }
 }

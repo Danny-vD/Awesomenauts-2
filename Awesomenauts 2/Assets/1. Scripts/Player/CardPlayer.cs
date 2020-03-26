@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
-using UnityEngine.Networking.Types;
 
 public class CardPlayer : NetworkBehaviour
 {
@@ -109,10 +108,12 @@ public class CardPlayer : NetworkBehaviour
         {
             Debug.Log("Adding To many cards to the hand, the maximum is: "+ Hand.MaxCardCount);
         }
+
         for (int i = 0; i < cardsToDraw; i++)
         {
             Card c = Deck.DrawCard();
             //Hand.AddCard(c);//Add the Card to the server
+
             Hand.AddToHand(c.GetComponent<NetworkIdentity>());
             Hand.TargetAddToHand(netIdentity.connectionToClient, c.GetComponent<NetworkIdentity>());//Add Card to the client
         }

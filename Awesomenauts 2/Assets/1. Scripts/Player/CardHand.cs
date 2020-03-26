@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
@@ -103,7 +103,7 @@ public class CardHand : NetworkBehaviour
 
     private void Update()
     {
-
+		if(!hasAuthority)return;
         for (int i = 0; i < CardsOnHand.Count; i++)
         {
             if (CardsOnHand[i] != SelectedCard)
