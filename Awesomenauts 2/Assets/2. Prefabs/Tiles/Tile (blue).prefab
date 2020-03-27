@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 310791800753203458}
   - component: {fileID: 8722102212189262644}
   - component: {fileID: 3042085527197806541}
-  m_Layer: 0
+  - component: {fileID: 3063392855020583383}
+  - component: {fileID: -4933747648612758868}
+  m_Layer: 12
   m_Name: Tile (blue)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,3 +81,33 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &3063392855020583383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3606115186347957009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e727276e0d28236488647560193d0199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yScale: 0.3
+  yOffset: 1
+  yCardOffset: 1
+  timeScale: 2
+  timeOffset: 0
+--- !u!65 &-4933747648612758868
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3606115186347957009}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 416.53583, y: 19.43148, z: 417.82874}
+  m_Center: {x: 0, y: 0, z: 0}
