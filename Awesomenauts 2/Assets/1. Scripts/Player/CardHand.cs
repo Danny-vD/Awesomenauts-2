@@ -63,18 +63,19 @@ public class CardHand : NetworkBehaviour
     [TargetRpc]
     public void TargetAddToHand(NetworkConnection target, NetworkIdentity id)
     {
-        AddToHand(id);
+	    Debug.Log("Adding cards to the hand of client: " + GetComponent<CardPlayer>().ClientID);
+
+		AddToHand(id);
     }
 
     public void AddToHand(NetworkIdentity id)
     {
         Card c = id.GetComponent<Card>();
-        Debug.Log("Trying to add Card: " + c);
         if (c != null)
-        {
-            c.gameObject.layer = CardPlayer.UnityTrashWorkaround(PlayerHandLayer);
+		{
+			c.gameObject.layer = CardPlayer.UnityTrashWorkaround(PlayerHandLayer);
             AddCard(c);
-        }
+		}
     }
 
     public void AddCard(Card card)

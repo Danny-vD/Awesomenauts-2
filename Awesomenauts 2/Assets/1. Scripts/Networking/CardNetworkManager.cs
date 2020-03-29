@@ -1,8 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
 using System.Threading;
+using System.Xml.Serialization;
 using Mirror;
+using Mirror.Websocket;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -23,10 +28,31 @@ public class CardNetworkManager : NetworkManager
 		//Stats/Designs/etc
 	}
 
+	public static Dictionary<TransportType, Type> TransportTypes = new Dictionary<TransportType, Type>
+	{
+		{TransportType.Telepathy,  typeof(TelepathyTransport)},
+		{TransportType.WebSockets, typeof(WebsocketTransport) },
+	};
+
+	public enum TransportType
+	{
+		Telepathy,
+		WebSockets,
+	}
+
+	[Serializable]
+	public class TransportInfo
+	{
+		public string DefaultIP = "localhost";
+		public TransportType TransportType = TransportType.Telepathy;
+		//public int Port = -1;
+	}
 
 	public static CardNetworkManager Instance => singleton as CardNetworkManager;
 	private int mapIDToLoad;
-	private bool GameStarted => BoardLogic.Logic != null && BoardLogic.Logic.GameStarted;
+	public TransportInfo TransportInfoData;
+	public Transport[] Transports;
+
 	public bool IsHost { get; private set; }
 	public bool IsServer { get; private set; }
 	private bool IsStarted;
@@ -34,6 +60,44 @@ public class CardNetworkManager : NetworkManager
 	public MapEntry[] AvailableMaps;
 	public CardEntry[] CardEntries;
 	public int[] CardsInDeck = new[] { 0, 1, 0, 1, 0, 1, 0, 1, 0 };
+
+	public override void Awake()
+	{
+		TryLoadTransportDataFile(); //Trying to load transport info if provided
+        
+		base.Awake();
+	}
+
+	public void Stop()
+	{
+		if (!IsStarted || IsStopping) return;
+		IsStopping = true;
+		if (IsHost)
+			StopHost();
+		else if (IsServer)
+			StopServer();
+		else StopClient();
+	}
+
+	private void TryLoadTransportDataFile()
+	{
+		if (File.Exists("./transport_data.xml"))
+		{
+			Stream s = File.OpenRead("./transport_data.xml");
+			XmlSerializer xs = new XmlSerializer(typeof(TransportInfo));
+			try
+			{
+				TransportInfo i = (TransportInfo)xs.Deserialize(s);
+				s.Close();
+				TransportInfoData = i;
+			}
+			catch (Exception)
+			{
+				//Do Nothing
+			}
+		}
+	}
+
 	public override void OnServerSceneChanged(string sceneName)
 	{
 		base.OnServerSceneChanged(sceneName);
@@ -56,6 +120,12 @@ public class CardNetworkManager : NetworkManager
 		IsStarted = false;
 	}
 
+	private void StartNetwork()
+	{
+		IsStarted = true;
+		IsStopping = false;
+	}
+
 	public void SetMapToLoad(int id)
 	{
 		mapIDToLoad = id;
@@ -71,14 +141,22 @@ public class CardNetworkManager : NetworkManager
 	public override void OnServerDisconnect(NetworkConnection conn)
 	{
 		Debug.Log("Client Disconnected. Remaining: " + numPlayers);
-		if (numPlayers == 1 && !IsStopping) StopServer();
+		if (numPlayers == 1 && !IsStopping)
+			Stop();
 		base.OnServerDisconnect(conn);
+	}
+
+	public override void OnStopClient()
+	{
+		if (!IsServer && !IsHost)
+		{
+			CleanUp();
+		}
+		base.OnStopClient();
 	}
 
 	public override void OnStopServer()
 	{
-		IsStopping = true;
-		IsStarted = false;
 		Debug.Log("Server Stopped.");
 		CleanUp();
 		base.OnStopServer();
@@ -89,14 +167,21 @@ public class CardNetworkManager : NetworkManager
 		Debug.Log("Is Host");
 		IsHost = true;
 		base.OnStartHost();
+
+
+	}
+
+	public override void OnStartClient()
+	{
+		StartNetwork();
+		base.OnStartClient();
 	}
 
 	public override void OnStartServer()
 	{
-		IsStopping = false;
-		IsStarted = true;
-		Debug.Log("Is Server");
+		StartNetwork();
 		IsServer = true;
+		Debug.Log("Is Server");
 		base.OnStartServer();
 	}
 

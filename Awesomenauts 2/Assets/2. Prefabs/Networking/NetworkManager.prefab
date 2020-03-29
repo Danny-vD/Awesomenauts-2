@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4467022757310397679}
   - component: {fileID: 4467022757310397680}
   - component: {fileID: 3886979512818707335}
-  - component: {fileID: 3584526574784914}
+  - component: {fileID: 3165288827017391294}
   - component: {fileID: 989651359125469289}
   m_Layer: 0
   m_Name: NetworkManager
@@ -65,7 +65,7 @@ MonoBehaviour:
   serverTickRate: 30
   offlineScene: MenuScene
   onlineScene: GameScene
-  transport: {fileID: 3584526574784914}
+  transport: {fileID: 3165288827017391294}
   networkAddress: localhost
   maxConnections: 4
   authenticator: {fileID: 0}
@@ -75,6 +75,10 @@ MonoBehaviour:
   playerSpawnMethod: 0
   spawnPrefabs:
   - {fileID: 5491867751144003618, guid: ed784578eff8fbe47b45ecd56aa47c79, type: 3}
+  TransportInfoData:
+    DefaultIP: localhost
+    TransportType: 0
+  Transports: []
   AvailableMaps:
   - Prefab: {fileID: 5491867751144003618, guid: ed784578eff8fbe47b45ecd56aa47c79,
       type: 3}
@@ -82,7 +86,9 @@ MonoBehaviour:
   - Prefab: {fileID: 5491867751144003618, guid: ed784578eff8fbe47b45ecd56aa47c79,
       type: 3}
     MapIcon: {fileID: 21300000, guid: 69f1b0eb5e7c01e41be3bf7470bf350d, type: 3}
---- !u!114 &3584526574784914
+  CardEntries: []
+  CardsInDeck: 000000000100000000000000010000000000000001000000000000000100000000000000
+--- !u!114 &3165288827017391294
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,7 +97,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4467022757310397675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7424c1070fad4ba2a7a96b02fbeb4bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f039183eda8945448b822a77e2a9d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnClientConnected:
@@ -118,10 +124,11 @@ MonoBehaviour:
   OnServerDisconnected:
     m_PersistentCalls:
       m_Calls: []
-  port: 7777
+  port: 7778
+  Secure: 0
+  CertificatePath: 
+  CertificatePassword: 
   NoDelay: 1
-  serverMaxMessageSize: 16384
-  clientMaxMessageSize: 16384
 --- !u!114 &989651359125469289
 MonoBehaviour:
   m_ObjectHideFlags: 0

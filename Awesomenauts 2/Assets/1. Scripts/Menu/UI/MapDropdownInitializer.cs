@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,11 +23,14 @@ public class MapDropdownInitializer : MonoBehaviour
             data.Add(od);
         }
 
+
         ddMapList.onValueChanged.AddListener(manager.SetMapToLoad);
         ddMapList.onValueChanged.AddListener(OnDDValueChanged);
-
-        OnDDValueChanged(0);
-    }
+		
+        ddMapList.value = 0;
+		ddMapList.RefreshShownValue();
+		OnDDValueChanged(0);
+	}
 
     public void OnDDValueChanged(int id)
     {
