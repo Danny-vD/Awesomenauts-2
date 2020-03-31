@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
-using UnityEngine.Networking.Types;
 
 public class CardPlayer : NetworkBehaviour
 {
@@ -42,7 +41,7 @@ public class CardPlayer : NetworkBehaviour
 	private bool snapping;
 	private CardSocket SnappedSocket;
 	private bool dragging;
-	private Transform draggedObject;
+	private Card draggedCard;
 
 	public int ClientID { get; private set; }
 
@@ -161,7 +160,7 @@ public class CardPlayer : NetworkBehaviour
 					Hand.SetSelectedCard(c);
 				else return;
 				dragging = true;
-				draggedObject = cardHit.transform;
+				draggedCard = c;
 				Debug.Log("Clicked On Card");
 			}
 		}
@@ -177,10 +176,14 @@ public class CardPlayer : NetworkBehaviour
 				else
 				{
 					//Place card on board
-					CmdRemoveFromHand(draggedObject.GetComponent<NetworkIdentity>());
-					Hand.RemoveCard(draggedObject.GetComponent<Card>());
+					CmdRemoveFromHand(draggedCard.GetComponent<NetworkIdentity>());
+					Hand.RemoveCard(draggedCard.GetComponent<Card>());
 
-					SnappedSocket.DockTransform(draggedObject);
+					//We Have to turn the card facing up again
+					Quaternion turnOverRot = Quaternion.AngleAxis(180, draggedCard.transform.right);
+					draggedCard.transform.rotation *= turnOverRot;
+
+					SnappedSocket.DockCard(draggedCard);
 					Hand.SetSelectedCard(null);
 
 				}
@@ -189,16 +192,18 @@ public class CardPlayer : NetworkBehaviour
 			}
 			else
 			{
-				Vector3 dir = GetCardPosition() - draggedObject.position;
+				Vector3 dir = GetCardPosition() - draggedCard.transform.position;
 				float m = Mathf.Clamp(dir.magnitude * DragIntertiaMultiplier, 0, MaxIntertia);
 
 				dir *= Drag;
-				draggedObject.position += dir;
+				draggedCard.transform.position += dir;
 				Vector3 axis = Vector3.Cross(Vector3.up, dir);
 				Quaternion q = Quaternion.AngleAxis(m, axis);
 
 
-				draggedObject.rotation = q;
+				draggedCard.transform.rotation = q;
+				Quaternion turnOverRot = Quaternion.AngleAxis(180, draggedCard.transform.right);
+				draggedCard.transform.rotation *= turnOverRot;
 			}
 		}
 	}

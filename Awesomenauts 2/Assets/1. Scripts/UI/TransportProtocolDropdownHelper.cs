@@ -1,7 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
+using Networking;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,11 +13,11 @@ public class TransportProtocolDropdownHelper : MonoBehaviour
 		dd = GetComponent<Dropdown>();
 		if (dd != null)
 		{
-			Dropdown.OptionData[] names = Enum.GetNames(typeof(CardNetworkManager.TransportType))
+			Dropdown.OptionData[] names = Enum.GetNames(typeof(TransportType))
 				.Select(x => new Dropdown.OptionData(x)).ToArray();
 			dd.options.Clear();
 			dd.options.AddRange(names);
-			dd.SetValueWithoutNotify((int)CardNetworkManager.Instance.TransportInfoData.TransportType);
+			dd.SetValueWithoutNotify((int)TransportType.WebSockets);
 			dd.onValueChanged.AddListener(ProtocolChanged);
 		}
 	}

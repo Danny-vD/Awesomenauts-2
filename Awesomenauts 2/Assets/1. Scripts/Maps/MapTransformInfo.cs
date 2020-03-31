@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class MapTransformInfo : MonoBehaviour
 {
+	/// <summary>
+	/// Contains the Info for the Initialization of the Player Prefab
+	/// </summary>
     [Serializable]
     public struct PlayerTransformInfo
     {
@@ -14,8 +15,16 @@ public class MapTransformInfo : MonoBehaviour
         public Transform GravePosition;
     }
 
+	/// <summary>
+	/// Contains the Transform Information for all teams/players
+	/// </summary>
     public PlayerTransformInfo[] PlayerTransformInfos;
+
+	/// <summary>
+	/// Reference to the Socket Manager
+	/// </summary>
     public SocketManager SocketManager;
+
 
     public static MapTransformInfo Instance;
     // Start is called before the first frame update

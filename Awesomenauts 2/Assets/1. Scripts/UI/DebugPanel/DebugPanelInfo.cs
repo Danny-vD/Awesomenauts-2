@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+using Networking;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class DebugPanelInfo : MonoBehaviour
@@ -9,8 +7,16 @@ public class DebugPanelInfo : MonoBehaviour
 
     public Button EndTurnButton;
 
-    public void RegisterEndTurn(UnityAction action)
+
+    //Connected to the UI in the Scene. Used to Disconnect from an active session.
+    public void DisconnectNetwork()
     {
-        EndTurnButton.onClick.AddListener(action);
+	    CardNetworkManager.Instance.Stop();
+    }
+
+    //Connected to the UI in the Scene. Used to Request to end the current turn.
+    public void ClientRequestEndTurn()
+    {
+	    CardPlayer.LocalPlayer.EndTurn();
     }
 }

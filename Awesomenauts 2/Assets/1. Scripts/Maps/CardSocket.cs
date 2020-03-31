@@ -1,5 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CardSocket : MonoBehaviour
@@ -13,7 +11,7 @@ public class CardSocket : MonoBehaviour
 
     private bool Active;
 
-    private Transform dockedTransform;
+    private Card dockedTransform;
 
     // Start is called before the first frame update
     void Start()
@@ -21,13 +19,22 @@ public class CardSocket : MonoBehaviour
         origY = transform.position.y;
     }
 
+	/// <summary>
+	/// Activates or deactivates the Socket Movement
+	/// </summary>
+	/// <param name="active"></param>
     public void SetActive(bool active)
     {
         Active = active;
         if (!Active) ResetPositions();
     }
 
-    public void DockTransform(Transform dockedTransform)
+	/// <summary>
+	/// Docks a transform to the Socket
+	/// This way the transform will be moving with the Socket.
+	/// </summary>
+	/// <param name="dockedTransform"></param>
+    public void DockCard(Card dockedTransform)
     {
         this.dockedTransform = dockedTransform;
     }
@@ -39,7 +46,7 @@ public class CardSocket : MonoBehaviour
         pos.y = origY;
         if (dockedTransform != null)
         {
-            dockedTransform.position = pos + Vector3.up * yCardOffset;
+            dockedTransform.transform.position = pos + Vector3.up * yCardOffset;
         }
         transform.position = pos;
     }
@@ -52,7 +59,7 @@ public class CardSocket : MonoBehaviour
         pos.y = origY + yOffset + Mathf.Sin(Time.realtimeSinceStartup * timeScale + timeOffset) * yScale;
         if (dockedTransform != null)
         {
-            dockedTransform.position = pos + Vector3.up * yCardOffset;
+            dockedTransform.transform.position = pos + Vector3.up * yCardOffset;
         }
         transform.position = pos;
     }

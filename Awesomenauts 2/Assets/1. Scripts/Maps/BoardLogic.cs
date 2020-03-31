@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Networking;
 using Mirror;
 using UnityEngine;
 
@@ -10,25 +9,57 @@ public class BoardLogic : NetworkBehaviour
 	private int CurrentTurn = -1;
 	public int CurrentTurnClient { get; private set; }
 
+	private float TimeStamp;
 	public static BoardLogic Logic;
 
 	// Start is called before the first frame update
-	void Start()
+	private void Awake()
 	{
 		Logic = this;
+		TimeStamp = Time.realtimeSinceStartup + Random.Range(15f, 30f);
 	}
 
-	public void DisconnectNetwork()
+	private void Update()
 	{
-		CardNetworkManager.Instance.Stop();
+		if (GameInitializer.Data.DebugInfo.DebugServerQuit && Time.realtimeSinceStartup > TimeStamp)
+		{
+			CardNetworkManager.Instance.Stop();
+		}
 	}
 
-	[Client]
-	public void ClientRequestEndTurn()
+	#region Client Remote Procedure Calls
+
+	//Gets called on all Clients to start the Game.
+	//This Will map the clients to the teams on the board.
+	[ClientRpc]
+	public void RpcBroadcastStartGame(int[] clientIds, int[] teamIDs)
 	{
-		CardPlayer.LocalPlayer.EndTurn();
+		MapTransformInfo.Instance.SocketManager.AddPlayers(clientIds, teamIDs);
 	}
 
+	//Gets Called on all Clients to end the current turn
+	//next is the next players ID that has the turn.
+	[ClientRpc]
+	public void RpcBroadcastEndTurn(int next)
+	{
+		if (CardNetworkManager.Instance.IsHost) return; //Has Already been set by ServerEndTurn if we are playing and hosting at the same time
+
+
+		CurrentTurn++;
+
+		Debug.Log("Client Received End Turn\nOld: " + CurrentTurnClient + "\nNew: " + next);
+		CurrentTurnClient = next;
+		CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == next;
+
+		MapTransformInfo.Instance.SocketManager.SetTurn(CurrentTurnClient);
+	}
+
+	#endregion
+
+	#region Server Only Calls
+
+	//Starts the Game
+	//Sets up the client ids and the teamids
 	[Server]
 	public void StartGame()
 	{
@@ -46,12 +77,8 @@ public class BoardLogic : NetworkBehaviour
 		ServerEndTurn();
 	}
 
-	[ClientRpc]
-	public void RpcBroadcastStartGame(int[] clientIds, int[] teamIDs)
-	{
-		MapTransformInfo.Instance.SocketManager.AddPlayers(clientIds, teamIDs);
-	}
 
+	//Ends the turn
 	[Server]
 	public void ServerEndTurn()
 	{
@@ -74,19 +101,9 @@ public class BoardLogic : NetworkBehaviour
 
 	}
 
-	[ClientRpc]
-	public void RpcBroadcastEndTurn(int next)
-	{
-		if (CardNetworkManager.Instance.IsHost) return; //Has Already been set by ServerEndTurn if we are playing and hosting at the same time
+	#endregion
 
 
-		CurrentTurn++;
 
-		Debug.Log("Client Received End Turn\nOld: " + CurrentTurnClient + "\nNew: " + next);
-		CurrentTurnClient = next;
-		CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == next;
-
-		MapTransformInfo.Instance.SocketManager.SetTurn(CurrentTurnClient);
-	}
 
 }

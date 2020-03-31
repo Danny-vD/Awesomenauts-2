@@ -1,15 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Mirror;
 using UnityEngine;
 
-public class MapLoader : NetworkBehaviour
+public class MapLoader : MonoBehaviour
 {
-    [Server]
-    public void LoadMap(int id)
-    {
-        Debug.Log("Loading Map: " + id);
-        GameObject map = Instantiate(CardNetworkManager.Instance.AvailableMaps[id].Prefab);
-        NetworkServer.Spawn(map);
-    }
+	//Loads the Map that was selected by the UI
+	
 }

@@ -1,236 +1,310 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Threading;
-using System.Xml.Serialization;
 using Mirror;
 using Mirror.Websocket;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using Logger = MasterServer.Common.Logger;
 
-public class CardNetworkManager : NetworkManager
+
+namespace Networking
 {
-	[Serializable]
-	public struct MapEntry
+	public class CardNetworkManager : NetworkManager
 	{
-		public GameObject Prefab;
-		public Sprite MapIcon;
-	}
+		public static CardNetworkManager Instance => singleton as CardNetworkManager;
+		private float initDelay = 0.3f;
+		public bool IsHost { get; private set; }
+		public bool IsServer { get; private set; }
 
-	[Serializable]
-	public struct CardEntry
-	{
-		public GameObject Prefab;
-		//Stats/Designs/etc
-	}
-
-	public static Dictionary<TransportType, Type> TransportTypes = new Dictionary<TransportType, Type>
-	{
-		{TransportType.Telepathy,  typeof(TelepathyTransport)},
-		{TransportType.WebSockets, typeof(WebsocketTransport) },
-	};
-
-	public enum TransportType
-	{
-		Telepathy,
-		WebSockets,
-	}
-
-	[Serializable]
-	public class TransportInfo
-	{
-		public string DefaultIP = "localhost";
-		public TransportType TransportType = TransportType.Telepathy;
-		//public int Port = -1;
-	}
-
-	public static CardNetworkManager Instance => singleton as CardNetworkManager;
-	private int mapIDToLoad;
-	public TransportInfo TransportInfoData;
-	public Transport[] Transports;
-
-	public bool IsHost { get; private set; }
-	public bool IsServer { get; private set; }
-	private bool IsStarted;
-	private bool IsStopping;
-	public MapEntry[] AvailableMaps;
-	public CardEntry[] CardEntries;
-	public int[] CardsInDeck = new[] { 0, 1, 0, 1, 0, 1, 0, 1, 0 };
-
-	public override void Awake()
-	{
-		TryLoadTransportDataFile(); //Trying to load transport info if provided
-        
-		base.Awake();
-	}
-
-	public void Stop()
-	{
-		if (!IsStarted || IsStopping) return;
-		IsStopping = true;
-		if (IsHost)
-			StopHost();
-		else if (IsServer)
-			StopServer();
-		else StopClient();
-	}
-
-	private void TryLoadTransportDataFile()
-	{
-		if (File.Exists("./transport_data.xml"))
+		public EndPointInfo CurrentEndPoint
 		{
-			Stream s = File.OpenRead("./transport_data.xml");
-			XmlSerializer xs = new XmlSerializer(typeof(TransportInfo));
-			try
+			get => currentEndPoint;
+			set
 			{
-				TransportInfo i = (TransportInfo)xs.Deserialize(s);
-				s.Close();
-				TransportInfoData = i;
-			}
-			catch (Exception)
-			{
-				//Do Nothing
+				currentEndPoint = value;
+				if (!CanApplyEndPoint)
+				{
+					Debug.LogWarning("Can not change End Point info at the moment.");
+				}
+				else
+				{
+					ApplyEndPoint();
+				}
 			}
 		}
-	}
 
-	public override void OnServerSceneChanged(string sceneName)
-	{
-		base.OnServerSceneChanged(sceneName);
+		private bool CanApplyEndPoint = true;
+		private EndPointInfo currentEndPoint;
+		
+		private float TimeStamp;
+		private int mapIDToLoad;
+		private bool IsStarted;
+		private bool IsStopping;
 
-		if (sceneName == "GameScene")
+
+		[Header("Card Networking Parameters")]
+		public MapEntry[] AvailableMaps;
+		public GameObject BoardLogicPrefab;
+		public CardEntry[] CardEntries;
+		public int[] CardsInDeck { get; private set; }
+
+
+
+		public override void Awake()
 		{
-			MapLoader mp = FindObjectOfType<MapLoader>();
-			mp.LoadMap(mapIDToLoad);
+			if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.Null) IsServer = true;
+			Logger.DefaultLogger = Debug.Log;
+			base.Awake();
+
 		}
-	}
 
-	private void CleanUp()
-	{
-		Debug.Log("Cleaning Up...");
-		CardPlayer.LocalPlayer = null;
-		CardPlayer.ServerPlayers.Clear();
-		BoardLogic.Logic = null;
-		IsServer = false;
-		IsHost = false;
-		IsStarted = false;
-	}
-
-	private void StartNetwork()
-	{
-		IsStarted = true;
-		IsStopping = false;
-	}
-
-	public void SetMapToLoad(int id)
-	{
-		mapIDToLoad = id;
-	}
-
-	public override void OnClientDisconnect(NetworkConnection conn)
-	{
-		Debug.Log("Disconnected From Server");
-		CleanUp();
-		base.OnClientDisconnect(conn);
-	}
-
-	public override void OnServerDisconnect(NetworkConnection conn)
-	{
-		Debug.Log("Client Disconnected. Remaining: " + numPlayers);
-		if (numPlayers == 1 && !IsStopping)
-			Stop();
-		base.OnServerDisconnect(conn);
-	}
-
-	public override void OnStopClient()
-	{
-		if (!IsServer && !IsHost)
+		public override void Start()
 		{
+
+			CurrentEndPoint = GameInitializer.Data.Network.DefaultAddress;
+			//RefreshEndPoint();
+			base.Start();
+
+			TimeStamp = Time.realtimeSinceStartup;
+		}
+
+		public void LoadMap(int id)
+		{
+			Debug.Log("Loading Map: " + id);
+			GameObject map = Instantiate(AvailableMaps[id].Prefab);
+			NetworkServer.Spawn(map);
+		}
+
+
+		private void Update()
+		{
+			//if (initDelay > 0)
+			//{
+			//	initDelay -= Time.deltaTime;
+			//	return;
+			//}
+
+			if (IsStarted && SystemInfo.graphicsDeviceType == GraphicsDeviceType.Null)
+			{
+				if (GameInitializer.Data.HeadlessInfo.NoPlayerTimeout != -1 && numPlayers == 0 && TimeStamp + GameInitializer.Data.HeadlessInfo.NoPlayerTimeoutSeconds < Time.realtimeSinceStartup || //Timeout because of no players
+					GameInitializer.Data.HeadlessInfo.Timeout != -1 && TimeStamp + GameInitializer.Data.HeadlessInfo.TimeoutSeconds < Time.realtimeSinceStartup) //Timeout because of time limit
+				{
+					Application.Quit();
+				}
+			}
+
+
+
+			if (!IsStarted && SystemInfo.graphicsDeviceType == GraphicsDeviceType.Null) //not started and Headless
+			{
+				if (SceneManager.GetActiveScene().name == "MenuScene")
+				{
+					Debug.Log("Starting Server...");
+					StartServer();
+				}
+				return;
+			}
+
+
+			if (!IsServer || BoardLogic.Logic == null) return;
+
+			if (CardPlayer.ServerPlayers.Count == 2 && CardPlayer.AllPlayersReady && !BoardLogic.Logic.GameStarted)
+			{
+				//Thread.Sleep(1000); //Hack: Wait for client to create the player after connection established.
+				SetUpPlayer(0);
+				SetUpPlayer(1);
+				for (int i = 0; i < CardPlayer.ServerPlayers.Count; i++)
+				{
+					CardPlayer.ServerPlayers[i].DrawCard(5);
+				}
+
+				BoardLogic.Logic.StartGame();
+
+
+				//Each Player Draws Cards
+				//  Need
+			}
+		}
+
+
+		#region Private Functions
+
+		private void SetUpPlayer(int id)
+		{
+			CardPlayer.ServerPlayers[id].Deck.TargetSetPositions(MapTransformInfo.Instance.PlayerTransformInfos[id].DeckPosition.position, MapTransformInfo.Instance.PlayerTransformInfos[id].GravePosition.position);
+			CardPlayer.ServerPlayers[id].Hand.TargetSetPosition(MapTransformInfo.Instance.PlayerTransformInfos[id].HandPosition.position);
+
+			//Remote Call to the Client.
+			CardPlayer.ServerPlayers[id].TargetSetCameraPosition(CardPlayer.ServerPlayers[id].connectionToClient, MapTransformInfo.Instance.PlayerTransformInfos[id].CameraPosition.position, MapTransformInfo.Instance.PlayerTransformInfos[id].CameraPosition.rotation, id == 1);
+		}
+
+		#endregion
+
+		#region Overrides
+
+
+		public override void OnServerSceneChanged(string sceneName)
+		{
+			base.OnServerSceneChanged(sceneName);
+
+			if (sceneName == "GameScene")
+			{
+				GameObject blogic = Instantiate(BoardLogicPrefab);
+				NetworkServer.Spawn(blogic);
+				LoadMap(mapIDToLoad);
+			}
+		}
+
+		public override void OnClientConnect(NetworkConnection conn)
+		{
+			//GameInitializer.Master.SetConnectionSuccess(); //Only needs to be called if MasterServer API is in ReconnectLoop.
+			base.OnClientConnect(conn);
+		}
+
+		public override void OnServerConnect(NetworkConnection conn)
+		{
+			base.OnServerConnect(conn);
+		}
+
+		public override void OnClientDisconnect(NetworkConnection conn)
+		{
+			//GameInitializer.Master.SetConnectionSuccess(); //Only needs to be called if MasterServer API is in ReconnectLoop.
+			Debug.Log("Disconnected From Server");
 			CleanUp();
+			base.OnClientDisconnect(conn);
 		}
-		base.OnStopClient();
-	}
 
-	public override void OnStopServer()
-	{
-		Debug.Log("Server Stopped.");
-		CleanUp();
-		base.OnStopServer();
-	}
-
-	public override void OnStartHost()
-	{
-		Debug.Log("Is Host");
-		IsHost = true;
-		base.OnStartHost();
-
-
-	}
-
-	public override void OnStartClient()
-	{
-		StartNetwork();
-		base.OnStartClient();
-	}
-
-	public override void OnStartServer()
-	{
-		StartNetwork();
-		IsServer = true;
-		Debug.Log("Is Server");
-		base.OnStartServer();
-	}
-
-	private void SetUpPlayer(int id)
-	{
-		CardPlayer.ServerPlayers[id].Deck.TargetSetPositions(MapTransformInfo.Instance.PlayerTransformInfos[id].DeckPosition.position, MapTransformInfo.Instance.PlayerTransformInfos[id].GravePosition.position);
-		CardPlayer.ServerPlayers[id].Hand.TargetSetPosition(MapTransformInfo.Instance.PlayerTransformInfos[id].HandPosition.position);
-
-		//Remote Call to the Client.
-		CardPlayer.ServerPlayers[id].TargetSetCameraPosition(CardPlayer.ServerPlayers[id].connectionToClient, MapTransformInfo.Instance.PlayerTransformInfos[id].CameraPosition.position, MapTransformInfo.Instance.PlayerTransformInfos[id].CameraPosition.rotation, id == 1);
-	}
-
-	public override void OnServerReady(NetworkConnection conn)
-	{
-		Debug.Log("Client Ready: " + conn.connectionId);
-		base.OnServerReady(conn);
-
-	}
-
-	private void Update()
-	{
-		if (!IsStarted && SystemInfo.graphicsDeviceType == GraphicsDeviceType.Null) //not started and Headless
+		public override void OnServerDisconnect(NetworkConnection conn)
 		{
-			if (SceneManager.GetActiveScene().name == "MenuScene")
-			{
-				Debug.Log("Starting Server...");
-				StartServer();
-			}
-			return;
+			Debug.Log("Client Disconnected. Remaining: " + numPlayers);
+			if (numPlayers == 1 && !IsStopping)
+				Stop();
+			base.OnServerDisconnect(conn);
 		}
 
-
-		if (!IsServer) return;
-
-		if (CardPlayer.ServerPlayers.Count == 2 && CardPlayer.AllPlayersReady && !BoardLogic.Logic.GameStarted)
+		public override void OnStopClient()
 		{
-			//Thread.Sleep(1000); //Hack: Wait for client to create the player after connection established.
-			SetUpPlayer(0);
-			SetUpPlayer(1);
-			for (int i = 0; i < CardPlayer.ServerPlayers.Count; i++)
+			if (!IsServer && !IsHost)
 			{
-				CardPlayer.ServerPlayers[i].DrawCard(5);
+				CleanUp();
 			}
-
-			BoardLogic.Logic.StartGame();
-
-
-			//Each Player Draws Cards
-			//  Need
+			base.OnStopClient();
 		}
+
+		public override void OnStopServer()
+		{
+			Debug.Log("Server Stopped.");
+			CleanUp();
+			base.OnStopServer();
+		}
+
+		public override void OnStartHost()
+		{
+			Debug.Log("Is Host");
+			IsHost = true;
+			base.OnStartHost();
+
+
+		}
+
+		public override void OnStartClient()
+		{
+			StartNetwork();
+			base.OnStartClient();
+		}
+
+		public override void OnStartServer()
+		{
+			StartNetwork();
+			IsServer = true;
+			Debug.Log("Is Server");
+			base.OnStartServer();
+		}
+
+
+
+		public override void OnServerReady(NetworkConnection conn)
+		{
+			Debug.Log("Client Ready: " + conn.connectionId);
+			base.OnServerReady(conn);
+
+		}
+
+		#endregion
+
+		#region Public Functions
+
+		/// <summary>
+		/// Hack to change the Card Deck based on wether you join or host a game.
+		/// On Headless servers this will result in both clients having the "joingame" deck
+		/// </summary>
+		/// <param name="id"></param>
+		public void SetCardsInDeck(int id)
+		{
+			CardsInDeck = new int[25];
+			for (int i = 0; i < 25; i++)
+			{
+				CardsInDeck[i] = id;
+			}
+		}
+
+		public void ApplyEndPoint()
+		{
+			if (CurrentEndPoint == null || CurrentEndPoint.Port <= 0 || CurrentEndPoint.Port >= ushort.MaxValue) return;
+
+			Debug.Log("New End Point: " + CurrentEndPoint);
+
+			networkAddress = CurrentEndPoint.IP;
+			(transport as WebsocketTransport).port = CurrentEndPoint.Port;
+		}
+
+		/// <summary>
+		/// Stops the NetworkManager in whatever he is doing
+		/// Either Hosting/ServerOnly or Client
+		/// </summary>
+		public void Stop()
+		{
+			if (!IsStarted || IsStopping) return;
+			IsStopping = true;
+			if (IsHost)
+				StopHost();
+			else if (IsServer)
+				StopServer();
+			else StopClient();
+
+
+			if (GameInitializer.Data.HeadlessInfo.CloseOnMatchEnded) Application.Quit();
+		}
+
+
+
+		private void CleanUp()
+		{
+			Debug.Log("Cleaning Up...");
+			CardPlayer.LocalPlayer = null;
+			CardPlayer.ServerPlayers.Clear();
+			BoardLogic.Logic = null;
+			IsServer = false;
+			IsHost = false;
+			IsStarted = false;
+
+		}
+
+		private void StartNetwork()
+		{
+			IsStarted = true;
+			IsStopping = false;
+		}
+
+		public void SetMapToLoad(int id)
+		{
+			mapIDToLoad = id;
+		}
+
+
+		#endregion
+
+
+
+
 	}
 }

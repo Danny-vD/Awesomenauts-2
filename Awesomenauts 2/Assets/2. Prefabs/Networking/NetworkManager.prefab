@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4467022757310397679}
   - component: {fileID: 4467022757310397680}
+  - component: {fileID: 5977019820633377722}
   - component: {fileID: 3886979512818707335}
   - component: {fileID: 3165288827017391294}
   - component: {fileID: 989651359125469289}
@@ -46,6 +47,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df966f6e96615f5419787c608aebb845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  StartupArguments: 
+  ProcessCommandLineArguments: 0
+  GameData:
+    HeadlessInfo:
+      Timeout: 3600000
+      NoPlayerTimeout: 60000
+      CloseOnMatchEnded: 0
+    Network:
+      DefaultAddress:
+        IP: localhost
+        Port: 7778
+      FindMatchOnly: 0
+    DebugInfo:
+      DebugServerQuit: 0
+  AllPaths: []
+--- !u!114 &5977019820633377722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4467022757310397675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e16be2c166c75e489ce050f46b30f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Info:
+    Address:
+      IP: 213.109.162.193
+      Port: 19999
+    ConnectInstanceTimeout: 5000
+    ConnectMasterTimeout: 5000
+    ConnectInstanceTries: 5
+    ConnectMasterTries: 5
 --- !u!114 &3886979512818707335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +105,7 @@ MonoBehaviour:
   onlineScene: GameScene
   transport: {fileID: 3165288827017391294}
   networkAddress: localhost
-  maxConnections: 4
+  maxConnections: 2
   authenticator: {fileID: 0}
   playerPrefab: {fileID: 7945849342318279925, guid: 9bf4b6f4b6052fb4fa9dc4c0f7baea4c,
     type: 3}
@@ -75,10 +113,9 @@ MonoBehaviour:
   playerSpawnMethod: 0
   spawnPrefabs:
   - {fileID: 5491867751144003618, guid: ed784578eff8fbe47b45ecd56aa47c79, type: 3}
-  TransportInfoData:
-    DefaultIP: localhost
-    TransportType: 0
-  Transports: []
+  - {fileID: 1106558168128416931, guid: 345fdd3bc8c11e44786b35ebc4db70b3, type: 3}
+  - {fileID: 1106558168128416931, guid: e6a4aa6c9baf25345ab10fd9a6fda037, type: 3}
+  - {fileID: 6205194210926984543, guid: ace7ac980d1de774ea2cf5d47e0b2a6b, type: 3}
   AvailableMaps:
   - Prefab: {fileID: 5491867751144003618, guid: ed784578eff8fbe47b45ecd56aa47c79,
       type: 3}
@@ -86,8 +123,11 @@ MonoBehaviour:
   - Prefab: {fileID: 5491867751144003618, guid: ed784578eff8fbe47b45ecd56aa47c79,
       type: 3}
     MapIcon: {fileID: 21300000, guid: 69f1b0eb5e7c01e41be3bf7470bf350d, type: 3}
-  CardEntries: []
-  CardsInDeck: 000000000100000000000000010000000000000001000000000000000100000000000000
+  CardEntries:
+  - Prefab: {fileID: 1106558168128416931, guid: e6a4aa6c9baf25345ab10fd9a6fda037,
+      type: 3}
+  - Prefab: {fileID: 1106558168128416931, guid: 345fdd3bc8c11e44786b35ebc4db70b3,
+      type: 3}
 --- !u!114 &3165288827017391294
 MonoBehaviour:
   m_ObjectHideFlags: 0
