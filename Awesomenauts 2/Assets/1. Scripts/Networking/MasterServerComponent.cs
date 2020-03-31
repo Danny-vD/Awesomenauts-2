@@ -1,9 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MasterServer.Client;
-using MasterServer.Common;
-using MasterServer.Common.Packets;
-using MasterServer.Common.Packets.Serializers;
+using MasterServer.Common.Networking;
+using MasterServer.Common.Networking.Packets;
+using MasterServer.Common.Networking.Packets.Serializers;
 using Mirror;
 using UnityEngine;
 
