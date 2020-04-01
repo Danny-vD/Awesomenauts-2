@@ -6,6 +6,7 @@ namespace Networking {
 	{
 		public EndPointInfo DefaultAddress = new EndPointInfo("localhost", 7778);
 		public bool FindMatchOnly;
+		public int FindMatchOnlyDelay;
 
 		public GameNetworkInfo(EndPointInfo defaultAddress = null, bool findMatchOnly = false)
 		{

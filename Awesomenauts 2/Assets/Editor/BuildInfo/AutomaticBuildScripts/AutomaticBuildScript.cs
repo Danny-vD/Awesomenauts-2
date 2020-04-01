@@ -19,11 +19,18 @@ public class AutomaticBuildScript : ScriptableObject
 	{
 		bool isDir = Directory.Exists(opt.locationPathName);
 		string path = isDir ? opt.locationPathName : Path.GetDirectoryName(opt.locationPathName);
+
+		string filename = Path.Combine(Path.GetDirectoryName(path), Path.GetFileName(path) + ".zip");
+		if(File.Exists(filename))
+		{
+			File.Delete(filename);
+		}
 		if (Directory.Exists(path))
 		{
 			Debug.Log("Cleaning Directory: " + Path.GetFullPath(path));
 			Directory.Delete(path, true);
 		}
+		
 	}
 
 	public static void Deploy(BuildPlayerOptions opt)

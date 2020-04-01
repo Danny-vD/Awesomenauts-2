@@ -1,5 +1,8 @@
+using System;
 using System.Reflection;
 using System.Threading;
+using MasterServer.Client;
+using MasterServer.Common.Networking.Packets;
 using Networking;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,9 +26,11 @@ public class UINetworkHelper : MonoBehaviour
 	private string StatusText;
 	private float TimeStamp;
 	private bool DisplayTimestamp;
-	
-	private EndPointInfo ServerInstance;
+	private bool FindMatchOnlyDelayFlag;
 
+	private EndPointInfo ServerInstance;
+	private float StartTimestamp;
+	private float LastUpdateTimestamp;
 	private string TimeStampUI =>
 		DisplayTimestamp ? $"({Mathf.RoundToInt(Time.realtimeSinceStartup - TimeStamp).ToString()})" : "";
 
@@ -38,65 +43,43 @@ public class UINetworkHelper : MonoBehaviour
 		{
 			inputField.SetTextWithoutNotify(GameInitializer.Data.Network.DefaultAddress.IP);
 		}
-
-		GameInitializer.Master.onMasterServerStartQueue += OnMasterServerStartQueue;
-		GameInitializer.Master.onMasterServerFoundMatch += OnMasterServerFoundMatch;
-		GameInitializer.Master.onMasterServerConnectToInstance += OnMasterServerConnectToInstance;
-		GameInitializer.Master.onMasterServerReset += OnMasterServerReset;
-
-		if (GameInitializer.Data.Network.FindMatchOnly) buttonFindMatch.onClick.Invoke();
+		if (GameInitializer.Data.Network.FindMatchOnly && GameInitializer.Data.Network.FindMatchOnlyDelay == 0) buttonFindMatch.onClick.Invoke();
+		StartTimestamp = Time.realtimeSinceStartup;
 	}
 
 	private void OnDestroy()
 	{
 		ts.Cancel();
-		GameInitializer.Master.onMasterServerStartQueue -= OnMasterServerStartQueue;
-		GameInitializer.Master.onMasterServerFoundMatch -= OnMasterServerFoundMatch;
-		GameInitializer.Master.onMasterServerConnectToInstance -= OnMasterServerConnectToInstance;
-		GameInitializer.Master.onMasterServerReset -= OnMasterServerReset;
 
 	}
 
-	private void OnMasterServerReset()
+	private void OnMasterServerFoundMatch(MasterServerAPI.ServerInstanceResultPacket serverinstance)
 	{
-		DisplayTimestamp = false;
-		UpdateQueueStatus = false;
-		MainMenu?.SetActive(true);
-		LoadingScreen?.SetActive(false);
-		SetText("Connection Failed.");
-	}
-
-	private void OnMasterServerConnectToInstance(int tries)
-	{
-		DisplayTimestamp = true;
-		UpdateQueueStatus = true;
-		TimeStamp = Time.realtimeSinceStartup;
-		SetText($"Connecting to Game Server {ServerInstance} try {tries}.");
-	}
-
-	private void OnMasterServerFoundMatch(EndPointInfo serverinstance)
-	{
-		ServerInstance = serverinstance;
-		TimeStamp = Time.realtimeSinceStartup;
+		EndPointInfo ep = new EndPointInfo(GameInitializer.Master.Info.Address.IP, serverinstance.Port);
+		ServerInstance = ep;
+		TimeStamp = LastUpdateTimestamp;
 		DisplayTimestamp = false;
 		UpdateQueueStatus = true;
 		SetText("Found Match on Instance: " + serverinstance);
 	}
-
-	private void OnMasterServerStartQueue()
-	{
-		TimeStamp = Time.realtimeSinceStartup;
-		DisplayTimestamp = true;
-		UpdateQueueStatus = true;
-		SetText("In Queue..");
-	}
-
+	
 
 
 	//Passthrough for the UI. Since the Network Manager is not loaded in the same scene we need to pass it through something static for the UI to work.
 
 	private void Update()
 	{
+		LastUpdateTimestamp = Time.realtimeSinceStartup;
+		if (!FindMatchOnlyDelayFlag && GameInitializer.Data.Network.FindMatchOnly && GameInitializer.Data.Network.FindMatchOnlyDelay != 0)
+		{
+			float add = GameInitializer.Data.Network.FindMatchOnlyDelay / 1000f;
+			if (StartTimestamp + add < Time.realtimeSinceStartup)
+			{
+				FindMatchOnlyDelayFlag = true;
+				buttonFindMatch.onClick.Invoke();
+			}
+		}
+
 		if (UpdateQueueStatus)
 		{
 			UpdateQueueText(StatusText);
@@ -154,7 +137,19 @@ public class UINetworkHelper : MonoBehaviour
 		UpdateQueueStatus = true;
 		DisplayTimestamp = true;
 		SetText("Connecting to Master Server..");
-		GameInitializer.Master.ConnectToServer();
+
+		MasterServerAPI.ConnectionEvents ev = new MasterServerAPI.ConnectionEvents();
+		ev.OnError += (MatchMakingErrorCode e, Exception ex) =>
+		{
+			DisplayTimestamp = false;
+			UpdateQueueStatus = true;
+			MainMenu?.SetActive(true);
+			LoadingScreen?.SetActive(false);
+		};
+		ev.OnStatusUpdate += SetText;
+		ev.OnSuccess += OnMasterServerFoundMatch;
+
+		GameInitializer.Master.ConnectToServer(ev);
 	}
 	#endregion
 
