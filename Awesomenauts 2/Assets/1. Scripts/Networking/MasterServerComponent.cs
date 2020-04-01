@@ -15,6 +15,7 @@ namespace Networking
 	{
 		private CancellationTokenSource tokenSource = new CancellationTokenSource();
 		private int Tries;
+		private bool running;
 		private bool connectSuccess;
 		private bool connecting;
 		private bool instanceConnecting;
@@ -32,14 +33,27 @@ namespace Networking
 			if (Info == null) Info = new MasterServerInfo();
 		}
 
+		public void AbortQueue()
+		{
+            if(running)
+            {
+	            tokenSource.Cancel();
+                tokenSource = new CancellationTokenSource();
+            }
+
+		}
+
 		public void ConnectToServer(MasterServerAPI.ConnectionEvents events)
 		{
-			if (connecting) return;
+			if (connecting || running) return;
+			running = true;
 			connectionEvents = events;
 			connecting = true;
 			connectionEvents.OnError += (MatchMakingErrorCode e, Exception ex) =>
 			{
 				connecting = false;
+
+				running = false;
 				Debug.Log("Error Code: " + e);
 				if (ex != null)
 					Debug.LogWarning("Received Exception: " + ex);
@@ -68,6 +82,7 @@ namespace Networking
 			tokenSource.Cancel();
 			tokenSource = new CancellationTokenSource();
 			connecting = false;
+			running = false;
 		}
 
 		private void Update()

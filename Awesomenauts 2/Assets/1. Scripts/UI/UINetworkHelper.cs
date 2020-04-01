@@ -59,6 +59,11 @@ public class UINetworkHelper : MonoBehaviour
 
 	}
 
+	public void AbortQueue()
+	{
+		GameInitializer.Master.AbortQueue();
+	}
+
 	private void OnMasterServerFoundMatch(MasterServerAPI.ServerInstanceResultPacket serverinstance)
 	{
 		EndPointInfo ep = new EndPointInfo(GameInitializer.Master.Info.Address.IP, serverinstance.Port);
