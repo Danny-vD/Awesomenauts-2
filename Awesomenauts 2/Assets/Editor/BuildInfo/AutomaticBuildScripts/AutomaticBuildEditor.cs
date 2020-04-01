@@ -1,14 +1,18 @@
 using UnityEngine;
 using System.Diagnostics;
 using System.IO;
+using Assets.Editor.BuildInfo.AutomaticBuildScripts;
 using UnityEditor;
 
 [CustomEditor(typeof(AutomaticBuildScript))]
 public class AutomaticBuildEditor : Editor
 {
+	private bool enable = true;
 	public override void OnInspectorGUI()
 	{
 		DrawDefaultInspector();
+
+		if (!enable) return;
 
 		AutomaticBuildScript myScript = (AutomaticBuildScript)target;
 		if (GUILayout.Button("Build All"))
@@ -31,13 +35,24 @@ public class AutomaticBuildEditor : Editor
 		}
 		if (File.Exists("../../AwsomenautsDeploy/upload.bat") && GUILayout.Button("Upload All"))
 		{
-
 			myScript.Clean();
 			myScript.Build(true);
 			myScript.Deploy();
-			Process.Start("cmd.exe", "/C ..\\..\\AwsomenautsDeploy\\upload.bat").WaitForExit();
+
+			enable = false;
+			Process p = Process.Start("cmd.exe", "/C ..\\..\\AwsomenautsDeploy\\upload.bat");
+			p.EnableRaisingEvents = true;
+			p.Exited += (sender, args) => OnClose();
 		}
 	}
+
+	private void OnClose()
+	{
+
+		enable = true;
+
+	}
+
 }
 
 [CustomEditor(typeof(BuildOpts))]

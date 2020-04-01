@@ -1,6 +1,7 @@
 using UnityEditor;
 using System.IO;
 using System.IO.Compression;
+using Assets.Editor.BuildInfo.AutomaticBuildScripts;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -45,10 +46,8 @@ public class AutomaticBuildScript : ScriptableObject
 		//DIR => Source
 		//Filename => Target
 		
-
 		//Uses Assets/zExternalCode/System.IO.Compression/System.IO.Compression.dll
 		ZipFile.CreateFromDirectory(dir, filename);
-
 	}
 
 
@@ -80,7 +79,7 @@ public class AutomaticBuildScript : ScriptableObject
 	{
 		for (int i = 0; i < Options.Length; i++)
 		{
-			Deploy(Options[i].ToBuildOptions(Options[i].options));
+				Deploy(Options[i].ToBuildOptions(Options[i].options));
 		}
 	}
 
