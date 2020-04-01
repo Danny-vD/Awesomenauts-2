@@ -22,6 +22,11 @@ public class UINetworkHelper : MonoBehaviour
 
 	public GameObject MainMenu;
 	public GameObject LoadingScreen;
+	public GameObject ErrorScreen;
+	public Text ErrorText;
+	private string errText;
+	private string errTitle;
+	public Text ErrorTitle;
 	public Text QueueStatus;
 	private string StatusText;
 	private float TimeStamp;
@@ -36,6 +41,7 @@ public class UINetworkHelper : MonoBehaviour
 
 	public Button buttonFindMatch;
 	private bool UpdateQueueStatus;
+	private bool UpdateErrorStatus;
 
 	void Start()
 	{
@@ -62,7 +68,7 @@ public class UINetworkHelper : MonoBehaviour
 		UpdateQueueStatus = true;
 		SetText("Found Match on Instance: " + serverinstance);
 	}
-	
+
 
 
 	//Passthrough for the UI. Since the Network Manager is not loaded in the same scene we need to pass it through something static for the UI to work.
@@ -84,17 +90,31 @@ public class UINetworkHelper : MonoBehaviour
 		{
 			UpdateQueueText(StatusText);
 		}
+
+		if (UpdateErrorStatus)
+		{
+			UpdateErrText(errTitle, errText);
+		}
 	}
 
 	private void SetText(string text)
 	{
 		StatusText = text;
+		TimeStamp = LastUpdateTimestamp;
 	}
 
 	private void UpdateQueueText(string text)
 	{
 		QueueStatus.text =
 			$"{text}{TimeStampUI}";
+	}
+	private void UpdateErrText(string title, string text)
+	{
+		ErrorTitle.text = title;
+		ErrorText.text = text;
+		ErrorScreen?.SetActive(true);
+		LoadingScreen?.SetActive(false);
+		UpdateErrorStatus = false;
 	}
 
 	#region Button Functions
@@ -143,8 +163,10 @@ public class UINetworkHelper : MonoBehaviour
 		{
 			DisplayTimestamp = false;
 			UpdateQueueStatus = true;
-			MainMenu?.SetActive(true);
-			LoadingScreen?.SetActive(false);
+
+			errTitle = "Error Code: " + e;
+			errText = ex == null ? "No Exception Provided." : ex.Message;
+			UpdateErrorStatus = true;
 		};
 		ev.OnStatusUpdate += SetText;
 		ev.OnSuccess += OnMasterServerFoundMatch;

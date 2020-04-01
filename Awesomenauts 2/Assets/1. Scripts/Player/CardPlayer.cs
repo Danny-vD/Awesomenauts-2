@@ -62,7 +62,7 @@ public class CardPlayer : NetworkBehaviour
 		}
 
 		ServerPlayers.Add(this);
-		Debug.Log($"isLocalPlayer: {isLocalPlayer}\nIsClient: {isClient}\nIsServer: {isServer}");
+		//Debug.Log($"isLocalPlayer: {isLocalPlayer}\nIsClient: {isClient}\nIsServer: {isServer}");
 
 	}
 

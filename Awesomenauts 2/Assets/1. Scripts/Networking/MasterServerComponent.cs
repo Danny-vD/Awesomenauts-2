@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Byt3.Serialization;
 using MasterServer.Client;
 using MasterServer.Common.Networking;
 using MasterServer.Common.Networking.Packets;
@@ -13,7 +14,6 @@ namespace Networking
 	public class MasterServerComponent : MonoBehaviour
 	{
 		private CancellationTokenSource tokenSource = new CancellationTokenSource();
-		private float TimeStamp;
 		private int Tries;
 		private bool connectSuccess;
 		private bool connecting;
@@ -24,9 +24,9 @@ namespace Networking
 		private void Start()
 		{
 
-			PacketSerializer.Serializer.AddSerializer(new ClientHeartBeatSerializer(), typeof(ClientHeartBeatPacket));
-			PacketSerializer.Serializer.AddSerializer(new ClientHandshakeSerializer(), typeof(ClientHandshakePacket));
-			PacketSerializer.Serializer.AddSerializer(new ClientInstanceReadySerializer(), typeof(ClientInstanceReadyPacket));
+			Byt3Serializer.AddSerializer<ClientHeartBeatPacket>(new ClientHeartBeatSerializer());
+			Byt3Serializer.AddSerializer<ClientHandshakePacket>(new ClientHandshakeSerializer());
+			Byt3Serializer.AddSerializer<ClientInstanceReadyPacket>(new ClientInstanceReadySerializer());
 
 
 			if (Info == null) Info = new MasterServerInfo();
@@ -41,7 +41,8 @@ namespace Networking
 			{
 				connecting = false;
 				Debug.Log("Error Code: " + e);
-				Debug.LogException(ex);
+				if (ex != null)
+					Debug.LogWarning("Received Exception: " + ex);
 			};
 			connectionEvents.OnStatusUpdate += Debug.Log;
 			connectionEvents.OnSuccess += ConnectToGameInstance;
@@ -54,23 +55,19 @@ namespace Networking
 			EndPointInfo ep =
 				new EndPointInfo(Info.Address.IP, result.Port);
 			CardNetworkManager.Instance.CurrentEndPoint = ep;
-            Debug.Log("AAAAAAAAA");
 			instanceConnecting = true;
 			connectSuccess = false;
-
-
-			TimeStamp = Time.realtimeSinceStartup + Info.ConnectInstanceTimeout / 1000f;
 			Tries++;
 		}
 
 		public void SetConnectionSuccess()
 		{
+			Tries = 0;
 			instanceConnecting = false;
 			connectSuccess = true;
 			tokenSource.Cancel();
 			tokenSource = new CancellationTokenSource();
 			connecting = false;
-			TimeStamp = 0;
 		}
 
 		private void Update()

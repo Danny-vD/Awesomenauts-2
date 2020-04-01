@@ -16,7 +16,7 @@ public class Card : NetworkBehaviour
 	/// <param name="covered"></param>
     public void SetCoverState(bool covered)
     {
-	    Debug.Log("Enable Cover Up Renderer: " + covered);
+	   //Debug.Log("Enable Cover Up Renderer: " + covered);
 		CoverUpRenderer.enabled = covered;
 	}
 }

@@ -43,8 +43,7 @@ public class SocketManager : MonoBehaviour
             SocketData = new Dictionary<int, CardTeamSocketData>();
         for (int i = 0; i < clientIDs.Length; i++)
         {
-            Debug.Log("Mapping Client ID:" + clientIDs[i] + " to TeamID: " + teamIDs[i]);
-            AddPlayer(clientIDs[i], teamIDs[i]);
+	        AddPlayer(clientIDs[i], teamIDs[i]);
         }
     }
 
