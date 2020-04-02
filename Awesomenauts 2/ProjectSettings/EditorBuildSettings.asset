@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/0. Scenes/DeckBuilder.unity
+    guid: 3e50e161901a4de44ba8757bc416138b
   m_configObjects: {}
