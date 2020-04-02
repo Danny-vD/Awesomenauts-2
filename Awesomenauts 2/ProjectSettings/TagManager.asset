@@ -13,11 +13,11 @@ TagManager:
   - UI
   - 
   - 
-  - CardSocketsTeamRed
-  - CardSocketsTeamBlue
+  - CardOnHand
+  - CardOnDeck
+  - CardOnBoard
   - CardDragLayer
-  - HandCardLayerRed
-  - HandCardLayerBlue
+  - CardSocket
   - 
   - 
   - 
