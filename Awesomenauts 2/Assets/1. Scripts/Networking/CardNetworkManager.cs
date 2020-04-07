@@ -34,7 +34,7 @@ namespace Networking
 
 		private bool CanApplyEndPoint = true;
 		private EndPointInfo currentEndPoint;
-		
+
 		private float TimeStamp;
 		private int mapIDToLoad;
 		private bool IsStarted;
@@ -238,12 +238,20 @@ namespace Networking
 		/// On Headless servers this will result in both clients having the "joingame" deck
 		/// </summary>
 		/// <param name="id"></param>
-		public void SetCardsInDeck(int id)
+		public void SetCardsInDeck(int id) //CardNetworkManager
 		{
-			CardsInDeck = new int[25];
+			//Getting the ID of the Card:
+				//CardNetworkManager has Array of card entries. All cards that are in the game need to exist in this array.
+				//This array defines the index of the card.
+				//One way to go about it is to store the deck builder info(card image/etc..) in the card entry.
+					//When loading the deck builder you can iterate over the card entries and get their info/index.
+					//When adding a card you just remove or add the cards index to a list of int.
+					//Your Set Cards In Deck Array would just be the list.ToArray().
+			
+			CardsInDeck = new int[25]; //Hack. You have to pass the int array with indices to this function instead of this one int.
 			for (int i = 0; i < 25; i++)
 			{
-				CardsInDeck[i] = id;
+				CardsInDeck[i] = id; //Creates a "Deck" with 25 of the same cards
 			}
 		}
 
