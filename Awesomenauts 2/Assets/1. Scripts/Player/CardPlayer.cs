@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class CardPlayer : NetworkBehaviour
 {
-
 	public EntityStatistics PlayerStatistics;
 
 	public static CardPlayer LocalPlayer;
@@ -44,6 +43,13 @@ public class CardPlayer : NetworkBehaviour
 	[Range(0, 2)]
 	public float DragIntertiaMultiplier = 1;
 
+
+	[Range(0f, 3f)]
+	public float AdditionalHoveredCardScale = 1;
+
+	[Range(0.01f, 3f)]
+	public float CardHoverAnimationTime = 1;
+
 	[Range(0, 50)]
 	public float MaxIntertia = 25;
 
@@ -53,6 +59,8 @@ public class CardPlayer : NetworkBehaviour
 	private CardSocket SnappedSocket;
 	private bool dragging;
 	private Card draggedCard;
+	public Vector3 CardCounterRotation;
+	private bool invertCardRotation;
 
 	public int ClientID { get; private set; }
 
@@ -66,7 +74,6 @@ public class CardPlayer : NetworkBehaviour
 			LocalPlayer = this;
 
 
-
 			//Got replaced by a non dynamic function BoardLogic.ClientRequestEndTurn()
 			//DebugPanelInfo dpi = FindObjectOfType<DebugPanelInfo>();
 			//if (dpi != null)
@@ -78,7 +85,6 @@ public class CardPlayer : NetworkBehaviour
 
 		ServerPlayers.Add(this);
 		//Debug.Log($"isLocalPlayer: {isLocalPlayer}\nIsClient: {isClient}\nIsServer: {isServer}");
-
 	}
 
 	[Command]
@@ -163,7 +169,11 @@ public class CardPlayer : NetworkBehaviour
 	public void TargetSetCameraPosition(NetworkConnection target, Vector3 pos, Quaternion rot, bool InvertCardValues)
 	{
 		Camera.transform.SetPositionAndRotation(pos, rot);
-		if (InvertCardValues) Hand.InvertValues();
+		if (InvertCardValues)
+		{
+			invertCardRotation = true;
+			Hand.InvertValues();
+		}
 	}
 
 	[Command]
@@ -171,13 +181,15 @@ public class CardPlayer : NetworkBehaviour
 	{
 		Debug.Log("Card NULL: " + (id.GetComponent<Card>() == null));
 
-		if (!CardNetworkManager.Instance.IsHost) //To avoid reducing solar twice(on client side and host side when a client is hosting)
+		if (!CardNetworkManager.Instance.IsHost
+		) //To avoid reducing solar twice(on client side and host side when a client is hosting)
 		{
 			int solar = PlayerStatistics.GetValue<int>(CardPlayerStatType.Solar);
 			int sub = id.GetComponent<Card>().Statistics.GetValue<int>(CardPlayerStatType.Solar);
 			solar -= sub;
 			PlayerStatistics.SetValue(CardPlayerStatType.Solar, solar);
 		}
+
 		Hand.RemoveCard(id.GetComponent<Card>());
 	}
 
@@ -209,7 +221,6 @@ public class CardPlayer : NetworkBehaviour
 			SnappedSocket.DockCard(draggedCard);
 			draggedCard.SetState(CardState.OnBoard);
 			Hand.SetSelectedCard(null);
-
 		}
 
 		Debug.Log("Released Card");
@@ -245,20 +256,64 @@ public class CardPlayer : NetworkBehaviour
 		Debug.Log("Clicked On Card");
 	}
 
-
 	#endregion
 
 
+	private Card hoveredCard = null;
+	private float hoverTimeStamp;
 
 	private void DragCard()
 	{
 		if (!dragging)
 		{
+			//IF is hovering
+			//Make Scale Bigger
+			//when card changed or no card hovered reset old card scale
+			if (IsHoveringCard(out RaycastHit chit))
+			{
+				Card c = chit.transform.GetComponent<Card>();
+
+				bool isPrevious = hoveredCard != null && c == hoveredCard;
+
+				if (!isPrevious) //If this is a new card
+				{
+					if (hoveredCard != null)
+						hoveredCard.transform.localScale = Vector3.one; //Reset if we hovered a card previously
+					if (Hand.IsCardFromHand(c)) //Check if the card is from the hand
+					{
+						hoverTimeStamp = Time.realtimeSinceStartup; //Update the Timestamp
+						hoveredCard = c; //Set the hovered Card.
+					}
+				}
+
+				if (hoveredCard != null)
+				{
+					float t = Time.realtimeSinceStartup - hoverTimeStamp;
+					float x = Mathf.Clamp01(t / CardHoverAnimationTime);
+					hoveredCard.transform.localScale = Vector3.one * (1 + x * AdditionalHoveredCardScale);
+				}
+
+			}
+			else
+			{
+				if (hoveredCard != null)
+				{
+					hoveredCard.transform.localScale = Vector3.one; //Reset if we hovered a new card }
+					hoveredCard = null;
+				}
+			}
+
 			if (HasClickedOnCard(out RaycastHit cardHit))
 			{
+				if (hoveredCard != null)
+				{
+					hoveredCard.transform.localScale = Vector3.one; //Reset if we hovered a new card }
+					hoveredCard = null;
+				}
+
 				Card c = cardHit.transform.GetComponent<Card>();
-				
-                
+
+
 				switch (c.CardState)
 				{
 					case CardState.OnDeck:
@@ -269,10 +324,9 @@ public class CardPlayer : NetworkBehaviour
 					case CardState.OnBoard:
 						break;
 					case CardState.OnGrave:
-						break;//DoNothing
+						break; //DoNothing
 				}
 			}
-
 		}
 		else
 		{
@@ -288,7 +342,7 @@ public class CardPlayer : NetworkBehaviour
 					case CardState.OnBoard:
 						break;
 					case CardState.OnGrave:
-						break;//DoNothing
+						break; //DoNothing
 				}
 			}
 			else
@@ -305,11 +359,14 @@ public class CardPlayer : NetworkBehaviour
 				draggedCard.transform.rotation = q;
 				Quaternion turnOverRot = Quaternion.AngleAxis(180, draggedCard.transform.right);
 				draggedCard.transform.rotation *= turnOverRot;
+				Vector3 euler = new Vector3(CardCounterRotation.x,
+					invertCardRotation ? -CardCounterRotation.y : CardCounterRotation.y, CardCounterRotation.z);
+				Quaternion c = Quaternion.Euler(euler);
+				draggedCard.transform.rotation *= c;
 			}
 		}
-
-
 	}
+
 	private Vector3 GetCardPosition()
 	{
 		if (canSnap && HasPlacedCard(out RaycastHit socketPlace))
@@ -332,7 +389,6 @@ public class CardPlayer : NetworkBehaviour
 		Debug.Log("DragLayer: " + LayerMask.LayerToName(UnityTrashWorkaround(CardDragLayer)));
 		if (Physics.Raycast(r, out RaycastHit info, float.MaxValue, CardDragLayer))
 		{
-
 			return info.point;
 		}
 
@@ -354,10 +410,21 @@ public class CardPlayer : NetworkBehaviour
 
 	private bool HasClickedOnCard(out RaycastHit info)
 	{
+		if (Input.GetMouseButtonDown(0) && IsHoveringCard(out info))
+		{
+			return true;
+		}
+
+		info = new RaycastHit();
+		return false;
+	}
+
+	private bool IsHoveringCard(out RaycastHit info)
+	{
 		Ray r = Camera.ScreenPointToRay(Input.mousePosition);
 		info = new RaycastHit();
 		bool ret = Physics.Raycast(r, out info, float.MaxValue, PlayerHandLayer);
-		return Input.GetMouseButtonDown(0) && ret;
+		return ret;
 	}
 
 	private bool HasPlacedCard(out RaycastHit info)

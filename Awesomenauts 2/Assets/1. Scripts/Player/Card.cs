@@ -46,5 +46,12 @@ public class Card : NetworkBehaviour
 	public void SetState(CardState state)
 	{
 		CardState = state;
+
+		if (state == CardState.OnBoard)
+		{
+			//Reverse the Turning over
+			Quaternion turnOverRot = Quaternion.AngleAxis(-180, transform.up);
+			transform.rotation *= turnOverRot;
+		}
 	}
 }
