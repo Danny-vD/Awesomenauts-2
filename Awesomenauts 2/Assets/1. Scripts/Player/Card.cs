@@ -2,12 +2,23 @@ using System;
 using Mirror;
 using Networking;
 using UnityEngine;
-
+public enum CardState
+{
+    OnDeck,
+	OnHand,
+	OnBoard,
+	OnGrave,
+}
 public class Card : NetworkBehaviour
 {
 	public MeshRenderer CoverUpRenderer;
 
+	
+
 	public EntityStatistics Statistics;
+	public bool StatisticsValid { get; private set; }
+	public CardState CardState { get; private set; } = CardState.OnDeck;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -15,11 +26,13 @@ public class Card : NetworkBehaviour
 	}
 
 	[TargetRpc]
-	public void TargetSendStats(NetworkConnection identity, int[] statType, int[] dataType, float[] data)
+	public void TargetSendStats(NetworkConnection identity, int[] statType, int[] dataType, string[] data)
 	{
 		Debug.Log("Received Stats");
-		Statistics = CardEntry.FromNetwork(new Tuple<int[], int[], float[]>(statType, dataType, data));
+		Statistics = CardEntry.FromNetwork(new Tuple<int[], int[], string[]>(statType, dataType, data));
+		StatisticsValid = true;
 	}
+
 	/// <summary>
 	/// Sets the Cover Up Renderer Active or Inactive.
 	/// </summary>
@@ -28,5 +41,10 @@ public class Card : NetworkBehaviour
 	{
 		//Debug.Log("Enable Cover Up Renderer: " + covered);
 		CoverUpRenderer.enabled = covered;
+	}
+
+	public void SetState(CardState state)
+	{
+		CardState = state;
 	}
 }

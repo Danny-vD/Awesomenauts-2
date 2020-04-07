@@ -74,6 +74,7 @@ public class CardHand : NetworkBehaviour
 		{
 			c.gameObject.layer = CardPlayer.UnityTrashWorkaround(PlayerHandLayer);
             AddCard(c);
+            c.SetState(CardState.OnHand);
 		}
     }
 
@@ -87,6 +88,7 @@ public class CardHand : NetworkBehaviour
     {
         if (!CardsOnHand.Contains(card)) return;
         if (SelectedCard == card) SetSelectedCard(null);
+
         CardsOnHand.Remove(card);
     }
 

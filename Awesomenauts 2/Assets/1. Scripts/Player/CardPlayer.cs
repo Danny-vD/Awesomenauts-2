@@ -1,129 +1,9 @@
 using System;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using Mirror;
 using Networking;
 using UnityEngine;
 
-public enum CardPlayerStatType
-{
-	Solar,
-	HP,
-}
-public enum CardPlayerStatDataType
-{
-	Int,
-	Float,
-}
-
-public abstract class CardPlayerStat
-{
-	public CardPlayerStatDataType Type;
-
-	protected CardPlayerStat(CardPlayerStatDataType type)
-	{
-		Type = type;
-	}
-	public abstract object GetValue();
-	public abstract void SetValue(object value);
-}
-
-public class CardPlayerStat<T> : CardPlayerStat
-where T : struct
-{
-	public T Value;
-
-
-	public CardPlayerStat(T value, CardPlayerStatDataType type) : base(type)
-	{
-		Value = value;
-	}
-
-	public override object GetValue()
-	{
-		return Value;
-	}
-
-	public override void SetValue(object value)
-	{
-		if (value is T v)
-		{
-			Value = v;
-			return;
-		}
-		throw new ArgumentException("Object is not of the correct type");
-	}
-}
-[Serializable]
-public class InternalStat
-{
-	public CardPlayerStatType type;
-	public CardPlayerStatDataType dataType;
-	public float value;
-}
-
-[Serializable]
-public class EntityStatistics
-{
-	[HideInInspector]
-	public Dictionary<CardPlayerStatType, CardPlayerStat> Stats;
-
-	public List<InternalStat> StartStatistics;
-
-	public delegate void OnStatTypeChanged(object newValue);
-    private Dictionary<CardPlayerStatType, OnStatTypeChanged> registeredEvents = new Dictionary<CardPlayerStatType, OnStatTypeChanged>();
-
-	public void Register(CardPlayerStatType type, OnStatTypeChanged del)
-	{
-		if (!registeredEvents.ContainsKey(type)) registeredEvents[type] = del;
-        else registeredEvents[type] += del;
-	}
-
-	public void InitializeStatDictionary()
-	{
-		if (StartStatistics == null) StartStatistics = new List<InternalStat>();
-		Stats = new Dictionary<CardPlayerStatType, CardPlayerStat>();
-		foreach (InternalStat startStatistic in StartStatistics)
-		{
-			object value = startStatistic.value; //Float
-			if (startStatistic.dataType == CardPlayerStatDataType.Int)
-			{
-				Stats.Add(startStatistic.type, new CardPlayerStat<int>((int)startStatistic.value, CardPlayerStatDataType.Int));
-			}
-			else
-			{
-				Stats.Add(startStatistic.type, new CardPlayerStat<float>(startStatistic.value, CardPlayerStatDataType.Float));
-			}
-		}
-
-	}
-
-	public bool HasValue(CardPlayerStatType type) => Stats.ContainsKey(type);
-
-	public T GetValue<T>(CardPlayerStatType type)
-	{
-		object obj = GetValue(type);
-		if (obj != null) return (T)obj;
-		return default;
-	}
-
-	public object GetValue(CardPlayerStatType type)
-	{
-		if (Stats.ContainsKey(type)) return Stats[type].GetValue();
-		return null;
-	}
-
-	public void SetValue<T>(CardPlayerStatType type, T value) => SetValue(type, (object)value);
-
-	public void SetValue(CardPlayerStatType type, object value)
-	{
-		Debug.Log($"Setting Stat Type: {type}to value: {value}");
-
-		if (registeredEvents.ContainsKey(type))
-			registeredEvents[type](value); //Call the Events.
-		if (Stats.ContainsKey(type)) Stats[type].SetValue(value);
-	}
-}
 
 public class CardPlayer : NetworkBehaviour
 {
@@ -256,7 +136,7 @@ public class CardPlayer : NetworkBehaviour
 			NetworkServer.Spawn(cardInstance, GetComponent<NetworkIdentity>().connectionToClient);
 			Card c = cardInstance.GetComponent<Card>();
 			c.Statistics = e.Statistics;
-			Tuple<int[], int[], float[]> networkData = e.StatisticsToNetworkableTypes();
+			Tuple<int[], int[], string[]> networkData = e.StatisticsToNetworkableTypes();
 			Debug.Log("Sending Stats");
 			c.TargetSendStats(netIdentity.connectionToClient, networkData.Item1, networkData.Item2, networkData.Item3);
 
@@ -301,6 +181,75 @@ public class CardPlayer : NetworkBehaviour
 		Hand.RemoveCard(id.GetComponent<Card>());
 	}
 
+	#region DragCardFromHand
+
+	private void HandleReleasedCardFromHand()
+	{
+		dragging = false;
+		if (!snapping)
+		{
+			Hand.SetSelectedCard(null); //Return card to hand
+		}
+		else
+		{
+			//Remove Available Solar Client Side
+			int solar = PlayerStatistics.GetValue<int>(CardPlayerStatType.Solar);
+			int sub = draggedCard.Statistics.GetValue<int>(CardPlayerStatType.Solar);
+			solar -= sub;
+			PlayerStatistics.SetValue(CardPlayerStatType.Solar, solar);
+
+			//Place card on board
+			CmdRemoveFromHand(draggedCard.GetComponent<NetworkIdentity>());
+			Hand.RemoveCard(draggedCard.GetComponent<Card>());
+
+			//We Have to turn the card facing up again
+			Quaternion turnOverRot = Quaternion.AngleAxis(180, draggedCard.transform.right);
+			draggedCard.transform.rotation *= turnOverRot;
+
+			SnappedSocket.DockCard(draggedCard);
+			draggedCard.SetState(CardState.OnBoard);
+			Hand.SetSelectedCard(null);
+
+		}
+
+		Debug.Log("Released Card");
+	}
+
+	private void HandleClickedOnCardOnHand(Card c)
+	{
+		if (Hand.IsCardFromHand(c))
+			Hand.SetSelectedCard(c);
+		else return;
+		canSnap = true;
+		if (c.Statistics.HasValue(CardPlayerStatType.Solar))
+		{
+			int playerSolar = PlayerStatistics.GetValue<int>(CardPlayerStatType.Solar);
+			int cardSolar = c.Statistics.GetValue<int>(CardPlayerStatType.Solar);
+			if (cardSolar > playerSolar)
+			{
+				canSnap = false;
+				//return; //Not enough Solar
+			}
+			else
+			{
+				canSnap = true;
+			}
+		}
+		else //Card has no solar costs or nothing defined as solar cost
+		{
+			canSnap = true;
+		}
+
+		dragging = true;
+		draggedCard = c;
+		Debug.Log("Clicked On Card");
+	}
+
+
+	#endregion
+
+
+
 	private void DragCard()
 	{
 		if (!dragging)
@@ -308,34 +257,20 @@ public class CardPlayer : NetworkBehaviour
 			if (HasClickedOnCard(out RaycastHit cardHit))
 			{
 				Card c = cardHit.transform.GetComponent<Card>();
-				if (Hand.IsCardFromHand(c))
-					Hand.SetSelectedCard(c);
-				else return;
-				canSnap = true;
-
-
-				if (c.Statistics.HasValue(CardPlayerStatType.Solar))
+				
+                
+				switch (c.CardState)
 				{
-					int playerSolar = PlayerStatistics.GetValue<int>(CardPlayerStatType.Solar);
-					int cardSolar = c.Statistics.GetValue<int>(CardPlayerStatType.Solar);
-					if (cardSolar > playerSolar)
-					{
-						canSnap = false;
-						//return; //Not enough Solar
-					}
-					else
-					{
-						canSnap = true;
-					}
+					case CardState.OnDeck:
+						break;
+					case CardState.OnHand:
+						HandleClickedOnCardOnHand(c);
+						break;
+					case CardState.OnBoard:
+						break;
+					case CardState.OnGrave:
+						break;//DoNothing
 				}
-				else //Card has no solar costs or nothing defined as solar cost
-				{
-					canSnap = true;
-				}
-
-				dragging = true;
-				draggedCard = c;
-				Debug.Log("Clicked On Card");
 			}
 
 		}
@@ -343,33 +278,18 @@ public class CardPlayer : NetworkBehaviour
 		{
 			if (!Input.GetMouseButton(0))
 			{
-				dragging = false;
-				if (!snapping)
+				switch (draggedCard.CardState)
 				{
-					Hand.SetSelectedCard(null); //Return card to hand
+					case CardState.OnDeck:
+						break;
+					case CardState.OnHand:
+						HandleReleasedCardFromHand();
+						break;
+					case CardState.OnBoard:
+						break;
+					case CardState.OnGrave:
+						break;//DoNothing
 				}
-				else
-				{
-					//Remove Available Solar Client Side
-					int solar = PlayerStatistics.GetValue<int>(CardPlayerStatType.Solar);
-					int sub = draggedCard.Statistics.GetValue<int>(CardPlayerStatType.Solar);
-					solar -= sub;
-					PlayerStatistics.SetValue(CardPlayerStatType.Solar, solar);
-
-					//Place card on board
-					CmdRemoveFromHand(draggedCard.GetComponent<NetworkIdentity>());
-					Hand.RemoveCard(draggedCard.GetComponent<Card>());
-
-					//We Have to turn the card facing up again
-					Quaternion turnOverRot = Quaternion.AngleAxis(180, draggedCard.transform.right);
-					draggedCard.transform.rotation *= turnOverRot;
-
-					SnappedSocket.DockCard(draggedCard);
-					Hand.SetSelectedCard(null);
-
-				}
-
-				Debug.Log("Released Card");
 			}
 			else
 			{

@@ -14,24 +14,22 @@ namespace Networking
 		public GameObject Prefab;
 		//Stats/Designs/etc
 
-		public Tuple<int[], int[], float[]> StatisticsToNetworkableTypes()
+		public Tuple<int[], int[], string[]> StatisticsToNetworkableTypes()
 		{
 
-			Tuple<int[], int[], float[]> ret = 
-				new Tuple<int[], int[], float[]>(
+			Tuple<int[], int[], string[]> ret = 
+				new Tuple<int[], int[], string[]>(
 					new int[Statistics.Stats.Count],
 					new int[Statistics.Stats.Count], 
-					new float[Statistics.Stats.Count]);
+					new string[Statistics.Stats.Count]);
 			int i = 0;
 			foreach (KeyValuePair<CardPlayerStatType, CardPlayerStat> statisticsStat in Statistics.Stats)
 			{
 				ret.Item1[i] = (int)statisticsStat.Key;
 				ret.Item2[i] = (int)statisticsStat.Value.Type;
-				float v = -1;
 				object o = statisticsStat.Value.GetValue();
-				if (o is int ii) v = ii;
-				else if (o is float ff) v = ff;
-				ret.Item3[i] = v;
+				ret.Item3[i] = o.ToString();
+				i++;
 			}
 
 			return ret;
@@ -39,7 +37,7 @@ namespace Networking
 		//int[] Stat Type Enum
 		//int[] Stat Type
 		//float[] Stat Values
-		public static EntityStatistics FromNetwork(Tuple<int[], int[], float[]> stats)
+		public static EntityStatistics FromNetwork(Tuple<int[], int[], string[]> stats)
 		{
 			EntityStatistics e = new EntityStatistics();
 			e.InitializeStatDictionary(); //Creates the Dictionary for us
@@ -48,14 +46,23 @@ namespace Networking
 				CardPlayerStat stat = null;
 				if ((CardPlayerStatDataType)stats.Item2[i] == CardPlayerStatDataType.Int)
 				{
-					stat = new CardPlayerStat<int>((int)stats.Item3[i],CardPlayerStatDataType.Int);
+					stat = new CardPlayerStat<int>(int.Parse(stats.Item3[i]),CardPlayerStatDataType.Int);
 				}
 				else if ((CardPlayerStatDataType)stats.Item2[i] == CardPlayerStatDataType.Float)
 				{
-					stat = new CardPlayerStat<float>(stats.Item3[i],CardPlayerStatDataType.Float);
+					stat = new CardPlayerStat<float>(float.Parse(stats.Item3[i]),CardPlayerStatDataType.Float);
 				}
+				else if ((CardPlayerStatDataType) stats.Item2[i] == CardPlayerStatDataType.String)
+				{
+					stat = new CardPlayerStat<string>(stats.Item3[i], CardPlayerStatDataType.String);
+				}
+
 				if (stat != null)
+				{
+					Debug.Log("Adding Stats From network: " + (CardPlayerStatType) stats.Item1[i] + " -> " +
+					          stat.GetValue());
 					e.Stats.Add((CardPlayerStatType)stats.Item1[i], stat);
+				}
 			}
 
 			return e;
