@@ -194,7 +194,7 @@ MonoBehaviour:
   DragWhenMoving: 0.7
   DragWhenSnapping: 0.1
   DragIntertiaMultiplier: 1
-  AdditionalHoveredCardScale: 0.1
+  AdditionalHoveredCardScale: 3
   CardHoverAnimationTime: 0.1
   MaxIntertia: 25
   CardCounterRotation: {x: -90, y: 90, z: 0}
