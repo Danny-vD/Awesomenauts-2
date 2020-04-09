@@ -1,6 +1,6 @@
-﻿using VDFramework.SharedClasses.Extensions;
+﻿using VDFramework.Extensions;
 
-namespace VDFramework.SharedClasses.Utility
+namespace VDFramework.Utility
 {
 	public static class RandomUtil
 	{

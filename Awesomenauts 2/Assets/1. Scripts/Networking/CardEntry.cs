@@ -6,6 +6,7 @@ using Player;
 using Byt3.Serialization;
 using Byt3.Serialization.Serializers;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Networking
 {
@@ -18,6 +19,8 @@ namespace Networking
 		public EntityStatistics Statistics;
 		public GameObject Prefab;
 
+		public Sprite cardSprite;
+
 		private class EntityStatisticsSerializer : ASerializer<EntityStatistics>
 		{
 			public override EntityStatistics DeserializePacket(PrimitiveValueWrapper s)
@@ -29,7 +32,7 @@ namespace Networking
 
 				for (int i = 0; i < len; i++)
 				{
-					MemoryStream ms = new MemoryStream(s.ReadBytes()) { Position = 0 };
+					MemoryStream ms = new MemoryStream(s.ReadBytes()) {Position = 0};
 
 					bool ret = Byt3Serializer.TryReadPacket(ms, out NetworkEntityStat stat);
 					if (!ret) throw new Exception("Read packet Exception");
@@ -43,6 +46,7 @@ namespace Networking
 			public override void SerializePacket(PrimitiveValueWrapper s, EntityStatistics obj)
 			{
 				s.Write(obj.Stats.Count);
+
 				foreach (KeyValuePair<CardPlayerStatType, CardPlayerStat> cardPlayerStat in obj.Stats)
 				{
 					NetworkEntityStat stat = new NetworkEntityStat()
@@ -53,6 +57,7 @@ namespace Networking
 					};
 					MemoryStream ms = new MemoryStream();
 					if (!Byt3Serializer.TryWritePacket(ms, stat)) throw new Exception("Serializer Write Error");
+
 					byte[] buf = new byte[ms.Length];
 					ms.Position = 0;
 					ms.Read(buf, 0, buf.Length);
@@ -77,11 +82,12 @@ namespace Networking
 					ValueType = Byt3Serializer.GetTypeByKey(s.ReadString())
 				};
 
-				MemoryStream ms = new MemoryStream(s.ReadBytes()) { Position = 0 };
+				MemoryStream ms = new MemoryStream(s.ReadBytes()) {Position = 0};
 
 				bool ret = Byt3Serializer.TryReadPacket(ms, out stat.Value);
 				if (!ret) throw new Exception("Read packet Exception");
-				stat.StatType = (CardPlayerStatType)s.ReadInt();
+
+				stat.StatType = (CardPlayerStatType) s.ReadInt();
 
 				return stat;
 			}
@@ -92,11 +98,12 @@ namespace Networking
 
 				MemoryStream ms = new MemoryStream();
 				if (!Byt3Serializer.TryWritePacket(ms, obj.Value)) throw new Exception("Serializer Write Error");
+
 				byte[] buf = new byte[ms.Length];
 				ms.Position = 0;
 				ms.Read(buf, 0, buf.Length);
 				s.Write(buf);
-				s.Write((int)obj.StatType);
+				s.Write((int) obj.StatType);
 			}
 		}
 
@@ -114,7 +121,7 @@ namespace Networking
 		}
 
 		private class StructSerializer<T> : ASerializer<T>
-		where T : struct
+			where T : struct
 		{
 			public override void SerializePacket(PrimitiveValueWrapper s, T obj)
 			{
@@ -128,9 +135,11 @@ namespace Networking
 		}
 
 		private static bool init;
+
 		private static void InitializeSerializer()
 		{
 			if (init) return;
+
 			init = true;
 			Byt3Serializer.AddSerializer<EntityStatistics>(new EntityStatisticsSerializer());
 			Byt3Serializer.AddSerializer<NetworkEntityStat>(new EntityStatSerializer());
@@ -146,8 +155,10 @@ namespace Networking
 		{
 			InitializeSerializer();
 			MemoryStream ms = new MemoryStream();
-			if(!Byt3Serializer.TryWritePacket(ms, Statistics))throw new Exception("Serializer Write Error") ;
-			return ms.GetBuffer().Take((int)ms.Position).ToArray();
+			if (!Byt3Serializer.TryWritePacket(ms, Statistics)) throw new Exception("Serializer Write Error");
+
+			return ms.GetBuffer().Take((int) ms.Position).ToArray();
+
 			//Tuple<int[], int[], string[]> ret =
 			//	new Tuple<int[], int[], string[]>(
 			//		new int[Statistics.Stats.Count],
@@ -165,16 +176,19 @@ namespace Networking
 
 			//return ret;
 		}
+
 		//int[] Stat Type Enum
 		//int[] Stat Type
 		//float[] Stat Values
 		public static EntityStatistics FromNetwork(byte[] buffer)
 		{
 			InitializeSerializer();
-			MemoryStream ms = new MemoryStream(buffer) { Position = 0 };
+			MemoryStream ms = new MemoryStream(buffer) {Position = 0};
 			bool ret = Byt3Serializer.TryReadPacket(ms, out EntityStatistics stat);
 			if (!ret) throw new Exception("Read packet Exception");
+
 			return stat;
+
 			//EntityStatistics e = new EntityStatistics();
 			//e.InitializeStatDictionary(); //Creates the Dictionary for us
 			//for (int i = 0; i < stats.Item1.Length; i++)
@@ -201,7 +215,5 @@ namespace Networking
 			//	}
 			//return e;
 		}
-
 	}
-
 }

@@ -2,7 +2,7 @@ using System;
 
 #pragma warning disable 660,661 //Did not override gethashcode
 
-namespace VDFramework.SharedClasses.EventSystem
+namespace VDFramework.EventSystem
 {
 	internal abstract class EventHandler : IComparable<EventHandler>
 	{
@@ -32,7 +32,8 @@ namespace VDFramework.SharedClasses.EventSystem
 		}
 	}
 
-	internal class EventHandler<TEvent> : EventHandler where TEvent : VDEvent
+	internal class EventHandler<TEvent> : EventHandler
+		where TEvent : VDEvent
 	{
 		public EventHandler(Delegate callback, int priorityOrder) : base(callback, priorityOrder) { }
 

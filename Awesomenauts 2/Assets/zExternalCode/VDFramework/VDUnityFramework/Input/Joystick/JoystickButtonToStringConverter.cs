@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace VDFramework.VDUnityFramework.Input.Joystick
+namespace VDFramework.Input.Joystick
 {
 	public static class JoystickButtonToStringConverter
 	{
