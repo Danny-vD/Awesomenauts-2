@@ -1,6 +1,6 @@
 using System;
 
-namespace Networking
+namespace DataObjects
 {
 	[Serializable]
 	public class HeadlessServerInfo

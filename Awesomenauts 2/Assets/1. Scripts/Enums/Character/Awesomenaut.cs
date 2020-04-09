@@ -1,4 +1,4 @@
-﻿namespace Enums.Character
+namespace Enums.Character
 {
 	public enum Awesomenaut
 	{

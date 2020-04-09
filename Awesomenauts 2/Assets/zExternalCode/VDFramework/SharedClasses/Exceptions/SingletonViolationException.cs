@@ -1,7 +1,7 @@
 ﻿using System;
 
 // ReSharper disable once CheckNamespace
-namespace VDFramework.Exceptions
+namespace VDFramework.SharedClasses.Exceptions
 {
 	/// <summary>
 	/// The exception that is thrown once you create a 2nd instance of a singleton

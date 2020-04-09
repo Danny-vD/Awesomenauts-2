@@ -1,4 +1,4 @@
-﻿namespace Interfaces.Audio
+namespace Interfaces.Audio
 {
 	public interface IAudioSet { }
 }

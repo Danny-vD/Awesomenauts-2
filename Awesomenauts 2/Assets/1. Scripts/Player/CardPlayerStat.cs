@@ -1,39 +1,35 @@
 using System;
 
-public abstract class CardPlayerStat
-{
-	public CardPlayerStatDataType Type;
-
-	protected CardPlayerStat(CardPlayerStatDataType type)
+namespace Player {
+	public abstract class CardPlayerStat
 	{
-		Type = type;
-	}
-	public abstract object GetValue();
-	public abstract void SetValue(object value);
-}
-
-public class CardPlayerStat<T> : CardPlayerStat
-{
-	public T Value;
-
-
-	public CardPlayerStat(T value, CardPlayerStatDataType type) : base(type)
-	{
-		Value = value;
+		public abstract object GetValue();
+		public abstract void SetValue(object value);
 	}
 
-	public override object GetValue()
+	public class CardPlayerStat<T> : CardPlayerStat
 	{
-		return Value;
-	}
+		public T Value;
 
-	public override void SetValue(object value)
-	{
-		if (value is T v)
+
+		public CardPlayerStat(T value) : base()
 		{
-			Value = v;
-			return;
+			Value = value;
 		}
-		throw new ArgumentException("Object is not of the correct type");
+
+		public override object GetValue()
+		{
+			return Value;
+		}
+
+		public override void SetValue(object value)
+		{
+			if (value is T v)
+			{
+				Value = v;
+				return;
+			}
+			throw new ArgumentException("Object is not of the correct type");
+		}
 	}
 }

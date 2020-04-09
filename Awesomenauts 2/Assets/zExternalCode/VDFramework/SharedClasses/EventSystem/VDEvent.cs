@@ -1,4 +1,4 @@
-﻿namespace VDFramework.EventSystem
+﻿namespace VDFramework.SharedClasses.EventSystem
 {
 	public abstract class VDEvent
 	{

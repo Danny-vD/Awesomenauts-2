@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Enums.Announcer;
 using Interfaces;
 using Interfaces.Audio;

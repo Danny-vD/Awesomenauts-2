@@ -1,4 +1,4 @@
-﻿using Events.Audio;
+using Events.Audio;
 using Structs.Audio;
 
 namespace Interfaces.Audio

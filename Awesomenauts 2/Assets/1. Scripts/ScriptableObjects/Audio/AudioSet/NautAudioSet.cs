@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Enums.Audio;
 using Structs.Audio;
-using UnityEngine;
 using Utility;
+using UnityEngine;
 
 namespace ScriptableObjects.Audio.AudioSet
 {

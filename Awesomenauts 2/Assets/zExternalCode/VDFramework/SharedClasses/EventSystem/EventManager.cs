@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using VDFramework.VDUnityFramework.Singleton;
 
-namespace VDFramework.EventSystem
+namespace VDFramework.SharedClasses.EventSystem
 {
-	using Singleton;
-
 	public class EventManager : Singleton<EventManager>
 	{
 		private readonly Dictionary<Type, List<EventHandler>> eventHandlersPerEventType =

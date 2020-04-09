@@ -6,7 +6,7 @@ using UnityEngine;
 namespace BuildInfo.AutomaticBuildScripts
 {
 	[CustomEditor(typeof(AutomaticBuildScript))]
-	public class AutomaticBuildEditor : Editor
+	public class AutomaticBuildEditor : UnityEditor.Editor
 	{
 		private bool enable = true;
 
@@ -59,7 +59,7 @@ namespace BuildInfo.AutomaticBuildScripts
 	}
 
 	[CustomEditor(typeof(BuildOpts))]
-	public class BuildOptionEditor : Editor
+	public class BuildOptionEditor : UnityEditor.Editor
 	{
 		public override void OnInspectorGUI()
 		{

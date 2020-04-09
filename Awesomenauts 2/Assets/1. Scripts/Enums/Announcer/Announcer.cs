@@ -1,4 +1,4 @@
-﻿namespace Enums.Announcer
+namespace Enums.Announcer
 {
 	public enum Announcer
 	{

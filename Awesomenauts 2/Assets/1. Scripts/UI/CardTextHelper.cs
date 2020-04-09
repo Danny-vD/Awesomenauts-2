@@ -1,44 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
+using Player;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardTextHelper : MonoBehaviour
-{
-	public Card RegisteredCard;
-	public Text DescriptonText;
-
-	public Text AttackText;
-
-	public Text DefenseText;
-
-	// Start is called before the first frame update
-	private void Start()
+namespace UI {
+	public class CardTextHelper : MonoBehaviour
 	{
+		public Card RegisteredCard;
+		public Text DescriptonText;
 
-		RegisteredCard.Statistics.Register(CardPlayerStatType.HP, OnDefChanged, true);
-		RegisteredCard.Statistics.Register(CardPlayerStatType.Attack, OnAtkChanged, true);
-		RegisteredCard.Statistics.Register(CardPlayerStatType.Description, OnDescriptionChanged, true);
-	}
+		public Text AttackText;
 
-	private void OnAtkChanged(object value)
-	{
-		AttackText.text = value.ToString();
-	}
+		public Text DefenseText;
 
-	private void OnDefChanged(object value)
-	{
-		DefenseText.text = value.ToString();
-	}
+		// Start is called before the first frame update
+		private void Start()
+		{
 
-	private void OnDescriptionChanged(object value)
-	{
-		DescriptonText.text = value.ToString();
-	}
+			RegisteredCard.Statistics.Register(CardPlayerStatType.HP, OnDefChanged, true);
+			RegisteredCard.Statistics.Register(CardPlayerStatType.Attack, OnAtkChanged, true);
+			RegisteredCard.Statistics.Register(CardPlayerStatType.Description, OnDescriptionChanged, true);
+		}
 
-	// Update is called once per frame
-	private void Update()
-	{
+		private void OnAtkChanged(object value)
+		{
+			AttackText.text = value.ToString();
+		}
 
+		private void OnDefChanged(object value)
+		{
+			DefenseText.text = value.ToString();
+		}
+
+		private void OnDescriptionChanged(object value)
+		{
+			DescriptonText.text = value.ToString();
+		}
+
+		// Update is called once per frame
+		private void Update()
+		{
+
+		}
 	}
 }

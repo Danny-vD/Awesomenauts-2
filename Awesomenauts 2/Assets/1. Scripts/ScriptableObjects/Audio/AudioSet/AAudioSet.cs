@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Interfaces.Audio;
 using Structs.Audio;
-using UnityEngine;
 using Utility;
+using UnityEngine;
 
 namespace ScriptableObjects.Audio.AudioSet
 {
