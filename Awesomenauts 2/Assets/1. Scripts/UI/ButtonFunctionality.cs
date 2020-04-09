@@ -1,4 +1,5 @@
 ﻿using VDFramework;
+using UnityEngine.SceneManagement;
 
 namespace UI
 {
@@ -11,6 +12,11 @@ namespace UI
 #else
 			UnityEngine.Application.Quit();
 #endif
+		}
+
+		public void LoadScene(string scene)
+		{
+			SceneManager.LoadScene(scene);
 		}
 	}
 }

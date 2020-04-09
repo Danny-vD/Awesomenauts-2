@@ -3,12 +3,7 @@ using UnityEngine;
 using VDFramework;
 
 namespace DeckBuilder
-{
-	/// TODO: make my own cardManager
-	/// which has a list of "Cards"
-	/// cardsEntries can have either a prefab with a card class or some sort
-	/// or just an image etc.
-	
+{	
 	public class AddAllCards : BetterMonoBehaviour
 	{
 		[SerializeField]
