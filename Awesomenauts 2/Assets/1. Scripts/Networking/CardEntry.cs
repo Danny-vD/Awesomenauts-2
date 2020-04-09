@@ -29,8 +29,11 @@ namespace Networking
 
 				for (int i = 0; i < len; i++)
 				{
-					MemoryStream ms = new MemoryStream(s.ReadBytes()) {Position = 0};
-					NetworkEntityStat stat = Byt3Serializer.ReadPacket<NetworkEntityStat>(ms);
+					MemoryStream ms = new MemoryStream(s.ReadBytes()) { Position = 0 };
+
+					bool ret = Byt3Serializer.TryReadPacket(ms, out NetworkEntityStat stat);
+					if (!ret) throw new Exception("Read packet Exception");
+
 					es.SetValue(stat.StatType, stat.Value);
 				}
 
@@ -49,7 +52,7 @@ namespace Networking
 						ValueType = cardPlayerStat.Value.GetValue().GetType()
 					};
 					MemoryStream ms = new MemoryStream();
-					Byt3Serializer.WritePacket(ms, stat);
+					if (!Byt3Serializer.TryWritePacket(ms, stat)) throw new Exception("Serializer Write Error");
 					byte[] buf = new byte[ms.Length];
 					ms.Position = 0;
 					ms.Read(buf, 0, buf.Length);
@@ -74,9 +77,10 @@ namespace Networking
 					ValueType = Byt3Serializer.GetTypeByKey(s.ReadString())
 				};
 
-				MemoryStream ms = new MemoryStream(s.ReadBytes()) {Position = 0};
+				MemoryStream ms = new MemoryStream(s.ReadBytes()) { Position = 0 };
 
-				stat.Value = Byt3Serializer.ReadPacket(ms);
+				bool ret = Byt3Serializer.TryReadPacket(ms, out stat.Value);
+				if (!ret) throw new Exception("Read packet Exception");
 				stat.StatType = (CardPlayerStatType)s.ReadInt();
 
 				return stat;
@@ -87,7 +91,7 @@ namespace Networking
 				s.Write(obj.ValueType.AssemblyQualifiedName);
 
 				MemoryStream ms = new MemoryStream();
-				Byt3Serializer.WritePacket(ms, obj.Value);
+				if (!Byt3Serializer.TryWritePacket(ms, obj.Value)) throw new Exception("Serializer Write Error");
 				byte[] buf = new byte[ms.Length];
 				ms.Position = 0;
 				ms.Read(buf, 0, buf.Length);
@@ -142,7 +146,7 @@ namespace Networking
 		{
 			InitializeSerializer();
 			MemoryStream ms = new MemoryStream();
-			Byt3Serializer.WritePacket(ms, Statistics);
+			if(!Byt3Serializer.TryWritePacket(ms, Statistics))throw new Exception("Serializer Write Error") ;
 			return ms.GetBuffer().Take((int)ms.Position).ToArray();
 			//Tuple<int[], int[], string[]> ret =
 			//	new Tuple<int[], int[], string[]>(
@@ -167,8 +171,10 @@ namespace Networking
 		public static EntityStatistics FromNetwork(byte[] buffer)
 		{
 			InitializeSerializer();
-			MemoryStream ms = new MemoryStream(buffer) {Position = 0};
-			return Byt3Serializer.ReadPacket<EntityStatistics>(ms);
+			MemoryStream ms = new MemoryStream(buffer) { Position = 0 };
+			bool ret = Byt3Serializer.TryReadPacket(ms, out EntityStatistics stat);
+			if (!ret) throw new Exception("Read packet Exception");
+			return stat;
 			//EntityStatistics e = new EntityStatistics();
 			//e.InitializeStatDictionary(); //Creates the Dictionary for us
 			//for (int i = 0; i < stats.Item1.Length; i++)
