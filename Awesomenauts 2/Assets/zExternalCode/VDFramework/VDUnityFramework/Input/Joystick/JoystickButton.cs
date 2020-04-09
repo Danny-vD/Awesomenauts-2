@@ -1,4 +1,4 @@
-﻿namespace VDFramework.VDUnityFramework.Input.Joystick
+﻿namespace VDFramework.Input.Joystick
 {
 	public enum JoystickButton
 	{

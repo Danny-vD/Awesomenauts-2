@@ -10,9 +10,9 @@ using ScriptableObjects.Audio.AudioSet;
 using Structs.Audio;
 using Structs.Audio.AudioSetPerEnum;
 using Utility;
-using VDFramework.SharedClasses.EventSystem;
-using VDFramework.VDUnityFramework.Singleton;
 using UnityEngine;
+using VDFramework.EventSystem;
+using VDFramework.Singleton;
 
 namespace Audio
 {

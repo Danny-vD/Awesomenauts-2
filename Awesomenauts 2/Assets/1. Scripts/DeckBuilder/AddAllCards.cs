@@ -1,41 +1,38 @@
 ﻿using Networking;
 using UnityEngine;
+using Utility.UI;
 using VDFramework;
 
 namespace DeckBuilder
-{	
+{
 	public class AddAllCards : BetterMonoBehaviour
 	{
-		[SerializeField]
-		private GameObject[] cardParents = new GameObject[0];
-
 		private void Start()
 		{
-			foreach (GameObject cardParent in cardParents)
+			AddCardsAsChild(CachedTransform);
+		}
+
+		private static void AddCardsAsChild(Transform parentTransform)
+		{
+			int length = CardNetworkManager.Instance.CardEntries.Length;
+
+			for (int id = 0; id < length; id++)
 			{
-				AddCardsAsChild(cardParent);
+				CardEntry entry = CardNetworkManager.Instance.CardEntries[id];
+				InstantiateCardEntry(entry, parentTransform, id);
 			}
 		}
 
-		private static void AddCardsAsChild(GameObject parent)
+		private static void InstantiateCardEntry(CardEntry entry, Transform parent, int id)
 		{
-			Transform parentTransform = parent.transform;
-
-			foreach (CardEntry entry in CardNetworkManager.Instance.CardEntries)
-			{
-				InstantiateCardEntry(entry, parentTransform);
-			}
-		}
-
-		private static void InstantiateCardEntry(CardEntry entry, Transform parent)
-		{
-			if (entry.Prefab == null)
+			if (entry.cardSprite == null)
 			{
 				return;
 			}
-				
-				
-			Instantiate(entry.Prefab, parent);
+
+			AbstractUICard card = UICardFactory.Instance.CreateNewCard<AvailableUICard>(parent, id);
+
+			card.Sprite = entry.cardSprite;
 		}
 	}
 }

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using VDFramework.VDUnityFramework.Singleton;
+using VDFramework.Singleton;
 
-namespace VDFramework.SharedClasses.EventSystem
+namespace VDFramework.EventSystem
 {
 	public class EventManager : Singleton<EventManager>
 	{
@@ -26,7 +26,7 @@ namespace VDFramework.SharedClasses.EventSystem
 			{
 				switch (handler)
 				{
-					case EventHandler<TEvent> eventHandler:
+					case VDFramework.EventSystem.EventHandler<TEvent> eventHandler:
 						eventHandler.Invoke(eventToRaise);
 						break;
 					case ParameterlessEventHandler parameterlessEventHandler:
@@ -40,7 +40,7 @@ namespace VDFramework.SharedClasses.EventSystem
 		public void AddListener<TEvent>(Action<TEvent> listener, int priorityOrder = 0)
 			where TEvent : VDEvent
 		{
-			EventHandler handler = new EventHandler<TEvent>(listener, priorityOrder);
+			EventHandler handler = new VDFramework.EventSystem.EventHandler<TEvent>(listener, priorityOrder);
 
 			AddListenerInternal<TEvent>(handler);
 		}

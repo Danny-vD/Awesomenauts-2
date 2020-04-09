@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace VDFramework.SharedClasses.Extensions
+namespace VDFramework.Extensions
 {
 	public static class ListExtensions
 	{

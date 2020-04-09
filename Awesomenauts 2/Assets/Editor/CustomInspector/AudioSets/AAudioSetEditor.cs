@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
-using VDFramework.SharedClasses.Extensions;
 using Interfaces.Audio;
 using ScriptableObjects.Audio.AudioSet;
 using UnityEditor;
 using UnityEngine;
+using VDFramework.Extensions;
 
 namespace CustomInspector.AudioSets
 {

@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using VDFramework.SharedClasses.Extensions;
 using Enums.Announcer;
 using Enums.Character;
 using UnityEditor;
 using UnityEngine;
+using VDFramework.Extensions;
 
 namespace CustomInspector.AudioManager
 {

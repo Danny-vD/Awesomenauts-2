@@ -1,21 +1,12 @@
 using UnityEngine;
 
-namespace Assets {
-	public class RotateComponent : MonoBehaviour
+public class RotateComponent : MonoBehaviour
+{
+	// Update is called once per frame
+	private void Update()
 	{
-		// Start is called before the first frame update
-		void Start()
-		{
-        
-		}
+		float amount = 40f * Time.deltaTime;
 
-		// Update is called once per frame
-		void Update()
-		{
-			float amount = 40f*Time.deltaTime;
-
-
-			transform.Rotate(Vector3.forward, amount);
-		}
+		transform.Rotate(Vector3.forward, amount);
 	}
 }

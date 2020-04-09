@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VDFramework.VDUnityFramework.BaseClasses
+namespace VDFramework
 {
 	/// <summary>
 	/// An 'improved' <see cref="MonoBehaviour"/> which caches often used properties

@@ -16,8 +16,10 @@ namespace Networking
 	public struct CardEntry
 	{
 		public EntityStatistics Statistics;
+		
 		public GameObject Prefab;
-
+		public Sprite cardSprite;
+		
 		private class EntityStatisticsSerializer : ASerializer<EntityStatistics>
 		{
 			public override EntityStatistics DeserializePacket(PrimitiveValueWrapper s)
@@ -77,7 +79,7 @@ namespace Networking
 				MemoryStream ms = new MemoryStream(s.ReadBytes()) {Position = 0};
 
 				stat.Value = Byt3Serializer.ReadPacket(ms);
-				stat.StatType = (CardPlayerStatType)s.ReadInt();
+				stat.StatType = (CardPlayerStatType) s.ReadInt();
 
 				return stat;
 			}
@@ -92,7 +94,7 @@ namespace Networking
 				ms.Position = 0;
 				ms.Read(buf, 0, buf.Length);
 				s.Write(buf);
-				s.Write((int)obj.StatType);
+				s.Write((int) obj.StatType);
 			}
 		}
 
@@ -110,7 +112,7 @@ namespace Networking
 		}
 
 		private class StructSerializer<T> : ASerializer<T>
-		where T : struct
+			where T : struct
 		{
 			public override void SerializePacket(PrimitiveValueWrapper s, T obj)
 			{
@@ -124,6 +126,7 @@ namespace Networking
 		}
 
 		private static bool init;
+
 		private static void InitializeSerializer()
 		{
 			if (init) return;
@@ -143,7 +146,7 @@ namespace Networking
 			InitializeSerializer();
 			MemoryStream ms = new MemoryStream();
 			Byt3Serializer.WritePacket(ms, Statistics);
-			return ms.GetBuffer().Take((int)ms.Position).ToArray();
+			return ms.GetBuffer().Take((int) ms.Position).ToArray();
 			//Tuple<int[], int[], string[]> ret =
 			//	new Tuple<int[], int[], string[]>(
 			//		new int[Statistics.Stats.Count],
@@ -161,6 +164,7 @@ namespace Networking
 
 			//return ret;
 		}
+
 		//int[] Stat Type Enum
 		//int[] Stat Type
 		//float[] Stat Values
@@ -195,7 +199,5 @@ namespace Networking
 			//	}
 			//return e;
 		}
-
 	}
-
 }
