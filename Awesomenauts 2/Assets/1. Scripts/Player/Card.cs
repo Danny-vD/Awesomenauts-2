@@ -26,10 +26,10 @@ public class Card : NetworkBehaviour
 	}
 
 	[TargetRpc]
-	public void TargetSendStats(NetworkConnection identity, int[] statType, int[] dataType, string[] data)
+	public void TargetSendStats(NetworkConnection identity, byte[] data)
 	{
 		Debug.Log("Received Stats");
-		Statistics = CardEntry.FromNetwork(new Tuple<int[], int[], string[]>(statType, dataType, data));
+		Statistics = CardEntry.FromNetwork(data);
 		StatisticsValid = true;
 	}
 

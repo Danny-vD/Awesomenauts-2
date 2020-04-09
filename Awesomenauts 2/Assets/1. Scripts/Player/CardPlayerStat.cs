@@ -2,12 +2,6 @@ using System;
 
 public abstract class CardPlayerStat
 {
-	public CardPlayerStatDataType Type;
-
-	protected CardPlayerStat(CardPlayerStatDataType type)
-	{
-		Type = type;
-	}
 	public abstract object GetValue();
 	public abstract void SetValue(object value);
 }
@@ -17,7 +11,7 @@ public class CardPlayerStat<T> : CardPlayerStat
 	public T Value;
 
 
-	public CardPlayerStat(T value, CardPlayerStatDataType type) : base(type)
+	public CardPlayerStat(T value) : base()
 	{
 		Value = value;
 	}

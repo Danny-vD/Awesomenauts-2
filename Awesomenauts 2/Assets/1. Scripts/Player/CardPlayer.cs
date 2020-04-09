@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Mirror;
 using Networking;
 using UnityEngine;
-
 
 public class CardPlayer : NetworkBehaviour
 {
@@ -142,9 +142,10 @@ public class CardPlayer : NetworkBehaviour
 			NetworkServer.Spawn(cardInstance, GetComponent<NetworkIdentity>().connectionToClient);
 			Card c = cardInstance.GetComponent<Card>();
 			c.Statistics = e.Statistics;
-			Tuple<int[], int[], string[]> networkData = e.StatisticsToNetworkableTypes();
+			c.Statistics.SetValue(CardPlayerStatType.TeamID, ClientID); //Set Team ID, used to find out to whom the card belongs.
+			byte[] networkData = e.StatisticsToNetworkableArray();
 			Debug.Log("Sending Stats");
-			c.TargetSendStats(netIdentity.connectionToClient, networkData.Item1, networkData.Item2, networkData.Item3);
+			c.TargetSendStats(netIdentity.connectionToClient, networkData);
 
 			Hand.AddToHand(c.GetComponent<NetworkIdentity>());
 			Hand.TargetAddToHand(netIdentity.connectionToClient,
@@ -195,6 +196,26 @@ public class CardPlayer : NetworkBehaviour
 
 	#region DragCardFromHand
 
+	private void HandleDraggingCardFromHand()
+	{
+		Vector3 dir = GetCardPosition() - draggedCard.transform.position;
+		float m = Mathf.Clamp(dir.magnitude * DragIntertiaMultiplier, 0, MaxIntertia);
+
+		dir *= Drag;
+		draggedCard.transform.position += dir;
+		Vector3 axis = Vector3.Cross(Vector3.up, dir);
+		Quaternion q = Quaternion.AngleAxis(m, axis);
+
+
+		draggedCard.transform.rotation = q;
+		Quaternion turnOverRot = Quaternion.AngleAxis(180, draggedCard.transform.right);
+		draggedCard.transform.rotation *= turnOverRot;
+		Vector3 euler = new Vector3(CardCounterRotation.x,
+			invertCardRotation ? -CardCounterRotation.y : CardCounterRotation.y, CardCounterRotation.z);
+		Quaternion c = Quaternion.Euler(euler);
+		draggedCard.transform.rotation *= c;
+	}
+
 	private void HandleReleasedCardFromHand()
 	{
 		dragging = false;
@@ -226,11 +247,11 @@ public class CardPlayer : NetworkBehaviour
 		Debug.Log("Released Card");
 	}
 
-	private void HandleClickedOnCardOnHand(Card c)
+	private void HandleClickedOnCardOnHand(Card c, bool fromHand)
 	{
-		if (Hand.IsCardFromHand(c))
-			Hand.SetSelectedCard(c);
-		else return;
+		if (!fromHand) return;
+
+		Hand.SetSelectedCard(c);
 		canSnap = true;
 		if (c.Statistics.HasValue(CardPlayerStatType.Solar))
 		{
@@ -258,112 +279,147 @@ public class CardPlayer : NetworkBehaviour
 
 	#endregion
 
+	#region DragCardFromBoard
+
+
+
+	public ArrowDisplay ArrowDisplayHelper;
+	private void HandleClickedOnCardOnBoard(Card c)
+	{
+		if (c.Statistics.GetValue<int>(CardPlayerStatType.TeamID) == ClientID) //Card belongs to us
+		{
+			draggedCard = c;
+			dragging = true;
+		}
+	}
+
+	private void HandleReleasedCardFromBoard()
+	{
+		dragging = false;
+		draggedCard = null;
+		ArrowDisplayHelper.Deactivate();
+	}
+
+	private void HandleDraggingCardFromBoard()
+	{
+		if (!dragging) return;
+
+		Vector3 arrowPos;
+		if (IsHoveringCard(out RaycastHit info))
+		{
+			arrowPos = info.collider.transform.position;
+		}
+		else
+		{
+			arrowPos = GetMousePositionOnDragLayer();
+		}
+		ArrowDisplayHelper.SetArrowPositions(draggedCard.transform.position, arrowPos);
+	}
+
+	#endregion
+
 
 	private Card hoveredCard = null;
 	private float hoverTimeStamp;
 
+	private void HoverCard(Card c, bool isPrevious, bool fromOwnTeam)
+	{
+		if (!isPrevious) //If this is a new card
+		{
+			if (hoveredCard != null)
+				hoveredCard.transform.localScale = Vector3.one; //Reset if we hovered a card previously
+			if (fromOwnTeam) //Check if the card is from the hand
+			{
+				hoverTimeStamp = Time.realtimeSinceStartup; //Update the Timestamp
+				hoveredCard = c; //Set the hovered Card.
+			}
+		}
+
+		if (hoveredCard != null)
+		{
+			float t = Time.realtimeSinceStartup - hoverTimeStamp;
+			float x = Mathf.Clamp01(t / CardHoverAnimationTime);
+			hoveredCard.transform.localScale = Vector3.one * (1 + x * AdditionalHoveredCardScale);
+		}
+	}
+
 	private void DragCard()
 	{
-		if (!dragging)
+		bool clicked = Input.GetMouseButton(0);
+		bool hoverCard = IsHoveringCard(out RaycastHit chit);
+		Card c = null;
+		if (hoverCard) c = chit.transform.GetComponent<Card>();
+		bool fromHand = c != null && Hand.IsCardFromHand(c);
+		bool fromOwnTeam = c != null && c.StatisticsValid &&
+						   c.Statistics.GetValue<int>(CardPlayerStatType.TeamID) == ClientID;
+		bool isPrevious = hoveredCard != null && c == hoveredCard;
+
+		if (hoverCard)
 		{
-			//IF is hovering
-			//Make Scale Bigger
-			//when card changed or no card hovered reset old card scale
-			if (IsHoveringCard(out RaycastHit chit))
-			{
-				Card c = chit.transform.GetComponent<Card>();
 
-				bool isPrevious = hoveredCard != null && c == hoveredCard;
-
-				if (!isPrevious) //If this is a new card
-				{
-					if (hoveredCard != null)
-						hoveredCard.transform.localScale = Vector3.one; //Reset if we hovered a card previously
-					if (Hand.IsCardFromHand(c)) //Check if the card is from the hand
-					{
-						hoverTimeStamp = Time.realtimeSinceStartup; //Update the Timestamp
-						hoveredCard = c; //Set the hovered Card.
-					}
-				}
-
-				if (hoveredCard != null)
-				{
-					float t = Time.realtimeSinceStartup - hoverTimeStamp;
-					float x = Mathf.Clamp01(t / CardHoverAnimationTime);
-					hoveredCard.transform.localScale = Vector3.one * (1 + x * AdditionalHoveredCardScale);
-				}
-
-			}
-			else
-			{
-				if (hoveredCard != null)
-				{
-					hoveredCard.transform.localScale = Vector3.one; //Reset if we hovered a new card }
-					hoveredCard = null;
-				}
-			}
-
-			if (HasClickedOnCard(out RaycastHit cardHit))
-			{
-				if (hoveredCard != null)
-				{
-					hoveredCard.transform.localScale = Vector3.one; //Reset if we hovered a new card }
-					hoveredCard = null;
-				}
-
-				Card c = cardHit.transform.GetComponent<Card>();
+			HoverCard(c, isPrevious, fromOwnTeam);
 
 
-				switch (c.CardState)
-				{
-					case CardState.OnDeck:
-						break;
-					case CardState.OnHand:
-						HandleClickedOnCardOnHand(c);
-						break;
-					case CardState.OnBoard:
-						break;
-					case CardState.OnGrave:
-						break; //DoNothing
-				}
-			}
 		}
 		else
 		{
-			if (!Input.GetMouseButton(0))
+			if (hoveredCard != null)
 			{
-				switch (draggedCard.CardState)
-				{
-					case CardState.OnDeck:
-						break;
-					case CardState.OnHand:
-						HandleReleasedCardFromHand();
-						break;
-					case CardState.OnBoard:
-						break;
-					case CardState.OnGrave:
-						break; //DoNothing
-				}
+				hoveredCard.transform.localScale = Vector3.one; //Reset if we hovered a new card }
+				hoveredCard = null;
 			}
-			else
+		}
+
+
+		if (!dragging && hoverCard && clicked) //OnCardDrag Start
+		{
+
+			switch (c.CardState)
 			{
-				Vector3 dir = GetCardPosition() - draggedCard.transform.position;
-				float m = Mathf.Clamp(dir.magnitude * DragIntertiaMultiplier, 0, MaxIntertia);
-
-				dir *= Drag;
-				draggedCard.transform.position += dir;
-				Vector3 axis = Vector3.Cross(Vector3.up, dir);
-				Quaternion q = Quaternion.AngleAxis(m, axis);
-
-
-				draggedCard.transform.rotation = q;
-				Quaternion turnOverRot = Quaternion.AngleAxis(180, draggedCard.transform.right);
-				draggedCard.transform.rotation *= turnOverRot;
-				Vector3 euler = new Vector3(CardCounterRotation.x,
-					invertCardRotation ? -CardCounterRotation.y : CardCounterRotation.y, CardCounterRotation.z);
-				Quaternion c = Quaternion.Euler(euler);
-				draggedCard.transform.rotation *= c;
+				case CardState.OnDeck:
+					break;
+				case CardState.OnHand:
+					HandleClickedOnCardOnHand(c, fromHand);
+					break;
+				case CardState.OnBoard:
+					HandleClickedOnCardOnBoard(c);
+					break;
+				case CardState.OnGrave:
+					break; //DoNothing
 			}
+		}
+		else if (dragging && !clicked && draggedCard != null) //Card Released
+		{
+			switch (draggedCard.CardState)
+			{
+				case CardState.OnDeck:
+					break;
+				case CardState.OnHand:
+					HandleReleasedCardFromHand();
+					break;
+				case CardState.OnBoard:
+					HandleReleasedCardFromBoard();
+					break;
+				case CardState.OnGrave:
+					break; //DoNothing
+			}
+		}
+		else if (dragging && clicked && draggedCard != null) //Card Dragging
+		{
+			switch (draggedCard.CardState)
+			{
+				case CardState.OnDeck:
+					break;
+				case CardState.OnHand:
+					HandleDraggingCardFromHand();
+					break;
+				case CardState.OnBoard:
+					HandleDraggingCardFromBoard();
+					break;
+				case CardState.OnGrave:
+					break; //DoNothing
+			}
+
 		}
 	}
 
@@ -408,16 +464,6 @@ public class CardPlayer : NetworkBehaviour
 		return i;
 	}
 
-	private bool HasClickedOnCard(out RaycastHit info)
-	{
-		if (Input.GetMouseButtonDown(0) && IsHoveringCard(out info))
-		{
-			return true;
-		}
-
-		info = new RaycastHit();
-		return false;
-	}
 
 	private bool IsHoveringCard(out RaycastHit info)
 	{

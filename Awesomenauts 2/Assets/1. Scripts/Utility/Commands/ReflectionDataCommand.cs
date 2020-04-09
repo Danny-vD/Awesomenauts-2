@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using CommandRunner;
+using Byt3.CommandRunner;
 using UnityEngine;
 
 namespace Utility.Commands
@@ -40,7 +40,7 @@ namespace Utility.Commands
 			Debug.Log("Root Nodes: " + RootNodes.Count);
 		}
 
-		private static void ReflectData(StartupInfo info, string[] args)
+		private static void ReflectData(StartupArgumentInfo info, string[] args)
 		{
 			for (int i = 0; i < args.Length; i++)
 			{

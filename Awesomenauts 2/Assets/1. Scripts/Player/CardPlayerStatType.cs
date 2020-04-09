@@ -3,5 +3,6 @@ public enum CardPlayerStatType
 	Solar,
 	HP,
 	Attack,
-    Description
+    Description,
+	TeamID
 }

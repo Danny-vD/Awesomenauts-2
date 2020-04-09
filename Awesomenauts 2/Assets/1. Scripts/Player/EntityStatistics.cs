@@ -24,6 +24,21 @@ public class EntityStatistics
 		}
 	}
 
+	public enum CardPlayerStatDataType
+	{
+		Int,
+		Float,
+		String
+	}
+
+	[Serializable]
+	public class InternalStat
+	{
+		public CardPlayerStatType type;
+		public CardPlayerStatDataType dataType;
+		public string value;
+	}
+
 	public void InitializeStatDictionary()
 	{
 		if (StartStatistics == null) StartStatistics = new List<InternalStat>();
@@ -32,15 +47,15 @@ public class EntityStatistics
 		{
 			if (startStatistic.dataType == CardPlayerStatDataType.Int)
 			{
-				Stats.Add(startStatistic.type, new CardPlayerStat<int>(int.Parse(startStatistic.value), CardPlayerStatDataType.Int));
+				Stats.Add(startStatistic.type, new CardPlayerStat<int>(int.Parse(startStatistic.value)));
 			}
 			else if (startStatistic.dataType == CardPlayerStatDataType.Float)
 			{
-				Stats.Add(startStatistic.type, new CardPlayerStat<float>(float.Parse(startStatistic.value), CardPlayerStatDataType.Float));
+				Stats.Add(startStatistic.type, new CardPlayerStat<float>(float.Parse(startStatistic.value)));
 			}
 			else if (startStatistic.dataType == CardPlayerStatDataType.String)
 			{
-				Stats.Add(startStatistic.type, new CardPlayerStat<string>(startStatistic.value, CardPlayerStatDataType.String));
+				Stats.Add(startStatistic.type, new CardPlayerStat<string>(startStatistic.value));
 			}
 		}
 
@@ -70,5 +85,24 @@ public class EntityStatistics
 		if (registeredEvents.ContainsKey(type))
 			registeredEvents[type](value); //Call the Events.
 		if (Stats.ContainsKey(type)) Stats[type].SetValue(value);
+		else
+		{
+			CardPlayerStat stat=null;
+			if (value is int v)
+			{
+                stat = new CardPlayerStat<int>(v);
+			}
+			else if (value is float f)
+			{
+				stat = new CardPlayerStat<float>(f);
+			}
+			else
+			{
+				stat = new CardPlayerStat<string>(value.ToString());
+
+			}
+
+            Stats.Add(type, stat);
+		}
 	}
 }
