@@ -29,6 +29,7 @@ public class GameInitializer : NetworkBehaviour
 		MasterServerComp = GetComponent<MasterServerComponent>();
 		Instance = this;
 		ProcessArgs();
+		Application.targetFrameRate = GameData.TargetFPS;
 	}
 
 	// Start is called before the first frame update
@@ -55,7 +56,7 @@ public class GameInitializer : NetworkBehaviour
 		{
 			Runner.RunCommands(Environment.GetCommandLineArgs());
 		}
-		else if(StartupArguments != "")
+		else if (StartupArguments != "")
 		{
 			string[] args = StartupArguments.Split(' ', '\n');
 			Runner.RunCommands(args);

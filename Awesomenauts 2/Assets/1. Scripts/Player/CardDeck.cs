@@ -7,7 +7,7 @@ public class CardDeck : NetworkBehaviour
 {
 	private Vector3 GravePosition;
 	public Vector3 DeckPosition;
-	private Queue<GameObject> DeckContent;
+	private Queue<CardEntry> DeckContent;
 
 	private NetworkIdentity id;
 
@@ -41,22 +41,22 @@ public class CardDeck : NetworkBehaviour
 	private void SetDeckContent(int[] cardIds)
 	{
 		DeckContent?.Clear();
-		GameObject[] cardPrefabs = new GameObject[cardIds.Length];
+		CardEntry[] cardPrefabs = new CardEntry[cardIds.Length];
 		for (int i = 0; i < cardPrefabs.Length; i++)
 		{
-			cardPrefabs[i] = CardNetworkManager.Instance.CardEntries[cardIds[i]].Prefab;
+			cardPrefabs[i] = CardNetworkManager.Instance.CardEntries[cardIds[i]];
 		}
-		DeckContent = new Queue<GameObject>(cardPrefabs);
+		DeckContent = new Queue<CardEntry>(cardPrefabs);
 	}
 
 
 	//Server is responsible for drawing/spawning a card
 	[Server]
-	public Card DrawCard()
+	public CardEntry DrawCard()
 	{
-		GameObject cardInstance = Instantiate(DeckContent.Dequeue(), DeckPosition, Quaternion.identity);
-		NetworkServer.Spawn(cardInstance, id.connectionToClient);
-		return cardInstance.GetComponent<Card>();
+		CardEntry e = DeckContent.Dequeue();
+		e.Statistics.InitializeStatDictionary();
+		return e;
 	}
 
 	[TargetRpc]

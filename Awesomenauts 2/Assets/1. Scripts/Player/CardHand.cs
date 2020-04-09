@@ -25,7 +25,9 @@ public class CardHand : NetworkBehaviour
     public float AnchorOffset;
     [Range(-1, 1)]
     public float DeltaYPerCard;
-    public LayerMask PlayerHandLayer;
+    [Range(-1, 1)]
+    public float DeltaYLocalPerCard;
+	public LayerMask PlayerHandLayer;
 
     public void InvertValues()
     {
@@ -38,7 +40,7 @@ public class CardHand : NetworkBehaviour
     }
 
 
-    private void SetCardTransform(Transform cardTransform, int i, Vector3 anchor, float yOffsetFromAnchor)
+    private void SetCardTransform(Transform cardTransform, int i, Vector3 anchor, float yOffsetFromAnchor, float deltaYLocal)
     {
         Vector3 centerPosition = anchor + cardTransform.up * yOffsetFromAnchor + Vector3.left * AnchorOffset;
         float rotation = (i + 0.5f) / CardsOnHand.Count;
@@ -56,7 +58,9 @@ public class CardHand : NetworkBehaviour
         Vector3 newCardPos = cardTransform.position;
         cardTransform.position = Vector3.Lerp(oldCardPos, newCardPos, Drag);
 
+		cardTransform.LookAt(Camera.main.transform);
 
+		cardTransform.position += transform.up * deltaYLocal;
     }
 
     [TargetRpc]
@@ -74,6 +78,7 @@ public class CardHand : NetworkBehaviour
 		{
 			c.gameObject.layer = CardPlayer.UnityTrashWorkaround(PlayerHandLayer);
             AddCard(c);
+            c.SetState(CardState.OnHand);
 		}
     }
 
@@ -87,6 +92,7 @@ public class CardHand : NetworkBehaviour
     {
         if (!CardsOnHand.Contains(card)) return;
         if (SelectedCard == card) SetSelectedCard(null);
+
         CardsOnHand.Remove(card);
     }
 
@@ -111,7 +117,8 @@ public class CardHand : NetworkBehaviour
                 float ii = i + 0.5f - CardsOnHand.Count / 2f;
                 ii = Mathf.Abs(ii);
                 float deltaY = OffsetFromAnchor + DeltaYPerCard * ii;
-                SetCardTransform(CardsOnHand[i].transform, i, Anchor, deltaY);
+                float deltaYLocal = DeltaYLocalPerCard * ii;
+                SetCardTransform(CardsOnHand[i].transform, i, Anchor, deltaY, deltaYLocal);
             }
         }
     }

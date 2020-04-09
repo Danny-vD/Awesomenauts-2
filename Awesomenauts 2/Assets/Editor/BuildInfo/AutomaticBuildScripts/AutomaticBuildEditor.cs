@@ -15,7 +15,7 @@ namespace BuildInfo.AutomaticBuildScripts
 			DrawDefaultInspector();
 
 			if (!enable) return;
-
+			if (target == null) return;
 			AutomaticBuildScript myScript = (AutomaticBuildScript) target;
 			if (GUILayout.Button("Build All"))
 			{
@@ -66,6 +66,7 @@ namespace BuildInfo.AutomaticBuildScripts
 			DrawDefaultInspector();
 
 
+			if (target == null) return;
 			BuildOpts myScript = (BuildOpts) target;
 			if (GUILayout.Button("Build"))
 			{
