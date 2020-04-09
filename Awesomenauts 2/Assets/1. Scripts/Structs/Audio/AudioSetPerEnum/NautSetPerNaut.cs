@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Enums.Character;
 using Interfaces;
 using Interfaces.Audio;

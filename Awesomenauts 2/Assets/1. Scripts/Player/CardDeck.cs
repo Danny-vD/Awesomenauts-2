@@ -3,71 +3,73 @@ using Networking;
 using Mirror;
 using UnityEngine;
 
-public class CardDeck : NetworkBehaviour
-{
-	private Vector3 GravePosition;
-	public Vector3 DeckPosition;
-	private Queue<CardEntry> DeckContent;
-
-	private NetworkIdentity id;
-
-	// Start is called before the first frame update
-	void Start()
+namespace Player {
+	public class CardDeck : NetworkBehaviour
 	{
-		id = GetComponent<NetworkIdentity>();
-		if (isLocalPlayer)
-			CmdSendDeckContent(CardNetworkManager.Instance.CardsInDeck);
-	}
+		private Vector3 GravePosition;
+		public Vector3 DeckPosition;
+		private Queue<CardEntry> DeckContent;
 
-	[Command]
-	public void CmdSendDeckContent(int[] cardIds)
-	{
-		Debug.Log("Setting Content of Deck on Server..");
-		SetDeckContent(cardIds); //Set on server
-		TargetSetDeckContent(cardIds); //Set On clients
-	}
+		private NetworkIdentity id;
 
-	[TargetRpc]
-	public void TargetSetDeckContent(int[] cardIds)
-	{
-		if (hasAuthority)
+		// Start is called before the first frame update
+		void Start()
 		{
-			Debug.Log("Setting Content of Deck on Client..");
-			SetDeckContent(CardNetworkManager.Instance.CardsInDeck);
+			id = GetComponent<NetworkIdentity>();
+			if (isLocalPlayer)
+				CmdSendDeckContent(CardNetworkManager.Instance.CardsInDeck);
 		}
-	}
 
-	//Client Sets the content of the deck by ids
-	private void SetDeckContent(int[] cardIds)
-	{
-		DeckContent?.Clear();
-		CardEntry[] cardPrefabs = new CardEntry[cardIds.Length];
-		for (int i = 0; i < cardPrefabs.Length; i++)
+		[Command]
+		public void CmdSendDeckContent(int[] cardIds)
 		{
-			cardPrefabs[i] = CardNetworkManager.Instance.CardEntries[cardIds[i]];
+			Debug.Log("Setting Content of Deck on Server..");
+			SetDeckContent(cardIds); //Set on server
+			TargetSetDeckContent(cardIds); //Set On clients
 		}
-		DeckContent = new Queue<CardEntry>(cardPrefabs);
-	}
+
+		[TargetRpc]
+		public void TargetSetDeckContent(int[] cardIds)
+		{
+			if (hasAuthority)
+			{
+				Debug.Log("Setting Content of Deck on Client..");
+				SetDeckContent(CardNetworkManager.Instance.CardsInDeck);
+			}
+		}
+
+		//Client Sets the content of the deck by ids
+		private void SetDeckContent(int[] cardIds)
+		{
+			DeckContent?.Clear();
+			CardEntry[] cardPrefabs = new CardEntry[cardIds.Length];
+			for (int i = 0; i < cardPrefabs.Length; i++)
+			{
+				cardPrefabs[i] = CardNetworkManager.Instance.CardEntries[cardIds[i]];
+			}
+			DeckContent = new Queue<CardEntry>(cardPrefabs);
+		}
 
 
-	//Server is responsible for drawing/spawning a card
-	[Server]
-	public CardEntry DrawCard()
-	{
-		CardEntry e = DeckContent.Dequeue();
-		e.Statistics.InitializeStatDictionary();
-		return e;
-	}
+		//Server is responsible for drawing/spawning a card
+		[Server]
+		public CardEntry DrawCard()
+		{
+			CardEntry e = DeckContent.Dequeue();
+			e.Statistics.InitializeStatDictionary();
+			return e;
+		}
 
-	[TargetRpc]
-	public void TargetSetPositions(Vector3 deckPosition, Vector3 gravePosition)
-	{
-		DeckPosition = deckPosition;
-		GravePosition = gravePosition;
-	}
-	// Update is called once per frame
-	void Update()
-	{
+		[TargetRpc]
+		public void TargetSetPositions(Vector3 deckPosition, Vector3 gravePosition)
+		{
+			DeckPosition = deckPosition;
+			GravePosition = gravePosition;
+		}
+		// Update is called once per frame
+		void Update()
+		{
 
+		}
 	}
 }

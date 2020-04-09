@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Linq;
+using VDFramework.SharedClasses.Extensions;
 using Interfaces.Audio;
 using ScriptableObjects.Audio.AudioSet;
 using UnityEditor;
 using UnityEngine;
-using VDFramework.Extensions;
 
 namespace CustomInspector.AudioSets
 {
-	public abstract class AAudioSetEditor<TEnum, TStruct> : Editor
+	public abstract class AAudioSetEditor<TEnum, TStruct> : UnityEditor.Editor
 		where TEnum : struct, Enum
 		where TStruct : IAudioClipDataPerSoundType<TEnum>, new()
 	{

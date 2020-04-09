@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Player;
 using Byt3.Serialization;
 using Byt3.Serialization.Serializers;
-using Byt3.Serialization.Serializers.Base;
 using UnityEngine;
 
 namespace Networking

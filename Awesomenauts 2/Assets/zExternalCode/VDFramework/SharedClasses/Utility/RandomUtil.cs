@@ -1,7 +1,7 @@
-﻿namespace VDFramework.Utility
+﻿using VDFramework.SharedClasses.Extensions;
+
+namespace VDFramework.SharedClasses.Utility
 {
-	using Extensions;
-	
 	public static class RandomUtil
 	{
 		private static readonly bool[] boolValues = {true, false};

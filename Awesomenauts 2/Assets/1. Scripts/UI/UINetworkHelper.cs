@@ -1,184 +1,188 @@
 using System;
 using System.Reflection;
 using System.Threading;
+using DataObjects;
+using Networking;
+using Utility;
 using MasterServer.Client;
 using MasterServer.Common.Networking.Packets;
-using Networking;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UINetworkHelper : MonoBehaviour
-{
-	public struct FieldInformation
+namespace UI {
+	public class UINetworkHelper : MonoBehaviour
 	{
-		public string path;
-		public FieldInfo info;
-		public object reference;
-	}
-
-	public InputField[] fields;
-
-	CancellationTokenSource ts = new CancellationTokenSource();
-
-	public GameObject MainMenu;
-	public GameObject LoadingScreen;
-	public GameObject ErrorScreen;
-	public Text ErrorText;
-	private string errText;
-	private string errTitle;
-	public Text ErrorTitle;
-	public Text QueueStatus;
-	private string StatusText;
-	private float TimeStamp;
-	private bool DisplayTimestamp;
-	private bool FindMatchOnlyDelayFlag;
-
-	private EndPointInfo ServerInstance;
-	private float StartTimestamp;
-	private float LastUpdateTimestamp;
-	private string TimeStampUI =>
-		DisplayTimestamp ? $"({Mathf.RoundToInt(Time.realtimeSinceStartup - TimeStamp).ToString()})" : "";
-
-	public Button buttonFindMatch;
-	private bool UpdateQueueStatus;
-	private bool UpdateErrorStatus;
-
-	void Start()
-	{
-		foreach (InputField inputField in fields)
+		public struct FieldInformation
 		{
-			inputField.SetTextWithoutNotify(GameInitializer.Data.Network.DefaultAddress.IP);
+			public string path;
+			public FieldInfo info;
+			public object reference;
 		}
-		if (GameInitializer.Data.Network.FindMatchOnly && GameInitializer.Data.Network.FindMatchOnlyDelay == 0) buttonFindMatch.onClick.Invoke();
-		StartTimestamp = Time.realtimeSinceStartup;
-	}
 
-	private void OnDestroy()
-	{
-		ts.Cancel();
+		public InputField[] fields;
 
-	}
+		CancellationTokenSource ts = new CancellationTokenSource();
 
-	public void AbortQueue()
-	{
-		GameInitializer.Master.AbortQueue();
-	}
+		public GameObject MainMenu;
+		public GameObject LoadingScreen;
+		public GameObject ErrorScreen;
+		public Text ErrorText;
+		private string errText;
+		private string errTitle;
+		public Text ErrorTitle;
+		public Text QueueStatus;
+		private string StatusText;
+		private float TimeStamp;
+		private bool DisplayTimestamp;
+		private bool FindMatchOnlyDelayFlag;
 
-	private void OnMasterServerFoundMatch(MasterServerAPI.ServerInstanceResultPacket serverinstance)
-	{
-		EndPointInfo ep = new EndPointInfo(GameInitializer.Master.Info.Address.IP, serverinstance.Port);
-		ServerInstance = ep;
-		TimeStamp = LastUpdateTimestamp;
-		DisplayTimestamp = false;
-		UpdateQueueStatus = true;
-		SetText("Found Match on Instance: " + serverinstance);
-	}
+		private EndPointInfo ServerInstance;
+		private float StartTimestamp;
+		private float LastUpdateTimestamp;
+		private string TimeStampUI =>
+			DisplayTimestamp ? $"({Mathf.RoundToInt(Time.realtimeSinceStartup - TimeStamp).ToString()})" : "";
 
+		public Button buttonFindMatch;
+		private bool UpdateQueueStatus;
+		private bool UpdateErrorStatus;
 
-
-	//Passthrough for the UI. Since the Network Manager is not loaded in the same scene we need to pass it through something static for the UI to work.
-
-	private void Update()
-	{
-		LastUpdateTimestamp = Time.realtimeSinceStartup;
-		if (!FindMatchOnlyDelayFlag && GameInitializer.Data.Network.FindMatchOnly && GameInitializer.Data.Network.FindMatchOnlyDelay != 0)
+		void Start()
 		{
-			float add = GameInitializer.Data.Network.FindMatchOnlyDelay / 1000f;
-			if (StartTimestamp + add < Time.realtimeSinceStartup)
+			foreach (InputField inputField in fields)
 			{
-				FindMatchOnlyDelayFlag = true;
-				buttonFindMatch.onClick.Invoke();
+				inputField.SetTextWithoutNotify(GameInitializer.Data.Network.DefaultAddress.IP);
+			}
+			if (GameInitializer.Data.Network.FindMatchOnly && GameInitializer.Data.Network.FindMatchOnlyDelay == 0) buttonFindMatch.onClick.Invoke();
+			StartTimestamp = Time.realtimeSinceStartup;
+		}
+
+		private void OnDestroy()
+		{
+			ts.Cancel();
+
+		}
+
+		public void AbortQueue()
+		{
+			GameInitializer.Master.AbortQueue();
+		}
+
+		private void OnMasterServerFoundMatch(MasterServerAPI.ServerInstanceResultPacket serverinstance)
+		{
+			EndPointInfo ep = new EndPointInfo(GameInitializer.Master.Info.Address.IP, serverinstance.Port);
+			ServerInstance = ep;
+			TimeStamp = LastUpdateTimestamp;
+			DisplayTimestamp = false;
+			UpdateQueueStatus = true;
+			SetText("Found Match on Instance: " + serverinstance);
+		}
+
+
+
+		//Passthrough for the UI. Since the Network Manager is not loaded in the same scene we need to pass it through something static for the UI to work.
+
+		private void Update()
+		{
+			LastUpdateTimestamp = Time.realtimeSinceStartup;
+			if (!FindMatchOnlyDelayFlag && GameInitializer.Data.Network.FindMatchOnly && GameInitializer.Data.Network.FindMatchOnlyDelay != 0)
+			{
+				float add = GameInitializer.Data.Network.FindMatchOnlyDelay / 1000f;
+				if (StartTimestamp + add < Time.realtimeSinceStartup)
+				{
+					FindMatchOnlyDelayFlag = true;
+					buttonFindMatch.onClick.Invoke();
+				}
+			}
+
+			if (UpdateQueueStatus)
+			{
+				UpdateQueueText(StatusText);
+			}
+
+			if (UpdateErrorStatus)
+			{
+				UpdateErrText(errTitle, errText);
 			}
 		}
 
-		if (UpdateQueueStatus)
+		private void SetText(string text)
 		{
-			UpdateQueueText(StatusText);
+			StatusText = text;
+			TimeStamp = LastUpdateTimestamp;
 		}
 
-		if (UpdateErrorStatus)
+		private void UpdateQueueText(string text)
 		{
-			UpdateErrText(errTitle, errText);
+			QueueStatus.text =
+				$"{text}{TimeStampUI}";
 		}
-	}
-
-	private void SetText(string text)
-	{
-		StatusText = text;
-		TimeStamp = LastUpdateTimestamp;
-	}
-
-	private void UpdateQueueText(string text)
-	{
-		QueueStatus.text =
-			$"{text}{TimeStampUI}";
-	}
-	private void UpdateErrText(string title, string text)
-	{
-		ErrorTitle.text = title;
-		ErrorText.text = text;
-		ErrorScreen?.SetActive(true);
-		LoadingScreen?.SetActive(false);
-		UpdateErrorStatus = false;
-	}
-
-	#region Button Functions
-
-	public void StartClient()
-	{
-		CardNetworkManager.Instance.ApplyEndPoint();
-		CardNetworkManager.Instance.StartClient();
-	}
-
-	public void StartHost()
-	{
-		CardNetworkManager.Instance.ApplyEndPoint();
-		CardNetworkManager.Instance.StartHost();
-	}
-
-
-	public void StartServer()
-	{
-		CardNetworkManager.Instance.ApplyEndPoint();
-		CardNetworkManager.Instance.StartServer();
-	}
-	public void SetCardsInDeck(int id)
-	{
-		CardNetworkManager.Instance.SetCardsInDeck(id);
-	}
-
-	public void IPChanged(string text)
-	{
-		if (!string.IsNullOrEmpty(text))
+		private void UpdateErrText(string title, string text)
 		{
-			EndPointInfo ep = CardNetworkManager.Instance.CurrentEndPoint;
-			ep.IP = text;
-			CardNetworkManager.Instance.CurrentEndPoint = ep;
+			ErrorTitle.text = title;
+			ErrorText.text = text;
+			ErrorScreen?.SetActive(true);
+			LoadingScreen?.SetActive(false);
+			UpdateErrorStatus = false;
 		}
-	}
 
-	public void FindGame()
-	{
-		UpdateQueueStatus = true;
-		DisplayTimestamp = true;
-		SetText("Connecting to Master Server..");
+		#region Button Functions
 
-		MasterServerAPI.ConnectionEvents ev = new MasterServerAPI.ConnectionEvents();
-		ev.OnError += (MatchMakingErrorCode e, Exception ex) =>
+		public void StartClient()
 		{
-			DisplayTimestamp = false;
+			CardNetworkManager.Instance.ApplyEndPoint();
+			CardNetworkManager.Instance.StartClient();
+		}
+
+		public void StartHost()
+		{
+			CardNetworkManager.Instance.ApplyEndPoint();
+			CardNetworkManager.Instance.StartHost();
+		}
+
+
+		public void StartServer()
+		{
+			CardNetworkManager.Instance.ApplyEndPoint();
+			CardNetworkManager.Instance.StartServer();
+		}
+		public void SetCardsInDeck(int id)
+		{
+			CardNetworkManager.Instance.SetCardsInDeck(id);
+		}
+
+		public void IPChanged(string text)
+		{
+			if (!string.IsNullOrEmpty(text))
+			{
+				EndPointInfo ep = CardNetworkManager.Instance.CurrentEndPoint;
+				ep.IP = text;
+				CardNetworkManager.Instance.CurrentEndPoint = ep;
+			}
+		}
+
+		public void FindGame()
+		{
 			UpdateQueueStatus = true;
+			DisplayTimestamp = true;
+			SetText("Connecting to Master Server..");
 
-			errTitle = "Error Code: " + e;
-			errText = ex == null ? "No Exception Provided." : ex.Message;
-			UpdateErrorStatus = true;
-		};
-		ev.OnStatusUpdate += SetText;
-		ev.OnSuccess += OnMasterServerFoundMatch;
+			MasterServerAPI.ConnectionEvents ev = new MasterServerAPI.ConnectionEvents();
+			ev.OnError += (MatchMakingErrorCode e, Exception ex) =>
+			{
+				DisplayTimestamp = false;
+				UpdateQueueStatus = true;
 
-		GameInitializer.Master.ConnectToServer(ev);
+				errTitle = "Error Code: " + e;
+				errText = ex == null ? "No Exception Provided." : ex.Message;
+				UpdateErrorStatus = true;
+			};
+			ev.OnStatusUpdate += SetText;
+			ev.OnSuccess += OnMasterServerFoundMatch;
+
+			GameInitializer.Master.ConnectToServer(ev);
+		}
+		#endregion
+
+
 	}
-	#endregion
-
-
 }

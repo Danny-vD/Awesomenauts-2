@@ -1,4 +1,4 @@
-﻿namespace Enums.Audio
+namespace Enums.Audio
 {
 	public enum AnnouncerSound
 	{

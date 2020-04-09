@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Interfaces;
-using VDFramework.Extensions;
+using VDFramework.SharedClasses.Extensions;
 
 namespace Utility
 {

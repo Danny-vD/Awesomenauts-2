@@ -1,6 +1,7 @@
-﻿using VDFramework.Exceptions;
+﻿using VDFramework.SharedClasses.Exceptions;
+using VDFramework.VDUnityFramework.BaseClasses;
 
-namespace VDFramework.Singleton
+namespace VDFramework.VDUnityFramework.Singleton
 {
 	public abstract class Singleton<T> : BetterMonoBehaviour where T : Singleton<T>
 	{

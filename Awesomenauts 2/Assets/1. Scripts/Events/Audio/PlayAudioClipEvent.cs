@@ -1,5 +1,5 @@
-﻿using Structs.Audio;
-using VDFramework.EventSystem;
+using Structs.Audio;
+using VDFramework.SharedClasses.EventSystem;
 
 namespace Events.Audio
 {

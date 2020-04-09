@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Structs.Audio;
 
 namespace Interfaces.Audio

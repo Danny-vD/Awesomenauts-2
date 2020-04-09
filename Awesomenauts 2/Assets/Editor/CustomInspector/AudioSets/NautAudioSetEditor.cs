@@ -1,4 +1,4 @@
-﻿using Enums.Audio;
+using Enums.Audio;
 using ScriptableObjects.Audio.AudioSet;
 using Structs.Audio;
 using UnityEditor;

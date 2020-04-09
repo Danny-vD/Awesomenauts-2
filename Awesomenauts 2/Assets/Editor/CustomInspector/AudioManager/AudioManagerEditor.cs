@@ -1,18 +1,18 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using VDFramework.SharedClasses.Extensions;
 using Enums.Announcer;
 using Enums.Character;
 using UnityEditor;
 using UnityEngine;
-using VDFramework.Extensions;
 
 namespace CustomInspector.AudioManager
 {
 	using AudioManager = Audio.AudioManager;
 
 	[CustomEditor(typeof(AudioManager))]
-	public class AudioManagerEditor : Editor
+	public class AudioManagerEditor : UnityEditor.Editor
 	{
 		private static readonly Dictionary<Type, bool> foldoutData = new Dictionary<Type, bool>()
 		{

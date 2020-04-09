@@ -1,11 +1,13 @@
 using UnityEngine;
 
-public class ExitHelper : MonoBehaviour
-{
-
-    public void Exit()
+namespace UI {
+	public class ExitHelper : MonoBehaviour
 	{
-		Application.Quit();
-	}
+
+		public void Exit()
+		{
+			Application.Quit();
+		}
 	
+	}
 }
