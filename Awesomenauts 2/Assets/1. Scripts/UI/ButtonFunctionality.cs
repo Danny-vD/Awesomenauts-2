@@ -18,5 +18,10 @@ namespace UI
 		{
 			SceneManager.LoadScene(scene);
 		}
+
+		public void LoadScene(int buildIndex)
+		{
+			SceneManager.LoadScene(buildIndex);
+		}
 	}
 }
