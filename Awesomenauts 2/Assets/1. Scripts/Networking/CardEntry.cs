@@ -20,7 +20,6 @@ namespace Networking
 
 		private class EntityStatisticsSerializer : ASerializer<EntityStatistics>
 		{
-			private EntityStatSerializer statSerializer = new EntityStatSerializer();
 			public override EntityStatistics DeserializePacket(PrimitiveValueWrapper s)
 			{
 				int len = s.ReadInt();
@@ -30,8 +29,7 @@ namespace Networking
 
 				for (int i = 0; i < len; i++)
 				{
-					MemoryStream ms = new MemoryStream(s.ReadBytes());
-					ms.Position = 0;
+					MemoryStream ms = new MemoryStream(s.ReadBytes()) {Position = 0};
 					NetworkEntityStat stat = Byt3Serializer.ReadPacket<NetworkEntityStat>(ms);
 					es.SetValue(stat.StatType, stat.Value);
 				}
@@ -71,11 +69,12 @@ namespace Networking
 		{
 			public override NetworkEntityStat DeserializePacket(PrimitiveValueWrapper s)
 			{
-				NetworkEntityStat stat = new NetworkEntityStat();
-				stat.ValueType = Byt3Serializer.GetTypeByKey(s.ReadString());
+				NetworkEntityStat stat = new NetworkEntityStat
+				{
+					ValueType = Byt3Serializer.GetTypeByKey(s.ReadString())
+				};
 
-				MemoryStream ms = new MemoryStream(s.ReadBytes());
-				ms.Position = 0;
+				MemoryStream ms = new MemoryStream(s.ReadBytes()) {Position = 0};
 
 				stat.Value = Byt3Serializer.ReadPacket(ms);
 				stat.StatType = (CardPlayerStatType)s.ReadInt();
@@ -135,7 +134,6 @@ namespace Networking
 			Byt3Serializer.AddSerializer<int>(new StructSerializer<int>());
 			Byt3Serializer.AddSerializer<float>(new StructSerializer<float>());
 			Byt3Serializer.AddSerializer<bool>(new StructSerializer<bool>());
-
 		}
 
 		//Stats/Designs/etc
@@ -169,8 +167,7 @@ namespace Networking
 		public static EntityStatistics FromNetwork(byte[] buffer)
 		{
 			InitializeSerializer();
-			MemoryStream ms = new MemoryStream(buffer);
-			ms.Position = 0;
+			MemoryStream ms = new MemoryStream(buffer) {Position = 0};
 			return Byt3Serializer.ReadPacket<EntityStatistics>(ms);
 			//EntityStatistics e = new EntityStatistics();
 			//e.InitializeStatDictionary(); //Creates the Dictionary for us

@@ -11,7 +11,6 @@ namespace Networking
 	public class CardNetworkManager : NetworkManager
 	{
 		public static CardNetworkManager Instance => singleton as CardNetworkManager;
-		private float initDelay = 0.3f;
 		public bool IsHost { get; private set; }
 		public bool IsServer { get; private set; }
 
@@ -32,7 +31,7 @@ namespace Networking
 			}
 		}
 
-		private bool CanApplyEndPoint = true;
+		private readonly bool CanApplyEndPoint = true;
 		private EndPointInfo currentEndPoint;
 
 		private float TimeStamp;

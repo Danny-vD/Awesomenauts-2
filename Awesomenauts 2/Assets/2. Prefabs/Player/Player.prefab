@@ -400,6 +400,9 @@ MonoBehaviour:
   Socket:
     serializedVersion: 2
     m_Bits: 4096
+  BoardLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   CardDragLayer:
     serializedVersion: 2
     m_Bits: 2048

@@ -17,6 +17,9 @@ public class GameInitializer : NetworkBehaviour
 	public string StartupArguments;
 	public bool ProcessCommandLineArguments;
 
+	[Scene]
+	public string NextScene;
+
 	public GameInfo GameData;
 	private MasterServerComponent MasterServerComp;
 
@@ -35,7 +38,7 @@ public class GameInitializer : NetworkBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		SceneManager.LoadScene("MenuScene");
+		SceneManager.LoadScene(NextScene);
 	}
 
 

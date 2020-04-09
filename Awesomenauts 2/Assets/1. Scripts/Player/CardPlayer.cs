@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Mirror;
 using Networking;
@@ -29,8 +30,10 @@ public class CardPlayer : NetworkBehaviour
 	public CardDeck Deck;
 
 	public LayerMask Socket;
-	private LayerMask PlayerHandLayer => Hand.PlayerHandLayer;
+	public LayerMask BoardLayer;
 	public LayerMask CardDragLayer;
+	private LayerMask PlayerHandLayer => Hand.PlayerHandLayer;
+	private LayerMask AllCardLayers => BoardLayer.value | PlayerHandLayer.value;
 
 	[Range(0, 1f)]
 	public float DragWhenMoving = 0.7f;
@@ -191,6 +194,7 @@ public class CardPlayer : NetworkBehaviour
 			PlayerStatistics.SetValue(CardPlayerStatType.Solar, solar);
 		}
 
+		id.gameObject.layer = UnityTrashWorkaround(BoardLayer);
 		Hand.RemoveCard(id.GetComponent<Card>());
 	}
 
@@ -233,6 +237,7 @@ public class CardPlayer : NetworkBehaviour
 
 			//Place card on board
 			CmdRemoveFromHand(draggedCard.GetComponent<NetworkIdentity>());
+			draggedCard.gameObject.layer = UnityTrashWorkaround(BoardLayer);
 			Hand.RemoveCard(draggedCard.GetComponent<Card>());
 
 			//We Have to turn the card facing up again
@@ -300,12 +305,12 @@ public class CardPlayer : NetworkBehaviour
 		ArrowDisplayHelper.Deactivate();
 	}
 
-	private void HandleDraggingCardFromBoard()
+	private void HandleDraggingCardFromBoard(bool fromOwnTeam)
 	{
 		if (!dragging) return;
 
 		Vector3 arrowPos;
-		if (IsHoveringCard(out RaycastHit info))
+		if (!fromOwnTeam && IsHoveringCardExcept(BoardLayer, out RaycastHit info, draggedCard.GetComponent<Collider>()))
 		{
 			arrowPos = info.collider.transform.position;
 		}
@@ -346,7 +351,7 @@ public class CardPlayer : NetworkBehaviour
 	private void DragCard()
 	{
 		bool clicked = Input.GetMouseButton(0);
-		bool hoverCard = IsHoveringCard(out RaycastHit chit);
+		bool hoverCard = IsHoveringCard(AllCardLayers, out RaycastHit chit);
 		Card c = null;
 		if (hoverCard) c = chit.transform.GetComponent<Card>();
 		bool fromHand = c != null && Hand.IsCardFromHand(c);
@@ -358,7 +363,6 @@ public class CardPlayer : NetworkBehaviour
 		{
 
 			HoverCard(c, isPrevious, fromOwnTeam);
-
 
 		}
 		else
@@ -414,7 +418,7 @@ public class CardPlayer : NetworkBehaviour
 					HandleDraggingCardFromHand();
 					break;
 				case CardState.OnBoard:
-					HandleDraggingCardFromBoard();
+					HandleDraggingCardFromBoard(fromOwnTeam);
 					break;
 				case CardState.OnGrave:
 					break; //DoNothing
@@ -465,12 +469,31 @@ public class CardPlayer : NetworkBehaviour
 	}
 
 
-	private bool IsHoveringCard(out RaycastHit info)
+	private bool IsHoveringCard(LayerMask mask, out RaycastHit info)
 	{
 		Ray r = Camera.ScreenPointToRay(Input.mousePosition);
 		info = new RaycastHit();
-		bool ret = Physics.Raycast(r, out info, float.MaxValue, PlayerHandLayer);
+		bool ret = Physics.Raycast(r, out info, float.MaxValue, mask);
 		return ret;
+	}
+
+
+
+	private bool IsHoveringCardExcept(LayerMask mask, out RaycastHit info, params Collider[] ignoredColliders)
+	{
+		Ray r = Camera.ScreenPointToRay(Input.mousePosition);
+		info = new RaycastHit();
+		RaycastHit[] hits = Physics.RaycastAll(r, float.MaxValue, mask);
+		for (int i = 0; i < hits.Length; i++)
+		{
+			if (!ignoredColliders.Contains(hits[i].collider))
+			{
+				info = hits[i];
+				return true;
+			}
+		}
+		info = new RaycastHit();
+		return false;
 	}
 
 	private bool HasPlacedCard(out RaycastHit info)
