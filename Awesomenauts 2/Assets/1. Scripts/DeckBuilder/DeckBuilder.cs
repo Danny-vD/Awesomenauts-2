@@ -17,9 +17,6 @@ namespace DeckBuilder
 		[SerializeField]
 		private Transform availableCardsParent;
 
-		[SerializeField]
-		private uint maximumAmountPerCard;
-
 		private readonly List<AbstractUICard> currentDeck = new List<AbstractUICard>();
 		private List<AbstractUICard> availableCards;
 
@@ -56,30 +53,8 @@ namespace DeckBuilder
 			}
 		}
 
-		private void OnClickUICard(ClickUICardEvent clickUICardEvent)
-		{
-			AbstractUICard card = clickUICardEvent.Card;
-
-			if (clickUICardEvent.CardIsInDeck)
-			{
-				RemoveFromDeck(card);
-			}
-			else
-			{
-				AddToDeck(card);
-			}
-
-			EventManager.Instance.RaiseEvent(new SaveDeckEvent(ConvertDeckToIDlist()));
-		}
-
 		private void AddToDeck(AbstractUICard clickedAvailableCard)
 		{
-			if (!GetCardFromAvailableCards(clickedAvailableCard, out AbstractUICard availableCard))
-			{
-				Debug.LogError($"{clickedAvailableCard} is not present in the available cards");
-				return;
-			}
-
 			if (GetCardFromDeck(clickedAvailableCard, out AbstractUICard deckCard))
 			{
 				++deckCard.Amount;
@@ -92,21 +67,15 @@ namespace DeckBuilder
 				currentDeck.Add(deckCard);
 			}
 
-			if (--availableCard.Amount <= 0)
+			if (--clickedAvailableCard.Amount <= 0)
 			{
-				availableCards.Remove(availableCard);
-				Destroy(availableCard.gameObject);
+				availableCards.Remove(clickedAvailableCard);
+				Destroy(clickedAvailableCard.gameObject);
 			}
 		}
 
 		private void RemoveFromDeck(AbstractUICard clickedCardInDeck)
 		{
-			if (!GetCardFromDeck(clickedCardInDeck, out AbstractUICard deckCard))
-			{
-				Debug.LogError($"{clickedCardInDeck} is not present in the current deck");
-				return;
-			}
-
 			if (GetCardFromAvailableCards(clickedCardInDeck, out AbstractUICard availableCard))
 			{
 				++availableCard.Amount;
@@ -120,10 +89,10 @@ namespace DeckBuilder
 				availableCards.Add(availableCard);
 			}
 
-			if (--deckCard.Amount <= 0)
+			if (--clickedCardInDeck.Amount <= 0)
 			{
-				currentDeck.Remove(deckCard);
-				Destroy(deckCard.gameObject);
+				currentDeck.Remove(clickedCardInDeck);
+				Destroy(clickedCardInDeck.gameObject);
 			}
 		}
 
@@ -158,6 +127,34 @@ namespace DeckBuilder
 			}
 
 			return ids;
+		}
+
+		private void OnClickUICard(ClickUICardEvent clickUICardEvent)
+		{
+			AbstractUICard card = clickUICardEvent.Card;
+
+			if (clickUICardEvent.CardIsInDeck)
+			{
+				if (!GetCardFromDeck(card, out AbstractUICard _))
+				{
+					Debug.LogError($"{card} is not present in the current deck");
+					return;
+				}
+
+				RemoveFromDeck(card);
+			}
+			else
+			{
+				if (!GetCardFromAvailableCards(card, out _))
+				{
+					Debug.LogError($"{card} is not present in the available cards");
+					return;
+				}
+
+				AddToDeck(card);
+			}
+
+			EventManager.Instance.RaiseEvent(new SaveDeckEvent(ConvertDeckToIDlist()));
 		}
 	}
 }
