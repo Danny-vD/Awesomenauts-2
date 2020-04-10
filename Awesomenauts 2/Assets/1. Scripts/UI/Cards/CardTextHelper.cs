@@ -2,7 +2,8 @@ using Player;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI {
+namespace UI.Cards
+{
 	public class CardTextHelper : MonoBehaviour
 	{
 		public Card RegisteredCard;
@@ -15,7 +16,6 @@ namespace UI {
 		// Start is called before the first frame update
 		private void Start()
 		{
-
 			RegisteredCard.Statistics.Register(CardPlayerStatType.HP, OnDefChanged, true);
 			RegisteredCard.Statistics.Register(CardPlayerStatType.Attack, OnAtkChanged, true);
 			RegisteredCard.Statistics.Register(CardPlayerStatType.Description, OnDescriptionChanged, true);
@@ -37,9 +37,6 @@ namespace UI {
 		}
 
 		// Update is called once per frame
-		private void Update()
-		{
-
-		}
+		private void Update() { }
 	}
 }

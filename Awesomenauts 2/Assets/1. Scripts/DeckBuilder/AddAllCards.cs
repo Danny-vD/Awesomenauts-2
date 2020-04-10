@@ -1,38 +1,45 @@
-﻿using Networking;
+﻿using System.Collections.Generic;
+using Networking;
+using UI.Cards;
 using UnityEngine;
 using Utility.UI;
-using VDFramework;
 
 namespace DeckBuilder
 {
-	public class AddAllCards : BetterMonoBehaviour
+	public static class AddAllCards
 	{
-		private void Start()
+		public static List<AbstractUICard> AddCardsAsChild(Transform parentTransform)
 		{
-			AddCardsAsChild(CachedTransform);
-		}
+			List<AbstractUICard> cards = new List<AbstractUICard>();
 
-		private static void AddCardsAsChild(Transform parentTransform)
-		{
 			int length = CardNetworkManager.Instance.CardEntries.Length;
 
 			for (int id = 0; id < length; id++)
 			{
 				CardEntry entry = CardNetworkManager.Instance.CardEntries[id];
-				InstantiateCardEntry(entry, parentTransform, id);
+				AbstractUICard card = InstantiateCardEntry(entry, parentTransform, id);
+
+				if (card)
+				{
+					cards.Add(card);
+				}
 			}
+
+			return cards;
 		}
 
-		private static void InstantiateCardEntry(CardEntry entry, Transform parent, int id)
+		private static AbstractUICard InstantiateCardEntry(CardEntry entry, Transform parent, int id)
 		{
 			if (entry.cardSprite == null)
 			{
-				return;
+				return null;
 			}
 
 			AbstractUICard card = UICardFactory.Instance.CreateNewCard<AvailableUICard>(parent, id);
 
 			card.Sprite = entry.cardSprite;
+
+			return card;
 		}
 	}
 }

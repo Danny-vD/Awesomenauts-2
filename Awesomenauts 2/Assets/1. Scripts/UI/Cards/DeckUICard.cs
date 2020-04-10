@@ -1,7 +1,7 @@
 ﻿using Events.Deckbuilder;
 using VDFramework.EventSystem;
 
-namespace DeckBuilder
+namespace UI.Cards
 {
 	public class DeckUICard : AbstractUICard
 	{

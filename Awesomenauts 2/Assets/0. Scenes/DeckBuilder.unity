@@ -761,6 +761,7 @@ GameObject:
   - component: {fileID: 363219358}
   - component: {fileID: 363219357}
   - component: {fileID: 363219361}
+  - component: {fileID: 363219362}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -863,6 +864,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7733ccafe8ad31b478c9a5b51b429624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &363219362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363219356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dfcd020cb4644b4a017fe0837852637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDeckParent: {fileID: 1103571277}
+  availableCardsParent: {fileID: 1592483062}
+  maximumAmountPerCard: 3
 --- !u!1 &389904366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,7 +1354,6 @@ GameObject:
   - component: {fileID: 1103571277}
   - component: {fileID: 1103571279}
   - component: {fileID: 1103571278}
-  - component: {fileID: 1103571280}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -1403,18 +1418,6 @@ MonoBehaviour:
   m_Spacing: {x: 20, y: 20}
   m_Constraint: 1
   m_ConstraintCount: 2
---- !u!114 &1103571280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1103571276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dfcd020cb4644b4a017fe0837852637, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1200898533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,7 +1949,6 @@ GameObject:
   - component: {fileID: 1592483062}
   - component: {fileID: 1592483063}
   - component: {fileID: 1592483064}
-  - component: {fileID: 1592483065}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -2011,18 +2013,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &1592483065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1592483061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5dc63af634a6724f9229953c7bc6775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1632321553
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,8 +1,7 @@
 ﻿using Events.Deckbuilder;
-using UnityEngine;
 using VDFramework.EventSystem;
 
-namespace DeckBuilder
+namespace UI.Cards
 {
 	public class AvailableUICard : AbstractUICard
 	{

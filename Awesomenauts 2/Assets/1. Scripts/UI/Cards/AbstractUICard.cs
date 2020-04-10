@@ -5,13 +5,20 @@ using UnityEngine.UI;
 using VDFramework;
 using VDFramework.UnityExtensions;
 
-namespace DeckBuilder
+namespace UI.Cards
 {
 	[DisallowMultipleComponent]
 	public abstract class AbstractUICard : BetterMonoBehaviour, IEquatable<AbstractUICard>
 	{
 		public int ID { get; set; }
-		public uint Amount { get; set; }
+
+		private int amount = 1;
+
+		public int Amount
+		{
+			get => amount;
+			set => amountCounter.Amount = amount = value;
+		}
 
 		public Sprite Sprite
 		{
@@ -22,7 +29,9 @@ namespace DeckBuilder
 		private Image image;
 		private Button button;
 
-		protected virtual void Start()
+		private CardAmountCounter amountCounter;
+
+		protected virtual void Awake()
 		{
 			button = GetComponent<Button>();
 			button.onClick.AddListener(OnPointerClick);
@@ -30,6 +39,8 @@ namespace DeckBuilder
 			image = GetComponent<Image>();
 
 			AddEventTrigger();
+
+			amountCounter = GetComponentInChildren<CardAmountCounter>();
 		}
 
 		protected virtual void OnPointerEnter() { }
@@ -48,7 +59,7 @@ namespace DeckBuilder
 			image.sprite = sprite;
 			gameObject.name = sprite.name;
 		}
-		
+
 		private void AddEventTrigger()
 		{
 			EventTrigger.Entry pointerEnterEntry = new EventTrigger.Entry {eventID = EventTriggerType.PointerEnter};

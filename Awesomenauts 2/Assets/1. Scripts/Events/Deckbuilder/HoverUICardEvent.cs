@@ -1,4 +1,5 @@
 ﻿using DeckBuilder;
+using UI.Cards;
 using UnityEngine;
 using VDFramework.EventSystem;
 
