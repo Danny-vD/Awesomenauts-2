@@ -68,6 +68,8 @@ namespace DeckBuilder
 			{
 				AddToDeck(card);
 			}
+
+			EventManager.Instance.RaiseEvent(new SaveDeckEvent(ConvertDeckToIDlist()));
 		}
 
 		private void AddToDeck(AbstractUICard clickedAvailableCard)
@@ -141,6 +143,21 @@ namespace DeckBuilder
 			cardInCollection = cards.FirstOrDefault(item => item.Equals(cardToFind));
 
 			return cardInCollection != null && cardInCollection.Amount > 0;
+		}
+
+		private IEnumerable<int> ConvertDeckToIDlist()
+		{
+			List<int> ids = new List<int>();
+
+			foreach (AbstractUICard card in currentDeck)
+			{
+				for (int i = 0; i < card.Amount; i++)
+				{
+					ids.Add(card.ID);
+				}
+			}
+
+			return ids;
 		}
 	}
 }

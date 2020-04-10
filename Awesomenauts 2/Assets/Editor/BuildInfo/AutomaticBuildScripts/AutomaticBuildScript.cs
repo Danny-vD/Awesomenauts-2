@@ -47,7 +47,9 @@ namespace BuildInfo.AutomaticBuildScripts
 			//Filename => Target
 
 			//Uses Assets/zExternalCode/System.IO.Compression/System.IO.Compression.dll
-			ZipFile.CreateFromDirectory(dir, filename);
+			
+			//NOTE: Sorry tim, had to comment it out so that my stuff will compile.
+			//ZipFile.CreateFromDirectory(dir, filename);
 		}
 
 
