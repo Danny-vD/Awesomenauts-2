@@ -473,7 +473,8 @@ PrefabInstance:
         type: 3}
       propertyPath: CardEntries.Array.data[1].Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1106558168128416931, guid: e6a4aa6c9baf25345ab10fd9a6fda037,
+        type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[0].Statistics.StartStatistics.Array.data[3].type
@@ -1128,7 +1129,8 @@ PrefabInstance:
         type: 3}
       propertyPath: CardEntries.Array.data[0].Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1106558168128416931, guid: 345fdd3bc8c11e44786b35ebc4db70b3,
+        type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[0].cardSprite
