@@ -1,12 +1,18 @@
+using System.IO;
+using System.Xml.Serialization;
+using Byt3.Serialization;
 using DataObjects;
+using Events.Deckbuilder;
 using Maps;
 using Player;
 using Utility;
 using Mirror;
 using Mirror.Websocket;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using VDFramework.EventSystem;
 using Logger = MasterServer.Common.Logger;
 
 
@@ -48,16 +54,45 @@ namespace Networking
 		public MapEntry[] AvailableMaps;
 		public GameObject BoardLogicPrefab;
 		public CardEntry[] CardEntries;
-		public int[] CardsInDeck { get; private set; }
+		public int[] CardsInDeck { get; private set; } = new int[0];
 
 
 
 		public override void Awake()
 		{
+            if(File.Exists("./DeckConfig.xml"))
+            {
+	            Stream s = File.OpenRead("./DeckConfig.xml");
+	            XmlSerializer xs = new XmlSerializer(typeof(DeckConfig));
+	            CardsInDeck = ((DeckConfig)xs.Deserialize(s)).CardIDs;
+				s.Close();
+            }
+
+			Application.quitting += Application_quitting;
+
+			EventManager.Instance.AddListener<SaveDeckEvent>(SaveDeckEventHandler);
 			if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.Null) IsServer = true;
 			Logger.DefaultLogger = Debug.Log;
 			base.Awake();
 
+		}
+
+		public struct DeckConfig
+		{
+			public int[] CardIDs;
+		}
+
+		private void Application_quitting()
+		{
+			Stream s = File.Create("./DeckConfig.xml");
+			XmlSerializer xs = new XmlSerializer(typeof(DeckConfig));
+			xs.Serialize(s, new DeckConfig() { CardIDs = CardsInDeck });
+			s.Close();
+		}
+
+		private void SaveDeckEventHandler(SaveDeckEvent obj)
+		{
+			SetCardsInDeck(obj.CardIDs);
 		}
 
 		public override void Start()
@@ -241,21 +276,17 @@ namespace Networking
 		/// On Headless servers this will result in both clients having the "joingame" deck
 		/// </summary>
 		/// <param name="id"></param>
-		public void SetCardsInDeck(int id) //CardNetworkManager
+		public void SetCardsInDeck(int[] id) //CardNetworkManager
 		{
 			//Getting the ID of the Card:
-				//CardNetworkManager has Array of card entries. All cards that are in the game need to exist in this array.
-				//This array defines the index of the card.
-				//One way to go about it is to store the deck builder info(card image/etc..) in the card entry.
-					//When loading the deck builder you can iterate over the card entries and get their info/index.
-					//When adding a card you just remove or add the cards index to a list of int.
-					//Your Set Cards In Deck Array would just be the list.ToArray().
-			
-			CardsInDeck = new int[25]; //Hack. You have to pass the int array with indices to this function instead of this one int.
-			for (int i = 0; i < 25; i++)
-			{
-				CardsInDeck[i] = id; //Creates a "Deck" with 25 of the same cards
-			}
+			//CardNetworkManager has Array of card entries. All cards that are in the game need to exist in this array.
+			//This array defines the index of the card.
+			//One way to go about it is to store the deck builder info(card image/etc..) in the card entry.
+			//When loading the deck builder you can iterate over the card entries and get their info/index.
+			//When adding a card you just remove or add the cards index to a list of int.
+			//Your Set Cards In Deck Array would just be the list.ToArray().
+
+			CardsInDeck = id; //Hack. You have to pass the int array with indices to this function instead of this one int.
 		}
 
 		public void ApplyEndPoint()

@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using Events.Deckbuilder;
+using Networking;
 using UI.Cards;
 using UnityEngine;
 using Utility.UI;
@@ -28,6 +29,12 @@ namespace DeckBuilder
 			{
 				card.Amount = 3;
 			}
+
+
+			int[] deckIDs = CardNetworkManager.Instance.CardsInDeck;
+
+			deckIDs.Select(x => availableCards.First(y => y.ID == x)).ToList().ForEach(AddToDeck);
+
 		}
 
 		private void OnEnable()

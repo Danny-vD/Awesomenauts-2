@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using VDFramework.Singleton;
@@ -9,6 +9,13 @@ namespace VDFramework.EventSystem
 	{
 		private readonly Dictionary<Type, List<EventHandler>> eventHandlersPerEventType =
 			new Dictionary<Type, List<EventHandler>>();
+
+		protected override void Awake()
+		{
+			DontDestroyOnLoad(gameObject);
+			base.Awake();	
+		}
+
 
 		/////////////////////////////////////RaiseEvent/////////////////////////////////////
 		public void RaiseEvent<TEvent>(TEvent eventToRaise)

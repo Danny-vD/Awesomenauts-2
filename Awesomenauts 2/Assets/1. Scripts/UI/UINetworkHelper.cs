@@ -145,10 +145,7 @@ namespace UI {
 			CardNetworkManager.Instance.ApplyEndPoint();
 			CardNetworkManager.Instance.StartServer();
 		}
-		public void SetCardsInDeck(int id)
-		{
-			CardNetworkManager.Instance.SetCardsInDeck(id);
-		}
+
 
 		public void IPChanged(string text)
 		{
