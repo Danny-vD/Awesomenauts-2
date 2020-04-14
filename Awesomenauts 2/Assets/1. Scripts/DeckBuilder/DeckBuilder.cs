@@ -25,16 +25,9 @@ namespace DeckBuilder
 		{
 			availableCards = AddAllCards.AddCardsAsChild(availableCardsParent);
 
-			foreach (AbstractUICard card in availableCards)
-			{
-				card.Amount = 3;
-			}
+			GetOwnedCards();
 
-
-			int[] deckIDs = CardNetworkManager.Instance.CardsInDeck;
-
-			deckIDs.Select(x => availableCards.First(y => y.ID == x)).ToList().ForEach(AddToDeck);
-
+			GetPeristentDeck();
 		}
 
 		private void OnEnable()
@@ -58,6 +51,18 @@ namespace DeckBuilder
 			{
 				EventManager.Instance.RemoveListener<ClickUICardEvent>(OnClickUICard);
 			}
+		}
+
+		private void GetOwnedCards()
+		{
+			availableCards.ForEach(card => card.Amount = 3);
+		}
+		
+		private void GetPeristentDeck()
+		{
+			int[] deckIDs = CardNetworkManager.Instance.CardsInDeck;
+
+			deckIDs.Select(id => availableCards.First(availableCard => availableCard.ID == id)).ToList().ForEach(AddToDeck);
 		}
 
 		private void AddToDeck(AbstractUICard clickedAvailableCard)

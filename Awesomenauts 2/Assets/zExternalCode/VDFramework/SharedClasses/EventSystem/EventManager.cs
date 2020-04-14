@@ -12,8 +12,8 @@ namespace VDFramework.EventSystem
 
 		protected override void Awake()
 		{
+			base.Awake();
 			DontDestroyOnLoad(gameObject);
-			base.Awake();	
 		}
 
 
