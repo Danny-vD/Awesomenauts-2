@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Enums.Deckbuilder;
 using Networking;
 using UI.Cards;
 using UnityEngine;
@@ -35,7 +36,8 @@ namespace DeckBuilder
 				return null;
 			}
 
-			AbstractUICard card = UICardFactory.Instance.CreateNewCard<AvailableUICard>(parent, id);
+			//TODO: provide it with entry.filterValues;
+			AbstractUICard card = UICardFactory.Instance.CreateNewCard<AvailableUICard>(parent, id, FilterValues.Owned);
 
 			card.Sprite = entry.cardSprite;
 

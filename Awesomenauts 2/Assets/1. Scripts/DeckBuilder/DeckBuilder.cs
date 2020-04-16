@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Events.Deckbuilder;
@@ -13,21 +14,33 @@ namespace DeckBuilder
 	public class DeckBuilder : BetterMonoBehaviour
 	{
 		[SerializeField]
-		private Transform currentDeckParent;
+		private Transform currentDeckParent = null;
 
 		[SerializeField]
-		private Transform availableCardsParent;
+		private Transform availableCardsParent = null;
 
 		private readonly List<AbstractUICard> currentDeck = new List<AbstractUICard>();
 		private List<AbstractUICard> availableCards;
 
+		private DeckFilter deckFilter;
+
 		private void Start()
 		{
+			deckFilter = new DeckFilter();
+
 			availableCards = AddAllCards.AddCardsAsChild(availableCardsParent);
+
+			AddDecksToBeFiltered();
 
 			GetOwnedCards();
 
 			GetPeristentDeck();
+		}
+
+		private void AddDecksToBeFiltered()
+		{
+			deckFilter.AddToFilter(currentDeck);
+			deckFilter.AddToFilter(availableCards);
 		}
 
 		private void OnEnable()
@@ -38,6 +51,11 @@ namespace DeckBuilder
 		private void OnDisable()
 		{
 			RemoveListeners();
+		}
+
+		private void OnDestroy()
+		{
+			deckFilter.Destroy();
 		}
 
 		private void AddListeners()
@@ -55,14 +73,16 @@ namespace DeckBuilder
 
 		private void GetOwnedCards()
 		{
+			//HACK: get actual owned cards eventually
 			availableCards.ForEach(card => card.Amount = 3);
 		}
-		
+
 		private void GetPeristentDeck()
 		{
 			int[] deckIDs = CardNetworkManager.Instance.CardsInDeck;
 
-			deckIDs.Select(id => availableCards.First(availableCard => availableCard.ID == id)).ToList().ForEach(AddToDeck);
+			deckIDs.Select(id => availableCards.First(availableCard => availableCard.ID == id)).ToList()
+				.ForEach(AddToDeck);
 		}
 
 		private void AddToDeck(AbstractUICard clickedAvailableCard)
@@ -73,7 +93,8 @@ namespace DeckBuilder
 			}
 			else
 			{
-				deckCard = UICardFactory.Instance.CreateNewCard<DeckUICard>(currentDeckParent, clickedAvailableCard.ID);
+				deckCard = UICardFactory.Instance.CreateNewCard<DeckUICard>(currentDeckParent, clickedAvailableCard.ID,
+					clickedAvailableCard.Filters);
 				deckCard.Sprite = clickedAvailableCard.Sprite;
 
 				currentDeck.Add(deckCard);
@@ -95,7 +116,8 @@ namespace DeckBuilder
 			else
 			{
 				availableCard =
-					UICardFactory.Instance.CreateNewCard<AvailableUICard>(availableCardsParent, clickedCardInDeck.ID);
+					UICardFactory.Instance.CreateNewCard<AvailableUICard>(availableCardsParent, clickedCardInDeck.ID,
+						clickedCardInDeck.Filters);
 				availableCard.Sprite = clickedCardInDeck.Sprite;
 
 				availableCards.Add(availableCard);

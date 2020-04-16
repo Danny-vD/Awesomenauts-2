@@ -1,8 +1,10 @@
 ﻿using System;
+using Enums.Deckbuilder;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using VDFramework;
+using VDFramework.Extensions;
 using VDFramework.UnityExtensions;
 
 namespace UI.Cards
@@ -26,6 +28,8 @@ namespace UI.Cards
 			set => SetSprite(value);
 		}
 
+		public FilterValues Filters { get; set; } = FilterValues.Owned;
+
 		private Image image;
 		private Button button;
 
@@ -38,7 +42,7 @@ namespace UI.Cards
 
 			image = GetComponent<Image>();
 
-			AddEventTrigger();
+			AddEventTriggers();
 
 			amountCounter = GetComponentInChildren<CardAmountCounter>();
 		}
@@ -60,7 +64,7 @@ namespace UI.Cards
 			gameObject.name = sprite.name;
 		}
 
-		private void AddEventTrigger()
+		private void AddEventTriggers()
 		{
 			EventTrigger.Entry pointerEnterEntry = new EventTrigger.Entry {eventID = EventTriggerType.PointerEnter};
 			pointerEnterEntry.callback.AddListener((data) => { OnPointerEnter(); });
@@ -82,6 +86,11 @@ namespace UI.Cards
 			}
 
 			return ID == other.ID;
+		}
+
+		public bool MeetsFilters(FilterValues currentFilters)
+		{
+			return ((int) Filters).HasOneMatchingBit((int) currentFilters);
 		}
 	}
 }

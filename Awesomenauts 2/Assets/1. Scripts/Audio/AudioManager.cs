@@ -52,33 +52,33 @@ namespace Audio
 			where TEnum : struct, Enum
 			where TSoundToPlay : struct, Enum
 		{
-			//TODO: make proper, this is garbage
-
-			if (@event.EnumName is Awesomenaut awesomenaut)
+			switch (@event.EnumName)
 			{
-				NautSetPerNaut setPerEnum = nautClips.First(set => set.Key == awesomenaut);
-
-				if (@event.SoundTypeToPlay is NautSound sound)
+				case Awesomenaut awesomenaut:
 				{
-					return setPerEnum.Value.GetAudioClipData(sound);
+					NautSetPerNaut setPerEnum = nautClips.First(set => set.Key == awesomenaut);
+
+					if (@event.SoundTypeToPlay is NautSound sound)
+					{
+						return setPerEnum.Value.GetAudioClipData(sound);
+					}
+
+					throw new InvalidEnumArgumentException($"{typeof(TSoundToPlay)} is not a NautSound");
 				}
-
-				throw new InvalidEnumArgumentException($"{typeof(TSoundToPlay)} is not a NautSound");
-			}
-
-			if (@event.EnumName is Announcer announcer)
-			{
-				AnnouncerSetPerAnnouncer setPerEnum = announcerClips.First(set => set.Key == announcer);
-
-				if (@event.SoundTypeToPlay is AnnouncerSound sound)
+				case Announcer announcer:
 				{
-					return setPerEnum.Value.GetAudioClipData(sound);
+					AnnouncerSetPerAnnouncer setPerEnum = announcerClips.First(set => set.Key == announcer);
+
+					if (@event.SoundTypeToPlay is AnnouncerSound sound)
+					{
+						return setPerEnum.Value.GetAudioClipData(sound);
+					}
+
+					throw new InvalidEnumArgumentException($"{typeof(TSoundToPlay)} is not an AnnouncerSound");
 				}
-
-				throw new InvalidEnumArgumentException($"{typeof(TSoundToPlay)} is not an AnnouncerSound");
+				default:
+					throw new InvalidEnumArgumentException($"{typeof(TEnum)} is not valid");
 			}
-
-			throw new InvalidEnumArgumentException($"{typeof(TEnum)} is not valid");
 		}
 
 		private void AddListeners()
@@ -95,8 +95,7 @@ namespace Audio
 			}
 
 			EventManager.Instance.RemoveListener<PlayAudioTypeEvent<Awesomenaut, NautSound>>(OnPlayAudioTypeEvent);
-			EventManager.Instance.RemoveListener<PlayAudioTypeEvent<Announcer, AnnouncerSound>>(
-				OnPlayAudioTypeEvent);
+			EventManager.Instance.RemoveListener<PlayAudioTypeEvent<Announcer, AnnouncerSound>>(OnPlayAudioTypeEvent);
 		}
 	}
 }

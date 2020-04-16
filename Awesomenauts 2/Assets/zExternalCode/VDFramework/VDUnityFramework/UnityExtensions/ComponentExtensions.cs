@@ -6,7 +6,7 @@ namespace VDFramework.UnityExtensions
 {
 	public static class ComponentExtensions
 	{
-		public static IEnumerable<GameObject> ConvertToGameObjectEnumerable<TItem>(this IEnumerable<TItem> collection)
+		public static IEnumerable<GameObject> ToGameObject<TItem>(this IEnumerable<TItem> collection)
 			where TItem : Component
 		{
 			return collection.Select(item => item.gameObject);

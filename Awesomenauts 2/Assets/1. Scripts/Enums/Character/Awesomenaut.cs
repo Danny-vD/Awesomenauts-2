@@ -1,5 +1,8 @@
+using System;
+
 namespace Enums.Character
 {
+	[Flags]
 	public enum Awesomenaut
 	{
 		SheriffLonestar,

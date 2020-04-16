@@ -1,5 +1,8 @@
-﻿using VDFramework;
+﻿using Enums.Deckbuilder;
+using Events.Deckbuilder;
+using VDFramework;
 using UnityEngine.SceneManagement;
+using VDFramework.EventSystem;
 
 namespace UI
 {
@@ -22,6 +25,21 @@ namespace UI
 		public void LoadScene(int buildIndex)
 		{
 			SceneManager.LoadScene(buildIndex);
+		}
+
+		public void ShowAllCards()
+		{
+			EventManager.Instance.RaiseEvent(new FiltersChangedEvent(FilterValues.ShowAll));
+		}
+		
+		public void ShowAllOwned()
+		{
+			EventManager.Instance.RaiseEvent(new FiltersChangedEvent(FilterValues.Owned));
+		}
+
+		public void ShowAllTanks()
+		{
+			EventManager.Instance.RaiseEvent(new FiltersChangedEvent(FilterValues.Tank));
 		}
 	}
 }
