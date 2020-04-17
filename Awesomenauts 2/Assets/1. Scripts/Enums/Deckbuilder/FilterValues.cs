@@ -7,9 +7,11 @@ namespace Enums.Deckbuilder
 	{
 		ShowAll = -1,
 		Owned = 1,
-		Action = 2,
-		Melee = 4,
-		Ranged = 8,
-		Tank = 16,
+		IsIndeck = 2,
+		IsNotInDeck = 4,
+		Action = 8,
+		Melee = 16,
+		Ranged = 32,
+		Tank = 64,
 	}
 }

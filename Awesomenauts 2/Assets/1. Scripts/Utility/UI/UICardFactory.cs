@@ -1,4 +1,5 @@
-﻿using Enums.Deckbuilder;
+﻿using DeckBuilder;
+using Enums.Deckbuilder;
 using UI.Cards;
 using UnityEngine;
 using VDFramework.Singleton;
@@ -15,6 +16,7 @@ namespace Utility.UI
 		{
 			AbstractUICard card = Instantiate(prefab, parent).AddComponent<TAbstractUICard>();
 			card.Filters = filterValues;
+			
 			card.ID = id;
 			card.Amount = 1;
 

@@ -90,7 +90,7 @@ namespace UI.Cards
 
 		public bool MeetsFilters(FilterValues currentFilters)
 		{
-			return ((int) Filters).HasOneMatchingBit((int) currentFilters);
+			return (Filters & currentFilters) != 0;
 		}
 	}
 }

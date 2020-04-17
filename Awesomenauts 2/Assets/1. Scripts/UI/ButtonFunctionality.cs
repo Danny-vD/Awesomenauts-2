@@ -1,4 +1,5 @@
-﻿using Enums.Deckbuilder;
+﻿using DeckBuilder;
+using Enums.Deckbuilder;
 using Events.Deckbuilder;
 using VDFramework;
 using UnityEngine.SceneManagement;
@@ -29,17 +30,32 @@ namespace UI
 
 		public void ShowAllCards()
 		{
-			EventManager.Instance.RaiseEvent(new FiltersChangedEvent(FilterValues.ShowAll));
+			DeckFilter.SetFilters(FilterValues.ShowAll);
 		}
-		
+
 		public void ShowAllOwned()
 		{
-			EventManager.Instance.RaiseEvent(new FiltersChangedEvent(FilterValues.Owned));
+			DeckFilter.SetFilters(FilterValues.Owned);
 		}
 
 		public void ShowAllTanks()
 		{
-			EventManager.Instance.RaiseEvent(new FiltersChangedEvent(FilterValues.Tank));
+			DeckFilter.SetFilters(FilterValues.Tank);
+		}
+
+		public void ShowAllInDeck()
+		{
+			DeckFilter.SetFilters(FilterValues.IsIndeck);
+		}
+
+		public void ShowAllNotInDeck()
+		{
+			DeckFilter.SetFilters(FilterValues.IsNotInDeck);
+		}
+
+		public void ShowBothDeckAndNot()
+		{
+			DeckFilter.SetFilters(FilterValues.IsIndeck, FilterValues.IsNotInDeck);
 		}
 	}
 }

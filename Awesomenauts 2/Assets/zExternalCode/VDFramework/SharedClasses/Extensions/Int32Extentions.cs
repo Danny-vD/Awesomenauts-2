@@ -8,31 +8,24 @@
 		/// <returns>TRUE if at least one bit is equal</returns>
 		public static bool HasOneMatchingBit(this int number, int toCheck, bool shouldCheckZero = false)
 		{
-			if (number == toCheck)
+			bool matchingBit = (number & toCheck) != 0;
+
+			if (shouldCheckZero)
 			{
-				return true;
-			}
-			
-			for (int currentBit = 0; currentBit < 32; currentBit++)
-			{
-				int bitToCheck = 1 << currentBit;
-
-				int myBit = number & bitToCheck;
-
-				if (!shouldCheckZero && myBit == 0)
-				{
-					continue;
-				}
-
-				int theirBit = toCheck & bitToCheck;
-				
-				if (myBit == theirBit)
-				{
-					return true;
-				}
+				return matchingBit || HasOneMatchingBit(~number, ~toCheck);
 			}
 
-			return false;
+			return matchingBit;
+		}
+
+		public static void AddFlag(this ref int number, int flagToAdd)
+		{
+			number |= flagToAdd;
+		}
+
+		public static void RemoveFlag(this ref int number, int flagToRemove)
+		{
+			number &= ~flagToRemove;
 		}
 	}
 }

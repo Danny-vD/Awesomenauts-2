@@ -38,6 +38,7 @@ namespace DeckBuilder
 
 			//TODO: provide it with entry.filterValues;
 			AbstractUICard card = UICardFactory.Instance.CreateNewCard<AvailableUICard>(parent, id, FilterValues.Owned);
+			DeckFilter.AddFilterFlagToCard(card, FilterValues.IsNotInDeck);
 
 			card.Sprite = entry.cardSprite;
 

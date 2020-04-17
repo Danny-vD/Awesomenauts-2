@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using Enums.Deckbuilder;
 using Events.Deckbuilder;
 using Networking;
 using UI.Cards;
@@ -61,16 +61,42 @@ namespace DeckBuilder
 		private void AddListeners()
 		{
 			EventManager.Instance.AddListener<ClickUICardEvent>(OnClickUICard);
+			EventManager.Instance.AddListener<ToggleCurrentDeckFilterEvent>(OnToggleCurrentDeckFilter);
+			EventManager.Instance.AddListener<ToggleAvailableCardsFilterEvent>(OnToggleAvailableCardsFilter);
 		}
 
 		private void RemoveListeners()
 		{
-			if (EventManager.IsInitialized)
+			if (!EventManager.IsInitialized)
 			{
-				EventManager.Instance.RemoveListener<ClickUICardEvent>(OnClickUICard);
+				return;
 			}
+
+			EventManager.Instance.RemoveListener<ClickUICardEvent>(OnClickUICard);
+			EventManager.Instance.RemoveListener<ToggleCurrentDeckFilterEvent>(OnToggleCurrentDeckFilter);
+			EventManager.Instance.RemoveListener<ToggleAvailableCardsFilterEvent>(OnToggleAvailableCardsFilter);
 		}
 
+		private static void AddIsInDeckFilter(AbstractUICard card)
+		{
+			DeckFilter.AddFilterFlagToCard(card, FilterValues.IsIndeck);
+			DeckFilter.RemoveFilterFlagFromCard(card, FilterValues.IsNotInDeck);
+		}
+
+		private static void AddIsNotInDeckFilter(AbstractUICard card)
+		{
+			DeckFilter.AddFilterFlagToCard(card, FilterValues.IsNotInDeck);
+			DeckFilter.RemoveFilterFlagFromCard(card, FilterValues.IsIndeck);
+		}
+		
+		private static bool GetCardFromCollection(IEnumerable<AbstractUICard> cards, AbstractUICard cardToFind,
+			out AbstractUICard cardInCollection)
+		{
+			cardInCollection = cards.FirstOrDefault(item => item.Equals(cardToFind));
+
+			return cardInCollection != null && cardInCollection.Amount > 0;
+		}
+		
 		private void GetOwnedCards()
 		{
 			//HACK: get actual owned cards eventually
@@ -96,6 +122,9 @@ namespace DeckBuilder
 				deckCard = UICardFactory.Instance.CreateNewCard<DeckUICard>(currentDeckParent, clickedAvailableCard.ID,
 					clickedAvailableCard.Filters);
 				deckCard.Sprite = clickedAvailableCard.Sprite;
+				
+				AddIsInDeckFilter(deckCard);
+				AddIsInDeckFilter(clickedAvailableCard);
 
 				currentDeck.Add(deckCard);
 			}
@@ -125,6 +154,8 @@ namespace DeckBuilder
 
 			if (--clickedCardInDeck.Amount <= 0)
 			{
+				AddIsNotInDeckFilter(availableCard);
+				
 				currentDeck.Remove(clickedCardInDeck);
 				Destroy(clickedCardInDeck.gameObject);
 			}
@@ -138,14 +169,6 @@ namespace DeckBuilder
 		private bool GetCardFromAvailableCards(AbstractUICard card, out AbstractUICard availableCard)
 		{
 			return GetCardFromCollection(availableCards, card, out availableCard);
-		}
-
-		private static bool GetCardFromCollection(IEnumerable<AbstractUICard> cards, AbstractUICard cardToFind,
-			out AbstractUICard cardInCollection)
-		{
-			cardInCollection = cards.FirstOrDefault(item => item.Equals(cardToFind));
-
-			return cardInCollection != null && cardInCollection.Amount > 0;
 		}
 
 		private IEnumerable<int> ConvertDeckToIDlist()
@@ -163,13 +186,35 @@ namespace DeckBuilder
 			return ids;
 		}
 
+		private void OnToggleCurrentDeckFilter(ToggleCurrentDeckFilterEvent toggleCurrentDeckFilterEvent)
+		{
+			if (toggleCurrentDeckFilterEvent.ShouldBeFiltered)
+			{
+				deckFilter.AddToFilter(currentDeck);
+				return;
+			}
+			
+			deckFilter.RemoveFromFilter(currentDeck);
+		}
+
+		private void OnToggleAvailableCardsFilter(ToggleAvailableCardsFilterEvent toggleAvailableCardsFilterEvent)
+		{
+			if (toggleAvailableCardsFilterEvent.ShouldBeFiltered)
+			{
+				deckFilter.AddToFilter(availableCards);
+				return;
+			}
+			
+			deckFilter.RemoveFromFilter(availableCards);
+		}
+		
 		private void OnClickUICard(ClickUICardEvent clickUICardEvent)
 		{
 			AbstractUICard card = clickUICardEvent.Card;
 
 			if (clickUICardEvent.CardIsInDeck)
 			{
-				if (!GetCardFromDeck(card, out AbstractUICard _))
+				if (!GetCardFromDeck(card, out _))
 				{
 					Debug.LogError($"{card} is not present in the current deck");
 					return;
