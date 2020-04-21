@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleFilterFor: 0
-  unLockSprite: {fileID: 21300000, guid: f0d35df5f9b6b734ea7888e7deb284d2, type: 3}
+  unlockSprite: {fileID: 21300000, guid: f0d35df5f9b6b734ea7888e7deb284d2, type: 3}
   lockSprite: {fileID: 21300000, guid: 53a95b13ab4a7c548bfafad392a3d330, type: 3}
 --- !u!1 &573623396
 GameObject:
@@ -2450,7 +2450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleFilterFor: 1
-  unLockSprite: {fileID: 21300000, guid: f0d35df5f9b6b734ea7888e7deb284d2, type: 3}
+  unlockSprite: {fileID: 21300000, guid: f0d35df5f9b6b734ea7888e7deb284d2, type: 3}
   lockSprite: {fileID: 21300000, guid: 53a95b13ab4a7c548bfafad392a3d330, type: 3}
 --- !u!114 &1331486308
 MonoBehaviour:

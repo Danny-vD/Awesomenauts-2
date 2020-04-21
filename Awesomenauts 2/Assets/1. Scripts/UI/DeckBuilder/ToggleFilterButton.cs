@@ -26,7 +26,7 @@ namespace UI.DeckBuilder
 		private ToggleFilterFor toggleFilterFor = ToggleFilterFor.CurrentDeck;
 
 		[SerializeField]
-		private Sprite unLockSprite = null;
+		private Sprite unlockSprite = null;
 
 		[SerializeField]
 		private Sprite lockSprite = null;
@@ -34,7 +34,7 @@ namespace UI.DeckBuilder
 		private Image image;
 		private Button button;
 
-		private bool shouldBeFiltered = false;
+		private bool shouldBeFiltered = true;
 
 		private Action toggleCollectionFilter = null;
 
@@ -43,7 +43,7 @@ namespace UI.DeckBuilder
 			image = GetComponent<Image>();
 			button = GetComponent<Button>();
 
-			Sprite = unLockSprite;
+			Sprite = unlockSprite;
 
 			// ReSharper disable once ConvertSwitchStatementToSwitchExpression
 			switch (toggleFilterFor)
@@ -63,9 +63,9 @@ namespace UI.DeckBuilder
 
 		private void ToggleFilter()
 		{
-			shouldBeFiltered ^= true;
+			shouldBeFiltered = !shouldBeFiltered;
 
-			Sprite = shouldBeFiltered ? unLockSprite : lockSprite;
+			Sprite = shouldBeFiltered ? unlockSprite : lockSprite;
 
 			toggleCollectionFilter();
 		}

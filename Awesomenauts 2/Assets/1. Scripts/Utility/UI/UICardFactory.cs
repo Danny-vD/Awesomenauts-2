@@ -1,5 +1,4 @@
-﻿using DeckBuilder;
-using Enums.Deckbuilder;
+﻿using Enums.Deckbuilder;
 using UI.Cards;
 using UnityEngine;
 using VDFramework.Singleton;

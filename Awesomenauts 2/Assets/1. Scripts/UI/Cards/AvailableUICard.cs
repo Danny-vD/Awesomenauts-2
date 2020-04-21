@@ -12,7 +12,10 @@ namespace UI.Cards
 
 		protected override void OnPointerClick()
 		{
-			EventManager.Instance.RaiseEvent(new ClickUICardEvent(this, false));
+			if (Amount > 0)
+			{
+				EventManager.Instance.RaiseEvent(new ClickUICardEvent(this, false));
+			}
 		}
 	}
 }

@@ -23,7 +23,12 @@ namespace UI.Cards
 		{
 			amountCounter.text = amount.ToString();
 
-			CachedTransform.parent.gameObject.SetActive(amount > 1);
+			IconVisibility(amount > 0);
+		}
+
+		private void IconVisibility(bool shouldShow)
+		{
+			CachedTransform.parent.gameObject.SetActive(shouldShow);
 		}
 	}
 }

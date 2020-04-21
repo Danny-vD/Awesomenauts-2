@@ -4,6 +4,7 @@ using Networking;
 using UI.Cards;
 using UnityEngine;
 using Utility.UI;
+using VDFramework.Utility;
 
 namespace DeckBuilder
 {
@@ -37,9 +38,18 @@ namespace DeckBuilder
 			}
 
 			//TODO: provide it with entry.filterValues;
-			AbstractUICard card = UICardFactory.Instance.CreateNewCard<AvailableUICard>(parent, id, FilterValues.Owned);
+			AbstractUICard card = UICardFactory.Instance.CreateNewCard<AvailableUICard>(parent, id, FilterValues.IsNotInDeck);
 			DeckFilter.AddFilterFlagToCard(card, FilterValues.IsNotInDeck);
 
+			//TODO: set amount to entry.Amount
+			int amount = RandomUtil.GetRandom(0, 1, 2, 4, 5);
+			card.Amount = amount;
+
+			if (amount > 0)
+			{
+				DeckFilter.AddFilterFlagToCard(card, FilterValues.Owned);
+			}
+			
 			card.Sprite = entry.cardSprite;
 
 			return card;

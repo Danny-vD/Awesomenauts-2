@@ -21,6 +21,7 @@ namespace DeckBuilder
 
 		public void Destroy()
 		{
+			collectionsToFilter.Clear();
 			RemoveListeners();
 		}
 
@@ -89,7 +90,7 @@ namespace DeckBuilder
 
 		private void OnFiltersChanged(FiltersChangedEvent filtersChangedEvent)
 		{
-			currentFilters = filtersChangedEvent.filters;
+			currentFilters = filtersChangedEvent.Filters;
 
 			FilterCollections();
 		}

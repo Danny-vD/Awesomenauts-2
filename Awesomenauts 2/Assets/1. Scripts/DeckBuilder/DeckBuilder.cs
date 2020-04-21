@@ -8,6 +8,7 @@ using UnityEngine;
 using Utility.UI;
 using VDFramework;
 using VDFramework.EventSystem;
+using VDFramework.Utility;
 
 namespace DeckBuilder
 {
@@ -23,24 +24,33 @@ namespace DeckBuilder
 		private List<AbstractUICard> availableCards;
 
 		private DeckFilter deckFilter;
+		private DeckSorter deckSorter;
 
 		private void Start()
 		{
 			deckFilter = new DeckFilter();
+			deckSorter = new DeckSorter();
 
 			availableCards = AddAllCards.AddCardsAsChild(availableCardsParent);
 
 			AddDecksToBeFiltered();
-
-			GetOwnedCards();
+			AddDecksToBeSorted();
 
 			GetPeristentDeck();
+
+			DeckSorter.SetSortings(SortValue.Name);
 		}
 
 		private void AddDecksToBeFiltered()
 		{
 			deckFilter.AddToFilter(currentDeck);
 			deckFilter.AddToFilter(availableCards);
+		}
+
+		private void AddDecksToBeSorted()
+		{
+			deckSorter.AddToBeSorted(currentDeck);
+			deckSorter.AddToBeSorted(availableCards);
 		}
 
 		private void OnEnable()
@@ -56,6 +66,10 @@ namespace DeckBuilder
 		private void OnDestroy()
 		{
 			deckFilter.Destroy();
+			deckFilter = null;
+
+			deckSorter.Destroy();
+			deckSorter = null;
 		}
 
 		private void AddListeners()
@@ -88,19 +102,13 @@ namespace DeckBuilder
 			DeckFilter.AddFilterFlagToCard(card, FilterValues.IsNotInDeck);
 			DeckFilter.RemoveFilterFlagFromCard(card, FilterValues.IsIndeck);
 		}
-		
+
 		private static bool GetCardFromCollection(IEnumerable<AbstractUICard> cards, AbstractUICard cardToFind,
 			out AbstractUICard cardInCollection)
 		{
 			cardInCollection = cards.FirstOrDefault(item => item.Equals(cardToFind));
 
 			return cardInCollection != null && cardInCollection.Amount > 0;
-		}
-		
-		private void GetOwnedCards()
-		{
-			//HACK: get actual owned cards eventually
-			availableCards.ForEach(card => card.Amount = 3);
 		}
 
 		private void GetPeristentDeck()
@@ -122,7 +130,7 @@ namespace DeckBuilder
 				deckCard = UICardFactory.Instance.CreateNewCard<DeckUICard>(currentDeckParent, clickedAvailableCard.ID,
 					clickedAvailableCard.Filters);
 				deckCard.Sprite = clickedAvailableCard.Sprite;
-				
+
 				AddIsInDeckFilter(deckCard);
 				AddIsInDeckFilter(clickedAvailableCard);
 
@@ -155,7 +163,7 @@ namespace DeckBuilder
 			if (--clickedCardInDeck.Amount <= 0)
 			{
 				AddIsNotInDeckFilter(availableCard);
-				
+
 				currentDeck.Remove(clickedCardInDeck);
 				Destroy(clickedCardInDeck.gameObject);
 			}
@@ -193,7 +201,7 @@ namespace DeckBuilder
 				deckFilter.AddToFilter(currentDeck);
 				return;
 			}
-			
+
 			deckFilter.RemoveFromFilter(currentDeck);
 		}
 
@@ -204,10 +212,10 @@ namespace DeckBuilder
 				deckFilter.AddToFilter(availableCards);
 				return;
 			}
-			
+
 			deckFilter.RemoveFromFilter(availableCards);
 		}
-		
+
 		private void OnClickUICard(ClickUICardEvent clickUICardEvent)
 		{
 			AbstractUICard card = clickUICardEvent.Card;
