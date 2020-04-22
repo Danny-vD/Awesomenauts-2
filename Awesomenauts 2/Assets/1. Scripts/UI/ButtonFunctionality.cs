@@ -28,6 +28,10 @@ namespace UI
 			SceneManager.LoadScene(buildIndex);
 		}
 
+		//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+		//		Temporary filter methods
+		//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+		
 		public void ShowAllCards()
 		{
 			DeckFilter.SetFilters(FilterValues.ShowAll);
@@ -56,6 +60,40 @@ namespace UI
 		public void ShowBothDeckAndNot()
 		{
 			DeckFilter.SetFilters(FilterValues.IsIndeck, FilterValues.IsNotInDeck);
+		}
+		
+		//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+		//		Temporary sorting methods
+		//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+		public void SortByName()
+		{
+			DeckSorter.SetSortings(SortValue.Name);
+		}
+
+		public void SortByDeck()
+		{
+			DeckSorter.SetSortings(SortValue.IsInDeck);
+		}
+		
+		public void SortByAmount()
+		{
+			DeckSorter.SetSortings(SortValue.Amount);
+		}
+		
+		public void SortByDeckAndName()
+		{
+			DeckSorter.SetSortings(SortValue.IsInDeck, SortValue.Name);
+		}
+
+		public void SortByDeckandAmount()
+		{
+			DeckSorter.SetSortings(SortValue.IsInDeck, SortValue.Amount);
+		}
+
+		public void SortByType()
+		{
+			DeckSorter.SetSortings(SortValue.Type);
 		}
 	}
 }

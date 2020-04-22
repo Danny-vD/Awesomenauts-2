@@ -37,8 +37,9 @@ namespace DeckBuilder
 				return null;
 			}
 
-			//TODO: provide it with entry.filterValues;
-			AbstractUICard card = UICardFactory.Instance.CreateNewCard<AvailableUICard>(parent, id, FilterValues.IsNotInDeck);
+			//TODO: provide it with entry.FilterValues;
+			AbstractUICard card =
+				UICardFactory.Instance.CreateNewCard<AvailableUICard>(parent, id, FilterValues.IsNotInDeck);
 			DeckFilter.AddFilterFlagToCard(card, FilterValues.IsNotInDeck);
 
 			//TODO: set amount to entry.Amount
@@ -49,7 +50,7 @@ namespace DeckBuilder
 			{
 				DeckFilter.AddFilterFlagToCard(card, FilterValues.Owned);
 			}
-			
+
 			card.Sprite = entry.cardSprite;
 
 			return card;

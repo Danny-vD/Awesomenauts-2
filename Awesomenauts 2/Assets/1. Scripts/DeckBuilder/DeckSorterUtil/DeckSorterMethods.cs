@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Enums.Deckbuilder;
 using Events.Deckbuilder;
 using UI.Cards;
+using VDFramework.EventSystem;
 using Object = UnityEngine.Object;
 
 namespace DeckBuilder.DeckSorterUtil
@@ -32,17 +33,17 @@ namespace DeckBuilder.DeckSorterUtil
 
 		private void AddListeners()
 		{
-			VDFramework.EventSystem.EventManager.Instance.AddListener<SortingsChangedEvent>(OnSortingsChanged);
+			EventManager.Instance.AddListener<SortingsChangedEvent>(OnSortingsChanged);
 		}
-
+		
 		private void RemoveListeners()
 		{
-			if (!VDFramework.EventSystem.EventManager.IsInitialized)
+			if (!EventManager.IsInitialized)
 			{
 				return;
 			}
 
-			VDFramework.EventSystem.EventManager.Instance.RemoveListener<SortingsChangedEvent>(OnSortingsChanged);
+			EventManager.Instance.RemoveListener<SortingsChangedEvent>(OnSortingsChanged);
 		}
 
 		public int Sort(AbstractUICard card, AbstractUICard other)
