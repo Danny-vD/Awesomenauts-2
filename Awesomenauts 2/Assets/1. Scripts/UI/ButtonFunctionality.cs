@@ -42,9 +42,29 @@ namespace UI
 			DeckFilter.SetFilters(FilterValues.Owned);
 		}
 
+		public void ShowAllAction()
+		{
+			DeckFilter.SetFilters(FilterValues.Action);
+		}
+		
+		public void ShowAllMelee()
+		{
+			DeckFilter.SetFilters(FilterValues.Melee);
+		}
+		
+		public void ShowAllRanged()
+		{
+			DeckFilter.SetFilters(FilterValues.Ranged);
+		}		
+		
 		public void ShowAllTanks()
 		{
 			DeckFilter.SetFilters(FilterValues.Tank);
+		}
+		
+		public void ShowAllMinion()
+		{
+			DeckFilter.SetFilters(FilterValues.Melee, FilterValues.Ranged, FilterValues.Tank);
 		}
 
 		public void ShowAllInDeck()

@@ -118,6 +118,7 @@ namespace DeckBuilder
 				deckCard = UICardFactory.Instance.CreateNewCard<DeckUICard>(currentDeckParent, clickedAvailableCard.ID,
 					clickedAvailableCard.Type, clickedAvailableCard.Filters);
 				deckCard.Sprite = clickedAvailableCard.Sprite;
+				deckCard.Amount = 1;
 
 				DeckFilter.AddIsInDeckFilter(deckCard);
 				DeckFilter.AddIsInDeckFilter(clickedAvailableCard);
@@ -144,6 +145,7 @@ namespace DeckBuilder
 					UICardFactory.Instance.CreateNewCard<AvailableUICard>(availableCardsParent, clickedCardInDeck.ID,
 						clickedCardInDeck.Type, clickedCardInDeck.Filters);
 				availableCard.Sprite = clickedCardInDeck.Sprite;
+				availableCard.Amount = 1;
 
 				availableCards.Add(availableCard);
 			}
