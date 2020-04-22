@@ -69,6 +69,18 @@ namespace DeckBuilder
 			
 			collectionsToFilter.Add(collection);
 		}
+		
+		public static void AddIsInDeckFilter(AbstractUICard card)
+		{
+			AddFilterFlagToCard(card, FilterValues.IsIndeck);
+			RemoveFilterFlagFromCard(card, FilterValues.IsNotInDeck);
+		}
+
+		public static void AddIsNotInDeckFilter(AbstractUICard card)
+		{
+			AddFilterFlagToCard(card, FilterValues.IsNotInDeck);
+			RemoveFilterFlagFromCard(card, FilterValues.IsIndeck);
+		}
 
 		public void RemoveFromFilter(IEnumerable<AbstractUICard> collection)
 		{

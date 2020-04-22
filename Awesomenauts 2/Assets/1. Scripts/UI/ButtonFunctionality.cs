@@ -95,5 +95,15 @@ namespace UI
 		{
 			DeckSorter.SetSortings(SortValue.Type);
 		}
+
+		public void SortByTypeAndName()
+		{
+			DeckSorter.SetSortings(SortValue.Type, SortValue.Name);
+		}
+		
+		public void SortByTypeDeckAndName()
+		{
+			DeckSorter.SetSortings(SortValue.Type, SortValue.Name, SortValue.IsInDeck);
+		}
 	}
 }

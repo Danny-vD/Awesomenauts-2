@@ -37,13 +37,10 @@ namespace DeckBuilder
 				return null;
 			}
 
-			//TODO: provide it with entry.FilterValues;
 			AbstractUICard card =
-				UICardFactory.Instance.CreateNewCard<AvailableUICard>(parent, id, FilterValues.IsNotInDeck);
-			DeckFilter.AddFilterFlagToCard(card, FilterValues.IsNotInDeck);
+				UICardFactory.Instance.CreateNewCard<AvailableUICard>(parent, id, entry.CardType, FilterValues.IsNotInDeck);
 
-			//TODO: set amount to entry.Amount
-			int amount = RandomUtil.GetRandom(0, 1, 2, 4, 5);
+			int amount = entry.Amount;
 			card.Amount = amount;
 
 			if (amount > 0)

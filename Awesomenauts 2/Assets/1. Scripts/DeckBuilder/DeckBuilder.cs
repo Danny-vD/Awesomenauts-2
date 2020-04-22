@@ -38,7 +38,7 @@ namespace DeckBuilder
 
 			GetPeristentDeck();
 
-			DeckSorter.SetSortings(SortValue.Name);
+			DeckSorter.SetSortings(SortValue.Type);
 		}
 
 		private void AddDecksToBeFiltered()
@@ -91,18 +91,6 @@ namespace DeckBuilder
 			EventManager.Instance.RemoveListener<ToggleAvailableCardsFilterEvent>(OnToggleAvailableCardsFilter);
 		}
 
-		private static void AddIsInDeckFilter(AbstractUICard card)
-		{
-			DeckFilter.AddFilterFlagToCard(card, FilterValues.IsIndeck);
-			DeckFilter.RemoveFilterFlagFromCard(card, FilterValues.IsNotInDeck);
-		}
-
-		private static void AddIsNotInDeckFilter(AbstractUICard card)
-		{
-			DeckFilter.AddFilterFlagToCard(card, FilterValues.IsNotInDeck);
-			DeckFilter.RemoveFilterFlagFromCard(card, FilterValues.IsIndeck);
-		}
-
 		private static bool GetCardFromCollection(IEnumerable<AbstractUICard> cards, AbstractUICard cardToFind,
 			out AbstractUICard cardInCollection)
 		{
@@ -128,11 +116,11 @@ namespace DeckBuilder
 			else
 			{
 				deckCard = UICardFactory.Instance.CreateNewCard<DeckUICard>(currentDeckParent, clickedAvailableCard.ID,
-					clickedAvailableCard.Filters);
+					clickedAvailableCard.Type, clickedAvailableCard.Filters);
 				deckCard.Sprite = clickedAvailableCard.Sprite;
 
-				AddIsInDeckFilter(deckCard);
-				AddIsInDeckFilter(clickedAvailableCard);
+				DeckFilter.AddIsInDeckFilter(deckCard);
+				DeckFilter.AddIsInDeckFilter(clickedAvailableCard);
 
 				currentDeck.Add(deckCard);
 			}
@@ -154,7 +142,7 @@ namespace DeckBuilder
 			{
 				availableCard =
 					UICardFactory.Instance.CreateNewCard<AvailableUICard>(availableCardsParent, clickedCardInDeck.ID,
-						clickedCardInDeck.Filters);
+						clickedCardInDeck.Type, clickedCardInDeck.Filters);
 				availableCard.Sprite = clickedCardInDeck.Sprite;
 
 				availableCards.Add(availableCard);
@@ -162,7 +150,7 @@ namespace DeckBuilder
 
 			if (--clickedCardInDeck.Amount <= 0)
 			{
-				AddIsNotInDeckFilter(availableCard);
+				DeckFilter.AddIsNotInDeckFilter(availableCard);
 
 				currentDeck.Remove(clickedCardInDeck);
 				Destroy(clickedCardInDeck.gameObject);

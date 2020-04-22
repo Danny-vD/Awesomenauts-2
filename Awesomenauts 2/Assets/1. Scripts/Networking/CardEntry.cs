@@ -5,6 +5,8 @@ using System.Linq;
 using Player;
 using Byt3.Serialization;
 using Byt3.Serialization.Serializers;
+using Enums.Cards;
+using Enums.Deckbuilder;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -20,6 +22,9 @@ namespace Networking
 		public GameObject Prefab;
 
 		public Sprite cardSprite;
+
+		public CardType CardType;
+		public int Amount;
 
 		private class EntityStatisticsSerializer : ASerializer<EntityStatistics>
 		{

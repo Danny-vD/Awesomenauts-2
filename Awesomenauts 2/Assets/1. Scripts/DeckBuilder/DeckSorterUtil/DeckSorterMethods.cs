@@ -15,6 +15,7 @@ namespace DeckBuilder.DeckSorterUtil
 			{
 				{SortValue.IsInDeck, SortByIsInDeck},
 				{SortValue.Name, SortByName},
+				{SortValue.Type, SortByType},
 				{SortValue.Amount, SortByAmount},
 			};
 
@@ -35,7 +36,7 @@ namespace DeckBuilder.DeckSorterUtil
 		{
 			EventManager.Instance.AddListener<SortingsChangedEvent>(OnSortingsChanged);
 		}
-		
+
 		private void RemoveListeners()
 		{
 			if (!EventManager.IsInitialized)
@@ -70,7 +71,7 @@ namespace DeckBuilder.DeckSorterUtil
 		{
 			bool isInDeck = card.MeetsFilters(FilterValues.IsIndeck);
 			bool otherIsInDeck = other.MeetsFilters(FilterValues.IsIndeck);
-
+			
 			if (isInDeck && !otherIsInDeck)
 			{
 				return -1;
@@ -82,6 +83,11 @@ namespace DeckBuilder.DeckSorterUtil
 			}
 
 			return 0;
+		}
+
+		private static int SortByType(AbstractUICard card, AbstractUICard other)
+		{
+			return card.Type.CompareTo(other.Type);
 		}
 
 		private static int SortByName(Object card, Object other)

@@ -1,4 +1,6 @@
 ﻿using System;
+using DeckBuilder;
+using Enums.Cards;
 using Enums.Deckbuilder;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -28,7 +30,19 @@ namespace UI.Cards
 			set => SetSprite(value);
 		}
 
-		public FilterValues Filters { get; set; } = FilterValues.Owned;
+		public FilterValues Filters { get; set; } = 0;
+
+		private CardType type;
+
+		public CardType Type
+		{
+			get => type;
+			set
+			{
+				SetCardFilter(value);
+				type = value;
+			}
+		}
 
 		private Image image;
 		private Button button;
@@ -45,6 +59,11 @@ namespace UI.Cards
 			AddEventTriggers();
 
 			amountCounter = GetComponentInChildren<CardAmountCounter>();
+		}
+
+		public bool MeetsFilters(FilterValues currentFilters)
+		{
+			return (Filters & currentFilters) != 0;
 		}
 
 		protected virtual void OnPointerEnter() { }
@@ -88,9 +107,10 @@ namespace UI.Cards
 			return ID == other.ID;
 		}
 
-		public bool MeetsFilters(FilterValues currentFilters)
+		private void SetCardFilter(CardType newType)
 		{
-			return (Filters & currentFilters) != 0;
+			DeckFilter.RemoveFilterFlagFromCard(this, (FilterValues) type);
+			DeckFilter.AddFilterFlagToCard(this, (FilterValues) newType);
 		}
 	}
 }
