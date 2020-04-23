@@ -1654,6 +1654,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentDeckParent: {fileID: 1103571277}
   availableCardsParent: {fileID: 1592483062}
+  deckRequirements:
+    UI: {fileID: 0}
+    minMaxPerCardTypes:
+    - cardType: 8
+      minMax: {x: 0, y: 4}
+    - cardType: 16
+      minMax: {x: 0, y: 5}
+    - cardType: 32
+      minMax: {x: 0, y: 3}
+    - cardType: 64
+      minMax: {x: 0, y: 2}
+    maxSameCard: 3
 --- !u!1 &368004734
 GameObject:
   m_ObjectHideFlags: 0

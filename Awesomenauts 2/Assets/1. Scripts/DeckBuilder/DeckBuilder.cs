@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Deckbuilder;
 using Enums.Deckbuilder;
 using Events.Deckbuilder;
 using Networking;
@@ -8,7 +9,6 @@ using UnityEngine;
 using Utility.UI;
 using VDFramework;
 using VDFramework.EventSystem;
-using VDFramework.Utility;
 
 namespace DeckBuilder
 {
@@ -20,6 +20,9 @@ namespace DeckBuilder
 		[SerializeField]
 		private Transform availableCardsParent = null;
 
+		[SerializeField]
+		private DeckRequirements deckRequirements = null;
+
 		private readonly List<AbstractUICard> currentDeck = new List<AbstractUICard>();
 		private List<AbstractUICard> availableCards;
 
@@ -30,6 +33,7 @@ namespace DeckBuilder
 		{
 			deckFilter = new DeckFilter();
 			deckSorter = new DeckSorter();
+			deckRequirements.Instantiate(currentDeck);
 
 			availableCards = AddAllCards.AddCardsAsChild(availableCardsParent);
 
@@ -38,7 +42,13 @@ namespace DeckBuilder
 
 			GetPeristentDeck();
 
+			deckRequirements.ScanDeck();
 			DeckSorter.SetSortings(SortValue.Type);
+		}
+
+		private void OnValidate()
+		{
+			deckRequirements.OnValidate();
 		}
 
 		private void AddDecksToBeFiltered()
@@ -70,6 +80,9 @@ namespace DeckBuilder
 
 			deckSorter.Destroy();
 			deckSorter = null;
+
+			deckRequirements.Destroy();
+			deckRequirements = null;
 		}
 
 		private void AddListeners()
@@ -159,15 +172,11 @@ namespace DeckBuilder
 			}
 		}
 
-		private bool GetCardFromDeck(AbstractUICard card, out AbstractUICard deckCard)
-		{
-			return GetCardFromCollection(currentDeck, card, out deckCard);
-		}
+		private bool GetCardFromDeck(AbstractUICard card, out AbstractUICard deckCard) =>
+			GetCardFromCollection(currentDeck, card, out deckCard);
 
-		private bool GetCardFromAvailableCards(AbstractUICard card, out AbstractUICard availableCard)
-		{
-			return GetCardFromCollection(availableCards, card, out availableCard);
-		}
+		private bool GetCardFromAvailableCards(AbstractUICard card, out AbstractUICard availableCard) =>
+			GetCardFromCollection(availableCards, card, out availableCard);
 
 		private IEnumerable<int> ConvertDeckToIDlist()
 		{
@@ -231,7 +240,10 @@ namespace DeckBuilder
 				AddToDeck(card);
 			}
 
-			EventManager.Instance.RaiseEvent(new SaveDeckEvent(ConvertDeckToIDlist()));
+			if (deckRequirements.IsValid())
+			{
+				EventManager.Instance.RaiseEvent(new SaveDeckEvent(ConvertDeckToIDlist()));
+			}
 		}
 	}
 }
