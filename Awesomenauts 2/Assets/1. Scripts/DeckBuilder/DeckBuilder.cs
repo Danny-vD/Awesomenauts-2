@@ -36,7 +36,7 @@ namespace DeckBuilder
 			deckRequirements.Instantiate(currentDeck);
 
 			availableCards = AddAllCards.AddCardsAsChild(availableCardsParent);
-
+			
 			AddDecksToBeFiltered();
 			AddDecksToBeSorted();
 
@@ -49,18 +49,6 @@ namespace DeckBuilder
 		private void OnValidate()
 		{
 			deckRequirements.OnValidate();
-		}
-
-		private void AddDecksToBeFiltered()
-		{
-			deckFilter.AddToFilter(currentDeck);
-			deckFilter.AddToFilter(availableCards);
-		}
-
-		private void AddDecksToBeSorted()
-		{
-			deckSorter.AddToBeSorted(currentDeck);
-			deckSorter.AddToBeSorted(availableCards);
 		}
 
 		private void OnEnable()
@@ -83,6 +71,18 @@ namespace DeckBuilder
 
 			deckRequirements.Destroy();
 			deckRequirements = null;
+		}
+
+		private void AddDecksToBeFiltered()
+		{
+			deckFilter.AddToFilter(currentDeck);
+			deckFilter.AddToFilter(availableCards);
+		}
+
+		private void AddDecksToBeSorted()
+		{
+			deckSorter.AddToBeSorted(currentDeck);
+			deckSorter.AddToBeSorted(availableCards);
 		}
 
 		private void AddListeners()

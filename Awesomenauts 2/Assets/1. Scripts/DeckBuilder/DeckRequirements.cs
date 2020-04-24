@@ -25,6 +25,9 @@ namespace Deckbuilder
 		[SerializeField]
 		private int maxSameCard = 3;
 
+		[SerializeField]
+		private int maxTotalCards = 25;
+
 		private readonly Dictionary<CardType, int> amountPerType = new Dictionary<CardType, int>();
 
 		private List<AbstractUICard> collectionToCheck;
@@ -33,10 +36,7 @@ namespace Deckbuilder
 		{
 			collectionToCheck = collection;
 
-			if (UI)
-			{
-				UI.SetRestrictions(minMaxPerCardTypes, maxSameCard);
-			}
+			UI.Instantiate(minMaxPerCardTypes, maxSameCard, maxTotalCards);
 
 			PopulateDictionary();
 
@@ -45,17 +45,20 @@ namespace Deckbuilder
 
 		public void Destroy()
 		{
+			UI = null;
 			RemoveListeners();
 		}
 
 		public void OnValidate()
 		{
-			FakeDictionaryUtil.PopulateEnumDictionary<MinMaxPerCardType, CardType, Vector2>(minMaxPerCardTypes);
+			FakeDictionaryUtil.PopulateEnumDictionary<MinMaxPerCardType, CardType, Vector2Int>(minMaxPerCardTypes);
+			UI.OnValidate();
 		}
 
 		private void AddListeners()
 		{
 			EventManager.Instance.AddListener<ClickUICardEvent>(OnClickUICard, int.MaxValue);
+			EventManager.Instance.AddListener<ClickUICardEvent>(UpdateUI, int.MinValue);
 		}
 
 		private void RemoveListeners()
@@ -66,6 +69,7 @@ namespace Deckbuilder
 			}
 
 			EventManager.Instance.RemoveListener<ClickUICardEvent>(OnClickUICard);
+			EventManager.Instance.RemoveListener<ClickUICardEvent>(UpdateUI);
 		}
 
 		public void ScanDeck()
@@ -77,6 +81,8 @@ namespace Deckbuilder
 			{
 				ChangeAmountOfType(card.Type, card.Amount);
 			}
+			
+			UI.Update(amountPerType, GetHighestCardAmount(), GetTotalCardCount());
 		}
 
 		public bool IsValid()
@@ -90,12 +96,17 @@ namespace Deckbuilder
 				return false;
 			}
 
-			return GetHighestCardAmount() <= maxSameCard;
+			if (GetHighestCardAmount() > maxSameCard)
+			{
+				return false;
+			}
+
+			return GetTotalCardCount() <= maxTotalCards;
 		}
 
 		private void PopulateDictionary()
 		{
-			foreach (CardType type in CardType.Action.GetValues())
+			foreach (CardType type in default(CardType).GetValues())
 			{
 				amountPerType.Add(type, 0);
 			}
@@ -108,8 +119,13 @@ namespace Deckbuilder
 
 		private int GetHighestCardAmount()
 		{
-			List<int> enumerable = collectionToCheck.Select(card => card.Amount).ToList();
-			return !enumerable.Any() ? 0 : enumerable.Max();
+			List<int> cardAmounts = collectionToCheck.Select(card => card.Amount).ToList();
+			return cardAmounts.Any() ? cardAmounts.Max() : 0;
+		}
+
+		private int GetTotalCardCount()
+		{
+			return collectionToCheck.Aggregate(0, (amount, card) => amount + card.Amount);
 		}
 
 		private void OnClickUICard(ClickUICardEvent clickUICardEvent)
@@ -122,11 +138,11 @@ namespace Deckbuilder
 			}
 
 			ChangeAmountOfType(clickUICardEvent.Card.Type, amountToChange);
+		}
 
-			if (UI)
-			{
-				UI.UpdateUI(amountPerType);
-			}
+		private void UpdateUI()
+		{
+			UI.Update(amountPerType, GetHighestCardAmount(), GetTotalCardCount());
 		}
 	}
 }
