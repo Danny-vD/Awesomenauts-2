@@ -1,7 +1,6 @@
-﻿using System;
+using System;
 using Events.Deckbuilder;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using VDFramework;
 using VDFramework.EventSystem;

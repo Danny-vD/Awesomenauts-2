@@ -2,8 +2,10 @@ using System;
 using System.IO;
 using Byt3.Serialization;
 using Byt3.Serialization.Serializers;
+using MasterServer.Common;
 using Networking.Statistics;
 using Player;
+using UnityEngine;
 
 namespace Networking.NetworkingHacks {
 	public class EntityStatSerializer : ASerializer<NetworkEntityStat>
@@ -12,12 +14,12 @@ namespace Networking.NetworkingHacks {
 		{
 			NetworkEntityStat stat = new NetworkEntityStat
 			{
-				ValueType = Byt3Serializer.GetTypeByKey(s.ReadString())
+				ValueType = SerializerSingleton.Serializer.GetTypeByKey(s.ReadString())
 			};
 
 			MemoryStream ms = new MemoryStream(s.ReadBytes()) { Position = 0 };
 
-			bool ret = Byt3Serializer.TryReadPacket(ms, out stat.Value);
+			bool ret = SerializerSingleton.Serializer.TryReadPacket(ms, out stat.Value);
 			if (!ret) throw new Exception("Read packet Exception");
 
 			stat.StatType = (CardPlayerStatType)s.ReadInt();
@@ -30,7 +32,16 @@ namespace Networking.NetworkingHacks {
 			s.Write(obj.ValueType.AssemblyQualifiedName);
 
 			MemoryStream ms = new MemoryStream();
-			if (!Byt3Serializer.TryWritePacket(ms, obj.Value)) throw new Exception("Serializer Write Error");
+			if (SerializerSingleton.Serializer.CanSerialize(typeof(int)))
+			{
+				Debug.Log("Serializable");
+			}
+			else
+			{
+				Debug.Log("WTF");
+			}
+			if (!SerializerSingleton.Serializer.TryWritePacket(ms, obj.Value))
+				throw new Exception("Serializer Write Error");
 
 			byte[] buf = new byte[ms.Length];
 			ms.Position = 0;

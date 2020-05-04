@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Byt3.Serialization;
 using Byt3.Serialization.Serializers;
+using MasterServer.Common;
 using Networking.Statistics;
 using Player;
 
@@ -21,7 +22,7 @@ namespace Networking.NetworkingHacks
 			{
 				MemoryStream ms = new MemoryStream(s.ReadBytes()) { Position = 0 };
 
-				bool ret = Byt3Serializer.TryReadPacket(ms, out NetworkEntityStat stat);
+				bool ret = SerializerSingleton.Serializer.TryReadPacket(ms, out NetworkEntityStat stat);
 				if (!ret) throw new Exception("Read packet Exception");
 
 				es.SetValue(stat.StatType, stat.Value);
@@ -43,7 +44,7 @@ namespace Networking.NetworkingHacks
 					ValueType = cardPlayerStat.Value.GetValue().GetType()
 				};
 				MemoryStream ms = new MemoryStream();
-				if (!Byt3Serializer.TryWritePacket(ms, stat)) throw new Exception("Serializer Write Error");
+				if (!SerializerSingleton.Serializer.TryWritePacket(ms, stat)) throw new Exception("Serializer Write Error");
 
 				byte[] buf = new byte[ms.Length];
 				ms.Position = 0;

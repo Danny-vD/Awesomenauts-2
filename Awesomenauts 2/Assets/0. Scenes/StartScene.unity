@@ -1478,7 +1478,7 @@ PrefabInstance:
     - target: {fileID: 4467022757310397680, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: StartupArguments
-      value: Master.Address.IP:localhost
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4467022757310397680, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}

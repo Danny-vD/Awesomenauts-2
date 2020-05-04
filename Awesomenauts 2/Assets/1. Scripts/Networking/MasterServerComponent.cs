@@ -3,6 +3,7 @@ using System.Threading;
 using DataObjects;
 using Byt3.Serialization;
 using MasterServer.Client;
+using MasterServer.Common;
 using MasterServer.Common.Networking.Packets;
 using MasterServer.Common.Networking.Packets.Serializers;
 using Mirror;
@@ -24,9 +25,9 @@ namespace Networking
 		private void Start()
 		{
 
-			Byt3Serializer.AddSerializer<ClientHeartBeatPacket>(new ClientHeartBeatSerializer());
-			Byt3Serializer.AddSerializer<ClientHandshakePacket>(new ClientHandshakeSerializer());
-			Byt3Serializer.AddSerializer<ClientInstanceReadyPacket>(new ClientInstanceReadySerializer());
+			SerializerSingleton.Serializer.AddSerializer<ClientHeartBeatPacket>(new ClientHeartBeatSerializer());
+			SerializerSingleton.Serializer.AddSerializer<ClientHandshakePacket>(new ClientHandshakeSerializer());
+			SerializerSingleton.Serializer.AddSerializer<ClientInstanceReadyPacket>(new ClientInstanceReadySerializer());
 
 
 			if (Info == null) Info = new MasterServerInfo();

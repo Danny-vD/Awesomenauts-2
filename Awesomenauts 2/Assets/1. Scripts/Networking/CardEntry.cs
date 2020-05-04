@@ -4,6 +4,8 @@ using System.Linq;
 using Player;
 using Byt3.Serialization;
 using Enums.Cards;
+using MasterServer.Common;
+using MasterServer.Common.Networking.Packets.Serializers;
 using Networking.NetworkingHacks;
 using Networking.Statistics;
 using UnityEngine;
@@ -39,19 +41,15 @@ namespace Networking
 			if (init) return;
 
 			init = true;
-			Byt3Serializer.AddSerializer<EntityStatistics>(new EntityStatisticsSerializer());
-			Byt3Serializer.AddSerializer<NetworkEntityStat>(new EntityStatSerializer());
-			Byt3Serializer.AddSerializer<string>(new StringSerializer());
-			Byt3Serializer.AddSerializer<int>(new StructSerializer<int>());
-			Byt3Serializer.AddSerializer<float>(new StructSerializer<float>());
-			Byt3Serializer.AddSerializer<bool>(new StructSerializer<bool>());
+			SerializerSingleton.Serializer.AddSerializer<EntityStatistics>(new EntityStatisticsSerializer());
+			SerializerSingleton.Serializer.AddSerializer<NetworkEntityStat>(new EntityStatSerializer());
 		}
 
 		public byte[] StatisticsToNetworkableArray()
 		{
 			InitializeSerializer();
 			MemoryStream ms = new MemoryStream();
-			if (!Byt3Serializer.TryWritePacket(ms, Statistics)) throw new Exception("Serializer Write Error");
+			if (!SerializerSingleton.Serializer.TryWritePacket(ms, Statistics)) throw new Exception("Serializer Write Error");
 
 			return ms.GetBuffer().Take((int) ms.Position).ToArray();
 
@@ -61,7 +59,7 @@ namespace Networking
 		{
 			InitializeSerializer();
 			MemoryStream ms = new MemoryStream(buffer) {Position = 0};
-			bool ret = Byt3Serializer.TryReadPacket(ms, out EntityStatistics stat);
+			bool ret = SerializerSingleton.Serializer.TryReadPacket(ms, out EntityStatistics stat);
 			if (!ret) throw new Exception("Read packet Exception");
 
 			return stat;

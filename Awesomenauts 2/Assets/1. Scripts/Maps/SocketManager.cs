@@ -1,13 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using Mirror;
 using Networking;
-using Player;
 using UnityEngine;
 
-namespace Maps {
+namespace Maps
+{
 	public class SocketManager : MonoBehaviour
 	{
 		/// <summary>
@@ -34,7 +32,7 @@ namespace Maps {
 		// Start is called before the first frame update
 		void Start()
 		{
-			if(!CardNetworkManager.Instance.IsServer)return;
+			if (!CardNetworkManager.Instance.IsServer) return;
 
 
 
@@ -53,11 +51,11 @@ namespace Maps {
 
 		public void RegisterSocket(int id, CardSocket socket)
 		{
-			if(!socketMap.ContainsKey(id))socketMap.Add(id, new List<CardSocket>{socket});
+			if (!socketMap.ContainsKey(id)) socketMap.Add(id, new List<CardSocket> { socket });
 			else socketMap[id].Add(socket);
 		}
 
-		private Dictionary<int, List<CardSocket>> socketMap=new Dictionary<int, List<CardSocket>>();
+		private Dictionary<int, List<CardSocket>> socketMap = new Dictionary<int, List<CardSocket>>();
 
 		/// <summary>
 		/// Maps the ClientIDS to the Corresponding Team IDS
@@ -66,10 +64,10 @@ namespace Maps {
 		/// <param name="teamIDs"></param>
 		public void AddPlayers(int[] clientIDs, int[] teamIDs)
 		{
-			if(SocketData==null)
+			if (SocketData == null)
 				SocketData = new Dictionary<int, CardTeamSocketData>();
 
-			
+
 
 			for (int i = 0; i < clientIDs.Length; i++)
 			{
@@ -77,7 +75,7 @@ namespace Maps {
 			}
 			foreach (KeyValuePair<int, List<CardSocket>> keyValuePair in socketMap)
 			{
-				SocketData[keyValuePair.Key].CardSockets=keyValuePair.Value;
+				SocketData[SocketData.ElementAt(keyValuePair.Key).Key].CardSockets = keyValuePair.Value;
 			}
 
 			for (int i = 0; i < clientIDs.Length; i++)
@@ -130,7 +128,7 @@ namespace Maps {
 		public bool IsFromTeam(int clientID, Transform objectToCheck)
 		{
 			return SocketData.ContainsKey(clientID) &&
-			       SocketData[clientID].CardSockets.Count(x => x.transform == objectToCheck) != 0;
+				   SocketData[clientID].CardSockets.Count(x => x.transform == objectToCheck) != 0;
 		}
 
 

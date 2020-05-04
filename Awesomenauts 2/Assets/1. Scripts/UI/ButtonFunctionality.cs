@@ -1,9 +1,7 @@
-﻿using DeckBuilder;
+using DeckBuilder;
 using Enums.Deckbuilder;
-using Events.Deckbuilder;
 using VDFramework;
 using UnityEngine.SceneManagement;
-using VDFramework.EventSystem;
 
 namespace UI
 {
