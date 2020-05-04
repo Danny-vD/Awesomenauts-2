@@ -1,14 +1,21 @@
 using System.Collections.Generic;
 using System.Linq;
+using Assets._1._Scripts.ScriptableObjects.DragLogic;
 using Maps;
 using Networking;
 using Mirror;
 using UnityEngine;
 
-namespace Player {
+namespace Player
+{
+
+
+
 	public class CardPlayer : NetworkBehaviour
 	{
 		public EntityStatistics PlayerStatistics;
+
+		public CardDragLogic DragFromHandLogic;
 
 		public static CardPlayer LocalPlayer;
 		public static List<CardPlayer> ServerPlayers = new List<CardPlayer>();
@@ -29,7 +36,7 @@ namespace Player {
 		public CardHand Hand;
 		public CardDeck Deck;
 
-		public LayerMask Socket;
+		public LayerMask SocketLayer;
 		public LayerMask BoardLayer;
 		public LayerMask CardDragLayer;
 		private LayerMask PlayerHandLayer => Hand.PlayerHandLayer;
@@ -135,7 +142,7 @@ namespace Player {
 
 
 			Debug.Log("Adding " + cardsToDraw + " cards to the hand of client: " +
-			          netIdentity.connectionToClient.connectionId);
+					  netIdentity.connectionToClient.connectionId);
 
 			for (int i = 0; i < cardsToDraw; i++)
 			{
@@ -148,11 +155,10 @@ namespace Player {
 				c.Statistics.SetValue(CardPlayerStatType.TeamID, ClientID); //Set Team ID, used to find out to whom the card belongs.
 				byte[] networkData = e.StatisticsToNetworkableArray();
 				Debug.Log("Sending Stats");
-				c.TargetSendStats(netIdentity.connectionToClient, networkData);
+				c.RpcSendStats(networkData);
 
-				Hand.AddToHand(c.GetComponent<NetworkIdentity>());
-				Hand.TargetAddToHand(netIdentity.connectionToClient,
-					c.GetComponent<NetworkIdentity>()); //Add Card to the client
+				//Hand.AddToHand(c.GetComponent<NetworkIdentity>());
+				Hand.RpcAddToHand(c.netIdentity); //Add Card to the client
 			}
 		}
 
@@ -202,7 +208,7 @@ namespace Player {
 
 		private void HandleDraggingCardFromHand()
 		{
-			Vector3 dir = GetCardPosition() - draggedCard.transform.position;
+			Vector3 dir = GetCardPosition(draggedCard, DragFromHandLogic) - draggedCard.transform.position;
 			float m = Mathf.Clamp(dir.magnitude * DragIntertiaMultiplier, 0, MaxIntertia);
 
 			dir *= Drag;
@@ -222,6 +228,10 @@ namespace Player {
 
 		private void HandleReleasedCardFromHand()
 		{
+			if (netIdentity.hasAuthority) //If we are 
+			{
+
+			}
 			dragging = false;
 			if (!snapping)
 			{
@@ -229,27 +239,50 @@ namespace Player {
 			}
 			else
 			{
-				//Remove Available Solar Client Side
-				int solar = PlayerStatistics.GetValue<int>(CardPlayerStatType.Solar);
-				int sub = draggedCard.Statistics.GetValue<int>(CardPlayerStatType.Solar);
-				solar -= sub;
-				PlayerStatistics.SetValue(CardPlayerStatType.Solar, solar);
+				CmdPlaceCard(draggedCard.netIdentity, SnappedSocket.netIdentity);
+			}
+			Debug.Log("Released Card");
 
-				//Place card on board
-				CmdRemoveFromHand(draggedCard.GetComponent<NetworkIdentity>());
-				draggedCard.gameObject.layer = UnityTrashWorkaround(BoardLayer);
-				Hand.RemoveCard(draggedCard.GetComponent<Card>());
+		}
 
-				//We Have to turn the card facing up again
-				Quaternion turnOverRot = Quaternion.AngleAxis(180, draggedCard.transform.right);
-				draggedCard.transform.rotation *= turnOverRot;
+		[Command]
+		private void CmdPlaceCard(NetworkIdentity identity, NetworkIdentity socket)
+		{
+			RpcPlaceCard(identity, socket);
+		}
 
-				SnappedSocket.DockCard(draggedCard);
-				draggedCard.SetState(CardState.OnBoard);
+		[ClientRpc]
+		private void RpcPlaceCard(NetworkIdentity draggedCardIdentity, NetworkIdentity socket)
+		{
+			PlaceCard(draggedCardIdentity, socket);
+		}
+
+		private void PlaceCard(NetworkIdentity draggedCardIdentity, NetworkIdentity socket)
+		{
+			//Remove Available Solar Client Side
+			Card c = draggedCardIdentity.GetComponent<Card>();
+			CardSocket cs = socket.GetComponent<CardSocket>();
+			int solar = PlayerStatistics.GetValue<int>(CardPlayerStatType.Solar);
+			int sub = c.Statistics.GetValue<int>(CardPlayerStatType.Solar);
+			solar -= sub;
+			PlayerStatistics.SetValue(CardPlayerStatType.Solar, solar);
+
+			//Place card on board
+			//CmdRemoveFromHand(c.GetComponent<NetworkIdentity>());
+			c.gameObject.layer = UnityTrashWorkaround(BoardLayer);
+			Hand.RemoveCard(c.GetComponent<Card>());
+
+			//We Have to turn the card facing up again
+			Quaternion turnOverRot = Quaternion.AngleAxis(180, c.transform.right);
+			c.transform.rotation *= turnOverRot;
+			c.SetState(CardState.OnBoard);
+
+			cs.DockCard(c);
+
+			if (c.hasAuthority)
+			{
 				Hand.SetSelectedCard(null);
 			}
-
-			Debug.Log("Released Card");
 		}
 
 		private void HandleClickedOnCardOnHand(Card c, bool fromHand)
@@ -291,8 +324,10 @@ namespace Player {
 		public ArrowDisplay ArrowDisplayHelper;
 		private void HandleClickedOnCardOnBoard(Card c)
 		{
+
 			if (c.Statistics.GetValue<int>(CardPlayerStatType.TeamID) == ClientID) //Card belongs to us
 			{
+
 				draggedCard = c;
 				dragging = true;
 			}
@@ -300,17 +335,40 @@ namespace Player {
 
 		private void HandleReleasedCardFromBoard()
 		{
+			ArrowDisplayHelper.Deactivate();
+
+			if (HasPlacedCard(out RaycastHit info, out CardSocket s))
+			{
+				if (draggedCard.DragLogicFromBoard.CanTarget(this, s, draggedCard.AttachedCardSocket))
+				{
+					CardAction action =
+						draggedCard.DragLogicFromBoard.GetAction(this, s, draggedCard.AttachedCardSocket);
+					if (action == CardAction.Attack)
+					{
+						draggedCard.Attack(s.DockedCard);
+					}
+					else if (action == CardAction.Move)
+					{
+						Debug.Log("MOVE");
+						draggedCard.AttachedCardSocket?.DockCard(null);
+						s.DockCard(draggedCard);
+						//TODO: Implement Move
+					}
+				}
+			}
+
 			dragging = false;
 			draggedCard = null;
-			ArrowDisplayHelper.Deactivate();
 		}
 
-		private void HandleDraggingCardFromBoard(bool fromOwnTeam)
+		private void HandleDraggingCardFromBoard()
 		{
 			if (!dragging) return;
 
+
 			Vector3 arrowPos;
-			if (!fromOwnTeam && IsHoveringCardExcept(BoardLayer, out RaycastHit info, draggedCard.GetComponent<Collider>()))
+			if (IsHoveringCard(SocketLayer, out RaycastHit info) &&
+				draggedCard.DragLogicFromBoard.CanTarget(this, info.collider.GetComponent<CardSocket>(), draggedCard.AttachedCardSocket))
 			{
 				arrowPos = info.collider.transform.position;
 			}
@@ -356,7 +414,7 @@ namespace Player {
 			if (hoverCard) c = chit.transform.GetComponent<Card>();
 			bool fromHand = c != null && Hand.IsCardFromHand(c);
 			bool fromOwnTeam = c != null && c.StatisticsValid &&
-			                   c.Statistics.GetValue<int>(CardPlayerStatType.TeamID) == ClientID;
+							   c.Statistics.GetValue<int>(CardPlayerStatType.TeamID) == ClientID;
 			bool isPrevious = hoveredCard != null && c == hoveredCard;
 
 			if (hoverCard)
@@ -418,7 +476,7 @@ namespace Player {
 						HandleDraggingCardFromHand();
 						break;
 					case CardState.OnBoard:
-						HandleDraggingCardFromBoard(fromOwnTeam);
+						HandleDraggingCardFromBoard();
 						break;
 					case CardState.OnGrave:
 						break; //DoNothing
@@ -427,12 +485,15 @@ namespace Player {
 			}
 		}
 
-		private Vector3 GetCardPosition()
+		private Vector3 GetCardPosition(Card c, CardDragLogic logic)
 		{
-			if (canSnap && HasPlacedCard(out RaycastHit socketPlace))
+
+			if (canSnap &&
+				HasPlacedCard(out RaycastHit socketPlace, out CardSocket s) &&
+				logic.CanTarget(this, s, c.AttachedCardSocket))
 			{
 				snapping = true;
-				SnappedSocket = socketPlace.transform.GetComponent<CardSocket>();
+				SnappedSocket = s;
 				Vector3 socketPos = socketPlace.transform.position + Vector3.up;
 				return socketPos;
 			}
@@ -496,12 +557,14 @@ namespace Player {
 			return false;
 		}
 
-		private bool HasPlacedCard(out RaycastHit info)
+		private bool HasPlacedCard(out RaycastHit info, out CardSocket socket)
 		{
 			Ray r = Camera.ScreenPointToRay(Input.mousePosition);
 			info = new RaycastHit();
-			return Physics.Raycast(r, out info, float.MaxValue, Socket) &&
-			       MapTransformInfo.Instance.SocketManager.IsFromTeam(ClientID, info.transform);
+			bool ret = Physics.Raycast(r, out info, float.MaxValue, SocketLayer);
+			socket = ret ? info.transform.GetComponent<CardSocket>() : null;
+			return ret;
+			//	  && MapTransformInfo.Instance.SocketManager.IsFromTeam(ClientID, info.transform);
 		}
 	}
 }

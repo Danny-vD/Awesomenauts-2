@@ -147,6 +147,9 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   CoverUpRenderer: {fileID: 7927492048669395001}
+  AttachedCardSocket: {fileID: 0}
+  DragLogicFromHand: {fileID: 11400000, guid: 233744c990c6e664f8fdd1f2997d9842, type: 2}
+  DragLogicFromBoard: {fileID: 11400000, guid: 42144de11fcf8da4a96fbc10a57f7ce3, type: 2}
   Statistics:
     StartStatistics: []
 --- !u!1001 &1705037039991137703

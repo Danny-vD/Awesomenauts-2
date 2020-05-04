@@ -64,11 +64,17 @@ namespace Player {
 			cardTransform.position += transform.up * deltaYLocal;
 		}
 
-		[TargetRpc]
-		public void TargetAddToHand(NetworkConnection target, NetworkIdentity id)
-		{
-			Debug.Log("Adding cards to the hand of client: " + GetComponent<CardPlayer>().ClientID);
+		//[TargetRpc]
+		//public void TargetAddToHand(NetworkConnection target, NetworkIdentity id)
+		//{
+		//	Debug.Log("Adding cards to the hand of client: " + GetComponent<CardPlayer>().ClientID);
 
+		//	AddToHand(id);
+		//}
+
+		[ClientRpc]
+		public void RpcAddToHand(NetworkIdentity id)
+		{
 			AddToHand(id);
 		}
 

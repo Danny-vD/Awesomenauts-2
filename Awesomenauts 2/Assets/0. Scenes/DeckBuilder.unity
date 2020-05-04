@@ -1658,14 +1658,14 @@ MonoBehaviour:
     UI: {fileID: 0}
     minMaxPerCardTypes:
     - cardType: 8
-      minMax: {x: 0, y: 4}
+      minMax: {x: 0, y: 10}
     - cardType: 16
       minMax: {x: 0, y: 5}
     - cardType: 32
       minMax: {x: 0, y: 3}
     - cardType: 64
       minMax: {x: 0, y: 2}
-    maxSameCard: 3
+    maxSameCard: 5
 --- !u!1 &368004734
 GameObject:
   m_ObjectHideFlags: 0
@@ -4253,8 +4253,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 368004736}
   m_HandleRect: {fileID: 368004735}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.2970297
+  m_Value: 0.99999994
+  m_Size: 0.29702967
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5661,7 +5661,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1549657657}
   m_HandleRect: {fileID: 1549657656}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
