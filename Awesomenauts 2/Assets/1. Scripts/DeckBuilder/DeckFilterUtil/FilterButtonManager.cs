@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Enums.Character;
+using Enums.Deckbuilder;
 using UnityEngine;
 using UnityEngine.UI;
 using VDFramework;
@@ -8,7 +8,7 @@ using VDFramework.Extensions;
 
 namespace DeckBuilder.DeckFilterUtil
 {
-	public class FilterbuttonManager : BetterMonoBehaviour
+	public class FilterButtonManager : BetterMonoBehaviour
 	{
 		[SerializeField]
 		private Sprite uncheckedSprite;
@@ -19,21 +19,17 @@ namespace DeckBuilder.DeckFilterUtil
 		[SerializeField]
 		private GameObject buttonPrefab;
 
-		private Dictionary<Button, bool> checkBoxStates = new Dictionary<Button, bool>();
+		private readonly Dictionary<Button, bool> checkBoxStates = new Dictionary<Button, bool>();
 		
 		private void Awake()
 		{
-			Awesomenaut awesomenautFilters = 0;
-			
-			foreach (Awesomenaut awesomenaut in default(Awesomenaut).GetValues()
-				.Where(item => item != Awesomenaut.All))
+			foreach (FilterValues filter in default(FilterValues).GetValues()
+				.Where(item => item != FilterValues.ShowAll))
 			{
-				awesomenautFilters |= awesomenaut;
-				
 				GameObject @object = Instantiate(buttonPrefab, CachedTransform);
 				
 				Text text = @object.GetComponentInChildren<Text>();
-				text.text = awesomenaut.ToString().InsertSpaceBeforeCapitals();
+				text.text = $"Show {filter.ToString().InsertSpaceBeforeCapitals()}";
 				
 				Button button = @object.GetComponentInChildren<Button>();
 				checkBoxStates.Add(button, true);
@@ -41,14 +37,12 @@ namespace DeckBuilder.DeckFilterUtil
 				
 				button.onClick.AddListener(delegate
 				{
-					ButtonChangeState(button, awesomenaut);
+					ButtonChangeState(button, filter);
 				});
 			}
-			
-			DeckFilterManager.SetFilters(awesomenautFilters);
 		}
 
-		private void ButtonChangeState(Button button, Awesomenaut naut)
+		private void ButtonChangeState(Button button, FilterValues filter)
 		{
 			bool isChecked = checkBoxStates[button] = !checkBoxStates[button];
 
@@ -56,11 +50,11 @@ namespace DeckBuilder.DeckFilterUtil
 
 			if (isChecked)
 			{
-				DeckFilterManager.AddFilters(naut);
+				DeckFilterManager.AddFilters(filter);
 			}
 			else
 			{
-				DeckFilterManager.RemoveFilters(naut);
+				DeckFilterManager.RemoveFilters(filter);
 			}
 		}
 	}
