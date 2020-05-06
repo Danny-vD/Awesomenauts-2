@@ -62,6 +62,14 @@ namespace Player {
 
 		}
 
+		public void Invalidate()
+		{
+			foreach (KeyValuePair<CardPlayerStatType, OnStatTypeChanged> onStatTypeChanged in registeredEvents)
+			{
+				onStatTypeChanged.Value?.Invoke(GetValue(onStatTypeChanged.Key));
+			}
+		}
+
 		public bool HasValue(CardPlayerStatType type) => Stats != null && Stats.ContainsKey(type);
 
 		public T GetValue<T>(CardPlayerStatType type)

@@ -1,4 +1,5 @@
 using Assets._1._Scripts.ScriptableObjects.DragLogic;
+using Assets._1._Scripts.ScriptableObjects.Effects;
 using Maps;
 using Networking;
 using Mirror;
@@ -6,15 +7,10 @@ using UnityEngine;
 
 namespace Player
 {
-	public enum CardState
-	{
-		OnDeck,
-		OnHand,
-		OnBoard,
-		OnGrave,
-	}
 	public class Card : NetworkBehaviour
 	{
+		public EffectManager EffectManager;
+
 		public MeshRenderer CoverUpRenderer;
 
 		public CardSocket AttachedCardSocket;
@@ -39,10 +35,16 @@ namespace Player
 		[ClientRpc]
 		public void RpcSendStats(byte[] data)
 		{
+			ApplyStatistics(data);
+		}
+
+		private void ApplyStatistics(byte[] data)
+		{
 			Debug.Log("Received Stats");
 			Statistics = CardEntry.FromNetwork(data);
 			StatisticsValid = true;
 			Statistics.Register(CardPlayerStatType.HP, OnHPChanged);
+			Statistics.Invalidate();
 		}
 
 		private void OnHPChanged(object newvalue)
@@ -50,9 +52,15 @@ namespace Player
 			int hp = (int)newvalue;
 			if (hp <= 0)
 			{
-				AttachedCardSocket?.DockCard(null);
-				Destroy(gameObject);
+				EffectManager.TriggerEffects(EffectTrigger.OnDeath, AttachedCardSocket, null);
+				GoCommitDie(); //Might move this into an effect class
 			}
+		}
+
+		public void GoCommitDie()
+		{
+			AttachedCardSocket?.DockCard(null);
+			Destroy(gameObject);
 		}
 
 		/// <summary>
@@ -71,6 +79,7 @@ namespace Player
 
 			if (state == CardState.OnBoard)
 			{
+				SetCoverState(false);
 				//Reverse the Turning over
 				Quaternion turnOverRot = Quaternion.AngleAxis(-180, transform.up);
 				transform.rotation *= turnOverRot;

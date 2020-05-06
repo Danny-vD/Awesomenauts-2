@@ -390,7 +390,7 @@ MonoBehaviour:
     StartStatistics:
     - type: 0
       dataType: 0
-      value: 5
+      value: 50
     - type: 1
       dataType: 0
       value: 10

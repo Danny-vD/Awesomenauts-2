@@ -311,12 +311,12 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[0].Statistics.StartStatistics.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[1].Statistics.StartStatistics.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -407,72 +407,72 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[0].Statistics.StartStatistics.Array.data[0].value
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[1].Statistics.StartStatistics.Array.data[0].value
-      value: 
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[0].Statistics.StartStatistics.Array.data[0].type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[0].Statistics.StartStatistics.Array.data[1].type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[0].Statistics.StartStatistics.Array.data[1].value
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[0].Statistics.StartStatistics.Array.data[2].type
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[0].Statistics.StartStatistics.Array.data[2].dataType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[0].Statistics.StartStatistics.Array.data[2].value
-      value: This is an Example Text
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[1].Statistics.StartStatistics.Array.data[0].type
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[1].Statistics.StartStatistics.Array.data[1].type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[1].Statistics.StartStatistics.Array.data[1].value
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[1].Statistics.StartStatistics.Array.data[2].type
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
-      propertyPath: CardEntries.Array.data[1].Statistics.StartStatistics.Array.data[2].dataType
+      propertyPath: CardEntries.Array.data[1].Statistics.StartStatistics.Array.data[2].type
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
+      propertyPath: CardEntries.Array.data[1].Statistics.StartStatistics.Array.data[2].dataType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
       propertyPath: CardEntries.Array.data[1].Statistics.StartStatistics.Array.data[2].value
-      value: This is an Example Text111
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -483,22 +483,22 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[0].Statistics.StartStatistics.Array.data[3].type
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[0].Statistics.StartStatistics.Array.data[3].dataType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[0].Statistics.StartStatistics.Array.data[3].value
-      value: 1
+      value: Baby Kuri Mammoth
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[1].Statistics.StartStatistics.Array.data[3].value
-      value: 1
+      value: Barrier Magazine
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -1235,7 +1235,7 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[1].Statistics.StartStatistics.Array.data[0].dataType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -1415,6 +1415,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3606115186347957009, guid: 78864c36753eea947a36ad637a07ca31,
         type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[1].Statistics.StartStatistics.Array.data[3].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[1].Statistics.StartStatistics.Array.data[3].dataType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4467022757310397675, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: m_Name
@@ -1478,7 +1488,7 @@ PrefabInstance:
     - target: {fileID: 4467022757310397680, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: StartupArguments
-      value: 
+      value: Master.Address.IP:localhost
       objectReference: {fileID: 0}
     - target: {fileID: 4467022757310397680, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}

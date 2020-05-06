@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets._1._Scripts.ScriptableObjects.DragLogic;
+using Assets._1._Scripts.ScriptableObjects.Effects;
 using Maps;
 using Networking;
 using Mirror;
@@ -228,10 +229,6 @@ namespace Player
 
 		private void HandleReleasedCardFromHand()
 		{
-			if (netIdentity.hasAuthority) //If we are 
-			{
-
-			}
 			dragging = false;
 			if (!snapping)
 			{
@@ -240,6 +237,7 @@ namespace Player
 			else
 			{
 				CmdPlaceCard(draggedCard.netIdentity, SnappedSocket.netIdentity);
+
 			}
 			Debug.Log("Released Card");
 
@@ -262,6 +260,10 @@ namespace Player
 			//Remove Available Solar Client Side
 			Card c = draggedCardIdentity.GetComponent<Card>();
 			CardSocket cs = socket.GetComponent<CardSocket>();
+
+
+			c.EffectManager.TriggerEffects(EffectTrigger.OnPlay, null, cs);
+
 			int solar = PlayerStatistics.GetValue<int>(CardPlayerStatType.Solar);
 			int sub = c.Statistics.GetValue<int>(CardPlayerStatType.Solar);
 			solar -= sub;
@@ -283,6 +285,7 @@ namespace Player
 			{
 				Hand.SetSelectedCard(null);
 			}
+			c.EffectManager.TriggerEffects(EffectTrigger.AfterPlay, cs, null);
 		}
 
 		private void HandleClickedOnCardOnHand(Card c, bool fromHand)
@@ -345,14 +348,20 @@ namespace Player
 						draggedCard.DragLogicFromBoard.GetAction(this, s, draggedCard.AttachedCardSocket);
 					if (action == CardAction.Attack)
 					{
+						Card c = s.DockedCard;
+						draggedCard.EffectManager.TriggerEffects(EffectTrigger.OnAttacking, draggedCard.AttachedCardSocket, s);
+						c.EffectManager.TriggerEffects(EffectTrigger.OnAttacked,s, draggedCard.AttachedCardSocket);
 						draggedCard.Attack(s.DockedCard);
+						draggedCard.EffectManager.TriggerEffects(EffectTrigger.AfterAttacking, draggedCard.AttachedCardSocket, s);
+						c.EffectManager.TriggerEffects(EffectTrigger.AfterAttacked, s, draggedCard.AttachedCardSocket);
 					}
 					else if (action == CardAction.Move)
 					{
 						Debug.Log("MOVE");
+						draggedCard.EffectManager.TriggerEffects(EffectTrigger.OnMove, draggedCard.AttachedCardSocket, s);
 						draggedCard.AttachedCardSocket?.DockCard(null);
 						s.DockCard(draggedCard);
-						//TODO: Implement Move
+						draggedCard.EffectManager.TriggerEffects(EffectTrigger.AfterMove, draggedCard.AttachedCardSocket, s);
 					}
 				}
 			}
