@@ -1,6 +1,7 @@
 using System;
-using DeckBuilder;
+using DeckBuilder.DeckFilterUtil;
 using Enums.Cards;
+using Enums.Character;
 using Enums.Deckbuilder;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -38,10 +39,12 @@ namespace UI.Cards
 			get => type;
 			set
 			{
-				SetCardFilter(value);
+				SetCardTypeFilter(value);
 				type = value;
 			}
 		}
+
+		public Awesomenaut Awesomenaut { get; set; }
 
 		private Image image;
 		private Button button;
@@ -63,6 +66,16 @@ namespace UI.Cards
 		public bool MeetsFilters(FilterValues currentFilters)
 		{
 			return (Filters & currentFilters) != 0;
+		}
+
+		public bool MeetsFilters(Awesomenaut awesomenautFilters)
+		{
+			return (Awesomenaut & awesomenautFilters) != 0;
+		}
+
+		public bool MeetsFilters(FilterValues currentFilters, Awesomenaut awesomenautFilters)
+		{
+			return (Filters & currentFilters) != 0 && (Awesomenaut & awesomenautFilters) != 0;
 		}
 
 		protected virtual void OnPointerEnter() { }
@@ -106,10 +119,10 @@ namespace UI.Cards
 			return ID == other.ID;
 		}
 
-		private void SetCardFilter(CardType newType)
+		private void SetCardTypeFilter(CardType newType)
 		{
-			DeckFilter.RemoveFilterFlagFromCard(this, (FilterValues) type);
-			DeckFilter.AddFilterFlagToCard(this, (FilterValues) newType);
+			DeckFilterManager.RemoveFilterFlagFromCard(this, (FilterValues) type);
+			DeckFilterManager.AddFilterFlagToCard(this, (FilterValues) newType);
 		}
 	}
 }

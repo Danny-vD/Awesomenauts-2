@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Enums.Character;
 using Enums.Deckbuilder;
 using Events.Deckbuilder;
 using UI.Cards;
@@ -10,6 +11,7 @@ namespace DeckBuilder
 	public class DeckFilter
 	{
 		private FilterValues currentFilters = FilterValues.ShowAll;
+		private Awesomenaut currentAwesomenautFilters = Awesomenaut.All;
 
 		private readonly List<IEnumerable<AbstractUICard>>
 			collectionsToFilter = new List<IEnumerable<AbstractUICard>>();
@@ -30,7 +32,8 @@ namespace DeckBuilder
 			EventManager.Instance.AddListener<FiltersChangedEvent>(OnFiltersChanged);
 			EventManager.Instance.AddListener<ClickUICardEvent>(OnClickUICard, int.MinValue);
 			EventManager.Instance.AddListener<ToggleCurrentDeckFilterEvent>(OnToggleCurrentDeckFilter, int.MinValue);
-			EventManager.Instance.AddListener<ToggleAvailableCardsFilterEvent>(OnToggleAvailableCardsFilter, int.MinValue);
+			EventManager.Instance.AddListener<ToggleAvailableCardsFilterEvent>(OnToggleAvailableCardsFilter,
+				int.MinValue);
 		}
 
 		private void RemoveListeners()
@@ -39,25 +42,13 @@ namespace DeckBuilder
 			{
 				return;
 			}
-    
+
 			EventManager.Instance.RemoveListener<ClickUICardEvent>(OnClickUICard);
 		}
 
-		public static void SetFilters(params FilterValues[] filters)
+		public static void SetFilters(FilterValues filters, Awesomenaut awesomenautFilters)
 		{
-			FilterValues values = filters.Aggregate<FilterValues, FilterValues>(0, (current, filterValue) => current | filterValue);
-			
-			EventManager.Instance.RaiseEvent(new FiltersChangedEvent(values));
-		}
-
-		public static void AddFilterFlagToCard(AbstractUICard card, FilterValues flagToAdd)
-		{
-			card.Filters |= flagToAdd;
-		}
-
-		public static void RemoveFilterFlagFromCard(AbstractUICard card, FilterValues flagToRemove)
-		{
-			card.Filters &= ~flagToRemove;
+			EventManager.Instance.RaiseEvent(new FiltersChangedEvent(filters, awesomenautFilters));
 		}
 
 		public void AddToFilter(IEnumerable<AbstractUICard> collection)
@@ -66,20 +57,8 @@ namespace DeckBuilder
 			{
 				return;
 			}
-			
-			collectionsToFilter.Add(collection);
-		}
-		
-		public static void AddIsInDeckFilter(AbstractUICard card)
-		{
-			AddFilterFlagToCard(card, FilterValues.IsIndeck);
-			RemoveFilterFlagFromCard(card, FilterValues.IsNotInDeck);
-		}
 
-		public static void AddIsNotInDeckFilter(AbstractUICard card)
-		{
-			AddFilterFlagToCard(card, FilterValues.IsNotInDeck);
-			RemoveFilterFlagFromCard(card, FilterValues.IsIndeck);
+			collectionsToFilter.Add(collection);
 		}
 
 		public void RemoveFromFilter(IEnumerable<AbstractUICard> collection)
@@ -91,7 +70,8 @@ namespace DeckBuilder
 		{
 			foreach (AbstractUICard abstractUICard in cardCollection)
 			{
-				abstractUICard.gameObject.SetActive(abstractUICard.MeetsFilters(currentFilters));
+				abstractUICard.gameObject.SetActive(abstractUICard.MeetsFilters(currentFilters,
+					currentAwesomenautFilters));
 			}
 		}
 
@@ -103,6 +83,7 @@ namespace DeckBuilder
 		private void OnFiltersChanged(FiltersChangedEvent filtersChangedEvent)
 		{
 			currentFilters = filtersChangedEvent.Filters;
+			currentAwesomenautFilters = filtersChangedEvent.AwesomenautFilters;
 
 			FilterCollections();
 		}
@@ -111,12 +92,12 @@ namespace DeckBuilder
 		{
 			FilterCollections();
 		}
-		
+
 		private void OnToggleCurrentDeckFilter()
 		{
 			FilterCollections();
 		}
-		
+
 		private void OnToggleAvailableCardsFilter()
 		{
 			FilterCollections();

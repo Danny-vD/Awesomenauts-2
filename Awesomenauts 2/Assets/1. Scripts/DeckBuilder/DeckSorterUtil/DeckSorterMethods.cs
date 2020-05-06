@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Enums.Character;
 using Enums.Deckbuilder;
 using Events.Deckbuilder;
 using UI.Cards;
@@ -14,6 +15,7 @@ namespace DeckBuilder.DeckSorterUtil
 			new Dictionary<SortValue, Comparison<AbstractUICard>>()
 			{
 				{SortValue.IsInDeck, SortByIsInDeck},
+				{SortValue.Awesomenaut, SortByAwesomenaut},
 				{SortValue.Name, SortByName},
 				{SortValue.Type, SortByType},
 				{SortValue.Amount, SortByAmount},
@@ -83,6 +85,11 @@ namespace DeckBuilder.DeckSorterUtil
 			}
 
 			return 0;
+		}
+
+		private static int SortByAwesomenaut(AbstractUICard card, AbstractUICard other)
+		{
+			return card.Awesomenaut.CompareTo(other.Awesomenaut);
 		}
 
 		private static int SortByType(AbstractUICard card, AbstractUICard other)

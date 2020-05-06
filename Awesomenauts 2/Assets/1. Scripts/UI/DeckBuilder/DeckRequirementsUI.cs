@@ -52,6 +52,12 @@ namespace UI.DeckBuilder
 			{
 				foreach (RequirementsUIElement uiElement in GetUIElements(pair.Key))
 				{
+					if (!uiElement)
+					{
+						Debug.LogWarning($"A given UI element for {pair.Key} is not assigned!");
+						continue;
+					}
+					
 					uiElement.UpdateMinMax(pair.Value.x, pair.Value.y);
 				}
 			}

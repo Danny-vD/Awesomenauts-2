@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Deckbuilder;
+using DeckBuilder.DeckFilterUtil;
 using Enums.Deckbuilder;
 using Events.Deckbuilder;
 using Networking;
@@ -129,12 +130,12 @@ namespace DeckBuilder
 			else
 			{
 				deckCard = UICardFactory.Instance.CreateNewCard<DeckUICard>(currentDeckParent, clickedAvailableCard.ID,
-					clickedAvailableCard.Type, clickedAvailableCard.Filters);
+					clickedAvailableCard.Type, clickedAvailableCard.Awesomenaut, clickedAvailableCard.Filters);
 				deckCard.Sprite = clickedAvailableCard.Sprite;
 				deckCard.Amount = 1;
 
-				DeckFilter.AddIsInDeckFilter(deckCard);
-				DeckFilter.AddIsInDeckFilter(clickedAvailableCard);
+				DeckFilterManager.AddIsInDeckFilter(deckCard);
+				DeckFilterManager.AddIsInDeckFilter(clickedAvailableCard);
 
 				currentDeck.Add(deckCard);
 			}
@@ -156,7 +157,7 @@ namespace DeckBuilder
 			{
 				availableCard =
 					UICardFactory.Instance.CreateNewCard<AvailableUICard>(availableCardsParent, clickedCardInDeck.ID,
-						clickedCardInDeck.Type, clickedCardInDeck.Filters);
+						clickedCardInDeck.Type, clickedCardInDeck.Awesomenaut, clickedCardInDeck.Filters);
 				availableCard.Sprite = clickedCardInDeck.Sprite;
 				availableCard.Amount = 1;
 
@@ -165,7 +166,7 @@ namespace DeckBuilder
 
 			if (--clickedCardInDeck.Amount <= 0)
 			{
-				DeckFilter.AddIsNotInDeckFilter(availableCard);
+				DeckFilterManager.AddIsNotInDeckFilter(availableCard);
 
 				currentDeck.Remove(clickedCardInDeck);
 				Destroy(clickedCardInDeck.gameObject);

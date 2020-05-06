@@ -16,7 +16,6 @@ namespace VDFramework.EventSystem
 			DontDestroyOnLoad(gameObject);
 		}
 
-
 		/////////////////////////////////////RaiseEvent/////////////////////////////////////
 		public void RaiseEvent<TEvent>(TEvent eventToRaise)
 			where TEvent : VDEvent
@@ -31,9 +30,14 @@ namespace VDFramework.EventSystem
 			// Copy so that we can add and remove from the original list without editing the list we loop through
 			foreach (EventHandler handler in new List<EventHandler>(handlers).Where(handler => handler != null))
 			{
+				if (eventToRaise.Consumed)
+				{
+					return;
+				}
+				
 				switch (handler)
 				{
-					case VDFramework.EventSystem.EventHandler<TEvent> eventHandler:
+					case EventHandler<TEvent> eventHandler:
 						eventHandler.Invoke(eventToRaise);
 						break;
 					case ParameterlessEventHandler parameterlessEventHandler:

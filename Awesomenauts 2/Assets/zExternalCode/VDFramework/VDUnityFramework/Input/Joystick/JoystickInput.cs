@@ -2,9 +2,9 @@
 using UnityEngine;
 using VDFramework.Extensions;
 using VDFramework.Singleton;
-using StringConverter = VDFramework.Input.Joystick.JoystickButtonToStringConverter;
+using StringConverter = VDFramework.Input.JoystickButtonToStringConverter;
 
-namespace VDFramework.Input.Joystick
+namespace VDFramework.Input
 {
 	public static class JoystickInput
 	{

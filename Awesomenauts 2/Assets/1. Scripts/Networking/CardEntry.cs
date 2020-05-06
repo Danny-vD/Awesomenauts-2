@@ -4,6 +4,7 @@ using System.Linq;
 using Player;
 using Byt3.Serialization;
 using Enums.Cards;
+using Enums.Character;
 using MasterServer.Common;
 using MasterServer.Common.Networking.Packets.Serializers;
 using Networking.NetworkingHacks;
@@ -27,6 +28,7 @@ namespace Networking
 		public GameObject Prefab;
 		public Sprite cardSprite;
 		public CardType CardType;
+		public Awesomenaut Awesomenaut;
 		public int Amount;
 
 		//Flag that indicates if the Serializer was initialized.

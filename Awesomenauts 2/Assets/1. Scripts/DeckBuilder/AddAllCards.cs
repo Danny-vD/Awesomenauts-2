@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DeckBuilder.DeckFilterUtil;
 using Enums.Deckbuilder;
 using Networking;
 using UI.Cards;
@@ -37,14 +38,14 @@ namespace DeckBuilder
 			}
 
 			AbstractUICard card =
-				UICardFactory.Instance.CreateNewCard<AvailableUICard>(parent, id, entry.CardType, FilterValues.IsNotInDeck);
+				UICardFactory.Instance.CreateNewCard<AvailableUICard>(parent, id, entry.CardType, entry.Awesomenaut, FilterValues.IsNotInDeck);
 
 			int amount = entry.Amount;
 			card.Amount = amount;
 
 			if (amount > 0)
 			{
-				DeckFilter.AddFilterFlagToCard(card, FilterValues.Owned);
+				DeckFilterManager.AddFilterFlagToCard(card, FilterValues.Owned);
 			}
 
 			card.Sprite = entry.cardSprite;

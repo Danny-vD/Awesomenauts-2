@@ -1,21 +1,22 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using VDFramework;
+using VDFramework.Utility;
 
 namespace UI.DeckBuilder
 {
 	public class RequirementsUIElement : BetterMonoBehaviour
 	{
 		[SerializeField]
-		private Text text;
+		private Text text = null;
 
 		[SerializeField, Header("text color on condition fail")]
-		private Color failColor;
+		private Color failColor = new Color(0.8314f, 0.1333f, 0.1333f, 1); //A nice red
 
 		[SerializeField, Header("Enable on condition fail")]
-		private GameObject objectToEnable;
+		private GameObject objectToEnable = null;
 
-		private string originalString;
+		private StringVariableWriter minMaxWriter;
 
 		private Color normalColor = default;
 		
@@ -30,7 +31,7 @@ namespace UI.DeckBuilder
 				return;
 			}
 
-			originalString = text.text;
+			minMaxWriter = new StringVariableWriter(text.text);
 			normalColor = text.color;
 		}
 
@@ -57,7 +58,7 @@ namespace UI.DeckBuilder
 		{
 			if (text)
 			{
-				text.text = string.Format(originalString, currentAmount, minAmount, maxAmount);
+				text.text = minMaxWriter.UpdateText(currentAmount, minAmount, maxAmount);
 			}
 		}
 
