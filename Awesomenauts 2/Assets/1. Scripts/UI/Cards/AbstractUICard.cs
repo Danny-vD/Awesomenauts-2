@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using DeckBuilder;
 using Enums.Cards;
 using Enums.Deckbuilder;
@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using VDFramework;
-using VDFramework.Extensions;
 using VDFramework.UnityExtensions;
 
 namespace UI.Cards

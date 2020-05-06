@@ -1,5 +1,3 @@
-﻿using System;
-
 namespace Enums.Deckbuilder
 {
 	public enum SortValue

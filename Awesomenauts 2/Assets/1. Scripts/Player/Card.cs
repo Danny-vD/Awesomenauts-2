@@ -1,9 +1,11 @@
-using System;
+using Assets._1._Scripts.ScriptableObjects.DragLogic;
+using Maps;
 using Networking;
 using Mirror;
 using UnityEngine;
 
-namespace Player {
+namespace Player
+{
 	public enum CardState
 	{
 		OnDeck,
@@ -15,7 +17,9 @@ namespace Player {
 	{
 		public MeshRenderer CoverUpRenderer;
 
-	
+		public CardSocket AttachedCardSocket;
+
+		public CardDragLogic DragLogicFromBoard;
 
 		public EntityStatistics Statistics;
 		public bool StatisticsValid { get; private set; }
@@ -27,12 +31,28 @@ namespace Player {
 			SetCoverState(isClient && !hasAuthority);
 		}
 
-		[TargetRpc]
-		public void TargetSendStats(NetworkConnection identity, byte[] data)
+		public void SetSocket(CardSocket socket)
+		{
+			AttachedCardSocket = socket;
+		}
+
+		[ClientRpc]
+		public void RpcSendStats(byte[] data)
 		{
 			Debug.Log("Received Stats");
 			Statistics = CardEntry.FromNetwork(data);
 			StatisticsValid = true;
+			Statistics.Register(CardPlayerStatType.HP, OnHPChanged);
+		}
+
+		private void OnHPChanged(object newvalue)
+		{
+			int hp = (int)newvalue;
+			if (hp <= 0)
+			{
+				AttachedCardSocket?.DockCard(null);
+				Destroy(gameObject);
+			}
 		}
 
 		/// <summary>
@@ -56,5 +76,20 @@ namespace Player {
 				transform.rotation *= turnOverRot;
 			}
 		}
+
+
+		public void Attack(Card other)
+		{
+			Debug.Log("ATTACK");
+
+			int hpOwn = Statistics.GetValue<int>(CardPlayerStatType.HP);
+			int atkOwn = Statistics.GetValue<int>(CardPlayerStatType.Attack);
+			int hpOther = other.Statistics.GetValue<int>(CardPlayerStatType.HP);
+			int atkOther = other.Statistics.GetValue<int>(CardPlayerStatType.Attack);
+			Statistics.SetValue(CardPlayerStatType.HP, hpOwn - atkOther);
+			other.Statistics.SetValue(CardPlayerStatType.HP, hpOther - atkOwn);
+
+		}
+
 	}
 }

@@ -1,10 +1,16 @@
+using Mirror;
 using Player;
 using UnityEngine;
 
-namespace Maps {
-	public class CardSocket : MonoBehaviour
+namespace Maps
+{
+	public class CardSocket : NetworkBehaviour
 	{
 		private float origY;
+
+		public bool HasCard => DockedCard != null;
+
+		public int TeamID;
 		public float yScale;
 		public float yOffset;
 		public float yCardOffset;
@@ -13,12 +19,21 @@ namespace Maps {
 
 		private bool Active;
 
-		private Card dockedTransform;
+		public int ClientID { get; private set; }
+
+		public Card DockedCard { get; private set; }
+
+		public void SetClientID(int id)
+		{
+			ClientID = id;
+		}
+
 
 		// Start is called before the first frame update
 		void Start()
 		{
 			origY = transform.position.y;
+			MapTransformInfo.Instance.SocketManager.RegisterSocket(TeamID, this);
 		}
 
 		/// <summary>
@@ -38,7 +53,11 @@ namespace Maps {
 		/// <param name="dockedTransform"></param>
 		public void DockCard(Card dockedTransform)
 		{
-			this.dockedTransform = dockedTransform;
+			DockedCard?.SetSocket(null);
+			DockedCard = dockedTransform;
+			DockedCard?.SetSocket(this);
+
+			ResetPositions();
 		}
 
 
@@ -46,9 +65,9 @@ namespace Maps {
 		{
 			Vector3 pos = transform.position;
 			pos.y = origY;
-			if (dockedTransform != null)
+			if (DockedCard != null)
 			{
-				dockedTransform.transform.position = pos + Vector3.up * yCardOffset;
+				DockedCard.transform.position = pos + Vector3.up * yCardOffset;
 			}
 			transform.position = pos;
 		}
@@ -56,13 +75,11 @@ namespace Maps {
 		// Update is called once per frame
 		void Update()
 		{
-			if (!Active) return;
+			if (!Active || DockedCard == null || !DockedCard.hasAuthority) return;
 			Vector3 pos = transform.position;
 			pos.y = origY + yOffset + Mathf.Sin(Time.realtimeSinceStartup * timeScale + timeOffset) * yScale;
-			if (dockedTransform != null)
-			{
-				dockedTransform.transform.position = pos + Vector3.up * yCardOffset;
-			}
+
+			DockedCard.transform.position = pos + Vector3.up * yCardOffset;
 			transform.position = pos;
 		}
 	}

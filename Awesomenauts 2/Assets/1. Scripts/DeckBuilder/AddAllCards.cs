@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Enums.Deckbuilder;
 using Networking;
 using UI.Cards;
 using UnityEngine;
 using Utility.UI;
-using VDFramework.Utility;
 
 namespace DeckBuilder
 {

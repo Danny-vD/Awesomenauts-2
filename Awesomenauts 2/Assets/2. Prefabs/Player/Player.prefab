@@ -394,10 +394,11 @@ MonoBehaviour:
     - type: 1
       dataType: 0
       value: 10
+  DragFromHandLogic: {fileID: 11400000, guid: 233744c990c6e664f8fdd1f2997d9842, type: 2}
   EnableInteractions: 0
   Hand: {fileID: 6473226967791899819}
   Deck: {fileID: 8843782206511802427}
-  Socket:
+  SocketLayer:
     serializedVersion: 2
     m_Bits: 4096
   BoardLayer:

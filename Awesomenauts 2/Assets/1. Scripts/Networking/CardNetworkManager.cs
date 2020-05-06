@@ -1,6 +1,5 @@
 using System.IO;
 using System.Xml.Serialization;
-using Byt3.Serialization;
 using DataObjects;
 using Events.Deckbuilder;
 using Maps;
@@ -9,7 +8,6 @@ using Utility;
 using Mirror;
 using Mirror.Websocket;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using VDFramework.EventSystem;

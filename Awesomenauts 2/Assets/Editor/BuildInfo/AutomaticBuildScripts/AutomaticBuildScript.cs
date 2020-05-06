@@ -1,5 +1,6 @@
+using System.Diagnostics;
 using System.IO;
-using System.IO.Compression;
+using System.Threading.Tasks;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
@@ -47,11 +48,25 @@ namespace BuildInfo.AutomaticBuildScripts
 			//Filename => Target
 
 			//Uses Assets/zExternalCode/System.IO.Compression/System.IO.Compression.dll
-			
+            
 			//NOTE: Sorry tim, had to comment it out so that my stuff will compile.
-			//ZipFile.CreateFromDirectory(dir, filename);
+			//powershell .\Zip.ps1 -in MasterServer\bin\Release\netcoreapp2.1\win-x64\publish -out MasterServer_Windows.zip
+			CreateZipFromDir(dir, filename);
 		}
 
+		private static void CreateZipFromDir(string dir, string output)
+		{
+			Process p = new Process();
+			ProcessStartInfo pi = new ProcessStartInfo("powershell", $"-WindowStyle Hidden .\\Zip.ps1 -in {dir} -out {output}");
+			pi.WorkingDirectory = Directory.GetCurrentDirectory();
+			pi.RedirectStandardOutput = true;
+			pi.RedirectStandardError = true;
+			pi.UseShellExecute = false;
+			p.StartInfo = pi;
+			p.Start();
+			p.WaitForExit();
+            Debug.Log("ZipLog:\n" +p.StandardOutput.ReadToEnd()+"\nZipError:\n"+ p.StandardError.ReadToEnd());
+		}
 
 		public static void Build(BuildPlayerOptions opt)
 		{
@@ -77,11 +92,18 @@ namespace BuildInfo.AutomaticBuildScripts
 		}
 
 		public void Deploy()
-		{
+		{ 
+            Task[] tasks = new Task[Options.Length];
 			for (int i = 0; i < Options.Length; i++)
 			{
-				Deploy(Options[i].ToBuildOptions(Options[i].options));
+				BuildPlayerOptions opts = Options[i].ToBuildOptions(Options[i].options);
+
+				Task t = new Task(() => Deploy(opts));
+				t.Start();
+				tasks[i] = t;
 			}
+
+			Task.WaitAll(tasks);
 		}
 
 		public void Build(bool forceReleaseBuild)

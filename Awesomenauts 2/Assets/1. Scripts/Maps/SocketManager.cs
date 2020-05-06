@@ -1,16 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Networking;
 using UnityEngine;
 
-namespace Maps {
+namespace Maps
+{
 	public class SocketManager : MonoBehaviour
 	{
 		/// <summary>
 		/// Contains a List of Card Sockets and a Team Name
 		/// </summary>
 		[Serializable]
-		public struct CardTeamSocketData
+		public class CardTeamSocketData
 		{
 			public string name;
 			public List<CardSocket> CardSockets;
@@ -30,8 +32,30 @@ namespace Maps {
 		// Start is called before the first frame update
 		void Start()
 		{
+			if (!CardNetworkManager.Instance.IsServer) return;
 
+
+
+			//foreach (CardTeamSocketData cardTeamSocketData in CardSockets)
+			//{
+			//	for (int i = 0; i < cardTeamSocketData.CardSockets.Count; i++)
+			//	{
+			//		CardSocket cardSocket = cardTeamSocketData.CardSockets[i];
+			//		CardSocket cs = Instantiate(cardSocket);
+			//		Destroy(cardSocket);
+			//		cardTeamSocketData.CardSockets[i] = cs;
+			//		NetworkServer.Spawn(cs.gameObject);
+			//	}
+			//}
 		}
+
+		public void RegisterSocket(int id, CardSocket socket)
+		{
+			if (!socketMap.ContainsKey(id)) socketMap.Add(id, new List<CardSocket> { socket });
+			else socketMap[id].Add(socket);
+		}
+
+		private Dictionary<int, List<CardSocket>> socketMap = new Dictionary<int, List<CardSocket>>();
 
 		/// <summary>
 		/// Maps the ClientIDS to the Corresponding Team IDS
@@ -40,12 +64,29 @@ namespace Maps {
 		/// <param name="teamIDs"></param>
 		public void AddPlayers(int[] clientIDs, int[] teamIDs)
 		{
-			if(SocketData==null)
+			if (SocketData == null)
 				SocketData = new Dictionary<int, CardTeamSocketData>();
+
+
+
 			for (int i = 0; i < clientIDs.Length; i++)
 			{
 				AddPlayer(clientIDs[i], teamIDs[i]);
 			}
+			foreach (KeyValuePair<int, List<CardSocket>> keyValuePair in socketMap)
+			{
+				SocketData[SocketData.ElementAt(keyValuePair.Key).Key].CardSockets = keyValuePair.Value;
+			}
+
+			for (int i = 0; i < clientIDs.Length; i++)
+			{
+				foreach (CardSocket cardSocket in CardSockets[teamIDs[i]].CardSockets)
+				{
+					cardSocket.SetClientID(clientIDs[i]);
+				}
+			}
+			socketMap.Clear();
+
 		}
 
 		/// <summary>
@@ -58,6 +99,10 @@ namespace Maps {
 			if (!SocketData.ContainsKey(clientID))
 			{
 				SocketData.Add(clientID, CardSockets[teamID]);
+				//foreach (CardSocket cardSocket in CardSockets[teamID].CardSockets)
+				//{
+				//	cardSocket.SetClientID(clientID);
+				//}
 			}
 		}
 
@@ -83,7 +128,7 @@ namespace Maps {
 		public bool IsFromTeam(int clientID, Transform objectToCheck)
 		{
 			return SocketData.ContainsKey(clientID) &&
-			       SocketData[clientID].CardSockets.Count(x => x.transform == objectToCheck) != 0;
+				   SocketData[clientID].CardSockets.Count(x => x.transform == objectToCheck) != 0;
 		}
 
 
