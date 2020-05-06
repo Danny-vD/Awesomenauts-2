@@ -11,7 +11,7 @@ namespace DeckBuilder
 	public class DeckFilter
 	{
 		private FilterValues currentFilters = FilterValues.ShowAll;
-		private Awesomenaut currentAwesomenautFilters = 0;
+		private Awesomenaut currentAwesomenautFilters = Awesomenaut.All;
 
 		private readonly List<IEnumerable<AbstractUICard>>
 			collectionsToFilter = new List<IEnumerable<AbstractUICard>>();

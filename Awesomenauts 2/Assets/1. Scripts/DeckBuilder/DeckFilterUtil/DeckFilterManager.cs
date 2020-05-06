@@ -8,7 +8,7 @@ namespace DeckBuilder.DeckFilterUtil
 	public static class DeckFilterManager
 	{
 		private static FilterValues currentFilters = FilterValues.ShowAll;
-		private static Awesomenaut currentAwesomenautFilters = 0;
+		private static Awesomenaut currentAwesomenautFilters = Awesomenaut.All;
 		
 		public static void AddFilterFlagToCard(AbstractUICard card, FilterValues flagToAdd)
 		{
@@ -22,14 +22,14 @@ namespace DeckBuilder.DeckFilterUtil
 		
 		public static void AddIsInDeckFilter(AbstractUICard card)
 		{
-			AddFilterFlagToCard(card, FilterValues.IsIndeck);
+			AddFilterFlagToCard(card, FilterValues.IsInDeck);
 			RemoveFilterFlagFromCard(card, FilterValues.IsNotInDeck);
 		}
 
 		public static void AddIsNotInDeckFilter(AbstractUICard card)
 		{
 			AddFilterFlagToCard(card, FilterValues.IsNotInDeck);
-			RemoveFilterFlagFromCard(card, FilterValues.IsIndeck);
+			RemoveFilterFlagFromCard(card, FilterValues.IsInDeck);
 		}
 
 		public static void SetFilters(params FilterValues[] filters)

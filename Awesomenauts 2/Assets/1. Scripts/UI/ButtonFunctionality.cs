@@ -69,7 +69,7 @@ namespace UI
 
 		public void ShowAllInDeck()
 		{
-			DeckFilterManager.SetFilters(FilterValues.IsIndeck);
+			DeckFilterManager.SetFilters(FilterValues.IsInDeck);
 		}
 
 		public void ShowAllNotInDeck()
@@ -79,7 +79,7 @@ namespace UI
 
 		public void ShowBothDeckAndNot()
 		{
-			DeckFilterManager.SetFilters(FilterValues.IsIndeck, FilterValues.IsNotInDeck);
+			DeckFilterManager.SetFilters(FilterValues.IsInDeck, FilterValues.IsNotInDeck);
 		}
 
 		public void ShowAllAwesomeNaut()

@@ -11,13 +11,13 @@ namespace DeckBuilder.DeckFilterUtil
 	public class NautFilterbuttonManager : BetterMonoBehaviour
 	{
 		[SerializeField]
-		private Sprite uncheckedSprite;
+		private Sprite uncheckedSprite = null;
 
 		[SerializeField]
-		private Sprite checkedSprite;
+		private Sprite checkedSprite = null;
 
 		[SerializeField]
-		private GameObject buttonPrefab;
+		private GameObject buttonPrefab = null;
 
 		private readonly Dictionary<Button, bool> checkBoxStates = new Dictionary<Button, bool>();
 		

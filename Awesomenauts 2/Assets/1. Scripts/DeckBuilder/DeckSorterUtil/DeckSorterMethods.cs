@@ -71,8 +71,8 @@ namespace DeckBuilder.DeckSorterUtil
 		//////////////////////////////////
 		private static int SortByIsInDeck(AbstractUICard card, AbstractUICard other)
 		{
-			bool isInDeck = card.MeetsFilters(FilterValues.IsIndeck);
-			bool otherIsInDeck = other.MeetsFilters(FilterValues.IsIndeck);
+			bool isInDeck = card.MeetsFilters(FilterValues.IsInDeck);
+			bool otherIsInDeck = other.MeetsFilters(FilterValues.IsInDeck);
 			
 			if (isInDeck && !otherIsInDeck)
 			{
