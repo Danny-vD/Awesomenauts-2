@@ -23,9 +23,13 @@ namespace DeckBuilder.DeckFilterUtil
 		
 		private void Awake()
 		{
+			Awesomenaut awesomenautFilters = 0;
+			
 			foreach (Awesomenaut awesomenaut in default(Awesomenaut).GetValues()
 				.Where(item => item != Awesomenaut.All))
 			{
+				awesomenautFilters |= awesomenaut;
+				
 				GameObject @object = Instantiate(buttonPrefab, CachedTransform);
 				
 				Text text = @object.GetComponentInChildren<Text>();
@@ -40,6 +44,8 @@ namespace DeckBuilder.DeckFilterUtil
 					ButtonChangeState(button, awesomenaut);
 				});
 			}
+			
+			DeckFilterManager.SetFilters(awesomenautFilters);
 		}
 
 		private void ButtonChangeState(Button button, Awesomenaut naut)
