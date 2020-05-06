@@ -4,6 +4,7 @@ namespace Enums.Deckbuilder
 	{
 		//Value doubles as priority, where low == high priority
 		IsInDeck,
+		Awesomenaut,
 		Type,
 		Name,
 		Amount,

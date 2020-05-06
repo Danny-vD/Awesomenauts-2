@@ -1,4 +1,6 @@
 using DeckBuilder;
+using DeckBuilder.DeckFilterUtil;
+using Enums.Character;
 using Enums.Deckbuilder;
 using VDFramework;
 using UnityEngine.SceneManagement;
@@ -32,52 +34,62 @@ namespace UI
 		
 		public void ShowAllCards()
 		{
-			DeckFilter.SetFilters(FilterValues.ShowAll);
+			DeckFilterManager.SetFilters(FilterValues.ShowAll);
 		}
 
 		public void ShowAllOwned()
 		{
-			DeckFilter.SetFilters(FilterValues.Owned);
+			DeckFilterManager.SetFilters(FilterValues.Owned);
 		}
 
 		public void ShowAllAction()
 		{
-			DeckFilter.SetFilters(FilterValues.Action);
+			DeckFilterManager.SetFilters(FilterValues.Action);
 		}
 		
 		public void ShowAllMelee()
 		{
-			DeckFilter.SetFilters(FilterValues.Melee);
+			DeckFilterManager.SetFilters(FilterValues.Melee);
 		}
 		
 		public void ShowAllRanged()
 		{
-			DeckFilter.SetFilters(FilterValues.Ranged);
+			DeckFilterManager.SetFilters(FilterValues.Ranged);
 		}		
 		
 		public void ShowAllTanks()
 		{
-			DeckFilter.SetFilters(FilterValues.Tank);
+			DeckFilterManager.SetFilters(FilterValues.Tank);
 		}
 		
 		public void ShowAllMinion()
 		{
-			DeckFilter.SetFilters(FilterValues.Melee, FilterValues.Ranged, FilterValues.Tank);
+			DeckFilterManager.SetFilters(FilterValues.Melee, FilterValues.Ranged, FilterValues.Tank);
 		}
 
 		public void ShowAllInDeck()
 		{
-			DeckFilter.SetFilters(FilterValues.IsIndeck);
+			DeckFilterManager.SetFilters(FilterValues.IsInDeck);
 		}
 
 		public void ShowAllNotInDeck()
 		{
-			DeckFilter.SetFilters(FilterValues.IsNotInDeck);
+			DeckFilterManager.SetFilters(FilterValues.IsNotInDeck);
 		}
 
 		public void ShowBothDeckAndNot()
 		{
-			DeckFilter.SetFilters(FilterValues.IsIndeck, FilterValues.IsNotInDeck);
+			DeckFilterManager.SetFilters(FilterValues.IsInDeck, FilterValues.IsNotInDeck);
+		}
+
+		public void ShowAllAwesomeNaut()
+		{
+			DeckFilterManager.SetFilters(Awesomenaut.All);
+		}
+
+		public void ShowLonestar()
+		{
+			DeckFilterManager.SetFilters(Awesomenaut.SheriffLonestar);
 		}
 		
 		//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
