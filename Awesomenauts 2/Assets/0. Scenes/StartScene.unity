@@ -396,7 +396,12 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: spawnPrefabs.Array.size
-      value: 6
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[0].effects.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -478,12 +483,12 @@ PrefabInstance:
         type: 3}
       propertyPath: CardEntries.Array.data[1].Prefab
       value: 
-      objectReference: {fileID: 1106558168128416931, guid: e6a4aa6c9baf25345ab10fd9a6fda037,
+      objectReference: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
         type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[0].Statistics.StartStatistics.Array.data[3].type
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -493,12 +498,12 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[0].Statistics.StartStatistics.Array.data[3].value
-      value: Baby Kuri Mammoth
+      value: Roblox Man
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[1].Statistics.StartStatistics.Array.data[3].value
-      value: Barrier Magazine
+      value: Pepe Sad
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -1134,7 +1139,7 @@ PrefabInstance:
         type: 3}
       propertyPath: CardEntries.Array.data[0].Prefab
       value: 
-      objectReference: {fileID: 1106558168128416931, guid: 345fdd3bc8c11e44786b35ebc4db70b3,
+      objectReference: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
         type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -1407,24 +1412,83 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnPrefabs.Array.data[4]
       value: 
-      objectReference: {fileID: 3606115186347957009, guid: bc427d6327abe8d4791bad70c65ec81c,
+      objectReference: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
         type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: spawnPrefabs.Array.data[5]
       value: 
-      objectReference: {fileID: 3606115186347957009, guid: 78864c36753eea947a36ad637a07ca31,
+      objectReference: {fileID: 594254845029591556, guid: da009bd6069cee940b25b97523e74371,
         type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[1].Statistics.StartStatistics.Array.data[3].type
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[1].Statistics.StartStatistics.Array.data[3].dataType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: spawnPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 594254845029591556, guid: da009bd6069cee940b25b97523e74371,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[0].effects.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3e25c71f1a0a6814295d5b2457c74d14,
+        type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: spawnPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 6205194210926984543, guid: ace7ac980d1de774ea2cf5d47e0b2a6b,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: spawnPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 3606115186347957009, guid: bc427d6327abe8d4791bad70c65ec81c,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: spawnPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 3606115186347957009, guid: 78864c36753eea947a36ad637a07ca31,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: DefaultCardBorder.BorderMesh
+      value: 
+      objectReference: {fileID: 8492113740190188953, guid: 58bc5ca03b8234c4c88fa0a5f542bf15,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: DefaultCardBorder.BorderMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 061a9801dfc218646896e479a16cd839, type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: DefaultCardPortrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 828e30d76ed42b840b835aae40fea423,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[0].cardPortrait
+      value: 
+      objectReference: {fileID: 21300000, guid: ce5014cb56d50c3428704efd5398b429,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[1].cardPortrait
+      value: 
+      objectReference: {fileID: 21300000, guid: db21302583c872a4ead2627f7ff1fac2,
+        type: 3}
     - target: {fileID: 4467022757310397675, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: m_Name

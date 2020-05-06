@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
+using Assets._1._Scripts.ScriptableObjects.Effects;
 using DataObjects;
 using Events.Deckbuilder;
 using Maps;
@@ -16,8 +19,19 @@ using Logger = MasterServer.Common.Logger;
 
 namespace Networking
 {
+
+	[Serializable]
+	public class BorderInfo
+	{
+		public bool IsValid => BorderMaterial != null && BorderMesh != null;
+		public Mesh BorderMesh;
+		public Material BorderMaterial;
+	}
 	public class CardNetworkManager : NetworkManager
 	{
+		public Sprite DefaultCardPortrait;
+		public BorderInfo DefaultCardBorder;
+
 		public static CardNetworkManager Instance => singleton as CardNetworkManager;
 		public bool IsHost { get; private set; }
 		public bool IsServer { get; private set; }
@@ -55,16 +69,55 @@ namespace Networking
 		public int[] CardsInDeck { get; private set; } = new int[0];
 
 
+		public Sprite GetCardImage(string name)
+		{
+			foreach (CardEntry cardEntry in CardEntries)
+			{
+				if (cardEntry.Statistics.GetValue<string>(CardPlayerStatType.CardName) == name)
+				{
+					return cardEntry.cardPortrait;
+				}
+			}
+
+			return DefaultCardPortrait;
+		}
+		public BorderInfo GetCardBorder(string name)
+		{
+			foreach (CardEntry cardEntry in CardEntries)
+			{
+
+				if (cardEntry.Statistics.GetValue<string>(CardPlayerStatType.CardName) == name && cardEntry.cardBorder.IsValid)
+				{
+					return cardEntry.cardBorder;
+				}
+			}
+
+			return DefaultCardBorder;
+		}
+
+		public List<AEffect> GetCardEffects(string name)
+		{
+			foreach (CardEntry cardEntry in CardEntries)
+			{
+				if (cardEntry.Statistics.GetValue<string>(CardPlayerStatType.CardName) == name)
+				{
+					return cardEntry.effects;
+				}
+			}
+
+			return new List<AEffect>();
+		}
+
 
 		public override void Awake()
 		{
-            if(File.Exists("./DeckConfig.xml"))
-            {
-	            Stream s = File.OpenRead("./DeckConfig.xml");
-	            XmlSerializer xs = new XmlSerializer(typeof(DeckConfig));
-	            CardsInDeck = ((DeckConfig)xs.Deserialize(s)).CardIDs;
+			if (File.Exists("./DeckConfig.xml"))
+			{
+				Stream s = File.OpenRead("./DeckConfig.xml");
+				XmlSerializer xs = new XmlSerializer(typeof(DeckConfig));
+				CardsInDeck = ((DeckConfig)xs.Deserialize(s)).CardIDs;
 				s.Close();
-            }
+			}
 
 			Application.quitting += Application_quitting;
 
@@ -95,6 +148,11 @@ namespace Networking
 
 		public override void Start()
 		{
+
+			foreach (CardEntry cardEntry in CardEntries)
+			{
+				cardEntry.Statistics.InitializeStatDictionary();
+			}
 
 			CurrentEndPoint = GameInitializer.Data.Network.DefaultAddress;
 			//RefreshEndPoint();

@@ -4,11 +4,13 @@ using Utility;
 using Mirror;
 using UnityEngine;
 
-namespace Maps {
+namespace Maps
+{
 	public class BoardLogic : NetworkBehaviour
 	{
 		public bool GameStarted;
 
+		private int MaxSolar = 1;
 		private int CurrentTurn = -1;
 		public int CurrentTurnClient { get; private set; }
 
@@ -43,18 +45,38 @@ namespace Maps {
 		//Gets Called on all Clients to end the current turn
 		//next is the next players ID that has the turn.
 		[ClientRpc]
-		public void RpcBroadcastEndTurn(int next)
+		public void RpcBroadcastEndTurn()
 		{
-			if (CardNetworkManager.Instance.IsHost) return; //Has Already been set by ServerEndTurn if we are playing and hosting at the same time
-
+			if (CardNetworkManager.Instance.IsHost) return;
 
 			CurrentTurn++;
+			if (MaxSolar >= 10) MaxSolar = 10;
+			if (CurrentTurn >= CardPlayer.ServerPlayers.Count)
+			{
+				CurrentTurn = 0;
+				MaxSolar++;
+			}
 
-			Debug.Log("Client Received End Turn\nOld: " + CurrentTurnClient + "\nNew: " + next);
-			CurrentTurnClient = next;
-			CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == next;
+			CardPlayer current = CardPlayer.ServerPlayers[CurrentTurn];
+			CurrentTurnClient = current.ClientID;
 
+			Debug.Log("Next Turn Client ID: " + CurrentTurnClient + "\nTurnNumber: " + CurrentTurn);
+			if (CardPlayer.LocalPlayer != null)
+				CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == CurrentTurnClient;
 			MapTransformInfo.Instance.SocketManager.SetTurn(CurrentTurnClient);
+
+			current.DrawCard(1); //Next player is drawing one card
+			current.PlayerStatistics.SetValue(CardPlayerStatType.Solar, MaxSolar);
+			//if (CardNetworkManager.Instance.IsHost) return; //Has Already been set by ServerEndTurn if we are playing and hosting at the same time
+
+
+			//CurrentTurn++;
+
+			//Debug.Log("Client Received End Turn\nOld: " + CurrentTurnClient + "\nNew: " + next);
+			//CurrentTurnClient = next;
+			//CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == next;
+
+			//MapTransformInfo.Instance.SocketManager.SetTurn(CurrentTurnClient);
 		}
 
 		#endregion
@@ -85,10 +107,13 @@ namespace Maps {
 		[Server]
 		public void ServerEndTurn()
 		{
+
 			CurrentTurn++;
+			if (MaxSolar >= 10) MaxSolar = 10;
 			if (CurrentTurn >= CardPlayer.ServerPlayers.Count)
 			{
 				CurrentTurn = 0;
+				MaxSolar++;
 			}
 
 			CardPlayer current = CardPlayer.ServerPlayers[CurrentTurn];
@@ -98,9 +123,30 @@ namespace Maps {
 			if (CardPlayer.LocalPlayer != null)
 				CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == CurrentTurnClient;
 			MapTransformInfo.Instance.SocketManager.SetTurn(CurrentTurnClient);
-			RpcBroadcastEndTurn(CurrentTurnClient);
 
 			current.DrawCard(1); //Next player is drawing one card
+			current.PlayerStatistics.SetValue(CardPlayerStatType.Solar, MaxSolar);
+
+			
+			RpcBroadcastEndTurn();
+			//CurrentTurn++;
+			//if (CurrentTurn >= CardPlayer.ServerPlayers.Count)
+			//{
+			//	CurrentTurn = 0;
+			//}
+
+			//CardPlayer current = CardPlayer.ServerPlayers[CurrentTurn];
+			//CurrentTurnClient = current.ClientID;
+
+			//Debug.Log("Next Turn Client ID: " + CurrentTurnClient + "\nTurnNumber: " + CurrentTurn);
+			//if (CardPlayer.LocalPlayer != null)
+			//	CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == CurrentTurnClient;
+			//MapTransformInfo.Instance.SocketManager.SetTurn(CurrentTurnClient);
+			//RpcBroadcastEndTurn(CurrentTurnClient);
+
+			//current.DrawCard(1); //Next player is drawing one card
+
+
 
 		}
 

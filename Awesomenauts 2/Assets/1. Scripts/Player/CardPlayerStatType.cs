@@ -4,7 +4,7 @@ namespace Player {
 		Solar,
 		HP,
 		Attack,
-		Description,
-		TeamID
+		TeamID,
+		CardName,
 	}
 }

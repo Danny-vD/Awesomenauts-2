@@ -10,7 +10,7 @@ namespace UI.Cards
 		public Text DescriptonText;
 
 		public Text AttackText;
-
+		public Text SolarText;
 		public Text DefenseText;
 
 		// Start is called before the first frame update
@@ -18,7 +18,12 @@ namespace UI.Cards
 		{
 			RegisteredCard.Statistics.Register(CardPlayerStatType.HP, OnDefChanged, true);
 			RegisteredCard.Statistics.Register(CardPlayerStatType.Attack, OnAtkChanged, true);
-			RegisteredCard.Statistics.Register(CardPlayerStatType.Description, OnDescriptionChanged, true);
+			RegisteredCard.Statistics.Register(CardPlayerStatType.Solar, OnSolarChange, true);
+		}
+
+		private void OnSolarChange(object newvalue)
+		{
+			SolarText.text = newvalue.ToString();
 		}
 
 		private void OnAtkChanged(object value)

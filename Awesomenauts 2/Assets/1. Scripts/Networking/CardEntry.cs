@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Assets._1._Scripts.ScriptableObjects.Effects;
 using Player;
 using Byt3.Serialization;
 using Enums.Cards;
@@ -26,6 +28,9 @@ namespace Networking
 		public EntityStatistics Statistics;
 		public GameObject Prefab;
 		public Sprite cardSprite;
+		public Sprite cardPortrait;
+		public BorderInfo cardBorder;
+		public List<AEffect> effects;
 		public CardType CardType;
 		public int Amount;
 
