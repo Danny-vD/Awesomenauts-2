@@ -2,7 +2,9 @@ using Networking;
 using Player;
 using Utility;
 using Mirror;
+using UI.DebugPanel;
 using UnityEngine;
+using Version = System.Version;
 
 namespace Maps
 {
@@ -88,6 +90,7 @@ namespace Maps
 		[Server]
 		public void StartGame()
 		{
+			RpcSetServerVersion(Application.version);
 			GameStarted = true;
 			int[] clientIDs = new int[CardPlayer.ServerPlayers.Count];
 			int[] teamIDs = new int[CardPlayer.ServerPlayers.Count];
@@ -101,7 +104,17 @@ namespace Maps
 			RpcBroadcastStartGame(clientIDs, teamIDs);
 			ServerEndTurn();
 		}
+		[ClientRpc]
+		private void RpcSetServerVersion(string version)
+		{
 
+			if (Version.Parse(version) < Version.Parse(Application.version))
+			{
+
+			}
+
+			DebugPanelInfo.instance.UpdateVersionText(version);
+		}
 
 		//Ends the turn
 		[Server]

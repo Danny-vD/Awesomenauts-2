@@ -48,6 +48,14 @@ namespace UI {
 
 		void Start()
 		{
+			if (CardNetworkManager.Exit != null)
+			{
+				MainMenu.SetActive(false);
+				UpdateErrText("Game Error", CardNetworkManager.Exit.message);
+				CardNetworkManager.Exit = null;
+			}
+
+
 			foreach (InputField inputField in fields)
 			{
 				inputField.SetTextWithoutNotify(GameInitializer.Data.Network.DefaultAddress.IP);

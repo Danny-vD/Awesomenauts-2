@@ -66,7 +66,7 @@ namespace Player
 
 		private void OnHPChanged(object newvalue)
 		{
-			int hp = (int)newvalue;
+			if (newvalue == null || !(newvalue is int hp)) return;
 			if (hp <= 0)
 			{
 				EffectManager.TriggerEffects(EffectTrigger.OnDeath, AttachedCardSocket, null);

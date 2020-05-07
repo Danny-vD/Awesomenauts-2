@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
@@ -10,6 +9,7 @@ using Player;
 using Utility;
 using Mirror;
 using Mirror.Websocket;
+using UI.DebugPanel;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -19,16 +19,16 @@ using Logger = MasterServer.Common.Logger;
 
 namespace Networking
 {
-
-	[Serializable]
-	public class BorderInfo
-	{
-		public bool IsValid => BorderMaterial != null && BorderMesh != null;
-		public Mesh BorderMesh;
-		public Material BorderMaterial;
-	}
 	public class CardNetworkManager : NetworkManager
 	{
+
+		public class ExitFlag
+		{
+			public string message;
+		}
+
+		public static ExitFlag Exit;
+
 		public Sprite DefaultCardPortrait;
 		public BorderInfo DefaultCardBorder;
 
@@ -133,6 +133,7 @@ namespace Networking
 			public int[] CardIDs;
 		}
 
+
 		private void Application_quitting()
 		{
 			Stream s = File.Create("./DeckConfig.xml");
@@ -203,6 +204,7 @@ namespace Networking
 
 			if (CardPlayer.ServerPlayers.Count == 2 && CardPlayer.AllPlayersReady && !BoardLogic.Logic.GameStarted)
 			{
+
 				//Thread.Sleep(1000); //Hack: Wait for client to create the player after connection established.
 				SetUpPlayer(0);
 				SetUpPlayer(1);
@@ -253,6 +255,7 @@ namespace Networking
 			//GameInitializer.Master.SetConnectionSuccess(); //Only needs to be called if MasterServer API is in ReconnectLoop.
 			base.OnClientConnect(conn);
 		}
+
 
 		public override void OnServerConnect(NetworkConnection conn)
 		{

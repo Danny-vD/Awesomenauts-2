@@ -6,6 +6,7 @@ namespace Maps
 {
 	public class CardSocket : NetworkBehaviour
 	{
+		public SocketSide SocketSide;
 		private float origY;
 
 		public bool HasCard => DockedCard != null;

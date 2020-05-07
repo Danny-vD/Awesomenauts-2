@@ -32,14 +32,7 @@ namespace Networking.NetworkingHacks {
 			s.Write(obj.ValueType.AssemblyQualifiedName);
 
 			MemoryStream ms = new MemoryStream();
-			if (SerializerSingleton.Serializer.CanSerialize(typeof(int)))
-			{
-				Debug.Log("Serializable");
-			}
-			else
-			{
-				Debug.Log("WTF");
-			}
+
 			if (!SerializerSingleton.Serializer.TryWritePacket(ms, obj.Value))
 				throw new Exception("Serializer Write Error");
 

@@ -326,72 +326,72 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[2].Statistics.StartStatistics.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[3].Statistics.StartStatistics.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[4].Statistics.StartStatistics.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[5].Statistics.StartStatistics.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[6].Statistics.StartStatistics.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[7].Statistics.StartStatistics.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[8].Statistics.StartStatistics.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[9].Statistics.StartStatistics.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[10].Statistics.StartStatistics.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[11].Statistics.StartStatistics.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[12].Statistics.StartStatistics.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[13].Statistics.StartStatistics.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[14].Statistics.StartStatistics.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[15].Statistics.StartStatistics.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -508,152 +508,155 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[2].Statistics.StartStatistics.Array.data[0].type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[2].Statistics.StartStatistics.Array.data[0].value
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[2].Statistics.StartStatistics.Array.data[1].type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[2].Statistics.StartStatistics.Array.data[1].value
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[2].Statistics.StartStatistics.Array.data[2].type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[2].Statistics.StartStatistics.Array.data[2].dataType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
+      propertyPath: CardEntries.Array.data[2].Statistics.StartStatistics.Array.data[2].dataType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
       propertyPath: CardEntries.Array.data[2].Statistics.StartStatistics.Array.data[2].value
-      value: This is an Example Text111
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[2].Statistics.StartStatistics.Array.data[3].value
-      value: 1
+      value: Humming Bird Baby
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[2].Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
+        type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[3].Statistics.StartStatistics.Array.data[0].type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[3].Statistics.StartStatistics.Array.data[0].value
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[3].Statistics.StartStatistics.Array.data[1].type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[3].Statistics.StartStatistics.Array.data[1].value
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[3].Statistics.StartStatistics.Array.data[2].type
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
-      propertyPath: CardEntries.Array.data[3].Statistics.StartStatistics.Array.data[2].dataType
+      propertyPath: CardEntries.Array.data[3].Statistics.StartStatistics.Array.data[1].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[3].Statistics.StartStatistics.Array.data[1].value
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
+      propertyPath: CardEntries.Array.data[3].Statistics.StartStatistics.Array.data[2].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[3].Statistics.StartStatistics.Array.data[2].dataType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
       propertyPath: CardEntries.Array.data[3].Statistics.StartStatistics.Array.data[2].value
-      value: This is an Example Text111
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[3].Statistics.StartStatistics.Array.data[3].value
-      value: 1
+      value: Humming Bird Bee
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[3].Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
+        type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[4].Statistics.StartStatistics.Array.data[0].type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[4].Statistics.StartStatistics.Array.data[0].value
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[4].Statistics.StartStatistics.Array.data[1].type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[4].Statistics.StartStatistics.Array.data[1].value
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[4].Statistics.StartStatistics.Array.data[2].type
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
-      propertyPath: CardEntries.Array.data[4].Statistics.StartStatistics.Array.data[2].dataType
+      propertyPath: CardEntries.Array.data[4].Statistics.StartStatistics.Array.data[2].type
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
+      propertyPath: CardEntries.Array.data[4].Statistics.StartStatistics.Array.data[2].dataType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
       propertyPath: CardEntries.Array.data[4].Statistics.StartStatistics.Array.data[2].value
-      value: This is an Example Text111
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[4].Statistics.StartStatistics.Array.data[3].value
-      value: 1
+      value: Hummingbird Bee
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[4].Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
+        type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[5].Statistics.StartStatistics.Array.data[0].type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[5].Statistics.StartStatistics.Array.data[0].value
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[5].Statistics.StartStatistics.Array.data[1].type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -663,47 +666,48 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[5].Statistics.StartStatistics.Array.data[2].type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[5].Statistics.StartStatistics.Array.data[2].dataType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
+      propertyPath: CardEntries.Array.data[5].Statistics.StartStatistics.Array.data[2].dataType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
       propertyPath: CardEntries.Array.data[5].Statistics.StartStatistics.Array.data[2].value
-      value: This is an Example Text111
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[5].Statistics.StartStatistics.Array.data[3].value
-      value: 1
+      value: Hummingbird Wasp
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[5].Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
+        type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[6].Statistics.StartStatistics.Array.data[0].type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[6].Statistics.StartStatistics.Array.data[0].value
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[6].Statistics.StartStatistics.Array.data[1].type
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[6].Statistics.StartStatistics.Array.data[1].value
-      value: 4
+      value: Med-I-Can
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -729,111 +733,114 @@ PrefabInstance:
         type: 3}
       propertyPath: CardEntries.Array.data[6].Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
+        type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[7].Statistics.StartStatistics.Array.data[0].type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[7].Statistics.StartStatistics.Array.data[0].value
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[7].Statistics.StartStatistics.Array.data[1].type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[7].Statistics.StartStatistics.Array.data[1].value
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[7].Statistics.StartStatistics.Array.data[2].type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[7].Statistics.StartStatistics.Array.data[2].dataType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
+      propertyPath: CardEntries.Array.data[7].Statistics.StartStatistics.Array.data[2].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[7].Statistics.StartStatistics.Array.data[2].dataType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
       propertyPath: CardEntries.Array.data[7].Statistics.StartStatistics.Array.data[2].value
-      value: This is an Example Text111
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[7].Statistics.StartStatistics.Array.data[3].value
-      value: 1
+      value: Sawblade Intern
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[7].Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
+        type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[8].Statistics.StartStatistics.Array.data[0].type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[8].Statistics.StartStatistics.Array.data[0].value
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[8].Statistics.StartStatistics.Array.data[1].type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[8].Statistics.StartStatistics.Array.data[1].value
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[8].Statistics.StartStatistics.Array.data[2].type
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
-      propertyPath: CardEntries.Array.data[8].Statistics.StartStatistics.Array.data[2].dataType
+      propertyPath: CardEntries.Array.data[8].Statistics.StartStatistics.Array.data[2].type
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
+      propertyPath: CardEntries.Array.data[8].Statistics.StartStatistics.Array.data[2].dataType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
       propertyPath: CardEntries.Array.data[8].Statistics.StartStatistics.Array.data[2].value
-      value: This is an Example Text111
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[8].Statistics.StartStatistics.Array.data[3].value
-      value: 1
+      value: Sawblade Jr.
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[8].Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
+        type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[9].Statistics.StartStatistics.Array.data[0].type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[9].Statistics.StartStatistics.Array.data[0].value
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[9].Statistics.StartStatistics.Array.data[1].type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -843,92 +850,94 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[9].Statistics.StartStatistics.Array.data[2].type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[9].Statistics.StartStatistics.Array.data[2].dataType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
+      propertyPath: CardEntries.Array.data[9].Statistics.StartStatistics.Array.data[2].dataType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
       propertyPath: CardEntries.Array.data[9].Statistics.StartStatistics.Array.data[2].value
-      value: This is an Example Text111
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[9].Statistics.StartStatistics.Array.data[3].value
-      value: 1
+      value: Sawblade Manager
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[9].Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
+        type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[10].Statistics.StartStatistics.Array.data[0].type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[10].Statistics.StartStatistics.Array.data[0].value
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[10].Statistics.StartStatistics.Array.data[1].type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[10].Statistics.StartStatistics.Array.data[1].value
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[10].Statistics.StartStatistics.Array.data[2].type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[10].Statistics.StartStatistics.Array.data[2].dataType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
+      propertyPath: CardEntries.Array.data[10].Statistics.StartStatistics.Array.data[2].dataType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
       propertyPath: CardEntries.Array.data[10].Statistics.StartStatistics.Array.data[2].value
-      value: This is an Example Text111
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[10].Statistics.StartStatistics.Array.data[3].value
-      value: 1
+      value: Sawblade Sr.
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[10].Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
+        type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[11].Statistics.StartStatistics.Array.data[0].type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[11].Statistics.StartStatistics.Array.data[0].value
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[11].Statistics.StartStatistics.Array.data[1].type
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[11].Statistics.StartStatistics.Array.data[1].value
-      value: 4
+      value: Solar Krab Burger
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -954,187 +963,192 @@ PrefabInstance:
         type: 3}
       propertyPath: CardEntries.Array.data[11].Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
+        type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[12].Statistics.StartStatistics.Array.data[0].type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[12].Statistics.StartStatistics.Array.data[0].value
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[12].Statistics.StartStatistics.Array.data[1].type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[12].Statistics.StartStatistics.Array.data[1].value
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[12].Statistics.StartStatistics.Array.data[2].type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[12].Statistics.StartStatistics.Array.data[2].dataType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
+      propertyPath: CardEntries.Array.data[12].Statistics.StartStatistics.Array.data[2].dataType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
       propertyPath: CardEntries.Array.data[12].Statistics.StartStatistics.Array.data[2].value
-      value: This is an Example Text111
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[12].Statistics.StartStatistics.Array.data[3].value
-      value: 1
+      value: Super Cydroid
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[12].Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
+        type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[13].Statistics.StartStatistics.Array.data[0].type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[13].Statistics.StartStatistics.Array.data[0].value
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[13].Statistics.StartStatistics.Array.data[1].type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[13].Statistics.StartStatistics.Array.data[1].value
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
-      propertyPath: CardEntries.Array.data[13].Statistics.StartStatistics.Array.data[2].type
-      value: 3
+      propertyPath: CardEntries.Array.data[13].Statistics.StartStatistics.Array.data[1].type
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
-      propertyPath: CardEntries.Array.data[13].Statistics.StartStatistics.Array.data[2].dataType
+      propertyPath: CardEntries.Array.data[13].Statistics.StartStatistics.Array.data[1].value
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[13].Statistics.StartStatistics.Array.data[2].type
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
+      propertyPath: CardEntries.Array.data[13].Statistics.StartStatistics.Array.data[2].dataType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
       propertyPath: CardEntries.Array.data[13].Statistics.StartStatistics.Array.data[2].value
-      value: This is an Example Text111
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[13].Statistics.StartStatistics.Array.data[3].value
-      value: 1
+      value: Super Bat Droid
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[13].Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
+        type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[14].Statistics.StartStatistics.Array.data[0].type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[14].Statistics.StartStatistics.Array.data[0].value
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[14].Statistics.StartStatistics.Array.data[1].type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[14].Statistics.StartStatistics.Array.data[1].value
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[14].Statistics.StartStatistics.Array.data[2].type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[14].Statistics.StartStatistics.Array.data[2].dataType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
+      propertyPath: CardEntries.Array.data[14].Statistics.StartStatistics.Array.data[2].dataType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
       propertyPath: CardEntries.Array.data[14].Statistics.StartStatistics.Array.data[2].value
-      value: This is an Example Text111
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[14].Statistics.StartStatistics.Array.data[3].value
-      value: 1
+      value: Super Man Droid
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[14].Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
+        type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[15].Statistics.StartStatistics.Array.data[0].type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[15].Statistics.StartStatistics.Array.data[0].value
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[15].Statistics.StartStatistics.Array.data[1].type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[15].Statistics.StartStatistics.Array.data[1].value
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[15].Statistics.StartStatistics.Array.data[2].type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[15].Statistics.StartStatistics.Array.data[2].dataType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
+      propertyPath: CardEntries.Array.data[15].Statistics.StartStatistics.Array.data[2].dataType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
       propertyPath: CardEntries.Array.data[15].Statistics.StartStatistics.Array.data[2].value
-      value: This is an Example Text111
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[15].Statistics.StartStatistics.Array.data[3].value
-      value: 1
+      value: Super Robin Droid
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[15].Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
+        type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[0].Prefab
@@ -1481,14 +1495,191 @@ PrefabInstance:
         type: 3}
       propertyPath: CardEntries.Array.data[0].cardPortrait
       value: 
-      objectReference: {fileID: 21300000, guid: ce5014cb56d50c3428704efd5398b429,
+      objectReference: {fileID: 21300000, guid: db21302583c872a4ead2627f7ff1fac2,
         type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[1].cardPortrait
       value: 
-      objectReference: {fileID: 21300000, guid: db21302583c872a4ead2627f7ff1fac2,
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
+      propertyPath: CardEntries.Array.data[2].cardPortrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 1144bbb160b3c794a9371231f799a38e,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[4].cardPortrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 74c6d25c41a0fd3468e3ed4dca0b13f9,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[7].cardPortrait
+      value: 
+      objectReference: {fileID: 21300000, guid: c21acb51bd2c88d4f8189a7f4bfd7357,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[8].cardPortrait
+      value: 
+      objectReference: {fileID: 21300000, guid: e0b14dcce554ad54aa854433128e0dc9,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[10].cardPortrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 3626a3ade49d2c343a4eba864c5da150,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[12].cardPortrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 35bea1d382b49cd45b0d0b94c6cea328,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[14].cardPortrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 5958e1dbeba1fb64389420fccdb24307,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[15].cardPortrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 6b2d298ed9be53b4fa19a4e395962867,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[2].Statistics.StartStatistics.Array.data[3].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[3].Statistics.StartStatistics.Array.data[3].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[2].Statistics.StartStatistics.Array.data[3].dataType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[3].Statistics.StartStatistics.Array.data[3].dataType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[4].Statistics.StartStatistics.Array.data[3].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[4].Statistics.StartStatistics.Array.data[3].dataType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[5].Statistics.StartStatistics.Array.data[3].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[5].Statistics.StartStatistics.Array.data[3].dataType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[6].Statistics.StartStatistics.Array.data[1].dataType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[7].Statistics.StartStatistics.Array.data[3].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[7].Statistics.StartStatistics.Array.data[3].dataType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[8].Statistics.StartStatistics.Array.data[3].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[8].Statistics.StartStatistics.Array.data[3].dataType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[9].Statistics.StartStatistics.Array.data[3].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[9].Statistics.StartStatistics.Array.data[3].dataType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[10].Statistics.StartStatistics.Array.data[3].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[10].Statistics.StartStatistics.Array.data[3].dataType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[11].Statistics.StartStatistics.Array.data[1].dataType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[12].Statistics.StartStatistics.Array.data[3].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[12].Statistics.StartStatistics.Array.data[3].dataType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[13].Statistics.StartStatistics.Array.data[3].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[13].Statistics.StartStatistics.Array.data[3].dataType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[14].Statistics.StartStatistics.Array.data[3].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[14].Statistics.StartStatistics.Array.data[3].dataType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[15].Statistics.StartStatistics.Array.data[3].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[15].Statistics.StartStatistics.Array.data[3].dataType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4467022757310397675, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: m_Name

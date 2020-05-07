@@ -4,8 +4,6 @@ using UnityEngine;
 
 namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 {
-	public enum CardAction { None, Attack, Move }
-
 	[CreateAssetMenu(menuName = "Scriptable Objects/DragLogic/DefaultLogic")]
 	public class CardDragLogic : ScriptableObject
 	{
@@ -34,7 +32,7 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 					return CardAction.Attack;
 				}
 			}
-			else
+			else if(socket.SocketSide != socketOfDraggedCard.SocketSide)
 			{
 				return CardAction.Move;
 			}

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<MatchMakerSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <MasterPort>19999</MasterPort>
+  <GameServerPortRange>
+    <StartPort>20000</StartPort>
+    <EndPort>20010</EndPort>
+  </GameServerPortRange>
+  <MaxPlayersInQueue>20</MaxPlayersInQueue>
+  <ServerTick>150</ServerTick>
+  <MaxAllowedMissedHeartBeats>2</MaxAllowedMissedHeartBeats>
+  <HeartBeatInterval>1000</HeartBeatInterval>
+  <PlayersPerGameInstance>2</PlayersPerGameInstance>
+  <PlayersMatchFoundNotifyDelay>1000</PlayersMatchFoundNotifyDelay>
+  <InstanceUseShellExecute>false</InstanceUseShellExecute>
+  <InstanceCreateNoWindow>true</InstanceCreateNoWindow>
+  <GameServerPath>..\AutomatedBuilds\WindowsStandaloneHeadless\WindowsStandaloneHeadless.exe</GameServerPath>
+  <InstanceArguments>Game.HeadlessInfo.CloseOnMatchEnded:true</InstanceArguments>
+  <PortArgString>Game.Network.DefaultAddress.Port:{0}</PortArgString>
+  <TimeoutArgString>Game.HeadlessInfo.Timeout:{0}</TimeoutArgString>
+  <NoPlayerTimeoutArgString>Game.HeadlessInfo.NoPlayerTimeout:{0}</NoPlayerTimeoutArgString>
+</MatchMakerSettings>
