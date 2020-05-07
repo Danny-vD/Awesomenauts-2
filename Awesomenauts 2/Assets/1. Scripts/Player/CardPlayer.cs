@@ -336,38 +336,55 @@ namespace Player
 			}
 		}
 
-		private void HandleReleasedCardFromBoard()
+		[ClientRpc]
+		private void RpcHandleReleasedCardFromBoard(NetworkIdentity draggedCardSocket, NetworkIdentity cardSocket)
 		{
-			ArrowDisplayHelper.Deactivate();
-
-			if (HasPlacedCard(out RaycastHit info, out CardSocket s))
+			CardSocket draggedSocket = draggedCardSocket.GetComponent<CardSocket>();
+			Card card = draggedSocket.DockedCard;
+			CardSocket s = cardSocket.GetComponent<CardSocket>();
+			if (card.DragLogicFromBoard.CanTarget(this, s, card.AttachedCardSocket))
 			{
-				if (draggedCard.DragLogicFromBoard.CanTarget(this, s, draggedCard.AttachedCardSocket))
+				CardAction action =
+					card.DragLogicFromBoard.GetAction(this, s, card.AttachedCardSocket);
+				if (action == CardAction.Attack)
 				{
-					CardAction action =
-						draggedCard.DragLogicFromBoard.GetAction(this, s, draggedCard.AttachedCardSocket);
-					if (action == CardAction.Attack)
-					{
-						Card c = s.DockedCard;
-						draggedCard.EffectManager.TriggerEffects(EffectTrigger.OnAttacking, draggedCard.AttachedCardSocket, s);
-						c.EffectManager.TriggerEffects(EffectTrigger.OnAttacked,s, draggedCard.AttachedCardSocket);
-						draggedCard.Attack(s.DockedCard);
-						draggedCard.EffectManager.TriggerEffects(EffectTrigger.AfterAttacking, draggedCard.AttachedCardSocket, s);
-						c.EffectManager.TriggerEffects(EffectTrigger.AfterAttacked, s, draggedCard.AttachedCardSocket);
-					}
-					else if (action == CardAction.Move)
-					{
-						Debug.Log("MOVE");
-						draggedCard.EffectManager.TriggerEffects(EffectTrigger.OnMove, draggedCard.AttachedCardSocket, s);
-						draggedCard.AttachedCardSocket?.DockCard(null);
-						s.DockCard(draggedCard);
-						draggedCard.EffectManager.TriggerEffects(EffectTrigger.AfterMove, draggedCard.AttachedCardSocket, s);
-					}
+					Card c = s.DockedCard;
+					card.EffectManager.TriggerEffects(EffectTrigger.OnAttacking, card.AttachedCardSocket, s);
+					c.EffectManager.TriggerEffects(EffectTrigger.OnAttacked, s, card.AttachedCardSocket);
+					card.Attack(s.DockedCard);
+					card.EffectManager.TriggerEffects(EffectTrigger.AfterAttacking, card.AttachedCardSocket, s);
+					c.EffectManager.TriggerEffects(EffectTrigger.AfterAttacked, s, card.AttachedCardSocket);
+				}
+				else if (action == CardAction.Move)
+				{
+					Debug.Log("MOVE");
+					card.EffectManager.TriggerEffects(EffectTrigger.OnMove, card.AttachedCardSocket, s);
+					card.AttachedCardSocket?.DockCard(null);
+					s.DockCard(card);
+					card.EffectManager.TriggerEffects(EffectTrigger.AfterMove, card.AttachedCardSocket, s);
 				}
 			}
 
-			dragging = false;
-			draggedCard = null;
+			if (hasAuthority)
+			{
+				ArrowDisplayHelper.Deactivate();
+				dragging = false;
+				draggedCard = null;
+			}
+		}
+		[Command]
+		private void CmdHandleReleasedCardFromBoard(NetworkIdentity draggedCardSocket, NetworkIdentity cardSocket)
+		{
+			RpcHandleReleasedCardFromBoard(draggedCardSocket, cardSocket);
+		}
+		private void HandleReleasedCardFromBoard()
+		{
+
+			if (HasPlacedCard(out RaycastHit info, out CardSocket s))
+			{
+				CmdHandleReleasedCardFromBoard(draggedCard.AttachedCardSocket.netIdentity, s.netIdentity);
+			}
+
 		}
 
 		private void HandleDraggingCardFromBoard()
