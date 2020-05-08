@@ -1,6 +1,5 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using Enums.Character;
 using Enums.Deckbuilder;
 using Events.Deckbuilder;
 using UI.Cards;

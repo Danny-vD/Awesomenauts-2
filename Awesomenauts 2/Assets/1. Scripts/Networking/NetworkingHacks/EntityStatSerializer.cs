@@ -5,7 +5,6 @@ using Byt3.Serialization.Serializers;
 using MasterServer.Common;
 using Networking.Statistics;
 using Player;
-using UnityEngine;
 
 namespace Networking.NetworkingHacks {
 	public class EntityStatSerializer : ASerializer<NetworkEntityStat>

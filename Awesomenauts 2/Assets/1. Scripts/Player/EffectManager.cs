@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Text;
 using Assets._1._Scripts.ScriptableObjects.Effects;
