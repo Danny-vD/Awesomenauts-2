@@ -132,7 +132,11 @@ namespace Player
 			}
 		}
 
-		[Server]
+		public void RpcDrawCard(int amount)
+		{
+			DrawCard(amount);
+		}
+		
 		public void DrawCard(int amount)
 		{
 			int cardsToDraw = Mathf.Min(Hand.CardSlotsFree, amount);
@@ -336,8 +340,7 @@ namespace Player
 			}
 		}
 
-		[ClientRpc]
-		private void RpcHandleReleasedCardFromBoard(NetworkIdentity draggedCardSocket, NetworkIdentity cardSocket)
+		private void HandleReleasedCardFromBoard(NetworkIdentity draggedCardSocket, NetworkIdentity cardSocket)
 		{
 			CardSocket draggedSocket = draggedCardSocket.GetComponent<CardSocket>();
 			Card card = draggedSocket.DockedCard;
@@ -371,6 +374,14 @@ namespace Player
 				dragging = false;
 				draggedCard = null;
 			}
+
+		}
+
+
+		[ClientRpc]
+		private void RpcHandleReleasedCardFromBoard(NetworkIdentity draggedCardSocket, NetworkIdentity cardSocket)
+		{
+			HandleReleasedCardFromBoard(draggedCardSocket, cardSocket);
 		}
 		[Command]
 		private void CmdHandleReleasedCardFromBoard(NetworkIdentity draggedCardSocket, NetworkIdentity cardSocket)

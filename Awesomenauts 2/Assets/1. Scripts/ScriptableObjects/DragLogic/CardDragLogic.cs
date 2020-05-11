@@ -1,3 +1,4 @@
+using System;
 using Maps;
 using Player;
 using UnityEngine;
@@ -9,12 +10,8 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 	{
 
 		public SocketTarget Target;
-		public float Range;
+		public int Range;
 
-
-
-
-		private float SqrRange => Range * Range;
 		private bool OwnSockets => (Target & SocketTarget.OwnSockets) != 0;
 		private bool EnemySockets => (Target & SocketTarget.EnemySockets) != 0;
 		private bool NeutralSockets => (Target & SocketTarget.NeutralSockets) != 0;
@@ -32,7 +29,7 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 					return CardAction.Attack;
 				}
 			}
-			else if(socket.SocketSide != socketOfDraggedCard.SocketSide)
+			else
 			{
 				return CardAction.Move;
 			}
@@ -41,13 +38,45 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 
 		public virtual bool CanTarget(CardPlayer player, CardSocket socket, CardSocket socketOfDraggedCard)
 		{
-			if (socketOfDraggedCard != null && Range > 0 && SqrRange < (socket.transform.position - socketOfDraggedCard.transform.position).sqrMagnitude) return false;
+			if (socketOfDraggedCard != null && Range > 0 && !CanReach(socket, socketOfDraggedCard)) return false;
 			if (socket.HasCard && EmptySockets && !OccupiedSockets) return false;
 			if (!socket.HasCard && !EmptySockets && OccupiedSockets) return false;
 			if (OwnSockets && !EnemySockets && !NeutralSockets && player.ClientID != socket.ClientID) return false;
 			if (!OwnSockets && EnemySockets && !NeutralSockets && player.ClientID == socket.ClientID) return false;
 			if (!OwnSockets && !EnemySockets && NeutralSockets && socket.ClientID != -1) return false;
 			return true;
+		}
+
+		private bool CanReach(CardSocket socket, CardSocket socketOfDraggedCard)
+		{
+			int idx = Lane.Sockets[socketOfDraggedCard.SocketSide].IndexOf(socketOfDraggedCard);
+			if (idx == -1) throw new Exception("Socket with invalid index.");
+
+			if ((socket.SocketSide & SocketSide.SideA) == (socketOfDraggedCard.SocketSide & SocketSide.SideA)) //They are the same side
+			{
+				int distance = 0;
+				int otherIdx = Lane.Sockets[socketOfDraggedCard.SocketSide].IndexOf(socket);
+				if (otherIdx == -1)
+				{
+					distance += Lane.Sockets[socketOfDraggedCard.SocketSide].Count - 1 - idx; //-1 because we need to get over the array boundary
+					otherIdx = Lane.Sockets[socket.SocketSide].IndexOf(socket);
+					distance += Mathf.Abs(Lane.Sockets[socket.SocketSide].Count - otherIdx);
+					return distance <= Range;
+				}
+				else
+				{
+					distance += Mathf.Abs(otherIdx - idx);
+					return distance <= Range;
+				}
+			}
+			else
+			{
+				//TODO: Ranger Attack Logic (whatever this means)
+				return false;
+			}
+
+
+
 		}
 	}
 

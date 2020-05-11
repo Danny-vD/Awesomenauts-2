@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: DefaultFromBoardLogic
   m_EditorClassIdentifier: 
   Target: -1
-  OnlyEmptySockets: 0
-  Range: 15
-  OnlyOccupiedSockets: 0
+  Range: 1

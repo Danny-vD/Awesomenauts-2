@@ -4004,25 +4004,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardSockets:
   - name: Red
-    CardSockets:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    CardSockets: []
   - name: Blue
-    CardSockets:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    CardSockets: []
 --- !u!1 &5491867751176836684
 GameObject:
   m_ObjectHideFlags: 0
@@ -5675,7 +5659,7 @@ PrefabInstance:
     - target: {fileID: 6761734284919410876, guid: 16dea9d18f8f8a9469f40784d16a531a,
         type: 3}
       propertyPath: SocketSide
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3063392855020583383, guid: 16dea9d18f8f8a9469f40784d16a531a, type: 3}
@@ -5780,6 +5764,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3606115186347957009, guid: bc427d6327abe8d4791bad70c65ec81c,
         type: 3}
+    - target: {fileID: 6761734284919410876, guid: 16dea9d18f8f8a9469f40784d16a531a,
+        type: 3}
+      propertyPath: SocketSide
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3063392855020583383, guid: 16dea9d18f8f8a9469f40784d16a531a, type: 3}
     - {fileID: 2253463021346607297, guid: 16dea9d18f8f8a9469f40784d16a531a, type: 3}
@@ -5881,7 +5870,7 @@ PrefabInstance:
     - target: {fileID: 3344252810267719883, guid: 1166b6cac5a689d47857da48ea7ae9e5,
         type: 3}
       propertyPath: SocketSide
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3606115186347957009, guid: 1166b6cac5a689d47857da48ea7ae9e5,
         type: 3}
@@ -5986,6 +5975,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3606115186347957009, guid: 78864c36753eea947a36ad637a07ca31,
         type: 3}
+    - target: {fileID: 3344252810267719883, guid: 1166b6cac5a689d47857da48ea7ae9e5,
+        type: 3}
+      propertyPath: SocketSide
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3606115186347957009, guid: 1166b6cac5a689d47857da48ea7ae9e5,
         type: 3}
       propertyPath: m_Name
@@ -6094,6 +6088,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3606115186347957009, guid: bc427d6327abe8d4791bad70c65ec81c,
         type: 3}
+    - target: {fileID: 6761734284919410876, guid: 16dea9d18f8f8a9469f40784d16a531a,
+        type: 3}
+      propertyPath: SocketSide
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3063392855020583383, guid: 16dea9d18f8f8a9469f40784d16a531a, type: 3}
     - {fileID: 2253463021346607297, guid: 16dea9d18f8f8a9469f40784d16a531a, type: 3}
@@ -6195,7 +6194,7 @@ PrefabInstance:
     - target: {fileID: 3344252810267719883, guid: 1166b6cac5a689d47857da48ea7ae9e5,
         type: 3}
       propertyPath: SocketSide
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3606115186347957009, guid: 1166b6cac5a689d47857da48ea7ae9e5,
         type: 3}
@@ -6305,6 +6304,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3606115186347957009, guid: bc427d6327abe8d4791bad70c65ec81c,
         type: 3}
+    - target: {fileID: 6761734284919410876, guid: 16dea9d18f8f8a9469f40784d16a531a,
+        type: 3}
+      propertyPath: SocketSide
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3063392855020583383, guid: 16dea9d18f8f8a9469f40784d16a531a, type: 3}
     - {fileID: 2253463021346607297, guid: 16dea9d18f8f8a9469f40784d16a531a, type: 3}
@@ -6411,7 +6415,7 @@ PrefabInstance:
     - target: {fileID: 6761734284919410876, guid: 16dea9d18f8f8a9469f40784d16a531a,
         type: 3}
       propertyPath: SocketSide
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3063392855020583383, guid: 16dea9d18f8f8a9469f40784d16a531a, type: 3}
@@ -6514,7 +6518,7 @@ PrefabInstance:
     - target: {fileID: 3344252810267719883, guid: 1166b6cac5a689d47857da48ea7ae9e5,
         type: 3}
       propertyPath: SocketSide
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3606115186347957009, guid: 1166b6cac5a689d47857da48ea7ae9e5,
         type: 3}
@@ -6619,6 +6623,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3606115186347957009, guid: 78864c36753eea947a36ad637a07ca31,
         type: 3}
+    - target: {fileID: 3344252810267719883, guid: 1166b6cac5a689d47857da48ea7ae9e5,
+        type: 3}
+      propertyPath: SocketSide
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3606115186347957009, guid: 1166b6cac5a689d47857da48ea7ae9e5,
         type: 3}
       propertyPath: m_Name
@@ -6710,7 +6719,7 @@ PrefabInstance:
     - target: {fileID: 3344252810267719883, guid: 1166b6cac5a689d47857da48ea7ae9e5,
         type: 3}
       propertyPath: SocketSide
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3606115186347957009, guid: 1166b6cac5a689d47857da48ea7ae9e5,
         type: 3}
@@ -6815,6 +6824,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3606115186347957009, guid: 78864c36753eea947a36ad637a07ca31,
         type: 3}
+    - target: {fileID: 3344252810267719883, guid: 1166b6cac5a689d47857da48ea7ae9e5,
+        type: 3}
+      propertyPath: SocketSide
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3606115186347957009, guid: 1166b6cac5a689d47857da48ea7ae9e5,
         type: 3}
       propertyPath: m_Name
@@ -6918,6 +6932,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3606115186347957009, guid: 78864c36753eea947a36ad637a07ca31,
         type: 3}
+    - target: {fileID: 3344252810267719883, guid: 1166b6cac5a689d47857da48ea7ae9e5,
+        type: 3}
+      propertyPath: SocketSide
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3606115186347957009, guid: 1166b6cac5a689d47857da48ea7ae9e5,
         type: 3}
       propertyPath: m_Name
@@ -7029,7 +7048,7 @@ PrefabInstance:
     - target: {fileID: 6761734284919410876, guid: 16dea9d18f8f8a9469f40784d16a531a,
         type: 3}
       propertyPath: SocketSide
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3063392855020583383, guid: 16dea9d18f8f8a9469f40784d16a531a, type: 3}
@@ -7134,6 +7153,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3606115186347957009, guid: bc427d6327abe8d4791bad70c65ec81c,
         type: 3}
+    - target: {fileID: 6761734284919410876, guid: 16dea9d18f8f8a9469f40784d16a531a,
+        type: 3}
+      propertyPath: SocketSide
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3063392855020583383, guid: 16dea9d18f8f8a9469f40784d16a531a, type: 3}
     - {fileID: 2253463021346607297, guid: 16dea9d18f8f8a9469f40784d16a531a, type: 3}
@@ -7240,7 +7264,7 @@ PrefabInstance:
     - target: {fileID: 6761734284919410876, guid: 16dea9d18f8f8a9469f40784d16a531a,
         type: 3}
       propertyPath: SocketSide
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3063392855020583383, guid: 16dea9d18f8f8a9469f40784d16a531a, type: 3}
