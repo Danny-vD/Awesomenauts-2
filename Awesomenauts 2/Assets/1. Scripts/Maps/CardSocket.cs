@@ -1,4 +1,5 @@
 using Mirror;
+using Networking;
 using Player;
 using UnityEngine;
 
@@ -19,6 +20,7 @@ namespace Maps
 		public float timeOffset;
 
 		private bool Active;
+		private bool Initialized;
 
 		public int ClientID { get; private set; }
 
@@ -45,6 +47,19 @@ namespace Maps
 		{
 			Active = active;
 			if (!Active) ResetPositions();
+		}
+
+
+		[ClientRpc]
+		public void RpcSetSocketSide(SocketSide side)
+		{
+			Initialized = true;
+			SetSocketSide(side);
+		}
+		public void SetSocketSide(SocketSide side)
+		{
+			SocketSide = side;
+			Lane.AddSocket(this);
 		}
 
 		/// <summary>
@@ -76,6 +91,11 @@ namespace Maps
 		// Update is called once per frame
 		void Update()
 		{
+			if (!Initialized && CardNetworkManager.Instance.numPlayers == 2)
+			{
+				Initialized = true;
+				RpcSetSocketSide(SocketSide);
+			}
 			if (!Active || DockedCard == null || !DockedCard.hasAuthority) return;
 			Vector3 pos = transform.position;
 			pos.y = origY + yOffset + Mathf.Sin(Time.realtimeSinceStartup * timeScale + timeOffset) * yScale;

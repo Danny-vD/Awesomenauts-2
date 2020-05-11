@@ -67,7 +67,7 @@ namespace Maps
 				CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == CurrentTurnClient;
 			MapTransformInfo.Instance.SocketManager.SetTurn(CurrentTurnClient);
 
-			current.DrawCard(1); //Next player is drawing one card
+			//current.DrawCard(1); //Next player is drawing one card
 			current.PlayerStatistics.SetValue(CardPlayerStatType.Solar, MaxSolar);
 			//if (CardNetworkManager.Instance.IsHost) return; //Has Already been set by ServerEndTurn if we are playing and hosting at the same time
 
@@ -137,7 +137,7 @@ namespace Maps
 				CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == CurrentTurnClient;
 			MapTransformInfo.Instance.SocketManager.SetTurn(CurrentTurnClient);
 
-			current.DrawCard(1); //Next player is drawing one card
+			current.RpcDrawCard(1); //Next player is drawing one card
 			current.PlayerStatistics.SetValue(CardPlayerStatType.Solar, MaxSolar);
 
 			

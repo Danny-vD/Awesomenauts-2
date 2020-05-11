@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using DataObjects;
-using Byt3.Serialization;
 using MasterServer.Client;
 using MasterServer.Common;
 using MasterServer.Common.Networking.Packets;

@@ -14,9 +14,8 @@ public class ReplaceWithNetworkObject : MonoBehaviour
 		if (CardNetworkManager.Instance.IsServer)
 		{
 			GameObject obj = Instantiate(Prefab, transform.position, transform.rotation);
-			NetworkServer.Spawn(obj);
-
 			obj.GetComponent<CardSocket>().SocketSide = SocketSide;
+			NetworkServer.Spawn(obj);
 		}
 		Destroy(gameObject);
 	}

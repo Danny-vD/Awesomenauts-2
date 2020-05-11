@@ -1,5 +1,3 @@
-using System;
-using Mirror;
 using Networking;
 using Player;
 using UnityEngine;

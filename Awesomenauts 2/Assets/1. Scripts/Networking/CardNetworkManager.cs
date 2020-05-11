@@ -9,7 +9,6 @@ using Player;
 using Utility;
 using Mirror;
 using Mirror.Websocket;
-using UI.DebugPanel;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
