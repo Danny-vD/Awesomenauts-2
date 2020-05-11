@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using DeckBuilder.DeckFilterUtil;
 using Enums.Deckbuilder;
+using Events.Deckbuilder;
 using Networking;
 using UI.Cards;
 using UnityEngine;
 using Utility.UI;
+using VDFramework.EventSystem;
 
 namespace DeckBuilder
 {
@@ -42,7 +44,7 @@ namespace DeckBuilder
 
 			int amount = entry.Amount;
 			card.Amount = amount;
-			card.GetComponentInChildren<UICardAesthetics>().Initialise(entry.Statistics);
+			card.GetComponentInChildren<UICardAesthetics>().Initialise(entry.Statistics, entry.Sprites);
 
 			if (amount > 0)
 			{

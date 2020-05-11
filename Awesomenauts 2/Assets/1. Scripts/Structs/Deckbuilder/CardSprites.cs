@@ -1,15 +1,15 @@
 ﻿using System;
-using UnityEngine.UI;
+using UnityEngine;
 
 namespace Structs.Deckbuilder
 {
 	[Serializable]
 	public struct CardSprites
 	{
-		public Image Border;
+		public Sprite Border;
 
-		public Image Body;
+		public Sprite Body;
 
-		public Image Portrait;
+		public Sprite Portrait;
 	}
 }

@@ -9,6 +9,7 @@ using Enums.Character;
 using MasterServer.Common;
 using Networking.NetworkingHacks;
 using Networking.Statistics;
+using Structs.Deckbuilder;
 using UnityEngine;
 
 namespace Networking
@@ -31,6 +32,7 @@ namespace Networking
 		public BorderInfo cardBorder;
 		public List<AEffect> effects;
 		public CardType CardType;
+		public CardSprites Sprites;
 		public Awesomenaut Awesomenaut;
 		public int Amount;
 

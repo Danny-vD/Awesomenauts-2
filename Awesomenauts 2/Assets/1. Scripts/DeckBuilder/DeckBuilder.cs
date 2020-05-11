@@ -37,6 +37,7 @@ namespace DeckBuilder
 			deckRequirements.Instantiate(currentDeck);
 
 			availableCards = AddAllCards.AddCardsAsChild(availableCardsParent);
+			EventManager.Instance.RaiseEvent(new HoverUICardEvent(availableCards[0]));
 			
 			AddDecksToBeFiltered();
 			AddDecksToBeSorted();

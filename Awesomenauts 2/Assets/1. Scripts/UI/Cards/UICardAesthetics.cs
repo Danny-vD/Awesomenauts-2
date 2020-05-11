@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Player;
+using Structs.Deckbuilder;
 using UnityEngine;
 using UnityEngine.UI;
 using VDFramework;
@@ -10,10 +11,6 @@ namespace UI.Cards
 {
 	public class UICardAesthetics : BetterMonoBehaviour
 	{
-		//TODO: remove
-		private const string temporaryString =
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-
 		//HideInInspector does not serialise private fields, as it turns out
 		[HideInInspector, SerializeField]
 		private Image border = null;
@@ -35,8 +32,9 @@ namespace UI.Cards
 			}
 		}
 
-		public void Initialise(EntityStatistics stats)
+		public void Initialise(EntityStatistics stats, CardSprites sprites)
 		{
+			SetAllSprites(sprites);
 			SetAllText(stats);
 		}
 
@@ -48,7 +46,7 @@ namespace UI.Cards
 
 		private void SetAllText(EntityStatistics stats)
 		{
-			UpdateAllText(temporaryString, stats.GetValue(CardPlayerStatType.Attack),
+			UpdateAllText(stats.GetValue(CardPlayerStatType.Description), stats.GetValue(CardPlayerStatType.Attack),
 				stats.GetValue(CardPlayerStatType.HP));
 		}
 
@@ -68,6 +66,13 @@ namespace UI.Cards
 			}
 		}
 
+		private void SetAllSprites(CardSprites sprites)
+		{
+			border.sprite = sprites.Border;
+			body.sprite = sprites.Body;
+			portrait.sprite = sprites.Portrait;
+		}
+		
 		private void SetAllSprites(UICardAesthetics cardAesthetics)
 		{
 			border.sprite = cardAesthetics.border.sprite;
