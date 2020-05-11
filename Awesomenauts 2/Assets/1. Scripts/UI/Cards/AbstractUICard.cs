@@ -18,6 +18,21 @@ namespace UI.Cards
 	{
 		public int ID { get; set; }
 
+		private UICardAesthetics cardAesthetics = null;
+
+		public UICardAesthetics CardAesthetics
+		{
+			get
+			{
+				if (!cardAesthetics)
+				{
+					cardAesthetics = GetComponentInChildren<UICardAesthetics>();
+				}
+				
+				return cardAesthetics;
+			}
+		}
+
 		private int amount = 1;
 
 		public int Amount

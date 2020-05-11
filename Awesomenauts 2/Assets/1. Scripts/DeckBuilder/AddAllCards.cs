@@ -42,6 +42,7 @@ namespace DeckBuilder
 
 			int amount = entry.Amount;
 			card.Amount = amount;
+			card.GetComponentInChildren<UICardAesthetics>().Initialise(entry.Statistics);
 
 			if (amount > 0)
 			{

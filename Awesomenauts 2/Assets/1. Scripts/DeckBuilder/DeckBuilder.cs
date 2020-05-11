@@ -133,6 +133,8 @@ namespace DeckBuilder
 					clickedAvailableCard.Type, clickedAvailableCard.Awesomenaut, clickedAvailableCard.Filters);
 				deckCard.Sprite = clickedAvailableCard.Sprite;
 				deckCard.Amount = 1;
+				
+				deckCard.CardAesthetics.Initialise(clickedAvailableCard.CardAesthetics);
 
 				DeckFilterManager.AddIsInDeckFilter(deckCard);
 				DeckFilterManager.AddIsInDeckFilter(clickedAvailableCard);
@@ -161,6 +163,8 @@ namespace DeckBuilder
 				availableCard.Sprite = clickedCardInDeck.Sprite;
 				availableCard.Amount = 1;
 
+				availableCard.CardAesthetics.Initialise(clickedCardInDeck.CardAesthetics);
+				
 				availableCards.Add(availableCard);
 			}
 
