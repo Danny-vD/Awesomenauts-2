@@ -3,10 +3,12 @@ using DeckBuilder.DeckFilterUtil;
 using Enums.Cards;
 using Enums.Character;
 using Enums.Deckbuilder;
+using Events.Deckbuilder;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using VDFramework;
+using VDFramework.EventSystem;
 using VDFramework.UnityExtensions;
 
 namespace UI.Cards
@@ -78,7 +80,10 @@ namespace UI.Cards
 			return (Filters & currentFilters) != 0 && (Awesomenaut & awesomenautFilters) != 0;
 		}
 
-		protected virtual void OnPointerEnter() { }
+		protected virtual void OnPointerEnter()
+		{
+			EventManager.Instance.RaiseEvent(new HoverUICardEvent(this));
+		}
 
 		protected abstract void OnPointerClick();
 
