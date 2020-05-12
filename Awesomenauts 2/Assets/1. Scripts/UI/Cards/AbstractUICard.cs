@@ -41,12 +41,6 @@ namespace UI.Cards
 			set => amountCounter.Amount = amount = value;
 		}
 
-		public Sprite Sprite
-		{
-			get => image.sprite;
-			set => SetSprite(value);
-		}
-
 		public FilterValues Filters { get; set; } = 0;
 
 		private CardType type;
@@ -63,7 +57,6 @@ namespace UI.Cards
 
 		public Awesomenaut Awesomenaut { get; set; }
 
-		private Image image;
 		private Button button;
 
 		private CardAmountCounter amountCounter;
@@ -72,8 +65,6 @@ namespace UI.Cards
 		{
 			button = GetComponent<Button>();
 			button.onClick.AddListener(OnPointerClick);
-
-			image = GetComponent<Image>();
 
 			AddEventTriggers();
 
@@ -103,17 +94,6 @@ namespace UI.Cards
 		protected abstract void OnPointerClick();
 
 		protected virtual void OnPointerExit() { }
-
-		private void SetSprite(Sprite sprite)
-		{
-			if (!image)
-			{
-				image = GetComponent<Image>();
-			}
-
-			image.sprite = sprite;
-			gameObject.name = sprite.name;
-		}
 
 		private void AddEventTriggers()
 		{

@@ -3,6 +3,7 @@ using System.Linq;
 using Player;
 using Structs.Deckbuilder;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using VDFramework;
 using VDFramework.Utility;
@@ -11,15 +12,14 @@ namespace UI.Cards
 {
 	public class UICardAesthetics : BetterMonoBehaviour
 	{
-		//HideInInspector does not serialise private fields, as it turns out
-		[HideInInspector, SerializeField]
-		private Image border = null;
+		[HideInInspector]
+		public Image Border = null;
 
-		[HideInInspector, SerializeField]
-		private Image body = null;
+		[HideInInspector]
+		public Image Body = null;
 
-		[HideInInspector, SerializeField]
-		private Image portrait = null;
+		[HideInInspector]
+		public Image Portrait = null;
 
 		private readonly Dictionary<Text, StringVariableWriter> writerPerString =
 			new Dictionary<Text, StringVariableWriter>();
@@ -44,6 +44,14 @@ namespace UI.Cards
 			SetAllText(cardAesthetics.writerPerString);
 		}
 
+		private void UpdateAllText(params object[] variables)
+		{
+			foreach (KeyValuePair<Text, StringVariableWriter> pair in writerPerString)
+			{
+				pair.Key.text = pair.Value.UpdateText(variables);
+			}
+		}
+		
 		private void SetAllText(EntityStatistics stats)
 		{
 			UpdateAllText(stats.GetValue(CardPlayerStatType.Description), stats.GetValue(CardPlayerStatType.Attack),
@@ -58,26 +66,18 @@ namespace UI.Cards
 			}
 		}
 
-		private void UpdateAllText(params object[] variables)
-		{
-			foreach (KeyValuePair<Text, StringVariableWriter> pair in writerPerString)
-			{
-				pair.Key.text = pair.Value.UpdateText(variables);
-			}
-		}
-
 		private void SetAllSprites(CardSprites sprites)
 		{
-			border.sprite = sprites.Border;
-			body.sprite = sprites.Body;
-			portrait.sprite = sprites.Portrait;
+			Border.sprite = sprites.Border;
+			Body.sprite = sprites.Body;
+			Portrait.sprite = sprites.Portrait;
 		}
 		
 		private void SetAllSprites(UICardAesthetics cardAesthetics)
 		{
-			border.sprite = cardAesthetics.border.sprite;
-			body.sprite = cardAesthetics.body.sprite;
-			portrait.sprite = cardAesthetics.portrait.sprite;
+			Border.sprite = cardAesthetics.Border.sprite;
+			Body.sprite = cardAesthetics.Body.sprite;
+			Portrait.sprite = cardAesthetics.Portrait.sprite;
 		}
 	}
 }

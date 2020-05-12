@@ -1,4 +1,6 @@
+using Enums.Cards;
 using Events.Deckbuilder;
+using UI.Cards;
 using UnityEngine;
 using UnityEngine.UI;
 using VDFramework;
@@ -9,12 +11,14 @@ namespace DeckBuilder
 	public class CardPreview : BetterMonoBehaviour
 	{
 		private Text text;
-		private Image image;
+		private UICardAesthetics cardAesthetics;
+		private GameObject icons;
 
 		private void Awake()
 		{
 			text = GetComponentInChildren<Text>();
-			image = GetComponentInChildren<Image>();
+			cardAesthetics = GetComponentInChildren<UICardAesthetics>();
+			icons = cardAesthetics.CachedTransform.Find("Icons").gameObject;
 		}
 
 		private void OnEnable()
@@ -42,13 +46,16 @@ namespace DeckBuilder
 
 		private void OnHoverUICard(HoverUICardEvent hoverUICardEvent)
 		{
-			SetPreview(hoverUICardEvent.Card.Sprite);
+			SetPreview(hoverUICardEvent.Card);
 		}
 
-		private void SetPreview(Sprite sprite)
+		private void SetPreview(AbstractUICard card)
 		{
-			image.sprite = sprite;
-			text.text = sprite.name;
+			cardAesthetics.Initialise(card.CardAesthetics);
+
+			text.text = card.CachedTransform.parent.name;
+
+			icons.SetActive(card.Type != CardType.Action);
 		}
 	}
 }

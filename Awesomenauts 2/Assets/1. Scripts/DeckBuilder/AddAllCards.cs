@@ -3,6 +3,7 @@ using DeckBuilder.DeckFilterUtil;
 using Enums.Deckbuilder;
 using Events.Deckbuilder;
 using Networking;
+using Player;
 using UI.Cards;
 using UnityEngine;
 using Utility.UI;
@@ -44,14 +45,14 @@ namespace DeckBuilder
 
 			int amount = entry.Amount;
 			card.Amount = amount;
-			card.GetComponentInChildren<UICardAesthetics>().Initialise(entry.Statistics, entry.Sprites);
+			card.CardAesthetics.Initialise(entry.Statistics, entry.Sprites);
+
+			card.name = entry.Statistics.GetValue(CardPlayerStatType.CardName).ToString();
 
 			if (amount > 0)
 			{
 				DeckFilterManager.AddFilterFlagToCard(card, FilterValues.Owned);
 			}
-
-			card.Sprite = entry.cardSprite;
 
 			return card;
 		}

@@ -132,10 +132,10 @@ namespace DeckBuilder
 			{
 				deckCard = UICardFactory.Instance.CreateNewCard<DeckUICard>(currentDeckParent, clickedAvailableCard.ID,
 					clickedAvailableCard.Type, clickedAvailableCard.Awesomenaut, clickedAvailableCard.Filters);
-				deckCard.Sprite = clickedAvailableCard.Sprite;
 				deckCard.Amount = 1;
 				
 				deckCard.CardAesthetics.Initialise(clickedAvailableCard.CardAesthetics);
+				deckCard.name = clickedAvailableCard.name;
 
 				DeckFilterManager.AddIsInDeckFilter(deckCard);
 				DeckFilterManager.AddIsInDeckFilter(clickedAvailableCard);
@@ -161,10 +161,10 @@ namespace DeckBuilder
 				availableCard =
 					UICardFactory.Instance.CreateNewCard<AvailableUICard>(availableCardsParent, clickedCardInDeck.ID,
 						clickedCardInDeck.Type, clickedCardInDeck.Awesomenaut, clickedCardInDeck.Filters);
-				availableCard.Sprite = clickedCardInDeck.Sprite;
 				availableCard.Amount = 1;
 
 				availableCard.CardAesthetics.Initialise(clickedCardInDeck.CardAesthetics);
+				availableCard.name = clickedCardInDeck.name;
 				
 				availableCards.Add(availableCard);
 			}

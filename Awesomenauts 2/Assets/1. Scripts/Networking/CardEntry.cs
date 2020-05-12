@@ -30,11 +30,11 @@ namespace Networking
 		public Sprite cardSprite;
 		public Sprite cardPortrait;
 		public BorderInfo cardBorder;
-		public List<AEffect> effects;
 		public CardType CardType;
 		public CardSprites Sprites;
 		public Awesomenaut Awesomenaut;
 		public int Amount;
+		public List<AEffect> effects;
 
 		//Flag that indicates if the Serializer was initialized.
 		private static bool init;
