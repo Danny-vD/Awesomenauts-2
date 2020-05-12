@@ -53,7 +53,7 @@ namespace DeckBuilder
 		{
 			cardAesthetics.Initialise(card.CardAesthetics);
 
-			text.text = card.CachedTransform.parent.name;
+			text.text = card.name;
 
 			icons.SetActive(card.Type != CardType.Action);
 		}

@@ -54,8 +54,9 @@ namespace UI.Cards
 		
 		private void SetAllText(EntityStatistics stats)
 		{
-			UpdateAllText(stats.GetValue(CardPlayerStatType.Description), stats.GetValue(CardPlayerStatType.Attack),
-				stats.GetValue(CardPlayerStatType.HP));
+			UpdateAllText(stats.GetValue(CardPlayerStatType.Description),
+				stats.GetValue(CardPlayerStatType.Attack), stats.GetValue(CardPlayerStatType.HP),
+				stats.GetValue(CardPlayerStatType.CardName));
 		}
 
 		private void SetAllText(Dictionary<Text, StringVariableWriter> texts)
