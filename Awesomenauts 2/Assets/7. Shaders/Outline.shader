@@ -16,8 +16,6 @@
 		[Header(PBR settings)]
 		_MaxHeight("MaxHeight", float) = 0.01
 		_OcclusionStrength("Occlusion Strength", float) = 1
-		[floatRange] _MetallicStrength("Metallic Strength", range(0.0, 1.0)) = 1
-		[floatRange] _SmoothnessStrength("Smoothness Strength", range(0.0, 1.0)) = 1
 
 		[space]
 		[Header(Outline)]
@@ -192,8 +190,6 @@
 		fixed4 _Color;
 		float4 _EmissionColor;
 		float _OcclusionStrength;
-		float _MetallicStrength;
-		float _SmoothnessStrength;
 
 		// Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
 		// See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -245,13 +241,13 @@
 				heightOffset = ParallaxOffset(value, _MaxHeight, IN.viewDir);
 			}
 
-			//Normals come from a NormalMap
+			//Normal comes from a NormalMap
 			o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap + heightOffset + timeOffset));
 
 			//Metallic and smoothness come from the MetallicMap
 			float4 metallicData = tex2D(_MetallicMap, IN.uv_MetallicMap + heightOffset + timeOffset);
-			o.Metallic = metallicData.rgb * _MetallicStrength;
-			o.Smoothness = metallicData.a * _SmoothnessStrength;
+			o.Metallic = metallicData.rgb;
+			o.Smoothness = metallicData.a;
 
 			//Ambient Occulusion comes from the occulusionMap
 			o.Occlusion = tex2D(_OcclusionMap, IN.uv_OcclusionMap + heightOffset + timeOffset) * _OcclusionStrength;
