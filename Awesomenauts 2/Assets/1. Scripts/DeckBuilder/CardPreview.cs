@@ -10,15 +10,11 @@ namespace DeckBuilder
 {
 	public class CardPreview : BetterMonoBehaviour
 	{
-		private Text text;
 		private UICardAesthetics cardAesthetics;
-		private GameObject icons;
 
 		private void Awake()
 		{
-			text = GetComponentInChildren<Text>();
 			cardAesthetics = GetComponentInChildren<UICardAesthetics>();
-			icons = cardAesthetics.CachedTransform.Find("Icons").gameObject;
 		}
 
 		private void OnEnable()
@@ -43,19 +39,15 @@ namespace DeckBuilder
 				EventManager.Instance.RemoveListener<HoverUICardEvent>(OnHoverUICard);
 			}
 		}
-
-		private void OnHoverUICard(HoverUICardEvent hoverUICardEvent)
-		{
-			SetPreview(hoverUICardEvent.Card);
-		}
-
+		
 		private void SetPreview(AbstractUICard card)
 		{
 			cardAesthetics.Initialise(card.CardAesthetics);
-
-			text.text = card.name;
-
-			icons.SetActive(card.Type != CardType.Action);
+		}
+		
+		private void OnHoverUICard(HoverUICardEvent hoverUICardEvent)
+		{
+			SetPreview(hoverUICardEvent.Card);
 		}
 	}
 }

@@ -74,7 +74,7 @@ namespace Networking
 			{
 				if (cardEntry.Statistics.GetValue<string>(CardPlayerStatType.CardName) == name)
 				{
-					return cardEntry.cardPortrait;
+					return cardEntry.Sprites.Portrait;
 				}
 			}
 

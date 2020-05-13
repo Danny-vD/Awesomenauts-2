@@ -22,6 +22,12 @@ namespace DeckBuilder
 			for (int id = 0; id < length; id++)
 			{
 				CardEntry entry = CardNetworkManager.Instance.CardEntries[id];
+
+				if (entry.Sprites.Portrait == null)
+				{
+					entry.Sprites.Portrait = CardNetworkManager.Instance.DefaultCardPortrait;
+				}
+				
 				AbstractUICard card = InstantiateCardEntry(entry, parentTransform, id);
 
 				if (card)
@@ -35,17 +41,12 @@ namespace DeckBuilder
 
 		private static AbstractUICard InstantiateCardEntry(CardEntry entry, Transform parent, int id)
 		{
-			if (entry.cardSprite == null)
-			{
-				return null;
-			}
-
 			AbstractUICard card =
 				UICardFactory.Instance.CreateNewCard<AvailableUICard>(parent, id, entry.CardType, entry.Awesomenaut, FilterValues.IsNotInDeck);
 
 			int amount = entry.Amount;
 			card.Amount = amount;
-			card.CardAesthetics.Initialise(entry.Statistics, entry.Sprites);
+			card.CardAesthetics.Initialise(card, entry.Statistics, entry.Sprites);
 
 			card.name = entry.Statistics.GetValue(CardPlayerStatType.CardName).ToString();
 

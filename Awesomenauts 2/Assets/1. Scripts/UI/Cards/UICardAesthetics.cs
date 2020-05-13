@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Enums.Cards;
 using Player;
 using Structs.Deckbuilder;
 using UnityEngine;
@@ -21,6 +22,9 @@ namespace UI.Cards
 		[HideInInspector]
 		public Image Portrait = null;
 
+		[HideInInspector]
+		public GameObject Icons = null;
+
 		private readonly Dictionary<Text, StringVariableWriter> writerPerString =
 			new Dictionary<Text, StringVariableWriter>();
 
@@ -32,16 +36,20 @@ namespace UI.Cards
 			}
 		}
 
-		public void Initialise(EntityStatistics stats, CardSprites sprites)
+		public void Initialise(AbstractUICard card, EntityStatistics stats, CardSprites sprites)
 		{
 			SetAllSprites(sprites);
 			SetAllText(stats);
+
+			Icons.SetActive(card.Type != CardType.Action);
 		}
 
 		public void Initialise(UICardAesthetics cardAesthetics)
 		{
 			SetAllSprites(cardAesthetics);
 			SetAllText(cardAesthetics.writerPerString);
+			
+			Icons.SetActive(cardAesthetics.Icons.activeSelf);
 		}
 
 		private void UpdateAllText(params object[] variables)
@@ -51,7 +59,7 @@ namespace UI.Cards
 				pair.Key.text = pair.Value.UpdateText(variables);
 			}
 		}
-		
+
 		private void SetAllText(EntityStatistics stats)
 		{
 			UpdateAllText(stats.GetValue(CardPlayerStatType.Description),
@@ -73,7 +81,7 @@ namespace UI.Cards
 			Body.sprite = sprites.Body;
 			Portrait.sprite = sprites.Portrait;
 		}
-		
+
 		private void SetAllSprites(UICardAesthetics cardAesthetics)
 		{
 			Border.sprite = cardAesthetics.Border.sprite;

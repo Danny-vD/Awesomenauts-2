@@ -27,8 +27,6 @@ namespace Networking
 
 		public EntityStatistics Statistics;
 		public GameObject Prefab;
-		public Sprite cardSprite;
-		public Sprite cardPortrait;
 		public BorderInfo cardBorder;
 		public CardType CardType;
 		public CardSprites Sprites;

@@ -38,7 +38,7 @@ namespace DeckBuilder
 
 			availableCards = AddAllCards.AddCardsAsChild(availableCardsParent);
 			EventManager.Instance.RaiseEvent(new HoverUICardEvent(availableCards[0]));
-			
+
 			AddDecksToBeFiltered();
 			AddDecksToBeSorted();
 
@@ -133,7 +133,7 @@ namespace DeckBuilder
 				deckCard = UICardFactory.Instance.CreateNewCard<DeckUICard>(currentDeckParent, clickedAvailableCard.ID,
 					clickedAvailableCard.Type, clickedAvailableCard.Awesomenaut, clickedAvailableCard.Filters);
 				deckCard.Amount = 1;
-				
+
 				deckCard.CardAesthetics.Initialise(clickedAvailableCard.CardAesthetics);
 				deckCard.name = clickedAvailableCard.name;
 
@@ -165,7 +165,7 @@ namespace DeckBuilder
 
 				availableCard.CardAesthetics.Initialise(clickedCardInDeck.CardAesthetics);
 				availableCard.name = clickedCardInDeck.name;
-				
+
 				availableCards.Add(availableCard);
 			}
 
