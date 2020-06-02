@@ -24,7 +24,7 @@ namespace Networking
 	{
 		//Inspector Fields
 		//Stats/Designs/etc
-
+		public bool InternalCard;
 		public EntityStatistics Statistics;
 		public GameObject Prefab;
 		public BorderInfo cardBorder;

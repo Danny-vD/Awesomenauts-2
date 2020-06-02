@@ -13,10 +13,10 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 
 		public override void TriggerEffect(CardSocket containingSocket, CardSocket targetSocket)
 		{
-			if (containingSocket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.HP) > 0 &&
-			    targetSocket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.HP) > 0)
+			if (containingSocket != null && containingSocket.HasCard && containingSocket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.HP) > 0 &&
+				targetSocket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.HP) > 0)
 			{
-                containingSocket.DockedCard.Attack(targetSocket.DockedCard);
+				containingSocket.DockedCard.Attack(targetSocket.DockedCard);
 			}
 		}
 	}

@@ -447,7 +447,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   Anchor: {x: 0, y: 0, z: 0}
-  MaxCardCount: 5
+  MaxCardCount: 6
   MaxCardRotation: 9.5
   OffsetFromAnchor: 5
   Drag: 0.37

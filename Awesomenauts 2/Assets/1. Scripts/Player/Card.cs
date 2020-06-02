@@ -63,6 +63,8 @@ namespace Player
 			CardDescription.text = EffectManager.GetEffectText();
 			Statistics.Register(CardPlayerStatType.HP, OnHPChanged);
 			Statistics.Invalidate();
+			if (!Statistics.HasValue(CardPlayerStatType.Range)) Statistics.SetValue(CardPlayerStatType.Range, 1);
+			if (!Statistics.HasValue(CardPlayerStatType.CrossLaneRange)) Statistics.SetValue(CardPlayerStatType.CrossLaneRange, 0);
 		}
 
 

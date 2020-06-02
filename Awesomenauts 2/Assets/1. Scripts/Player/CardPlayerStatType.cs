@@ -8,5 +8,7 @@ namespace Player {
 		CardName,
 		Description,
 		CardType,
+		Range,
+        CrossLaneRange,
 	}
 }

@@ -89,7 +89,7 @@ namespace Player {
 
 		public void SetValue(CardPlayerStatType type, object value)
 		{
-			Debug.Log($"Setting Stat Type: {type}to value: {value}");
+			Debug.Log($"Setting Stat Type: {type} to value: {value}");
 
 			if (registeredEvents.ContainsKey(type))
 				registeredEvents[type](value); //Call the Events.

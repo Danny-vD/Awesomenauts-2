@@ -63,6 +63,9 @@ namespace Networking
 
 		[Header("Card Networking Parameters")]
 		public MapEntry[] AvailableMaps;
+
+		public int StartingCards = 4;
+		public CardEntry CompensationCard;
 		public GameObject BoardLogicPrefab;
 		public CardEntry[] CardEntries;
 		public int[] CardsInDeck { get; private set; } = new int[0];
@@ -148,6 +151,7 @@ namespace Networking
 
 		public override void Start()
 		{
+			CompensationCard.Statistics.InitializeStatDictionary();
 
 			foreach (CardEntry cardEntry in CardEntries)
 			{
@@ -209,7 +213,15 @@ namespace Networking
 				SetUpPlayer(1);
 				for (int i = 0; i < CardPlayer.ServerPlayers.Count; i++)
 				{
-					CardPlayer.ServerPlayers[i].DrawCard(5);
+					if (i != 0)
+					{
+						CardPlayer.ServerPlayers[i].DrawCard(StartingCards);
+						CardPlayer.ServerPlayers[i].DrawCard(CompensationCard);
+					}
+					else
+					{
+						CardPlayer.ServerPlayers[i].DrawCard(StartingCards - 1);
+					}
 				}
 
 				BoardLogic.Logic.StartGame();

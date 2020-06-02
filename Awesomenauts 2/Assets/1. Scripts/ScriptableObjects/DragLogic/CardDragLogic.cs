@@ -41,7 +41,12 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 
 		public virtual bool CanTarget(CardPlayer player, CardSocket socket, CardSocket socketOfDraggedCard)
 		{
-			if (socketOfDraggedCard != null && Range > 0 && !CanReach(socket, socketOfDraggedCard)) return false;
+			int range = socketOfDraggedCard != null && socketOfDraggedCard.HasCard
+				? socketOfDraggedCard.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.Range) : Range;
+			int xrange = socketOfDraggedCard != null && socketOfDraggedCard.HasCard
+				? socketOfDraggedCard.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.CrossLaneRange) : CrossLaneRange;
+
+			if (socketOfDraggedCard != null && range > 0 && !CanReach(socket, socketOfDraggedCard, range, xrange)) return false;
 			if (socket.HasCard && EmptySockets && !OccupiedSockets) return false;
 			if (!socket.HasCard && !EmptySockets && OccupiedSockets) return false;
 			if (OwnSockets && !EnemySockets && !NeutralSockets && player.ClientID != socket.ClientID) return false;
@@ -50,11 +55,11 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 			return true;
 		}
 
-		private bool CanReach(CardSocket socket, CardSocket socketOfDraggedCard)
+		private bool CanReach(CardSocket socket, CardSocket socketOfDraggedCard, int range, int xrange)
 		{
 			int idx = Lane.Sockets[socketOfDraggedCard.SocketSide].IndexOf(socketOfDraggedCard);
 			if (idx == -1) throw new Exception("Socket with invalid index.");
-			
+
 
 			if ((socket.SocketSide & SocketSide.SideA) == (socketOfDraggedCard.SocketSide & SocketSide.SideA)) //They are the same side
 			{
@@ -71,7 +76,7 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 					distance += Mathf.Abs(otherIdx - idx);
 				}
 
-				return distance <= Range;
+				return distance <= range;
 			}
 			else
 			{
@@ -88,7 +93,7 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 					distance += Mathf.Abs(otherIdx - idx);
 				}
 
-				return distance <= CrossLaneRange;
+				return distance <= xrange;
 				//TODO: Ranger Attack Logic (whatever this means)
 			}
 

@@ -154,21 +154,26 @@ namespace Player
 			for (int i = 0; i < cardsToDraw; i++)
 			{
 				CardEntry e = Deck.DrawCard();
-				//Hand.AddCard(c);//Add the Card to the server
-				GameObject cardInstance = Instantiate(e.Prefab, Deck.DeckPosition, Quaternion.identity);
-				NetworkServer.Spawn(cardInstance, GetComponent<NetworkIdentity>().connectionToClient);
-				Card c = cardInstance.GetComponent<Card>();
-				c.Statistics = e.Statistics;
-				c.Statistics.SetValue(CardPlayerStatType.TeamID, ClientID); //Set Team ID, used to find out to whom the card belongs.
-				c.Statistics.SetValue(CardPlayerStatType.CardType, e.CardType); //Set Team ID, used to find out to whom the card belongs.
-				byte[] networkData = e.StatisticsToNetworkableArray();
-				Debug.Log("Sending Stats");
-				Debug.Log("Card Type: " + c.Statistics.GetValue(CardPlayerStatType.CardType));
-				c.RpcSendStats(networkData);
-
-				//Hand.AddToHand(c.GetComponent<NetworkIdentity>());
-				Hand.RpcAddToHand(c.netIdentity); //Add Card to the client
+				DrawCard(e);
 			}
+		}
+
+		public void DrawCard(CardEntry e)
+		{
+			//Hand.AddCard(c);//Add the Card to the server
+			GameObject cardInstance = Instantiate(e.Prefab, Deck.DeckPosition, Quaternion.identity);
+			NetworkServer.Spawn(cardInstance, GetComponent<NetworkIdentity>().connectionToClient);
+			Card c = cardInstance.GetComponent<Card>();
+			c.Statistics = e.Statistics;
+			c.Statistics.SetValue(CardPlayerStatType.TeamID, ClientID); //Set Team ID, used to find out to whom the card belongs.
+			c.Statistics.SetValue(CardPlayerStatType.CardType, e.CardType); //Set Team ID, used to find out to whom the card belongs.
+			byte[] networkData = e.StatisticsToNetworkableArray();
+			Debug.Log("Sending Stats");
+			Debug.Log("Card Type: " + c.Statistics.GetValue(CardPlayerStatType.CardType));
+			c.RpcSendStats(networkData);
+
+			//Hand.AddToHand(c.GetComponent<NetworkIdentity>());
+			Hand.RpcAddToHand(c.netIdentity); //Add Card to the client
 		}
 
 		[Client]
@@ -271,17 +276,25 @@ namespace Player
 			CardSocket cs = socket.GetComponent<CardSocket>();
 
 
-			c.EffectManager.TriggerEffects(EffectTrigger.OnPlay, null, cs);
 
 			int solar = PlayerStatistics.GetValue<int>(CardPlayerStatType.Solar);
 			int sub = c.Statistics.GetValue<int>(CardPlayerStatType.Solar);
 			solar -= sub;
 			PlayerStatistics.SetValue(CardPlayerStatType.Solar, solar);
+			c.EffectManager.TriggerEffects(EffectTrigger.OnPlay, null, cs);
 
 			//Place card on board
 			//CmdRemoveFromHand(c.GetComponent<NetworkIdentity>());
 			c.gameObject.layer = UnityTrashWorkaround(BoardLayer);
 			Hand.RemoveCard(c.GetComponent<Card>());
+
+			if (c.Statistics.GetValue<CardType>(CardPlayerStatType.CardType) == CardType.Action)
+			{
+
+				Destroy(c.gameObject);
+				return;
+			}
+
 
 			//We Have to turn the card facing up again
 			Quaternion turnOverRot = Quaternion.AngleAxis(180, c.transform.right);
@@ -302,11 +315,6 @@ namespace Player
 				Hand.SetSelectedCard(null);
 			}
 			c.EffectManager.TriggerEffects(EffectTrigger.AfterPlay, cs, null);
-
-			if (c.Statistics.GetValue<CardType>(CardPlayerStatType.CardType) == CardType.Action)
-			{
-				Destroy(c.gameObject);
-			}
 		}
 
 		private void HandleClickedOnCardOnHand(Card c, bool fromHand)
@@ -359,6 +367,17 @@ namespace Player
 
 		private void HandleReleasedCardFromBoard(NetworkIdentity draggedCardSocket, NetworkIdentity cardSocket)
 		{
+			if (draggedCardSocket == null || cardSocket == null)
+			{
+				draggedCard = null;
+				dragging = false;
+				snapping = false;
+				SnappedSocket = null;
+				canSnap = false;
+				Hand.SetSelectedCard(null);
+
+				return;
+			}
 			CardSocket draggedSocket = draggedCardSocket.GetComponent<CardSocket>();
 			Card card = draggedSocket.DockedCard;
 			CardSocket s = cardSocket.GetComponent<CardSocket>();
@@ -431,7 +450,7 @@ namespace Player
 
 			if (HasPlacedCard(out RaycastHit info, out CardSocket s))
 			{
-				CmdHandleReleasedCardFromBoard(draggedCard.AttachedCardSocket.netIdentity, s.netIdentity);
+				CmdHandleReleasedCardFromBoard(draggedCard?.AttachedCardSocket?.netIdentity, s?.netIdentity);
 			}
 
 		}
