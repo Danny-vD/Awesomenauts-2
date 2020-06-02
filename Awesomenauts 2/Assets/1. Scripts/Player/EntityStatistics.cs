@@ -101,6 +101,10 @@ namespace Player {
 				{
 					stat = new CardPlayerStat<int>(v);
 				}
+				else if (value is Enum e)
+				{
+					stat = new CardPlayerStat<int>((int)Convert.ChangeType(e, typeof(int)));
+				}
 				else if (value is float f)
 				{
 					stat = new CardPlayerStat<float>(f);
@@ -108,7 +112,6 @@ namespace Player {
 				else
 				{
 					stat = new CardPlayerStat<string>(value.ToString());
-
 				}
 
 				Stats.Add(type, stat);

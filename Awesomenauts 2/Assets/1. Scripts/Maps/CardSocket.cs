@@ -76,6 +76,30 @@ namespace Maps
 			ResetPositions();
 		}
 
+		[Command]
+		public void CmdUnDockCard()
+		{
+			RpcUnDockCard();
+		}
+
+		[Command]
+		public void CmdDockCard(NetworkIdentity dockedTransform)
+		{
+			RpcDockCard(dockedTransform);
+		}
+
+		[ClientRpc]
+		public void RpcUnDockCard()
+		{
+			DockCard(null);
+		}
+
+		[ClientRpc]
+		public void RpcDockCard(NetworkIdentity dockedTransform)
+		{
+			DockCard(dockedTransform.GetComponent<Card>());
+		}
+
 
 		private void ResetPositions()
 		{

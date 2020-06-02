@@ -13,7 +13,17 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects {
 		public override void TriggerEffect(CardSocket containingSocket, CardSocket targetSocket)
 		{
 			Card c = containingSocket.DockedCard;
-			containingSocket.DockCard(null);
+
+			if (containingSocket.hasAuthority)
+			{
+				containingSocket.CmdUnDockCard();
+			}
+			else
+			{
+				containingSocket.DockCard(null);
+			}
+
+
 			Destroy(c.gameObject);
 		}
 	}

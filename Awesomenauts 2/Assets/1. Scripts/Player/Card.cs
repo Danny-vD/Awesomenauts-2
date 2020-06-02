@@ -1,5 +1,6 @@
 using Assets._1._Scripts.ScriptableObjects.DragLogic;
 using Assets._1._Scripts.ScriptableObjects.Effects;
+using Enums.Cards;
 using Maps;
 using Networking;
 using Mirror;
@@ -29,6 +30,7 @@ namespace Player
 		public EntityStatistics Statistics;
 		public bool StatisticsValid { get; private set; }
 		public CardState CardState { get; private set; } = CardState.OnDeck;
+		public CardType CardType => Statistics.GetValue<CardType>(CardPlayerStatType.CardType);
 
 		// Start is called before the first frame update
 		void Start()
@@ -76,7 +78,17 @@ namespace Player
 
 		public void GoCommitDie()
 		{
-			AttachedCardSocket?.DockCard(null);
+			if (AttachedCardSocket != null)
+			{
+				if (AttachedCardSocket.hasAuthority)
+				{
+					AttachedCardSocket.CmdUnDockCard();
+				}
+				else
+				{
+					AttachedCardSocket.DockCard(null);
+				}
+			}
 			Destroy(gameObject);
 		}
 
@@ -115,6 +127,10 @@ namespace Player
 			Statistics.SetValue(CardPlayerStatType.HP, hpOwn - atkOther);
 			other.Statistics.SetValue(CardPlayerStatType.HP, hpOther - atkOwn);
 
+			if (Statistics.GetValue<CardType>(CardPlayerStatType.CardType) == CardType.Action)
+			{
+				Destroy(gameObject);
+			}
 		}
 
 	}

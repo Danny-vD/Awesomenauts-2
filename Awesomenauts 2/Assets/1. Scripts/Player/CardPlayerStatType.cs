@@ -7,5 +7,6 @@ namespace Player {
 		TeamID,
 		CardName,
 		Description,
+		CardType,
 	}
 }

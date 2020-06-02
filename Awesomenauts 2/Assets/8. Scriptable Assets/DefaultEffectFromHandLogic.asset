@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e1d0839a7101564a95f180cc71dd0f6, type: 3}
-  m_Name: DefaultFromHandDragLogic
+  m_Name: DefaultEffectFromHandLogic
   m_EditorClassIdentifier: 
-  Target: 9
+  Target: 23
   Range: 0
   CrossLaneRange: 0

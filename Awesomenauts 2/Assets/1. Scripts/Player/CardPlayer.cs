@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets._1._Scripts.ScriptableObjects.DragLogic;
 using Assets._1._Scripts.ScriptableObjects.Effects;
+using Enums.Cards;
 using Maps;
 using Networking;
 using Mirror;
@@ -17,6 +18,7 @@ namespace Player
 		public EntityStatistics PlayerStatistics;
 
 		public CardDragLogic DragFromHandLogic;
+		public CardDragLogic DragEffectFromHandLogic;
 
 		public static CardPlayer LocalPlayer;
 		public static List<CardPlayer> ServerPlayers = new List<CardPlayer>();
@@ -136,7 +138,7 @@ namespace Player
 		{
 			DrawCard(amount);
 		}
-		
+
 		public void DrawCard(int amount)
 		{
 			int cardsToDraw = Mathf.Min(Hand.CardSlotsFree, amount);
@@ -158,8 +160,10 @@ namespace Player
 				Card c = cardInstance.GetComponent<Card>();
 				c.Statistics = e.Statistics;
 				c.Statistics.SetValue(CardPlayerStatType.TeamID, ClientID); //Set Team ID, used to find out to whom the card belongs.
+				c.Statistics.SetValue(CardPlayerStatType.CardType, e.CardType); //Set Team ID, used to find out to whom the card belongs.
 				byte[] networkData = e.StatisticsToNetworkableArray();
 				Debug.Log("Sending Stats");
+				Debug.Log("Card Type: " + c.Statistics.GetValue(CardPlayerStatType.CardType));
 				c.RpcSendStats(networkData);
 
 				//Hand.AddToHand(c.GetComponent<NetworkIdentity>());
@@ -213,7 +217,8 @@ namespace Player
 
 		private void HandleDraggingCardFromHand()
 		{
-			Vector3 dir = GetCardPosition(draggedCard, DragFromHandLogic) - draggedCard.transform.position;
+			CardDragLogic logic = draggedCard.CardType == CardType.Action ? DragEffectFromHandLogic : DragFromHandLogic;
+			Vector3 dir = GetCardPosition(draggedCard, logic) - draggedCard.transform.position;
 			float m = Mathf.Clamp(dir.magnitude * DragIntertiaMultiplier, 0, MaxIntertia);
 
 			dir *= Drag;
@@ -283,13 +288,25 @@ namespace Player
 			c.transform.rotation *= turnOverRot;
 			c.SetState(CardState.OnBoard);
 
-			cs.DockCard(c);
+			if (cs.hasAuthority)
+			{
+				cs.CmdDockCard(c.netIdentity);
+			}
+			else
+			{
+				cs.DockCard(c);
+			}
 
 			if (c.hasAuthority)
 			{
 				Hand.SetSelectedCard(null);
 			}
 			c.EffectManager.TriggerEffects(EffectTrigger.AfterPlay, cs, null);
+
+			if (c.Statistics.GetValue<CardType>(CardPlayerStatType.CardType) == CardType.Action)
+			{
+				Destroy(c.gameObject);
+			}
 		}
 
 		private void HandleClickedOnCardOnHand(Card c, bool fromHand)
@@ -345,6 +362,7 @@ namespace Player
 			CardSocket draggedSocket = draggedCardSocket.GetComponent<CardSocket>();
 			Card card = draggedSocket.DockedCard;
 			CardSocket s = cardSocket.GetComponent<CardSocket>();
+			if (card == null) return;
 			if (card.DragLogicFromBoard.CanTarget(this, s, card.AttachedCardSocket))
 			{
 				CardAction action =
@@ -362,8 +380,28 @@ namespace Player
 				{
 					Debug.Log("MOVE");
 					card.EffectManager.TriggerEffects(EffectTrigger.OnMove, card.AttachedCardSocket, s);
-					card.AttachedCardSocket?.DockCard(null);
-					s.DockCard(card);
+
+					if (card.AttachedCardSocket != null)
+					{
+						if (card.AttachedCardSocket.hasAuthority)
+						{
+							card.AttachedCardSocket.CmdUnDockCard();
+						}
+						else
+						{
+							card.AttachedCardSocket.DockCard(null);
+						}
+					}
+
+					card.AttachedCardSocket?.CmdUnDockCard();
+					if (s.hasAuthority)
+					{
+						s.CmdDockCard(card.netIdentity);
+					}
+					else
+					{
+						s.DockCard(card);
+					}
 					card.EffectManager.TriggerEffects(EffectTrigger.AfterMove, card.AttachedCardSocket, s);
 				}
 			}
