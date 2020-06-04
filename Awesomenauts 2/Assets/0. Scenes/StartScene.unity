@@ -150,24 +150,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192818366e274e34969aa4b801ee7558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  events:
-  - key: 0
-    value: event:/SFX/Cards/Death
-  - key: 1
-    value: event:/SFX/Cards/Draw
-  - key: 2
-    value: event:/SFX/Cards/Hit
-  - key: 3
-    value: event:/SFX/Cards/MeleeAttack
-  - key: 4
-    value: event:/SFX/Cards/Place
-  - key: 5
-    value: event:/SFX/Cards/RangedAttack
-  emitterEvents:
-  - key: 0
-    value: 2
-  - key: 1
-    value: 0
+  eventPaths:
+    events:
+    - key: 0
+      value: event:/SFX/Cards/Death
+    - key: 1
+      value: event:/SFX/Cards/Draw
+    - key: 2
+      value: event:/SFX/Cards/Hit
+    - key: 3
+      value: event:/SFX/Cards/MeleeAttack
+    - key: 4
+      value: event:/SFX/Cards/Place
+    - key: 5
+      value: event:/SFX/Cards/RangedAttack
+    - key: 6
+      value: event:/SFX/Nexus/Hit
+    - key: 7
+      value: event:/SFX/Turret/Attack
+    - key: 8
+      value: event:/Music/Music
+    - key: 9
+      value: event:/Ambient/Ambient
+    emitterEvents:
+    - key: 0
+      value: 8
+    - key: 1
+      value: 9
 --- !u!4 &1096099010
 Transform:
   m_ObjectHideFlags: 0

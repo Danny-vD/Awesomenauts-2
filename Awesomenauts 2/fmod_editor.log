@@ -7,17 +7,1526 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Priority: 2, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Priority: 3, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000021E82176388 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000001815C570888 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Priority: 0, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] PlaybackSystem::init                     : done
 [LOG] Thread::initThread                       : Init FMOD Studio bank load thread. Priority: 0, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] Manager::init                            : done.
-[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
-[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
-[LOG] LiveUpdate::release                      : 
-[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
-[LOG] Thread::callback                         : FMOD stream thread finished.
-[LOG] Thread::callback                         : FMOD mixer thread finished.
-[LOG] SystemI::close                           : Closed.
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D3C28
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_death', format=2, channels=2, frequency=48000, lengthbytes=74720, lengthpcm=254566, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.675720.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_death (000001810359B0B8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000180BC99CB28
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Draw', format=2, channels=2, frequency=48000, lengthbytes=7104, lengthpcm=28421, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.915894.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Draw (000001810359A218)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000180BFD09928
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Draw', format=2, channels=2, frequency=48000, lengthbytes=7104, lengthpcm=28421, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.915894.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Draw (000001810359A218)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000180BFD0A798
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Draw', format=2, channels=2, frequency=48000, lengthbytes=7104, lengthpcm=28421, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.915894.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Draw (000001810359A3B8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D33E8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Draw', format=2, channels=2, frequency=48000, lengthbytes=7104, lengthpcm=28421, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.915894.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Draw (000001810359A218)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D31D8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Draw', format=2, channels=2, frequency=48000, lengthbytes=7104, lengthpcm=28421, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.915894.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Draw (000001810359B738)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D2BA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D2BA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359B8D8)
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359A6F8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000018112257218
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000018112257218
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version1 (0000018103599D38)
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359BDB8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D4048
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D4048
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version1 (0000018103599518)
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359B8D8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D2BA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D2BA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359B8D8)
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359B0B8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D2BA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D2BA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359BDB8)
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359B8D8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D3808
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D3808
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359BDB8)
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359ABD8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D35F8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D35F8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359C438)
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359B738)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001811225A9C8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001811225A9C8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359CAB8)
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359CC58)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000180BFD08278
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000180BFD08278
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359A218)
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version2 (0000018103599D38)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D3C28
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D3C28
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359A6F8)
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359B8D8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000018112258CE8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000018112258CE8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version1 (00000181035996B8)
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359ABD8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D2BA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D2BA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359ABD8)
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359CAB8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D35F8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D35F8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359C438)
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version2 (0000018103599B98)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D4048
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D4048
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359BDB8)
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359B3F8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D31D8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D31D8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359BDB8)
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359B8D8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000180BFD0B1E8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000180BFD0B1E8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version1 (0000018103599518)
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359BDB8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D2BA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D2BA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359CAB8)
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359B3F8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D4258
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D4258
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359AF18)
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359A558)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D2BA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D2BA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359C438)
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359CAB8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D2BA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D2BA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359B8D8)
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version2 (0000018103599518)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D33E8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D33E8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version1 (0000018103599518)
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359C438)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D31D8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D31D8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359BDB8)
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359C438)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000180BFD0AFD8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000180BFD0AFD8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version1 (0000018103599B98)
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version2 (00000181035999F8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000018127C75458
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000018127C75458
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359CC58)
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359CAB8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000018127C77348
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000018127C77348
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359A558)
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359C438)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D2BA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D2BA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version1 (0000018103599378)
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359C438)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D2BA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D2BA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359B738)
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version2 (00000181035991D8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000180BC99DDB8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000180BC99DDB8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359CAB8)
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359CF98)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000180BC99C0D8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000180BC99C0D8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359B3F8)
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359B598)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D31D8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version2', format=2, channels=2, frequency=48000, lengthbytes=12256, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.962982.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D31D8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Place_version1', format=2, channels=2, frequency=48000, lengthbytes=19520, lengthpcm=78001, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.538452.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Place_version1 (000001810359BDB8)
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Place_version2 (000001810359B598)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D35F8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Attack_R', format=2, channels=2, frequency=48000, lengthbytes=28128, lengthpcm=115200, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.887360.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Attack_R (000001810359B3F8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001811225A7B8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Attack_M', format=2, channels=2, frequency=48000, lengthbytes=15008, lengthpcm=57600, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Attack_M (000001810359BDB8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D3C28
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Attack_M', format=2, channels=2, frequency=48000, lengthbytes=15008, lengthpcm=57600, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Attack_M (000001810359CAB8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000018112257E78
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Attack_M', format=2, channels=2, frequency=48000, lengthbytes=15008, lengthpcm=57600, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Attack_M (0000018103599518)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D4258
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Attack_M', format=2, channels=2, frequency=48000, lengthbytes=15008, lengthpcm=57600, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
+[LOG] SoundI::release                          :  (000001812C332FE8)
+[LOG] SoundI::release                          :     Card_Attack_M (000001810359A558)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D3C28
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Draw', format=2, channels=2, frequency=48000, lengthbytes=7104, lengthpcm=28421, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.915894.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Draw (000001810359BF58)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000018112258CE8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Draw', format=2, channels=2, frequency=48000, lengthbytes=7104, lengthpcm=28421, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.915894.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Draw (0000018103599B98)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001811225A7B8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_Draw', format=2, channels=2, frequency=48000, lengthbytes=7104, lengthpcm=28421, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.915894.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_Draw (000001810359A3B8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 220032
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 10400
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000C9C19F21C
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD332FC330
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD332FC300
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD332FC400
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD332FC4C0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000181109D4258
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card_death', format=2, channels=2, frequency=48000, lengthbytes=74720, lengthpcm=254566, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.675720.
+[LOG] SoundI::release                          :  (000001812C331328)
+[LOG] SoundI::release                          :     Card_death (000001810359CF98)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] SystemI::createSound                     : filename = ../Fmod project/AwesomenautsCardGame/Build/Desktop/Music.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] Thread::initThread                       : Init FMOD nonblocking thread (0). Priority: 1, Stack Size: 114688, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
+[LOG] SystemI::createSound                     : setdata soundi = 00000180BC79A9E8 : node = 0000018107DE39E0
+[LOG] SystemI::createSound                     : add node to async list : head = 000001810359AEC8.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000180BC79A9E8
+[LOG] SystemI::createSoundInternal             :     Create name='../Fmod project/AwesomenautsCardGame/Build/Desktop/Music.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4298880
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 12832
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000018107DE3AF0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Ambient', format=2, channels=2, frequency=48000, lengthbytes=1624064, lengthpcm=5867234, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.261841.
+[LOG] Thread::initThread                       :     Init FMOD file thread. Priority: 1, Stack Size: 49152, Semaphore: No, Sleep Time: 10, Looping: Yes.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000180BC79A9E8
+[LOG] SoundI::getSubSound                      : sound 00000180BC79A9E8.  Subsound index 0 / 1
+[LOG] SoundI::release                          : Ambient (00000180BC79A9E8)
+[LOG] SoundI::release                          :     Ambient (000001810359ABD8)
+[LOG] SoundI::release                          :     Ambient (00000180BC7995A8)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)

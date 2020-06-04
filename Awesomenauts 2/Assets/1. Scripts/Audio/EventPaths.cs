@@ -29,16 +29,21 @@ namespace Audio
 
 			FakeDictionaryUtil.PopulateEnumDictionary<EventsPerEmitter, EmitterType, EventType>(emitterEvents);
 		}
-
+		
 		public void AddEmitters(GameObject gameObject)
 		{
 			foreach (EmitterType emitterType in default(EmitterType).GetValues())
 			{
 				StudioEventEmitter emitter = gameObject.AddComponent<StudioEventEmitter>();
-				emitter.Event = GetCorrectPath(emitterType);
+				emitter.Event = GetPathForEmitter(emitterType);
 
 				emitters.Add(emitterType, emitter);
 			}
+		}
+
+		public string GetPath(EventType eventType)
+		{
+			return events.First(item => item.Key.Equals(eventType)).Value;
 		}
 
 		public StudioEventEmitter GetEmitter(EmitterType emitterType)
@@ -46,10 +51,10 @@ namespace Audio
 			return emitters[emitterType];
 		}
 
-		private string GetCorrectPath(EmitterType emitterType)
+		private string GetPathForEmitter(EmitterType emitterType)
 		{
 			EventType eventType = emitterEvents.First(item => item.Key == emitterType).Value;
-			return events.First(item => item.Key == eventType).Value;
+			return GetPath(eventType);
 		}
 	}
 }

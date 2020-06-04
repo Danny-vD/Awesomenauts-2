@@ -11,7 +11,7 @@ namespace Structs.Audio
 		[SerializeField]
 		private EventType key;
 
-		[SerializeField]
+		[SerializeField, FMODUnity.EventRef]
 		private string value;
 
 		public EventType Key

@@ -4,7 +4,7 @@ using UnityEditor;
 
 namespace CustomInspector
 {
-	[CustomEditor(typeof(AudioManager))]
+	//[CustomEditor(typeof(AudioManager))]
 	public class AudioManagerEditor : Editor
 	{
 		private bool eventPathsFoldout = false;

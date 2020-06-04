@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using Enums.Audio;
+using FMODUnity;
+using UnityEngine;
 using VDFramework.Singleton;
 
 namespace Audio
@@ -11,8 +14,15 @@ namespace Audio
 		{
 			base.Awake();
 			eventPaths.AddEmitters(gameObject);
-			
+
 			DontDestroyOnLoad(gameObject);
+			
+			AudioPlayer.PlayEmitter(EmitterType.BackgroundMusic);
+		}
+
+		private void OnValidate()
+		{
+			eventPaths.UpdateDictionaries();
 		}
 	}
 }
