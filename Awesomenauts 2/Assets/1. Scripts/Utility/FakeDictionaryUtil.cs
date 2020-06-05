@@ -24,19 +24,43 @@ namespace Utility
 			TEnum[] enumValues = @enum.GetValues().ToArray();
 
 			// Remove the keys that are no longer in the enum
-			if (list.Count >= enumValues.Length)
+			for (int i = list.Count - 1; i >= 0; i--)
 			{
-				list.RemoveRange(enumValues.Length, list.Count - enumValues.Length);
+				TKeyValuePair pair = list[i];
+
+				if (!enumValues.Contains(pair.Key))
+				{
+					list.Remove(pair);
+				}
 			}
 
-			foreach (TEnum enumValue in enumValues)
+			// Add all keys are are not yet in the list
+			for (int i = 0; i < enumValues.Length; i++)
 			{
+				TEnum enumValue = enumValues[i];
+
 				if (ContainsKey<TKeyValuePair, TEnum, TValue>(list, enumValue))
 				{
 					continue;
 				}
 
-				list.Add(new TKeyValuePair {Key = enumValue});
+				list.Insert(i, new TKeyValuePair {Key = enumValue});
+			}
+
+			// Remove any duplicates
+			for (int i = 0; i < list.Count; i++)
+			{
+				TKeyValuePair pair = list[i];
+
+				for (int index = list.Count - 1; index > i; index--)
+				{
+					TKeyValuePair other = list[index];
+					
+					if (pair.Key.Equals(other.Key))
+					{
+						list.Remove(other);
+					}
+				}
 			}
 		}
 
