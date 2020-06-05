@@ -19,10 +19,5 @@ namespace Audio
 			
 			AudioPlayer.PlayEmitter(EmitterType.BackgroundMusic);
 		}
-
-		private void OnValidate()
-		{
-			eventPaths.UpdateDictionaries();
-		}
 	}
 }

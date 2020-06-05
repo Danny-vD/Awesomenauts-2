@@ -25,5 +25,10 @@
 
 			return copyText;
 		}
+		
+		public static string ReplaceUnderscoreWithSpace(this string text)
+		{
+			return text.Replace('_', ' ');
+		}
 	}
 }
