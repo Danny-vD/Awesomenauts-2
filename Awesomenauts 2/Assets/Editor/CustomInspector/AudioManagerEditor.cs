@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using Audio;
 using Enums.Audio;
+using FMODUnity;
 using UnityEditor;
 using UnityEngine;
 using VDFramework.Extensions;
@@ -20,6 +22,8 @@ namespace CustomInspector
 		private bool showEmitterEvents;
 		private bool[] emitterEventsFoldout;
 
+		private static Type eventBrowser;
+
 		//////////////////////////////////////////////////
 
 		private SerializedProperty events;
@@ -35,6 +39,9 @@ namespace CustomInspector
 
 			eventPathsFoldout    = new bool[events.arraySize];
 			emitterEventsFoldout = new bool[emitterEvents.arraySize];
+
+			Assembly assembly = Assembly.Load("Assembly-CSharp-Editor-firstpass");
+			eventBrowser = assembly.GetType("FMODUnity.EventBrowser", true);
 		}
 
 		public override void OnInspectorGUI()
@@ -45,8 +52,12 @@ namespace CustomInspector
 
 			EditorGUILayout.Space();
 			DrawUILine(new Color(0.4f, 0.4f, 0.4f), 1);
-			
+
 			DrawEmitterEvents();
+
+			DrawUILine(new Color(0.4f, 0.4f, 0.4f), 1);
+
+			DrawPreviewEvents();
 
 			serializedObject.ApplyModifiedProperties();
 		}
@@ -67,6 +78,14 @@ namespace CustomInspector
 			}
 		}
 
+		private static void DrawPreviewEvents()
+		{
+			if (GUILayout.Button("Preview events"))
+			{
+				EditorWindow.GetWindow(eventBrowser);
+			}
+		}
+
 		private static bool IsFoldOut(ref bool foldout, string label = "")
 		{
 			return foldout = EditorGUILayout.Foldout(foldout, label);
@@ -79,7 +98,7 @@ namespace CustomInspector
 
 			void DrawFoldout(int i, SerializedProperty key, SerializedProperty value)
 			{
-				string enumString = ConvertIntToEnumString<TEnum>(key.enumValueIndex);
+				string enumString = ConvertIntToEnumString<TEnum>(key.enumValueIndex).ReplaceUnderscoreWithSpace();
 
 				if (IsFoldOut(ref foldouts[i], enumString))
 				{
@@ -90,8 +109,8 @@ namespace CustomInspector
 			}
 		}
 
-		private static void DrawKeyValueArray(SerializedProperty       array,
-			Action<int, SerializedProperty, SerializedProperty> elementAction)
+		private static void DrawKeyValueArray(SerializedProperty array,
+			Action<int, SerializedProperty, SerializedProperty>  elementAction)
 		{
 			++EditorGUI.indentLevel;
 
@@ -110,7 +129,7 @@ namespace CustomInspector
 		private static string ConvertIntToEnumString<TEnum>(int integer)
 			where TEnum : struct, Enum
 		{
-			return default(TEnum).GetValues().ElementAt(integer).ToString().ReplaceUnderscoreWithSpace();
+			return default(TEnum).GetValues().ElementAt(integer).ToString();
 		}
 
 		private static void EnumPopup<TEnum>(ref TEnum enumValue, string label)
