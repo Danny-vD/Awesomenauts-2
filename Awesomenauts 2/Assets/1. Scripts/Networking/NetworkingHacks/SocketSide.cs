@@ -9,6 +9,7 @@ public enum SocketSide
 	SideB = 2,
 	RedSide = 4,
 	BlueSide = 8,
+	NonPlacable = 16,
 }
 
 

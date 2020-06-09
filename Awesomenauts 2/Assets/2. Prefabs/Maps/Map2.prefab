@@ -6840,7 +6840,7 @@ Transform:
   m_Children:
   - {fileID: 5110541310757904753}
   - {fileID: 5110541310278485571}
-  - {fileID: 5110541310421621976}
+  - {fileID: 5110541310421746774}
   - {fileID: 5110541310957507120}
   m_Father: {fileID: 5110541311589422371}
   m_RootOrder: 7
@@ -9847,7 +9847,7 @@ PrefabInstance:
     - {fileID: 11400002, guid: 843740dbe549a4a6ba9556d1b80001f5, type: 3}
     - {fileID: 11400000, guid: 843740dbe549a4a6ba9556d1b80001f5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 843740dbe549a4a6ba9556d1b80001f5, type: 3}
---- !u!4 &5110541310421621976 stripped
+--- !u!4 &5110541310421746774 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400006, guid: 843740dbe549a4a6ba9556d1b80001f5,
     type: 3}

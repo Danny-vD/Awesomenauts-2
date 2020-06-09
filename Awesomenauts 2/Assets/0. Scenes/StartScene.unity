@@ -457,7 +457,7 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: spawnPrefabs.Array.size
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -1495,7 +1495,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnPrefabs.Array.data[5]
       value: 
-      objectReference: {fileID: 594254845029591556, guid: da009bd6069cee940b25b97523e74371,
+      objectReference: {fileID: 3606115186347957009, guid: 09283c81fec59b448a41714404cb7afa,
         type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -1511,7 +1511,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnPrefabs.Array.data[6]
       value: 
-      objectReference: {fileID: 594254845029591556, guid: da009bd6069cee940b25b97523e74371,
+      objectReference: {fileID: 3606115186347957009, guid: 1ef76d0df96caf342859feee35af243c,
         type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -2255,6 +2255,24 @@ PrefabInstance:
       value: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur,
         adipisci velit
       objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: AvailableMaps.Array.data[1].Prefab
+      value: 
+      objectReference: {fileID: 5110541311381298078, guid: 6bf423f302076f14e986f8b94a1c9aa8,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: spawnPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 5110541311381298078, guid: 6bf423f302076f14e986f8b94a1c9aa8,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CompensationCard.Prefab
+      value: 
+      objectReference: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
+        type: 3}
     - target: {fileID: 4467022757310397675, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: m_Name
@@ -2318,7 +2336,9 @@ PrefabInstance:
     - target: {fileID: 4467022757310397680, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: StartupArguments
-      value: Master.Address.IP:localhost
+      value: 'Master.Address.IP:localhost
+
+        Game.Mute:true'
       objectReference: {fileID: 0}
     - target: {fileID: 4467022757310397680, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
