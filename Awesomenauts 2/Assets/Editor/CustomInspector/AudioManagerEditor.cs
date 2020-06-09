@@ -62,7 +62,7 @@ namespace CustomInspector
 			DrawSeperatorLine();
 
 			DrawPreviewEvents();
-
+			
 			serializedObject.ApplyModifiedProperties();
 		}
 

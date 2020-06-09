@@ -278,6 +278,25 @@ namespace Utility
 
 		#endregion
 
+		public static void DrawArray(SerializedProperty array, string propertyName, Texture propertyIcon, string sizeLabel,
+			Action<int, SerializedProperty> elementAction, ref bool isFoldOut)
+		{
+			if (IsFoldOut(ref isFoldOut, propertyIcon, propertyName))
+			{
+				++EditorGUI.indentLevel;
+				int size = array.arraySize;
+
+				array.arraySize = FlexibleIntField(ref size, sizeLabel);
+
+				for (int i = 0; i < size; i++)
+				{
+					elementAction(i, array.GetArrayElementAtIndex(i));
+				}
+				
+				--EditorGUI.indentLevel;
+			}
+		}
+		
 		public static void DrawArray(SerializedProperty array, string propertyName, string sizeLabel,
 			Action<int, SerializedProperty> elementAction, ref bool isFoldOut)
 		{
