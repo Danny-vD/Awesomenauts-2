@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Linq;
 using System.Reflection;
 using Audio;
 using Enums.Audio;
-using FMODUnity;
 using UnityEditor;
 using UnityEngine;
-using VDFramework.Extensions;
 using EventType = Enums.Audio.EventType;
+using static Utility.EditorUtils;
 
 namespace CustomInspector
 {
@@ -23,6 +21,7 @@ namespace CustomInspector
 		private bool[] emitterEventsFoldout;
 
 		private static Type eventBrowser;
+		private static Texture[] eventIcons;
 
 		//////////////////////////////////////////////////
 
@@ -31,7 +30,7 @@ namespace CustomInspector
 
 		private void OnEnable()
 		{
-			audioManager = (target as AudioManager);
+			audioManager = target as AudioManager;
 			audioManager.eventPaths.UpdateDictionaries();
 
 			events        = serializedObject.FindProperty("eventPaths.events");
@@ -42,6 +41,11 @@ namespace CustomInspector
 
 			Assembly assembly = Assembly.Load("Assembly-CSharp-Editor-firstpass");
 			eventBrowser = assembly.GetType("FMODUnity.EventBrowser", true);
+
+			eventIcons = new[]
+			{
+				GetTexture("Fmod/EventIcon.png"),
+			};
 		}
 
 		public override void OnInspectorGUI()
@@ -51,11 +55,11 @@ namespace CustomInspector
 			DrawEventPaths();
 
 			EditorGUILayout.Space();
-			DrawUILine(new Color(0.4f, 0.4f, 0.4f), 1);
+			DrawSeperatorLine();
 
 			DrawEmitterEvents();
 
-			DrawUILine(new Color(0.4f, 0.4f, 0.4f), 1);
+			DrawSeperatorLine();
 
 			DrawPreviewEvents();
 
@@ -66,7 +70,7 @@ namespace CustomInspector
 		{
 			if (IsFoldOut(ref showEventPaths, "Event Paths"))
 			{
-				DrawFoldoutKeyValueArray<EventType>(events, eventPathsFoldout, "Path");
+				DrawFoldoutKeyValueArray<EventType>(events, eventPathsFoldout, eventIcons, new GUIContent("Path"));
 			}
 		}
 
@@ -74,7 +78,7 @@ namespace CustomInspector
 		{
 			if (IsFoldOut(ref showEmitterEvents, "Emitters"))
 			{
-				DrawFoldoutKeyValueArray<EmitterType>(emitterEvents, emitterEventsFoldout, "Event to play");
+				DrawFoldoutKeyValueArray<EmitterType>(emitterEvents, emitterEventsFoldout, new GUIContent("Event to play", eventIcons[0]));
 			}
 		}
 
@@ -84,68 +88,6 @@ namespace CustomInspector
 			{
 				EditorWindow.GetWindow(eventBrowser);
 			}
-		}
-
-		private static bool IsFoldOut(ref bool foldout, string label = "")
-		{
-			return foldout = EditorGUILayout.Foldout(foldout, label);
-		}
-
-		private static void DrawFoldoutKeyValueArray<TEnum>(SerializedProperty array, bool[] foldouts, string valueLabel)
-			where TEnum : struct, Enum
-		{
-			DrawKeyValueArray(array, DrawFoldout);
-
-			void DrawFoldout(int i, SerializedProperty key, SerializedProperty value)
-			{
-				string enumString = ConvertIntToEnumString<TEnum>(key.enumValueIndex).ReplaceUnderscoreWithSpace();
-
-				if (IsFoldOut(ref foldouts[i], enumString))
-				{
-					++EditorGUI.indentLevel;
-					EditorGUILayout.PropertyField(value, new GUIContent(valueLabel));
-					--EditorGUI.indentLevel;
-				}
-			}
-		}
-
-		private static void DrawKeyValueArray(SerializedProperty array,
-			Action<int, SerializedProperty, SerializedProperty>  elementAction)
-		{
-			++EditorGUI.indentLevel;
-
-			for (int i = 0; i < array.arraySize; i++)
-			{
-				SerializedProperty @struct = array.GetArrayElementAtIndex(i);
-				SerializedProperty key = @struct.FindPropertyRelative("key");
-				SerializedProperty value = @struct.FindPropertyRelative("value");
-
-				elementAction(i, key, value);
-			}
-
-			--EditorGUI.indentLevel;
-		}
-
-		private static string ConvertIntToEnumString<TEnum>(int integer)
-			where TEnum : struct, Enum
-		{
-			return default(TEnum).GetValues().ElementAt(integer).ToString();
-		}
-
-		private static void EnumPopup<TEnum>(ref TEnum enumValue, string label)
-			where TEnum : struct, Enum
-		{
-			Enum.TryParse(EditorGUILayout.EnumPopup(label, enumValue).ToString(), out enumValue);
-		}
-
-		private static void DrawUILine(Color color, int thickness = 2, int padding = 10)
-		{
-			Rect r = EditorGUILayout.GetControlRect(GUILayout.Height(padding + thickness));
-			r.height =  thickness;
-			r.y      += padding / 2;
-			r.x      -= 2;
-			r.width  += 6;
-			EditorGUI.DrawRect(r, color);
 		}
 	}
 }

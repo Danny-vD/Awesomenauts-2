@@ -48,7 +48,7 @@ namespace DeckBuilder
 			DeckSorter.SetSortings(SortValue.Type);
 		}
 
-		private void OnValidate()
+		public void UpdateDictionaries()
 		{
 			deckRequirements.OnValidate();
 		}

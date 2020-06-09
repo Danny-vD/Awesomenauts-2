@@ -4,6 +4,7 @@ using System.Linq;
 using Enums.Cards;
 using Structs.Deckbuilder;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utility;
 
 namespace UI.DeckBuilder
@@ -12,10 +13,10 @@ namespace UI.DeckBuilder
 	public class DeckRequirementsUI
 	{
 		[SerializeField]
-		private List<UIElementsPerCardType> UIelements = null;
+		private List<UIElementsPerCardType> uiElements = null;
 
 		[SerializeField]
-		private RequirementsUIElement cardCountUI = null;
+		private RequirementsUIElement sameCardCountUI = null;
 
 		[SerializeField]
 		private RequirementsUIElement totalCardCountUI = null;
@@ -36,14 +37,14 @@ namespace UI.DeckBuilder
 		public void Update(Dictionary<CardType, int> currentAmounts, int highestCardAmount, int totalCardCount)
 		{
 			CheckValidity(currentAmounts);
-			IsValid(highestCardAmount, new Vector2Int(0, maxAmountPerCard), cardCountUI);
+			IsValid(highestCardAmount, new Vector2Int(0, maxAmountPerCard), sameCardCountUI);
 			IsValid(totalCardCount, new Vector2Int(0, maxTotalCards), totalCardCountUI);
 		}
 
 		public void OnValidate()
 		{
 			FakeDictionaryUtil.PopulateEnumDictionary<UIElementsPerCardType, CardType, List<RequirementsUIElement>>(
-				UIelements);
+				uiElements);
 		}
 
 		private void SetRestrictions()
@@ -62,9 +63,9 @@ namespace UI.DeckBuilder
 				}
 			}
 
-			if (cardCountUI)
+			if (sameCardCountUI)
 			{
-				cardCountUI.UpdateMinMax(0, maxAmountPerCard);
+				sameCardCountUI.UpdateMinMax(0, maxAmountPerCard);
 			}
 
 			if (totalCardCountUI)
@@ -97,7 +98,7 @@ namespace UI.DeckBuilder
 
 		private IEnumerable<RequirementsUIElement> GetUIElements(CardType type)
 		{
-			return UIelements.First(pair => pair.Key == type).Value;
+			return uiElements.First(pair => pair.Key == type).Value;
 		}
 
 		private Vector2Int GetRestrictions(CardType type)

@@ -1282,7 +1282,7 @@ MonoBehaviour:
   availableCardsParent: {fileID: 1592483062}
   deckRequirements:
     UI:
-      UIelements:
+      uiElements:
       - key: 8
         value:
         - {fileID: 656829143}
@@ -1295,7 +1295,7 @@ MonoBehaviour:
       - key: 64
         value:
         - {fileID: 1903746651}
-      cardCountUI: {fileID: 2139092903}
+      sameCardCountUI: {fileID: 2139092903}
       totalCardCountUI: {fileID: 1315702072}
     minMaxPerCardTypes:
     - cardType: 8
@@ -6854,7 +6854,7 @@ GameObject:
   - component: {fileID: 2139092901}
   - component: {fileID: 2139092903}
   m_Layer: 5
-  m_Name: CardCount
+  m_Name: SameCardCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7578,7 +7578,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.5, y: 8.1}
+  m_AnchoredPosition: {x: 0.5, y: 8.100006}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6487414196411261562
