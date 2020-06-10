@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Enums.Audio;
 using FMOD.Studio;
 using FMODUnity;
 
@@ -6,9 +8,15 @@ namespace Audio
 {
 	public static class AudioParameterManager
 	{
+		private const string masterBusPath = "Bus:/";
+		
 		private static readonly Dictionary<string, PARAMETER_ID> globalParameters =
 			new Dictionary<string, PARAMETER_ID>();
 
+		private static readonly Dictionary<string, Bus> buses = new Dictionary<string, Bus>();
+
+		private static float masterVolume;
+		
 		/////////////////////////////////////////////////
 		//			Global parameters
 		/////////////////////////////////////////////////
@@ -78,6 +86,69 @@ namespace Audio
 			{
 				instance.setParameterByName(parameter, newValue);
 			}
+		}
+
+		/////////////////////////////////////////////////
+		//			Bus parameters
+		/////////////////////////////////////////////////
+		
+		public static void SetBusVolume(string busPath, float volume)
+		{
+			if (busPath == masterBusPath)
+			{
+				SetMasterVolume(volume);
+				return;
+			}
+			
+			Bus bus = GetBus(busPath);
+			bus.setVolume(volume);
+		}
+
+		public static void SetMasterVolume(float volume, bool updateCached = true)
+		{
+			if (updateCached)
+			{
+				masterVolume = volume;
+			}
+			
+			Bus bus = GetBus(masterBusPath);
+			bus.setVolume(volume);
+		}
+
+		public static void SetBusMute(string busPath, bool isMuted)
+		{
+			Bus bus = GetBus(busPath);
+			bus.setMute(isMuted);
+		}
+
+		public static void SetMasterMute(bool isMuted)
+		{
+			SetMasterVolume(isMuted ? 0 : masterVolume, false);
+		}
+
+		public static float GetBusVolume(string busPath)
+		{
+			if (busPath == masterBusPath)
+			{
+				return masterVolume;
+			}
+			
+			Bus bus = GetBus(busPath);
+			bus.getVolume(out float volume);
+			
+			return volume;
+		}
+
+		private static Bus GetBus(string busPath)
+		{
+			if (buses.TryGetValue(busPath, out Bus bus))
+			{
+				return bus;
+			}
+
+			bus = RuntimeManager.GetBus(busPath);
+			buses.Add(busPath, bus);
+			return bus;
 		}
 	}
 }

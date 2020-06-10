@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192818366e274e34969aa4b801ee7558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventPaths:
+  EventPaths:
     events:
     - key: 0
       value: event:/SFX/Cards/Death
@@ -172,11 +172,33 @@ MonoBehaviour:
       value: event:/Music/Music
     - key: 9
       value: event:/Ambient/Ambient
+    buses:
+    - key: 0
+      value: Bus:/
+    - key: 1
+      value: Bus:/SFX
+    - key: 2
+      value: Bus:/Music
+    - key: 3
+      value: Bus:/Ambient
     emitterEvents:
     - key: 0
       value: 8
     - key: 1
       value: 9
+  initialVolumes:
+  - key: 0
+    value: 1
+    isMuted: 0
+  - key: 1
+    value: 1
+    isMuted: 0
+  - key: 2
+    value: 1
+    isMuted: 1
+  - key: 3
+    value: 1
+    isMuted: 0
 --- !u!4 &1096099010
 Transform:
   m_ObjectHideFlags: 0

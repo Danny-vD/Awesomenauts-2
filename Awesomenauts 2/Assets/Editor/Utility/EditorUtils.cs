@@ -153,6 +153,23 @@ namespace Utility
 		#region KeyValueArray
 
 		/// <summary>
+		/// Calls elementAction(index, @struct) for every element in the array
+		/// </summary>
+		public static void DrawKeyValueArray(SerializedProperty array, Action<int, SerializedProperty> elementAction)
+		{
+			++EditorGUI.indentLevel;
+
+			for (int i = 0; i < array.arraySize; i++)
+			{
+				SerializedProperty @struct = array.GetArrayElementAtIndex(i);
+
+				elementAction(i, @struct);
+			}
+
+			--EditorGUI.indentLevel;
+		}
+		
+		/// <summary>
 		/// Calls elementAction(index, key, value) for every element in the array
 		/// </summary>
 		public static void DrawKeyValueArray(SerializedProperty array, string keyName, string valueName,
@@ -183,6 +200,28 @@ namespace Utility
 		}
 		
 		/// <summary>
+		/// Will create a foldout label with a texture for every value in the enum and call elementAction(index, @struct) for every element
+		/// </summary>
+		public static void DrawFoldoutKeyValueArray<TEnum>(SerializedProperty array, string keyName,
+			bool[] foldouts, Texture[] keyTextures, Action<int, SerializedProperty> elementAction)
+			where TEnum : struct, Enum
+		{
+			DrawKeyValueArray(array, DrawFoldout);
+
+			void DrawFoldout(int i, SerializedProperty @struct)
+			{
+				string enumString = ConvertIntToEnum<TEnum>(@struct.FindPropertyRelative(keyName).enumValueIndex).ToString().ReplaceUnderscoreWithSpace();
+
+				if (IsFoldOut(ref foldouts[i], keyTextures[i % keyTextures.Length], enumString))
+				{
+					++EditorGUI.indentLevel;
+					elementAction(i, @struct);
+					--EditorGUI.indentLevel;
+				}
+			}
+		}
+		
+		/// <summary>
 		/// Will create a foldout label with a texture for every value in the enum and call elementAction(index, key, value) for every element
 		/// </summary>
 		public static void DrawFoldoutKeyValueArray<TEnum>(SerializedProperty array, string keyName, string valueName,
@@ -199,6 +238,28 @@ namespace Utility
 				{
 					++EditorGUI.indentLevel;
 					elementAction(i, key, value);
+					--EditorGUI.indentLevel;
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Will create a foldout label for every value in the enum and call elementAction(index, @struct) for every element
+		/// </summary>
+		public static void DrawFoldoutKeyValueArray<TEnum>(SerializedProperty array, string keyName,
+			bool[] foldouts, Action<int, SerializedProperty> elementAction)
+			where TEnum : struct, Enum
+		{
+			DrawKeyValueArray(array, DrawFoldout);
+
+			void DrawFoldout(int i, SerializedProperty @struct)
+			{
+				string enumString = ConvertIntToEnum<TEnum>(@struct.FindPropertyRelative(keyName).enumValueIndex).ToString().ReplaceUnderscoreWithSpace();
+
+				if (IsFoldOut(ref foldouts[i], enumString))
+				{
+					++EditorGUI.indentLevel;
+					elementAction(i, @struct);
 					--EditorGUI.indentLevel;
 				}
 			}
@@ -278,6 +339,9 @@ namespace Utility
 
 		#endregion
 
+		/// <summary>
+		/// Will draw an adjustable-size list with custom labels and a texture and calls elementAction(index, array[i]) for every element
+		/// </summary>
 		public static void DrawArray(SerializedProperty array, string propertyName, Texture propertyIcon, string sizeLabel,
 			Action<int, SerializedProperty> elementAction, ref bool isFoldOut)
 		{
@@ -297,6 +361,9 @@ namespace Utility
 			}
 		}
 		
+		/// <summary>
+		/// Will draw an adjustable-size list with custom labels and calls elementAction(index, array[i]) for every element
+		/// </summary>
 		public static void DrawArray(SerializedProperty array, string propertyName, string sizeLabel,
 			Action<int, SerializedProperty> elementAction, ref bool isFoldOut)
 		{
@@ -364,6 +431,9 @@ namespace Utility
 			EditorGUI.DrawRect(rect, color);
 		}
 
+		/// <summary>
+		/// Draws a float field with variable width and a label
+		/// </summary>
 		public static float FlexibleFloatField(ref float value, string label)
 		{
 			float oldLabelWidth = EditorGUIUtility.labelWidth;
@@ -375,6 +445,9 @@ namespace Utility
 			return newValue;
 		}
 		
+		/// <summary>
+		/// Draws an int field with variable width and a label
+		/// </summary>
 		public static int FlexibleIntField(ref int value, string label)
 		{
 			float oldLabelWidth = EditorGUIUtility.labelWidth;

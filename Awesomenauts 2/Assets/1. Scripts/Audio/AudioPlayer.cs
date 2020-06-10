@@ -9,12 +9,12 @@ namespace Audio
 	{
 		public static void PlayEmitter(EmitterType emitter)
 		{
-			AudioManager.Instance.eventPaths.GetEmitter(emitter).Play();
+			AudioManager.Instance.EventPaths.GetEmitter(emitter).Play();
 		}
 
 		public static void ToggleEmitter(EmitterType emitterType)
 		{
-			StudioEventEmitter emitter = AudioManager.Instance.eventPaths.GetEmitter(emitterType);
+			StudioEventEmitter emitter = AudioManager.Instance.EventPaths.GetEmitter(emitterType);
 
 			if (emitter.IsPlaying())
 			{
@@ -27,17 +27,17 @@ namespace Audio
 		
 		public static void StopEmitter(EmitterType emitter)
 		{
-			AudioManager.Instance.eventPaths.GetEmitter(emitter).Stop();
+			AudioManager.Instance.EventPaths.GetEmitter(emitter).Stop();
 		}
 
 		public static void PlaySound(EventType @event, GameObject location)
 		{
-			RuntimeManager.PlayOneShotAttached(AudioManager.Instance.eventPaths.GetPath(@event), location);
+			RuntimeManager.PlayOneShotAttached(AudioManager.Instance.EventPaths.GetPath(@event), location);
 		}
 
 		public static void PlaySound(EventType @event)
 		{
-			RuntimeManager.PlayOneShotAttached(AudioManager.Instance.eventPaths.GetPath(@event), AudioManager.Instance.gameObject);
+			RuntimeManager.PlayOneShotAttached(AudioManager.Instance.EventPaths.GetPath(@event), AudioManager.Instance.gameObject);
 		}
 	}
 }
