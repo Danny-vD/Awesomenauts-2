@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Enums.Audio;
 using Structs.Audio;
-using UnityEngine;
 using VDFramework.Singleton;
 
 namespace Audio
@@ -21,8 +20,6 @@ namespace Audio
 			
 			SetInitialVolumes();
 			AudioPlayer.PlayEmitter(EmitterType.BackgroundMusic);
-
-			//print(GetVolume(BusType.Music));
 		}
 
 		private void SetInitialVolumes()
