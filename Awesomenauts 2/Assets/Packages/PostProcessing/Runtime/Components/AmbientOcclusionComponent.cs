@@ -67,7 +67,7 @@ namespace UnityEngine.PostProcessing
 
         public override DepthTextureMode GetCameraFlags()
         {
-            var flags = DepthTextureMode.None;
+            DepthTextureMode flags = DepthTextureMode.None;
 
             if (occlusionSource == OcclusionSource.DepthTexture)
                 flags |= DepthTextureMode.Depth;
@@ -92,12 +92,12 @@ namespace UnityEngine.PostProcessing
 
         public override void PopulateCommandBuffer(CommandBuffer cb)
         {
-            var settings = model.settings;
+            AmbientOcclusionModel.Settings settings = model.settings;
 
             // Material setup
-            var blitMaterial = context.materialFactory.Get(k_BlitShaderString);
+            Material blitMaterial = context.materialFactory.Get(k_BlitShaderString);
 
-            var material = context.materialFactory.Get(k_ShaderString);
+            Material material = context.materialFactory.Get(k_ShaderString);
             material.shaderKeywords = null;
             material.SetFloat(Uniforms._Intensity, settings.intensity);
             material.SetFloat(Uniforms._Radius, settings.radius);
@@ -134,14 +134,14 @@ namespace UnityEngine.PostProcessing
             const FilterMode kFilter = FilterMode.Bilinear;
 
             // AO buffer
-            var rtMask = Uniforms._OcclusionTexture1;
+            int rtMask = Uniforms._OcclusionTexture1;
             cb.GetTemporaryRT(rtMask, tw / ts, th / ts, 0, kFilter, kFormat, kRWMode);
 
             // AO estimation
             cb.Blit((Texture)null, rtMask, material, (int)occlusionSource);
 
             // Blur buffer
-            var rtBlur = Uniforms._OcclusionTexture2;
+            int rtBlur = Uniforms._OcclusionTexture2;
 
             // Separable blur (horizontal pass)
             cb.GetTemporaryRT(rtBlur, tw, th, 0, kFilter, kFormat, kRWMode);
@@ -169,7 +169,7 @@ namespace UnityEngine.PostProcessing
             }
             else
             {
-                var fbFormat = context.isHdr ? RenderTextureFormat.DefaultHDR : RenderTextureFormat.Default;
+                RenderTextureFormat fbFormat = context.isHdr ? RenderTextureFormat.DefaultHDR : RenderTextureFormat.Default;
 
                 int tempRT = Uniforms._TempRT;
                 cb.GetTemporaryRT(tempRT, context.width, context.height, 0, FilterMode.Bilinear, fbFormat);

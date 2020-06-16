@@ -10,6 +10,8 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 		NeutralSockets = 4,
 		Empty = 8,
 		Occupied = 16,
+		Turret = 32,
+
 		AllSockets = -1,
 	}
 }

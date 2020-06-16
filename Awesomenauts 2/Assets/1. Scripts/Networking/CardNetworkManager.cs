@@ -211,6 +211,9 @@ namespace Networking
 				//Thread.Sleep(1000); //Hack: Wait for client to create the player after connection established.
 				SetUpPlayer(0);
 				SetUpPlayer(1);
+
+				ReplaceWithNetworkObject.ApplyConnections();
+
 				for (int i = 0; i < CardPlayer.ServerPlayers.Count; i++)
 				{
 					if (i != 0)
@@ -242,6 +245,7 @@ namespace Networking
 
 			//Remote Call to the Client.
 			CardPlayer.ServerPlayers[id].TargetSetCameraPosition(CardPlayer.ServerPlayers[id].connectionToClient, MapTransformInfo.Instance.PlayerTransformInfos[id].CameraPosition.position, MapTransformInfo.Instance.PlayerTransformInfos[id].CameraPosition.rotation, id == 1);
+
 		}
 
 		#endregion

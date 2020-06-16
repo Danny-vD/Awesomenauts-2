@@ -99,7 +99,7 @@ namespace UnityStandardAssets.Utility
         {
             if (m_Content.Length > 0)
             {
-                foreach (var g in m_Content)
+                foreach (GameObject g in m_Content)
                 {
                     if (g != null)
                     {
@@ -116,7 +116,7 @@ namespace UnityStandardAssets.Utility
             }
             if (m_MonoBehaviours.Length > 0)
             {
-                foreach (var monoBehaviour in m_MonoBehaviours)
+                foreach (MonoBehaviour monoBehaviour in m_MonoBehaviours)
                 {
                     monoBehaviour.enabled = enabled;
                 }

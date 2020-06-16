@@ -52,7 +52,7 @@ namespace UnityEngine.PostProcessing
 
         public override void OnDisable()
         {
-            foreach (var rt in m_AutoExposurePool)
+            foreach (RenderTexture rt in m_AutoExposurePool)
                 GraphicsUtils.Destroy(rt);
 
             if (m_HistogramBuffer != null)
@@ -68,7 +68,7 @@ namespace UnityEngine.PostProcessing
 
         Vector4 GetHistogramScaleOffsetRes()
         {
-            var settings = model.settings;
+            EyeAdaptationModel.Settings settings = model.settings;
             float diff = settings.logMax - settings.logMin;
             float scale = 1f / diff;
             float offset = -settings.logMin * scale;
@@ -77,13 +77,13 @@ namespace UnityEngine.PostProcessing
 
         public Texture Prepare(RenderTexture source, Material uberMaterial)
         {
-            var settings = model.settings;
+            EyeAdaptationModel.Settings settings = model.settings;
 
             // Setup compute
             if (m_EyeCompute == null)
                 m_EyeCompute = Resources.Load<ComputeShader>("Shaders/EyeHistogram");
 
-            var material = context.materialFactory.Get("Hidden/Post FX/Eye Adaptation");
+            Material material = context.materialFactory.Get("Hidden/Post FX/Eye Adaptation");
             material.shaderKeywords = null;
 
             if (m_HistogramBuffer == null)
@@ -94,9 +94,9 @@ namespace UnityEngine.PostProcessing
 
             // Downscale the framebuffer, we don't need an absolute precision for auto exposure and it
             // helps making it more stable
-            var scaleOffsetRes = GetHistogramScaleOffsetRes();
+            Vector4 scaleOffsetRes = GetHistogramScaleOffsetRes();
 
-            var rt = context.renderTextureFactory.Get((int)scaleOffsetRes.z, (int)scaleOffsetRes.w, 0, source.format);
+            RenderTexture rt = context.renderTextureFactory.Get((int)scaleOffsetRes.z, (int)scaleOffsetRes.w, 0, source.format);
             Graphics.Blit(source, rt);
 
             if (m_AutoExposurePool[0] == null || !m_AutoExposurePool[0].IsCreated())
@@ -146,8 +146,8 @@ namespace UnityEngine.PostProcessing
             else
             {
                 int pp = m_AutoExposurePingPing;
-                var src = m_AutoExposurePool[++pp % 2];
-                var dst = m_AutoExposurePool[++pp % 2];
+                RenderTexture src = m_AutoExposurePool[++pp % 2];
+                RenderTexture dst = m_AutoExposurePool[++pp % 2];
                 Graphics.Blit(src, dst, material, (int)settings.adaptationType);
                 m_AutoExposurePingPing = ++pp % 2;
                 m_CurrentAutoExposure = dst;
@@ -178,7 +178,7 @@ namespace UnityEngine.PostProcessing
             if (m_DebugHistogram == null || !m_DebugHistogram.IsCreated())
                 return;
 
-            var rect = new Rect(context.viewport.x * Screen.width + 8f, 8f, m_DebugHistogram.width, m_DebugHistogram.height);
+            Rect rect = new Rect(context.viewport.x * Screen.width + 8f, 8f, m_DebugHistogram.width, m_DebugHistogram.height);
             GUI.DrawTexture(rect, m_DebugHistogram);
         }
     }

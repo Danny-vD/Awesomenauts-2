@@ -27,7 +27,7 @@ namespace UnityEngine.PostProcessing
 
         public RenderTexture Get(int width, int height, int depthBuffer = 0, RenderTextureFormat format = RenderTextureFormat.ARGBHalf, RenderTextureReadWrite rw = RenderTextureReadWrite.Default, FilterMode filterMode = FilterMode.Bilinear, TextureWrapMode wrapMode = TextureWrapMode.Clamp, string name = "FactoryTempTexture")
         {
-            var rt = RenderTexture.GetTemporary(width, height, depthBuffer, format, rw); // add forgotten param rw
+            RenderTexture rt = RenderTexture.GetTemporary(width, height, depthBuffer, format, rw); // add forgotten param rw
             rt.filterMode = filterMode;
             rt.wrapMode = wrapMode;
             rt.name = name;
@@ -49,7 +49,7 @@ namespace UnityEngine.PostProcessing
 
         public void ReleaseAll()
         {
-            var enumerator = m_TemporaryRTs.GetEnumerator();
+            HashSet<RenderTexture>.Enumerator enumerator = m_TemporaryRTs.GetEnumerator();
             while (enumerator.MoveNext())
                 RenderTexture.ReleaseTemporary(enumerator.Current);
 

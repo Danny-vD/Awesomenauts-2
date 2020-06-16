@@ -22,7 +22,7 @@ namespace UnityEngine.PostProcessing
 
         public override void Prepare(Material uberMaterial)
         {
-            var settings = model.settings;
+            VignetteModel.Settings settings = model.settings;
             uberMaterial.SetColor(Uniforms._Vignette_Color, settings.color);
 
             if (settings.mode == VignetteModel.Mode.Classic)

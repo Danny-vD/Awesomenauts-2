@@ -79,8 +79,8 @@ namespace UnityEngine.PostProcessing
             float y = StandardIlluminantY(x) + t2 * 0.05f;
 
             // Calculate the coefficients in the LMS space.
-            var w1 = new Vector3(0.949237f, 1.03542f, 1.08728f); // D65 white point
-            var w2 = CIExyToLMS(x, y);
+            Vector3 w1 = new Vector3(0.949237f, 1.03542f, 1.08728f); // D65 white point
+            Vector3 w2 = CIExyToLMS(x, y);
             return new Vector3(w1.x / w2.x, w1.y / w2.y, w1.z / w2.z);
         }
 
@@ -113,7 +113,7 @@ namespace UnityEngine.PostProcessing
         {
             const float kLiftScale = 0.1f;
 
-            var nLift = NormalizeColor(lift);
+            Color nLift = NormalizeColor(lift);
             float avgLift = (nLift.r + nLift.g + nLift.b) / 3f;
 
             // Getting some artifacts when going into the negatives using a very low offset (lift.a) with non ACES-tonemapping
@@ -129,7 +129,7 @@ namespace UnityEngine.PostProcessing
             const float kGammaScale = 0.5f;
             const float kMinGamma = 0.01f;
 
-            var nGamma = NormalizeColor(gamma);
+            Color nGamma = NormalizeColor(gamma);
             float avgGamma = (nGamma.r + nGamma.g + nGamma.b) / 3f;
 
             gamma.a *= gamma.a < 0f ? 0.8f : 5f;
@@ -148,7 +148,7 @@ namespace UnityEngine.PostProcessing
         {
             const float kGainScale = 0.5f;
 
-            var nGain = NormalizeColor(gain);
+            Color nGain = NormalizeColor(gain);
             float avgGain = (nGain.r + nGain.g + nGain.b) / 3f;
 
             gain.a *= gain.a > 0f ? 3f : 1f;
@@ -170,7 +170,7 @@ namespace UnityEngine.PostProcessing
         {
             const float kSlopeScale = 0.1f;
 
-            var nSlope = NormalizeColor(slope);
+            Color nSlope = NormalizeColor(slope);
             float avgSlope = (nSlope.r + nSlope.g + nSlope.b) / 3f;
 
             slope.a *= 0.5f;
@@ -186,7 +186,7 @@ namespace UnityEngine.PostProcessing
             const float kPowerScale = 0.1f;
             const float minPower = 0.01f;
 
-            var nPower = NormalizeColor(power);
+            Color nPower = NormalizeColor(power);
             float avgPower = (nPower.r + nPower.g + nPower.b) / 3f;
 
             power.a *= 0.5f;
@@ -205,7 +205,7 @@ namespace UnityEngine.PostProcessing
         {
             const float kOffsetScale = 0.05f;
 
-            var nOffset = NormalizeColor(offset);
+            Color nOffset = NormalizeColor(offset);
             float avgOffset = (nOffset.r + nOffset.g + nOffset.b) / 3f;
 
             offset.a *= 0.5f;
@@ -245,7 +245,7 @@ namespace UnityEngine.PostProcessing
                 };
             }
 
-            var curves = model.settings.curves;
+            ColorGradingModel.CurvesSettings curves = model.settings.curves;
             curves.hueVShue.Cache();
             curves.hueVSsat.Cache();
 
@@ -289,7 +289,7 @@ namespace UnityEngine.PostProcessing
 
         void GenerateLut()
         {
-            var settings = model.settings;
+            ColorGradingModel.Settings settings = model.settings;
 
             if (!IsLogLutValid(model.bakedLut))
             {
@@ -305,7 +305,7 @@ namespace UnityEngine.PostProcessing
                 };
             }
 
-            var lutMaterial = context.materialFactory.Get("Hidden/Post FX/Lut Generator");
+            Material lutMaterial = context.materialFactory.Get("Hidden/Post FX/Lut Generator");
             lutMaterial.SetVector(Uniforms._LutParams, new Vector4(
                     k_InternalLogLutSize,
                     0.5f / (k_InternalLogLutSize * k_InternalLogLutSize),
@@ -316,7 +316,7 @@ namespace UnityEngine.PostProcessing
             // Tonemapping
             lutMaterial.shaderKeywords = null;
 
-            var tonemapping = settings.tonemapping;
+            ColorGradingModel.TonemappingSettings tonemapping = settings.tonemapping;
             switch (tonemapping.tonemapper)
             {
                 case ColorGradingModel.Tonemapper.Neutral:
@@ -410,7 +410,7 @@ namespace UnityEngine.PostProcessing
                 : "COLOR_GRADING"
                 );
 
-            var bakedLut = model.bakedLut;
+            RenderTexture bakedLut = model.bakedLut;
             uberMaterial.SetTexture(Uniforms._LogLut, bakedLut);
             uberMaterial.SetVector(Uniforms._LogLut_Params, new Vector3(1f / bakedLut.width, 1f / bakedLut.height, bakedLut.height - 1f));
 
@@ -420,8 +420,8 @@ namespace UnityEngine.PostProcessing
 
         public void OnGUI()
         {
-            var bakedLut = model.bakedLut;
-            var rect = new Rect(context.viewport.x * Screen.width + 8f, 8f, bakedLut.width, bakedLut.height);
+            RenderTexture bakedLut = model.bakedLut;
+            Rect rect = new Rect(context.viewport.x * Screen.width + 8f, 8f, bakedLut.width, bakedLut.height);
             GUI.DrawTexture(rect, bakedLut);
         }
 

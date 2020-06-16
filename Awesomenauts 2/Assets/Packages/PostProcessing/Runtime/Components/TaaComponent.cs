@@ -49,9 +49,9 @@ namespace UnityEngine.PostProcessing
 
         public void SetProjectionMatrix(Func<Vector2, Matrix4x4> jitteredFunc)
         {
-            var settings = model.settings.taaSettings;
+            AntialiasingModel.TaaSettings settings = model.settings.taaSettings;
 
-            var jitter = GenerateRandomOffset();
+            Vector2 jitter = GenerateRandomOffset();
             jitter *= settings.jitterSpread;
 
             context.camera.nonJitteredProjectionMatrix = context.camera.projectionMatrix;
@@ -74,7 +74,7 @@ namespace UnityEngine.PostProcessing
             jitter.x /= context.width;
             jitter.y /= context.height;
 
-            var material = context.materialFactory.Get(k_ShaderString);
+            Material material = context.materialFactory.Get(k_ShaderString);
             material.SetVector(Uniforms._Jitter, jitter);
 
             jitterVector = jitter;
@@ -82,10 +82,10 @@ namespace UnityEngine.PostProcessing
 
         public void Render(RenderTexture source, RenderTexture destination)
         {
-            var material = context.materialFactory.Get(k_ShaderString);
+            Material material = context.materialFactory.Get(k_ShaderString);
             material.shaderKeywords = null;
 
-            var settings = model.settings.taaSettings;
+            AntialiasingModel.TaaSettings settings = model.settings.taaSettings;
 
             if (m_ResetHistory || m_HistoryTexture == null || m_HistoryTexture.width != source.width || m_HistoryTexture.height != source.height)
             {
@@ -104,7 +104,7 @@ namespace UnityEngine.PostProcessing
             material.SetTexture(Uniforms._MainTex, source);
             material.SetTexture(Uniforms._HistoryTex, m_HistoryTexture);
 
-            var tempHistory = RenderTexture.GetTemporary(source.width, source.height, 0, source.format);
+            RenderTexture tempHistory = RenderTexture.GetTemporary(source.width, source.height, 0, source.format);
             tempHistory.name = "TAA History";
 
             m_MRT[0] = destination.colorBuffer;
@@ -137,7 +137,7 @@ namespace UnityEngine.PostProcessing
 
         Vector2 GenerateRandomOffset()
         {
-            var offset = new Vector2(
+            Vector2 offset = new Vector2(
                     GetHaltonValue(m_SampleIndex & 1023, 2),
                     GetHaltonValue(m_SampleIndex & 1023, 3));
 
@@ -162,7 +162,7 @@ namespace UnityEngine.PostProcessing
             float top = (offset.y + vertical) * context.camera.nearClipPlane;
             float bottom = (offset.y - vertical) * context.camera.nearClipPlane;
 
-            var matrix = new Matrix4x4();
+            Matrix4x4 matrix = new Matrix4x4();
 
             matrix[0, 0] = (2f * context.camera.nearClipPlane) / (right - left);
             matrix[0, 1] = 0f;

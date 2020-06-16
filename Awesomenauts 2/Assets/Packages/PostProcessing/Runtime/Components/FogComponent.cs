@@ -43,11 +43,11 @@ namespace UnityEngine.PostProcessing
 
         public override void PopulateCommandBuffer(CommandBuffer cb)
         {
-            var settings = model.settings;
+            FogModel.Settings settings = model.settings;
 
-            var material = context.materialFactory.Get(k_ShaderString);
+            Material material = context.materialFactory.Get(k_ShaderString);
             material.shaderKeywords = null;
-            var fogColor = GraphicsUtils.isLinearColorSpace ? RenderSettings.fogColor.linear : RenderSettings.fogColor;
+            Color fogColor = GraphicsUtils.isLinearColorSpace ? RenderSettings.fogColor.linear : RenderSettings.fogColor;
             material.SetColor(Uniforms._FogColor, fogColor);
             material.SetFloat(Uniforms._Density, RenderSettings.fogDensity);
             material.SetFloat(Uniforms._Start, RenderSettings.fogStartDistance);
@@ -66,7 +66,7 @@ namespace UnityEngine.PostProcessing
                     break;
             }
 
-            var fbFormat = context.isHdr
+            RenderTextureFormat fbFormat = context.isHdr
                 ? RenderTextureFormat.DefaultHDR
                 : RenderTextureFormat.Default;
 

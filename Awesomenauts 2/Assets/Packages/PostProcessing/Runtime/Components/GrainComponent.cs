@@ -31,7 +31,7 @@ namespace UnityEngine.PostProcessing
 
         public override void Prepare(Material uberMaterial)
         {
-            var settings = model.settings;
+            GrainModel.Settings settings = model.settings;
 
             uberMaterial.EnableKeyword("GRAIN");
 
@@ -65,7 +65,7 @@ namespace UnityEngine.PostProcessing
                 m_GrainLookupRT.Create();
             }
 
-            var grainMaterial = context.materialFactory.Get("Hidden/Post FX/Grain Generator");
+            Material grainMaterial = context.materialFactory.Get("Hidden/Post FX/Grain Generator");
             grainMaterial.SetFloat(Uniforms._Phase, time / 20f);
 
             Graphics.Blit((Texture)null, m_GrainLookupRT, grainMaterial, settings.colored ? 1 : 0);

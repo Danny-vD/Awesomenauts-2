@@ -80,7 +80,7 @@ namespace UnityEngine.PostProcessing
             // Prepare state observers
             m_ComponentStates = new Dictionary<PostProcessingComponentBase, bool>();
 
-            foreach (var component in m_Components)
+            foreach (PostProcessingComponentBase component in m_Components)
                 m_ComponentStates.Add(component, false);
 
             useGUILayout = false;
@@ -108,7 +108,7 @@ namespace UnityEngine.PostProcessing
 #endif
 
             // Prepare context
-            var context = m_Context.Reset();
+            PostProcessingContext context = m_Context.Reset();
             context.profile = profile;
             context.renderTextureFactory = m_RenderTextureFactory;
             context.materialFactory = m_MaterialFactory;
@@ -143,8 +143,8 @@ namespace UnityEngine.PostProcessing
 
             // Find out which camera flags are needed before rendering begins
             // Note that motion vectors will only be available one frame after being enabled
-            var flags = context.camera.depthTextureMode;
-            foreach (var component in m_Components)
+            DepthTextureMode flags = context.camera.depthTextureMode;
+            foreach (PostProcessingComponentBase component in m_Components)
             {
                 if (component.active)
                     flags |= component.GetCameraFlags();
@@ -196,15 +196,15 @@ namespace UnityEngine.PostProcessing
             bool taaActive = m_Taa.active && !m_RenderingInSceneView;
             bool dofActive = m_DepthOfField.active && !m_RenderingInSceneView;
 
-            var uberMaterial = m_MaterialFactory.Get("Hidden/Post FX/Uber Shader");
+            Material uberMaterial = m_MaterialFactory.Get("Hidden/Post FX/Uber Shader");
             uberMaterial.shaderKeywords = null;
 
-            var src = source;
-            var dst = destination;
+            RenderTexture src = source;
+            RenderTexture dst = destination;
 
             if (taaActive)
             {
-                var tempRT = m_RenderTextureFactory.Get(src);
+                RenderTexture tempRT = m_RenderTextureFactory.Get(src);
                 m_Taa.Render(src, tempRT);
                 src = tempRT;
             }
@@ -244,7 +244,7 @@ namespace UnityEngine.PostProcessing
             uberActive |= TryPrepareUberImageEffect(m_Vignette, uberMaterial);
             uberActive |= TryPrepareUberImageEffect(m_UserLut, uberMaterial);
 
-            var fxaaMaterial = fxaaActive
+            Material fxaaMaterial = fxaaActive
                 ? m_MaterialFactory.Get("Hidden/Post FX/FXAA")
                 : null;
 
@@ -256,7 +256,7 @@ namespace UnityEngine.PostProcessing
 
                 if (uberActive)
                 {
-                    var output = m_RenderTextureFactory.Get(src);
+                    RenderTexture output = m_RenderTextureFactory.Get(src);
                     Graphics.Blit(src, output, uberMaterial, 0);
                     src = output;
                 }
@@ -285,7 +285,7 @@ namespace UnityEngine.PostProcessing
             {
                 Graphics.Blit(dst, destination);
 
-                var oldRt = RenderTexture.active;
+                RenderTexture oldRt = RenderTexture.active;
                 profile.monitors.onFrameEndEditorOnly(dst);
                 RenderTexture.active = oldRt;
             }
@@ -313,7 +313,7 @@ namespace UnityEngine.PostProcessing
         void OnDisable()
         {
             // Clear command buffers
-            foreach (var cb in m_CommandBuffers.Values)
+            foreach (KeyValuePair<CameraEvent, CommandBuffer> cb in m_CommandBuffers.Values)
             {
                 m_Camera.RemoveCommandBuffer(cb.Key, cb.Value);
                 cb.Value.Dispose();
@@ -347,10 +347,10 @@ namespace UnityEngine.PostProcessing
 
         void CheckObservers()
         {
-            foreach (var cs in m_ComponentStates)
+            foreach (KeyValuePair<PostProcessingComponentBase, bool> cs in m_ComponentStates)
             {
-                var component = cs.Key;
-                var state = component.GetModel().enabled;
+                PostProcessingComponentBase component = cs.Key;
+                bool state = component.GetModel().enabled;
 
                 if (state != cs.Value)
                 {
@@ -361,14 +361,14 @@ namespace UnityEngine.PostProcessing
 
             for (int i = 0; i < m_ComponentsToDisable.Count; i++)
             {
-                var c = m_ComponentsToDisable[i];
+                PostProcessingComponentBase c = m_ComponentsToDisable[i];
                 m_ComponentStates[c] = false;
                 c.OnDisable();
             }
 
             for (int i = 0; i < m_ComponentsToEnable.Count; i++)
             {
-                var c = m_ComponentsToEnable[i];
+                PostProcessingComponentBase c = m_ComponentsToEnable[i];
                 m_ComponentStates[c] = true;
                 c.OnEnable();
             }
@@ -379,9 +379,9 @@ namespace UnityEngine.PostProcessing
 
         void DisableComponents()
         {
-            foreach (var component in m_Components)
+            foreach (PostProcessingComponentBase component in m_Components)
             {
-                var model = component.GetModel();
+                PostProcessingModel model = component.GetModel();
                 if (model != null && model.enabled)
                     component.OnDisable();
             }
@@ -395,8 +395,8 @@ namespace UnityEngine.PostProcessing
         CommandBuffer AddCommandBuffer<T>(CameraEvent evt, string name)
             where T : PostProcessingModel
         {
-            var cb = new CommandBuffer { name = name };
-            var kvp = new KeyValuePair<CameraEvent, CommandBuffer>(evt, cb);
+            CommandBuffer cb = new CommandBuffer { name = name };
+            KeyValuePair<CameraEvent, CommandBuffer> kvp = new KeyValuePair<CameraEvent, CommandBuffer>(evt, cb);
             m_CommandBuffers.Add(typeof(T), kvp);
             m_Camera.AddCommandBuffer(evt, kvp.Value);
             return kvp.Value;
@@ -406,7 +406,7 @@ namespace UnityEngine.PostProcessing
             where T : PostProcessingModel
         {
             KeyValuePair<CameraEvent, CommandBuffer> kvp;
-            var type = typeof(T);
+            Type type = typeof(T);
 
             if (!m_CommandBuffers.TryGetValue(type, out kvp))
                 return;
@@ -441,7 +441,7 @@ namespace UnityEngine.PostProcessing
         {
             if (component.active)
             {
-                var cb = GetCommandBuffer<T>(component.GetCameraEvent(), component.GetName());
+                CommandBuffer cb = GetCommandBuffer<T>(component.GetCameraEvent(), component.GetName());
                 cb.Clear();
                 component.PopulateCommandBuffer(cb);
             }

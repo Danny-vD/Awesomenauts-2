@@ -42,7 +42,7 @@ namespace UnityEngine.PostProcessing
                 if (s_Quad != null)
                     return s_Quad;
 
-                var vertices = new[]
+                Vector3[] vertices = new[]
                 {
                     new Vector3(-1f, -1f, 0f),
                     new Vector3( 1f,  1f, 0f),
@@ -50,7 +50,7 @@ namespace UnityEngine.PostProcessing
                     new Vector3(-1f,  1f, 0f)
                 };
 
-                var uvs = new[]
+                Vector2[] uvs = new[]
                 {
                     new Vector2(0f, 0f),
                     new Vector2(1f, 1f),
@@ -58,7 +58,7 @@ namespace UnityEngine.PostProcessing
                     new Vector2(0f, 1f)
                 };
 
-                var indices = new[] { 0, 1, 2, 1, 0, 3 };
+                int[] indices = new[] { 0, 1, 2, 1, 0, 3 };
 
                 s_Quad = new Mesh
                 {
@@ -96,7 +96,7 @@ namespace UnityEngine.PostProcessing
 
         public static void ClearAndBlit(Texture source, RenderTexture destination, Material material, int pass, bool clearColor = true, bool clearDepth = false)
         {
-            var oldRT = RenderTexture.active;
+            RenderTexture oldRT = RenderTexture.active;
             RenderTexture.active = destination;
 
             GL.Clear(false, clearColor, Color.clear);

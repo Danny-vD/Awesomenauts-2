@@ -33,7 +33,7 @@ namespace UnityEngine.PostProcessing
             if (!m_Loop)
                 return;
 
-            var length = curve.length;
+            int length = curve.length;
 
             if (length < 2)
                 return;
@@ -41,9 +41,9 @@ namespace UnityEngine.PostProcessing
             if (m_InternalLoopingCurve == null)
                 m_InternalLoopingCurve = new AnimationCurve();
 
-            var prev = curve[length - 1];
+            Keyframe prev = curve[length - 1];
             prev.time -= m_Range;
-            var next = curve[0];
+            Keyframe next = curve[0];
             next.time += m_Range;
             m_InternalLoopingCurve.keys = curve.keys;
             m_InternalLoopingCurve.AddKey(prev);

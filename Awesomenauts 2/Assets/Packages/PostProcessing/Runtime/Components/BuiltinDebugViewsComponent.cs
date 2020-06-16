@@ -41,7 +41,7 @@ namespace UnityEngine.PostProcessing
             public void BuildMesh(int columns, int rows)
             {
                 // Base shape
-                var arrow = new Vector3[6]
+                Vector3[] arrow = new Vector3[6]
                 {
                     new Vector3(0f, 0f, 0f),
                     new Vector3(0f, 1f, 0f),
@@ -53,14 +53,14 @@ namespace UnityEngine.PostProcessing
 
                 // make the vertex array
                 int vcount = 6 * columns * rows;
-                var vertices = new List<Vector3>(vcount);
-                var uvs = new List<Vector2>(vcount);
+                List<Vector3> vertices = new List<Vector3>(vcount);
+                List<Vector2> uvs = new List<Vector2>(vcount);
 
                 for (int iy = 0; iy < rows; iy++)
                 {
                     for (int ix = 0; ix < columns; ix++)
                     {
-                        var uv = new Vector2(
+                        Vector2 uv = new Vector2(
                                 (0.5f + ix) / columns,
                                 (0.5f + iy) / rows
                                 );
@@ -74,7 +74,7 @@ namespace UnityEngine.PostProcessing
                 }
 
                 // make the index array
-                var indices = new int[vcount];
+                int[] indices = new int[vcount];
 
                 for (int i = 0; i < vcount; i++)
                     indices[i] = i;
@@ -110,8 +110,8 @@ namespace UnityEngine.PostProcessing
 
         public override DepthTextureMode GetCameraFlags()
         {
-            var mode = model.settings.mode;
-            var flags = DepthTextureMode.None;
+            Mode mode = model.settings.mode;
+            DepthTextureMode flags = DepthTextureMode.None;
 
             switch (mode)
             {
@@ -143,8 +143,8 @@ namespace UnityEngine.PostProcessing
 
         public override void PopulateCommandBuffer(CommandBuffer cb)
         {
-            var settings = model.settings;
-            var material = context.materialFactory.Get(k_ShaderString);
+            BuiltinDebugViewsModel.Settings settings = model.settings;
+            Material material = context.materialFactory.Get(k_ShaderString);
             material.shaderKeywords = null;
 
             if (context.isGBufferAvailable)
@@ -168,8 +168,8 @@ namespace UnityEngine.PostProcessing
 
         void DepthPass(CommandBuffer cb)
         {
-            var material = context.materialFactory.Get(k_ShaderString);
-            var settings = model.settings.depth;
+            Material material = context.materialFactory.Get(k_ShaderString);
+            BuiltinDebugViewsModel.DepthSettings settings = model.settings.depth;
 
             cb.SetGlobalFloat(Uniforms._DepthScale, 1f / settings.scale);
             cb.Blit((Texture)null, BuiltinRenderTextureType.CameraTarget, material, (int)Pass.Depth);
@@ -177,7 +177,7 @@ namespace UnityEngine.PostProcessing
 
         void DepthNormalsPass(CommandBuffer cb)
         {
-            var material = context.materialFactory.Get(k_ShaderString);
+            Material material = context.materialFactory.Get(k_ShaderString);
             cb.Blit((Texture)null, BuiltinRenderTextureType.CameraTarget, material, (int)Pass.Normals);
         }
 
@@ -190,8 +190,8 @@ namespace UnityEngine.PostProcessing
                 return;
 #endif
 
-            var material = context.materialFactory.Get(k_ShaderString);
-            var settings = model.settings.motionVectors;
+            Material material = context.materialFactory.Get(k_ShaderString);
+            BuiltinDebugViewsModel.MotionVectorsSettings settings = model.settings.motionVectors;
 
             // Blit the original source image
             int tempRT = Uniforms._TempRT;

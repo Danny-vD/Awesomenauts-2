@@ -51,8 +51,8 @@ namespace UnityStandardAssets.Effects
 
             m_Sphere.radius = effectDistance*.5f;
             m_Sphere.center = new Vector3(0, 0, effectDistance*.5f);
-            var directions = new Vector3[] {Vector3.up, -Vector3.up, Vector3.right, -Vector3.right};
-            var perpDirections = new Vector3[] {-Vector3.right, Vector3.right, Vector3.up, -Vector3.up};
+            Vector3[] directions = new Vector3[] {Vector3.up, -Vector3.up, Vector3.right, -Vector3.right};
+            Vector3[] perpDirections = new Vector3[] {-Vector3.right, Vector3.right, Vector3.up, -Vector3.up};
             Gizmos.color = new Color(0, 1, 0, 0.5f);
             for (int n = 0; n < 4; ++n)
             {

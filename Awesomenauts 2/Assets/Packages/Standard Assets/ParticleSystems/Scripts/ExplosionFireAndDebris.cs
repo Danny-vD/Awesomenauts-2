@@ -19,7 +19,7 @@ namespace UnityStandardAssets.Effects
 
             for (int n = 0; n < numDebrisPieces*multiplier; ++n)
             {
-                var prefab = debrisPrefabs[Random.Range(0, debrisPrefabs.Length)];
+                Transform prefab = debrisPrefabs[Random.Range(0, debrisPrefabs.Length)];
                 Vector3 pos = transform.position + Random.insideUnitSphere*3*multiplier;
                 Quaternion rot = Random.rotation;
                 Instantiate(prefab, pos, rot);
@@ -29,8 +29,8 @@ namespace UnityStandardAssets.Effects
             yield return null;
 
             float r = 10*multiplier;
-            var cols = Physics.OverlapSphere(transform.position, r);
-            foreach (var col in cols)
+            Collider[] cols = Physics.OverlapSphere(transform.position, r);
+            foreach (Collider col in cols)
             {
                 if (numFires > 0)
                 {

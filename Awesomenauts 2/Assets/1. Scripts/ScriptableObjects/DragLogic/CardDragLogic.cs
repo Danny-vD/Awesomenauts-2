@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using Byt3.Collections;
+using Byt3.Collections.Interfaces;
 using Enums.Cards;
 using Maps;
 using Player;
@@ -45,7 +48,7 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 				? socketOfDraggedCard.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.Range) : Range;
 			int xrange = socketOfDraggedCard != null && socketOfDraggedCard.HasCard
 				? socketOfDraggedCard.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.CrossLaneRange) : CrossLaneRange;
-
+			
 			if (socketOfDraggedCard != null && range > 0 && !CanReach(socket, socketOfDraggedCard, range, xrange)) return false;
 			if (socket.HasCard && EmptySockets && !OccupiedSockets) return false;
 			if (!socket.HasCard && !EmptySockets && OccupiedSockets) return false;
@@ -60,6 +63,17 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 			int idx = Lane.Sockets[socketOfDraggedCard.SocketSide].IndexOf(socketOfDraggedCard);
 			if (idx == -1) throw new Exception("Socket with invalid index.");
 
+
+			//if (socket == null || socketOfDraggedCard == null) return true;
+
+			List<CardSocket> path = AStar.AStar.Compute(socketOfDraggedCard, socket);
+
+			Debug.Log("A* Distance:" + path.Count);
+
+			return path.Count <= range; //Not factoring in the "cross lane"
+
+
+			if ((socket.SocketSide & SocketSide.NonPlacable) != 0) return false;
 
 			if ((socket.SocketSide & SocketSide.SideA) == (socketOfDraggedCard.SocketSide & SocketSide.SideA)) //They are the same side
 			{

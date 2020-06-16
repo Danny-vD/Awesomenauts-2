@@ -56,7 +56,7 @@ namespace UnityEngine.PostProcessing
             if (noiseTextures == null)
                 LoadNoiseTextures();
 
-            var noiseTex = noiseTextures[textureIndex];
+            Texture2D noiseTex = noiseTextures[textureIndex];
 
             uberMaterial.EnableKeyword("DITHERING");
             uberMaterial.SetTexture(Uniforms._DitheringTex, noiseTex);

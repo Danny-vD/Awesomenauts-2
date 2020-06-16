@@ -28,8 +28,8 @@ namespace UnityEngine.PostProcessing
 
         public override void Prepare(Material uberMaterial)
         {
-            var settings = model.settings;
-            var spectralLut = settings.spectralTexture;
+            ChromaticAberrationModel.Settings settings = model.settings;
+            Texture2D spectralLut = settings.spectralTexture;
 
             if (spectralLut == null)
             {
@@ -44,7 +44,7 @@ namespace UnityEngine.PostProcessing
                         hideFlags = HideFlags.DontSave
                     };
 
-                    var pixels = new Color[3];
+                    Color[] pixels = new Color[3];
                     pixels[0] = new Color(1f, 0f, 0f);
                     pixels[1] = new Color(0f, 1f, 0f);
                     pixels[2] = new Color(0f, 0f, 1f);
