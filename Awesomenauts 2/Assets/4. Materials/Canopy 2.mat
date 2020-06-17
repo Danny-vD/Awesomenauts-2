@@ -84,11 +84,11 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineSize: -4.96
+    - _OutlineSize: -0.71
     - _Parallax: 0.02
-    - _RimIntensity: 0.5
-    - _RimSize: 0.98
-    - _RimSmoothness: 0.125
+    - _RimIntensity: 0
+    - _RimSize: 0.14
+    - _RimSmoothness: 0
     - _ShadowIntensity: 1.07
     - _Shininess: 0.036
     - _SmoothnessTextureChannel: 0
