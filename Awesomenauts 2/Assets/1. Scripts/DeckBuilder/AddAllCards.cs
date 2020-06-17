@@ -46,7 +46,7 @@ namespace DeckBuilder
 
 			int amount = entry.Amount;
 			card.Amount = amount;
-			card.CardAesthetics.Initialise(card, entry.Statistics, entry.Sprites);
+			card.CardAesthetics.Initialise(card, entry);
 
 			card.name = entry.Statistics.GetValue(CardPlayerStatType.CardName).ToString();
 

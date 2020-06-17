@@ -1,6 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using Assets._1._Scripts.ScriptableObjects.Effects;
 using Enums.Cards;
+using Networking;
 using Player;
 using Structs.Deckbuilder;
 using UnityEngine;
@@ -36,10 +40,10 @@ namespace UI.Cards
 			}
 		}
 
-		public void Initialise(AbstractUICard card, EntityStatistics stats, CardSprites sprites)
+		public void Initialise(AbstractUICard card, CardEntry entry)
 		{
-			SetAllSprites(sprites);
-			SetAllText(stats);
+			SetAllSprites(entry.Sprites);
+			SetAllText(entry, entry.Statistics);
 
 			Icons.SetActive(card.Type != CardType.Action);
 		}
@@ -60,9 +64,9 @@ namespace UI.Cards
 			}
 		}
 
-		private void SetAllText(EntityStatistics stats)
+		private void SetAllText(CardEntry entry, EntityStatistics stats)
 		{
-			UpdateAllText(stats.GetValue(CardPlayerStatType.Description),
+			UpdateAllText(GetCardDescription(entry),
 				stats.GetValue(CardPlayerStatType.Attack), stats.GetValue(CardPlayerStatType.HP),
 				stats.GetValue(CardPlayerStatType.CardName));
 		}
@@ -87,6 +91,19 @@ namespace UI.Cards
 			Border.sprite = cardAesthetics.Border.sprite;
 			Body.sprite = cardAesthetics.Body.sprite;
 			Portrait.sprite = cardAesthetics.Portrait.sprite;
+		}
+
+		private string GetCardDescription(CardEntry entry)
+		{
+			StringBuilder stringBuilder = new StringBuilder("");
+			
+			foreach (AEffect effect in entry.effects)
+			{
+				stringBuilder.Append(effect.Description);
+				stringBuilder.Append(Environment.NewLine);
+			}
+
+			return stringBuilder.ToString();
 		}
 	}
 }
