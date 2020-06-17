@@ -3,11 +3,10 @@
     Properties
     {
         _Color("tint", Color) = (1, 1, 1, 1)
+        _Alpha("Alpha", Range(0, 1)) = 0
     
         [Header(Texture)]
         _MainTex("Albedo (RGB)", 2D) = "white"
-        
-        [Range(0, 1)] _Alpha("Alpha", float) = 0
         
         [Header(Flowing points)]
         _FlowDirectionNORMAL("Default", Vector) = (0, 0, 0, 0)
@@ -69,6 +68,9 @@
             ///Functions
             float2 GetCorrectSamplerPos(float3 objectPos);
             float3 GetFlowDirection(float2 objectPos);
+            
+            float rand(float3 coords);
+
         
             ///Structs
             struct VertexInput
@@ -129,10 +131,9 @@
 	            float2 yCorrection = flowDirection * objectPos.y * factor;
 	            relativeObjPos += yCorrection;
 	            
-	            
 	            relativeObjPos += flowDirection * _Time.y * _FlowSpeed;
 	            
-	            return relativeObjPos * _MainTex_ST.xy + _MainTex_ST.zw;
+	            return relativeObjPos * 0.1 * _MainTex_ST.xy + _MainTex_ST.zw;
 	        }
 	        
 	        float3 GetFlowDirection(float2 objectPos)
