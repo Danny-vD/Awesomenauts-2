@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Maps;
+using Player;
 using UnityEngine;
 
 namespace Assets._1._Scripts.ScriptableObjects.Effects
@@ -12,12 +13,12 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 		public int Rounds;
 		public AEffect Effect;
 
-		public override void TriggerEffect(CardSocket containingSocket, CardSocket targetSocket)
+		public override void TriggerEffect(Card c, CardSocket containingSocket, CardSocket targetSocket)
 		{
 			if (Rounds > 0)
 			{
 				Rounds--;
-				Effect.TriggerEffect(containingSocket, targetSocket);
+				Effect.TriggerEffect(c,containingSocket, targetSocket);
 			}
 		}
 

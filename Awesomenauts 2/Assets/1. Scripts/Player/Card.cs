@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Assets._1._Scripts.ScriptableObjects.DragLogic;
 using Assets._1._Scripts.ScriptableObjects.Effects;
 using Enums.Cards;
@@ -6,6 +7,7 @@ using Networking;
 using Mirror;
 using UnityEngine;
 using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 namespace Player
 {
@@ -44,9 +46,15 @@ namespace Player
 		}
 
 		[ClientRpc]
-		public void RpcSendStats(byte[] data)
+		public void RpcSendStats(byte[] data, int[] effects)
 		{
 			ApplyStatistics(data);
+			foreach (int effect in effects)
+			{
+                Debug.Log("Adding effect: "+ effect);
+				EffectManager.Effects = new System.Collections.Generic.List<AEffect>();
+				EffectManager.Effects.Add(CardNetworkManager.Instance.AllEffects[effect]);
+			}
 		}
 
 		private void ApplyStatistics(byte[] data)
@@ -73,7 +81,7 @@ namespace Player
 			if (newvalue == null || !(newvalue is int hp)) return;
 			if (hp <= 0)
 			{
-				EffectManager.TriggerEffects(EffectTrigger.OnDeath, AttachedCardSocket, null);
+				EffectManager.TriggerEffects(EffectTrigger.OnDeath, AttachedCardSocket, null, this);
 				GoCommitDie(); //Might move this into an effect class
 			}
 		}

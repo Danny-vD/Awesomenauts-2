@@ -150,7 +150,7 @@ namespace Maps
 				CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == CurrentTurnClient;
 			MapTransformInfo.Instance.SocketManager.SetTurn(CurrentTurnClient);
 
-			current.RpcDrawCard(1); //Next player is drawing one card
+			current.DrawCard(1); //Next player is drawing one card
 			current.PlayerStatistics.SetValue(CardPlayerStatType.Solar, MaxSolar);
 			MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.OnRoundStart, current);
 

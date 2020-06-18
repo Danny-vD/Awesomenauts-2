@@ -10,9 +10,8 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects {
 	{
 		public override EffectTrigger Trigger => EffectTrigger.AfterAttacking;
 
-		public override void TriggerEffect(CardSocket containingSocket, CardSocket targetSocket)
+		public override void TriggerEffect(Card c, CardSocket containingSocket, CardSocket targetSocket)
 		{
-			Card c = containingSocket.DockedCard;
 
 			if (containingSocket.hasAuthority)
 			{

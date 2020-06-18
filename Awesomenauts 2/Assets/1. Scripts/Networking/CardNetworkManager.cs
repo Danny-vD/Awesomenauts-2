@@ -28,6 +28,8 @@ namespace Networking
 
 		public static ExitFlag Exit;
 
+		public List<AEffect> AllEffects;
+
 		public Sprite DefaultCardPortrait;
 		public BorderInfo DefaultCardBorder;
 
@@ -171,8 +173,7 @@ namespace Networking
 			GameObject map = Instantiate(AvailableMaps[id].Prefab);
 			NetworkServer.Spawn(map);
 		}
-
-
+		
 		private void Update()
 		{
 			//if (initDelay > 0)

@@ -17,3 +17,4 @@ MonoBehaviour:
   StatType: 0
   Amount: 1
   Multiply: 0
+  ApplyToPlayer: 1

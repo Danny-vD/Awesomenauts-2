@@ -59,6 +59,14 @@ namespace Maps
 
 		private Dictionary<int, List<CardSocket>> socketMap = new Dictionary<int, List<CardSocket>>();
 
+		private Dictionary<int, int> IDMAP = new Dictionary<int, int>();
+
+
+		public int TID2CID(int cid)
+		{
+			return IDMAP[cid];
+		}
+
 		/// <summary>
 		/// Maps the ClientIDS to the Corresponding Team IDS
 		/// </summary>
@@ -73,6 +81,7 @@ namespace Maps
 
 			for (int i = 0; i < clientIDs.Length; i++)
 			{
+				IDMAP.Add(clientIDs[i], teamIDs[i]);
 				AddPlayer(clientIDs[i], teamIDs[i]);
 			}
 			foreach (KeyValuePair<int, List<CardSocket>> keyValuePair in socketMap)
@@ -150,7 +159,7 @@ namespace Maps
 				{
 					if (valueCardSocket.HasCard && valueCardSocket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.TeamID) == player.ClientID)
 					{
-						valueCardSocket.DockedCard.EffectManager.TriggerEffects(trigger, valueCardSocket, valueCardSocket);
+						valueCardSocket.DockedCard.EffectManager.TriggerEffects(trigger, valueCardSocket, valueCardSocket, valueCardSocket.DockedCard);
 					}
 				}
 			}

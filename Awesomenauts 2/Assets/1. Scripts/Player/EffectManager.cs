@@ -8,18 +8,18 @@ namespace Player {
 
 	public class EffectManager
 	{
-		public readonly List<AEffect> Effects;
+		public List<AEffect> Effects;
 
 		public EffectManager(List<AEffect> effects)
 		{
 			Effects = effects;
 		}
 
-		public void TriggerEffects(EffectTrigger trigger, CardSocket containingSocket, CardSocket targetCardSocket)
+		public void TriggerEffects(EffectTrigger trigger, CardSocket containingSocket, CardSocket targetCardSocket, Card c = null)
 		{
 			foreach (AEffect aEffect in Effects)
 			{
-				if((aEffect.Trigger & trigger)!=0)aEffect.TriggerEffect(containingSocket, targetCardSocket);
+				if((aEffect.Trigger & trigger)!=0)aEffect.TriggerEffect(containingSocket==null?c:containingSocket.DockedCard, containingSocket, targetCardSocket);
 			}
 		}
 

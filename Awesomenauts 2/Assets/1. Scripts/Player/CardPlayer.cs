@@ -134,10 +134,6 @@ namespace Player
 			}
 		}
 
-		public void RpcDrawCard(int amount)
-		{
-			DrawCard(amount);
-		}
 
 		public void DrawCard(int amount)
 		{
@@ -165,12 +161,13 @@ namespace Player
 			NetworkServer.Spawn(cardInstance, GetComponent<NetworkIdentity>().connectionToClient);
 			Card c = cardInstance.GetComponent<Card>();
 			c.Statistics = e.Statistics;
+			c.EffectManager  = new EffectManager(e.effects ?? new List<AEffect>());
 			c.Statistics.SetValue(CardPlayerStatType.TeamID, ClientID); //Set Team ID, used to find out to whom the card belongs.
 			c.Statistics.SetValue(CardPlayerStatType.CardType, e.CardType); //Set Team ID, used to find out to whom the card belongs.
 			byte[] networkData = e.StatisticsToNetworkableArray();
 			Debug.Log("Sending Stats");
 			Debug.Log("Card Type: " + c.Statistics.GetValue(CardPlayerStatType.CardType));
-			c.RpcSendStats(networkData);
+			c.RpcSendStats(networkData, e.effects.Select(x=> CardNetworkManager.Instance.AllEffects.IndexOf(x)).ToArray());
 
 			//Hand.AddToHand(c.GetComponent<NetworkIdentity>());
 			Hand.RpcAddToHand(c.netIdentity); //Add Card to the client
@@ -281,7 +278,7 @@ namespace Player
 			int sub = c.Statistics.GetValue<int>(CardPlayerStatType.Solar);
 			solar -= sub;
 			PlayerStatistics.SetValue(CardPlayerStatType.Solar, solar);
-			c.EffectManager.TriggerEffects(EffectTrigger.OnPlay, null, cs);
+			c.EffectManager.TriggerEffects(EffectTrigger.OnPlay, null, cs, c);
 
 			//Place card on board
 			//CmdRemoveFromHand(c.GetComponent<NetworkIdentity>());
@@ -290,7 +287,6 @@ namespace Player
 
 			if (c.Statistics.GetValue<CardType>(CardPlayerStatType.CardType) == CardType.Action)
 			{
-
 				Destroy(c.gameObject);
 				return;
 			}
@@ -314,7 +310,7 @@ namespace Player
 			{
 				Hand.SetSelectedCard(null);
 			}
-			c.EffectManager.TriggerEffects(EffectTrigger.AfterPlay, cs, null);
+			c.EffectManager.TriggerEffects(EffectTrigger.AfterPlay, cs, null, c);
 		}
 
 		private void HandleClickedOnCardOnHand(Card c, bool fromHand)
@@ -389,16 +385,16 @@ namespace Player
 				if (action == CardAction.Attack)
 				{
 					Card c = s.DockedCard;
-					card.EffectManager.TriggerEffects(EffectTrigger.OnAttacking, card.AttachedCardSocket, s);
-					c.EffectManager.TriggerEffects(EffectTrigger.OnAttacked, s, card.AttachedCardSocket);
+					card.EffectManager.TriggerEffects(EffectTrigger.OnAttacking, card.AttachedCardSocket, s, card);
+					c.EffectManager.TriggerEffects(EffectTrigger.OnAttacked, s, card.AttachedCardSocket, c);
 					card.Attack(s.DockedCard);
-					card.EffectManager.TriggerEffects(EffectTrigger.AfterAttacking, card.AttachedCardSocket, s);
-					c.EffectManager.TriggerEffects(EffectTrigger.AfterAttacked, s, card.AttachedCardSocket);
+					card.EffectManager.TriggerEffects(EffectTrigger.AfterAttacking, card.AttachedCardSocket, s, card);
+					c.EffectManager.TriggerEffects(EffectTrigger.AfterAttacked, s, card.AttachedCardSocket, c);
 				}
 				else if (action == CardAction.Move)
 				{
 					Debug.Log("MOVE");
-					card.EffectManager.TriggerEffects(EffectTrigger.OnMove, card.AttachedCardSocket, s);
+					card.EffectManager.TriggerEffects(EffectTrigger.OnMove, card.AttachedCardSocket, s, card);
 
 					if (card.AttachedCardSocket != null)
 					{
@@ -421,7 +417,7 @@ namespace Player
 					{
 						s.DockCard(card);
 					}
-					card.EffectManager.TriggerEffects(EffectTrigger.AfterMove, card.AttachedCardSocket, s);
+					card.EffectManager.TriggerEffects(EffectTrigger.AfterMove, card.AttachedCardSocket, s, card);
 				}
 			}
 

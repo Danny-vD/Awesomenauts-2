@@ -1,4 +1,5 @@
 using Maps;
+using Player;
 using UnityEngine;
 
 namespace Assets._1._Scripts.ScriptableObjects.Effects
@@ -7,6 +8,6 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 	{
 		public string Description;
 		public virtual EffectTrigger Trigger => EffectTrigger.AfterPlay;
-		public abstract void TriggerEffect(CardSocket containingSocket, CardSocket targetSocket);
+		public abstract void TriggerEffect(Card c, CardSocket containingSocket, CardSocket targetSocket);
 	}
 }

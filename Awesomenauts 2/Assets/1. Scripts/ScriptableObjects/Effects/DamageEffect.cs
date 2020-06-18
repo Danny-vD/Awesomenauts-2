@@ -11,7 +11,7 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 		public EffectTrigger ETrigger = EffectTrigger.None;
 		public int Damage;
 
-		public override void TriggerEffect(CardSocket containingSocket, CardSocket targetSocket)
+		public override void TriggerEffect(Card c,CardSocket containingSocket, CardSocket targetSocket)
 		{
 			targetSocket.DockedCard.Statistics.SetValue(CardPlayerStatType.HP, targetSocket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.HP) - Damage);
 		}
