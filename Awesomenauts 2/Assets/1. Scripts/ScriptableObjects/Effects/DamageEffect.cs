@@ -15,6 +15,5 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 		{
 			targetSocket.DockedCard.Statistics.SetValue(CardPlayerStatType.HP, targetSocket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.HP) - Damage);
 		}
-
 	}
 }

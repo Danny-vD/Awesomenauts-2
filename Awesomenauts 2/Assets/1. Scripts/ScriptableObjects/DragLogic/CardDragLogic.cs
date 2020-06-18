@@ -48,7 +48,7 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 				? socketOfDraggedCard.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.Range) : Range;
 			int xrange = socketOfDraggedCard != null && socketOfDraggedCard.HasCard
 				? socketOfDraggedCard.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.CrossLaneRange) : CrossLaneRange;
-			
+
 			if (socketOfDraggedCard != null && range > 0 && !CanReach(socket, socketOfDraggedCard, range, xrange)) return false;
 			if (socket.HasCard && EmptySockets && !OccupiedSockets) return false;
 			if (!socket.HasCard && !EmptySockets && OccupiedSockets) return false;
@@ -63,53 +63,21 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 			int idx = Lane.Sockets[socketOfDraggedCard.SocketSide].IndexOf(socketOfDraggedCard);
 			if (idx == -1) throw new Exception("Socket with invalid index.");
 
-
+			if ((socket.SocketSide & SocketSide.NonPlacable) != 0) return false;
+			if ((socket.SocketSide & (SocketSide.SideA | SocketSide.SideB)) != 0 && (socketOfDraggedCard.SocketSide & (SocketSide.SideA | SocketSide.SideB)) != 0 && (socket.SocketSide & SocketSide.SideA) != (socketOfDraggedCard.SocketSide & SocketSide.SideA)) //When both sockets belong to a lane and the lanes are different
+			{
+				return xrange > 0;
+			}
 			//if (socket == null || socketOfDraggedCard == null) return true;
 
 			List<CardSocket> path = AStar.AStar.Compute(socketOfDraggedCard, socket);
 
 			Debug.Log("A* Distance:" + path.Count);
 
+
+
 			return path.Count <= range; //Not factoring in the "cross lane"
 
-
-			if ((socket.SocketSide & SocketSide.NonPlacable) != 0) return false;
-
-			if ((socket.SocketSide & SocketSide.SideA) == (socketOfDraggedCard.SocketSide & SocketSide.SideA)) //They are the same side
-			{
-				int distance = 0;
-				int otherIdx = Lane.Sockets[socketOfDraggedCard.SocketSide].IndexOf(socket);
-				if (otherIdx == -1)
-				{
-					distance += Lane.Sockets[socketOfDraggedCard.SocketSide].Count - 1 - idx; //-1 because we need to get over the array boundary
-					otherIdx = Lane.Sockets[socket.SocketSide].IndexOf(socket);
-					distance += Mathf.Abs(Lane.Sockets[socket.SocketSide].Count - otherIdx);
-				}
-				else
-				{
-					distance += Mathf.Abs(otherIdx - idx);
-				}
-
-				return distance <= range;
-			}
-			else
-			{
-				int distance = 0;
-				int otherIdx = Lane.Sockets[socketOfDraggedCard.SocketSide].IndexOf(socket);
-				if (otherIdx == -1)
-				{
-					distance += Lane.Sockets[socketOfDraggedCard.SocketSide].Count - 1 - idx; //-1 because we need to get over the array boundary
-					otherIdx = Lane.Sockets[socket.SocketSide].IndexOf(socket);
-					distance += Mathf.Abs(Lane.Sockets[socket.SocketSide].Count - otherIdx);
-				}
-				else
-				{
-					distance += Mathf.Abs(otherIdx - idx);
-				}
-
-				return distance <= xrange;
-				//TODO: Ranger Attack Logic (whatever this means)
-			}
 
 
 

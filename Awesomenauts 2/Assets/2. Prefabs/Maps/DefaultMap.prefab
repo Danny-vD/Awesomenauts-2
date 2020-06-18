@@ -5662,7 +5662,7 @@ PrefabInstance:
     - target: {fileID: 6761734284919410876, guid: 16dea9d18f8f8a9469f40784d16a531a,
         type: 3}
       propertyPath: Sockets.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6761734284919410876, guid: 16dea9d18f8f8a9469f40784d16a531a,
         type: 3}
@@ -6347,7 +6347,7 @@ PrefabInstance:
     - target: {fileID: 6761734284919410876, guid: 16dea9d18f8f8a9469f40784d16a531a,
         type: 3}
       propertyPath: Sockets.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6761734284919410876, guid: 16dea9d18f8f8a9469f40784d16a531a,
         type: 3}
@@ -7682,7 +7682,7 @@ PrefabInstance:
     - target: {fileID: 3344252810267719883, guid: 1166b6cac5a689d47857da48ea7ae9e5,
         type: 3}
       propertyPath: Sockets.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3344252810267719883, guid: 1166b6cac5a689d47857da48ea7ae9e5,
         type: 3}
@@ -7817,7 +7817,7 @@ PrefabInstance:
     - target: {fileID: 3344252810267719883, guid: 1166b6cac5a689d47857da48ea7ae9e5,
         type: 3}
       propertyPath: Sockets.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3344252810267719883, guid: 1166b6cac5a689d47857da48ea7ae9e5,
         type: 3}
