@@ -1,3 +1,4 @@
+using Assets._1._Scripts.ScriptableObjects.Effects;
 using Networking;
 using Player;
 using Utility;
@@ -51,6 +52,11 @@ namespace Maps
 		{
 			if (CardNetworkManager.Instance.IsHost) return;
 
+			if (CurrentTurn != -1)
+			{
+				MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.AfterRoundEnd,
+					CardPlayer.ServerPlayers[CurrentTurn]);
+			}
 			CurrentTurn++;
 			if (MaxSolar >= 10) MaxSolar = 10;
 			if (CurrentTurn >= CardPlayer.ServerPlayers.Count)
@@ -70,6 +76,9 @@ namespace Maps
 			//current.DrawCard(1); //Next player is drawing one card
 			current.PlayerStatistics.SetValue(CardPlayerStatType.Solar, MaxSolar);
 			//if (CardNetworkManager.Instance.IsHost) return; //Has Already been set by ServerEndTurn if we are playing and hosting at the same time
+
+
+			MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.OnRoundStart, current);
 
 
 			//CurrentTurn++;
@@ -120,7 +129,11 @@ namespace Maps
 		[Server]
 		public void ServerEndTurn()
 		{
-
+			if (CurrentTurn != -1)
+			{
+				MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.AfterRoundEnd,
+					CardPlayer.ServerPlayers[CurrentTurn]);
+			}
 			CurrentTurn++;
 			if (MaxSolar >= 10) MaxSolar = 10;
 			if (CurrentTurn >= CardPlayer.ServerPlayers.Count)
@@ -139,8 +152,9 @@ namespace Maps
 
 			current.RpcDrawCard(1); //Next player is drawing one card
 			current.PlayerStatistics.SetValue(CardPlayerStatType.Solar, MaxSolar);
+			MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.OnRoundStart, current);
 
-			
+
 			RpcBroadcastEndTurn();
 			//CurrentTurn++;
 			//if (CurrentTurn >= CardPlayer.ServerPlayers.Count)

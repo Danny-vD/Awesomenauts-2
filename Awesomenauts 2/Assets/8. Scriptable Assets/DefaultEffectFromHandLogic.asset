@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1d0839a7101564a95f180cc71dd0f6, type: 3}
   m_Name: DefaultEffectFromHandLogic
   m_EditorClassIdentifier: 
-  Target: 23
+  Target: -1
   Range: 0
   CrossLaneRange: 0

@@ -29,7 +29,7 @@ namespace Player {
 				Value = v;
 				return;
 			}
-			throw new ArgumentException("Object is not of the correct type");
+			throw new ArgumentException("Object is not of the correct type, Expected: "+ typeof(T)+ " got: "+ value?.GetType());
 		}
 	}
 }

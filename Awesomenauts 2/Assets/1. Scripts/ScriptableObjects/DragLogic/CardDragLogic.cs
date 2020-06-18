@@ -60,13 +60,22 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 
 		private bool CanReach(CardSocket socket, CardSocket socketOfDraggedCard, int range, int xrange)
 		{
-			int idx = Lane.Sockets[socketOfDraggedCard.SocketSide].IndexOf(socketOfDraggedCard);
-			if (idx == -1) throw new Exception("Socket with invalid index.");
 
 			if ((socket.SocketSide & SocketSide.NonPlacable) != 0) return false;
 			if ((socket.SocketSide & (SocketSide.SideA | SocketSide.SideB)) != 0 && (socketOfDraggedCard.SocketSide & (SocketSide.SideA | SocketSide.SideB)) != 0 && (socket.SocketSide & SocketSide.SideA) != (socketOfDraggedCard.SocketSide & SocketSide.SideA)) //When both sockets belong to a lane and the lanes are different
 			{
-				return xrange > 0;
+				if ((socket.SocketSide & (SocketSide.BlueSide | SocketSide.RedSide)) != 0 && //If the cards are one of the sides
+					(socketOfDraggedCard.SocketSide & (SocketSide.BlueSide | SocketSide.RedSide)) != 0)
+				{
+					if ((socket.SocketSide & (SocketSide.BlueSide | SocketSide.RedSide)) == //If the cards are on the same side(Blue/Red).
+						(socketOfDraggedCard.SocketSide & (SocketSide.BlueSide | SocketSide.RedSide)))
+					{
+						if (Mathf.Abs(socket.transform.position.z - socketOfDraggedCard.transform.position.z) < 1) //If the sockets have "almost" the same z component(e.g. directly perpendicular to the lane)
+						{
+							return xrange > 0;
+						}
+					}
+				}
 			}
 			//if (socket == null || socketOfDraggedCard == null) return true;
 

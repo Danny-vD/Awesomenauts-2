@@ -6,6 +6,7 @@ namespace Player {
 		Attack,
 		TeamID,
 		CardName,
+		Description,
 		CardType,
 		Range,
         CrossLaneRange,

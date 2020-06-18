@@ -1,4 +1,4 @@
-﻿namespace Assets._1._Scripts.ScriptableObjects.Effects {
+namespace Assets._1._Scripts.ScriptableObjects.Effects {
 	public enum EffectTrigger
 	{
 		None = 0,
@@ -8,11 +8,17 @@
 		AfterAttacked = 8,
 		AfterMove = 16,
 		AfterRoundEnd = 32,
+		/// <summary>
+		/// Unused, but kept to not break the scene settings
+		/// </summary>
 		AfterRoundStart = 64,
 		OnPlay = 128,
 		OnAttacking = 256,
 		OnAttacked = 512,
 		OnMove = 1024,
+		/// <summary>
+		/// Unused, but kept to not break the scene settings
+		/// </summary>
 		OnRoundEnd = 2048,
 		OnRoundStart = 4096,
 	}

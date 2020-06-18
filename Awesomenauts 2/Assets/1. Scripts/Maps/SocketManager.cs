@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets._1._Scripts.ScriptableObjects.Effects;
 using Networking;
+using Player;
 using UnityEngine;
 
 namespace Maps
@@ -137,6 +139,20 @@ namespace Maps
 			for (int i = 0; i < sockets.Count; i++)
 			{
 				sockets[i].SetActive(active);
+			}
+		}
+
+		public void TriggerEffect(EffectTrigger trigger, CardPlayer player)
+		{
+			foreach (KeyValuePair<int, CardTeamSocketData> cardTeamSocketData in SocketData)
+			{
+				foreach (CardSocket valueCardSocket in cardTeamSocketData.Value.CardSockets)
+				{
+					if (valueCardSocket.HasCard && valueCardSocket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.TeamID) == player.ClientID)
+					{
+						valueCardSocket.DockedCard.EffectManager.TriggerEffects(trigger, valueCardSocket, valueCardSocket);
+					}
+				}
 			}
 		}
 	}
