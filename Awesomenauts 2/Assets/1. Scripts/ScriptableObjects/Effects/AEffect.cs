@@ -9,7 +9,7 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 	public abstract class AEffect : ScriptableObject
 	{
 		[SerializeField]
-		private bool playSound = true;
+		private bool playSound = false;
 
 		[SerializeField]
 		private EventType soundToPlay = EventType.SFX_CARDS_CardPlace;
