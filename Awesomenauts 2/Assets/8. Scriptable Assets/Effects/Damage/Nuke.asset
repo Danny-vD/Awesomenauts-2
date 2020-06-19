@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd291b915072264c997b6ffffd3335a, type: 3}
-  m_Name: TestSuicideEffect
+  m_Script: {fileID: 11500000, guid: bc41c1f8bf368cc4b9dee9606a04e1a6, type: 3}
+  m_Name: Nuke
   m_EditorClassIdentifier: 
-  Description: 'Big OOF: Does commit die on Attack'
+  playSound: 1
+  soundToPlay: 0
+  Description: THATS A LOTTA DAMAGE
+  ETrigger: 128
+  Damage: 9999

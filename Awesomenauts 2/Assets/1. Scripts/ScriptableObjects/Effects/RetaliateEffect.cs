@@ -17,6 +17,7 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 				targetSocket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.HP) > 0)
 			{
 				containingSocket.DockedCard.Attack(targetSocket.DockedCard);
+				base.TriggerEffect(c, containingSocket, targetSocket);
 			}
 		}
 	}

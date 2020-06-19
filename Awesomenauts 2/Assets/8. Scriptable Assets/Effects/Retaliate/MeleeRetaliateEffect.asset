@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a04ef4d4aae8ef459fbb716dcf69032, type: 3}
-  m_Name: BurnStatusEffect
+  m_Script: {fileID: 11500000, guid: 134661e9611702f4090aac7197d30a70, type: 3}
+  m_Name: MeleeRetaliateEffect
   m_EditorClassIdentifier: 
-  Description: Gives the target Sick Burns.
-  Rounds: 2
-  Effect: {fileID: 11400000, guid: 44238f4a4173fd44382fcb9ad58ba2bb, type: 2}
+  playSound: 1
+  soundToPlay: 0
+  Description: 

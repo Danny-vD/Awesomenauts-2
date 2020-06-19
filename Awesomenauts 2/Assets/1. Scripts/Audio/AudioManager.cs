@@ -1,7 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Enums.Audio;
+using Enums.Cards;
+using Events.Gameplay;
+using Player;
 using Structs.Audio;
+using UnityEngine;
+using VDFramework.EventSystem;
 using VDFramework.Singleton;
+using EventType = Enums.Audio.EventType;
 
 namespace Audio
 {
@@ -47,6 +54,11 @@ namespace Audio
 		public float GetVolume(BusType busType)
 		{
 			return AudioParameterManager.GetBusVolume(EventPaths.GetPath(busType));
+		}
+
+		private static EventType GetAttackEventForCardType(CardType cardType)
+		{
+			return cardType == CardType.Ranged ? EventType.SFX_CARDS_RangedAttack : EventType.SFX_CARDS_MeleeAttack;
 		}
 	}
 }

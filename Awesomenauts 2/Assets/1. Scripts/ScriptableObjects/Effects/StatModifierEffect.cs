@@ -34,7 +34,7 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 				fval = Multiply ? fval * Amount : fval + Amount;
 
 				stat.SetValue(StatType, Convert.ChangeType(fval, t));
-
+				base.TriggerEffect(c, containingSocket, targetSocket);
 
 
 			}

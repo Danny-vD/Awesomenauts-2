@@ -24,6 +24,7 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects {
 
 
 			Destroy(c.gameObject);
+			base.TriggerEffect(c, containingSocket, targetSocket);
 		}
 	}
 }

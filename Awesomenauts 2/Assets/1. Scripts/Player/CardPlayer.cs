@@ -3,10 +3,12 @@ using System.Linq;
 using Assets._1._Scripts.ScriptableObjects.DragLogic;
 using Assets._1._Scripts.ScriptableObjects.Effects;
 using Enums.Cards;
+using Events.Gameplay;
 using Maps;
 using Networking;
 using Mirror;
 using UnityEngine;
+using VDFramework.EventSystem;
 
 namespace Player
 {
