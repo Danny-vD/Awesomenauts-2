@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef576c405263d84da144a041184bf64, type: 3}
   m_Name: Solar+1Effect
   m_EditorClassIdentifier: 
+  playSound: 1
+  soundToPlay: 0
   Description: Adds one Solar.
   ETrigger: 128
   StatType: 0

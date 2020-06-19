@@ -2,11 +2,13 @@ using System.Diagnostics;
 using Assets._1._Scripts.ScriptableObjects.DragLogic;
 using Assets._1._Scripts.ScriptableObjects.Effects;
 using Enums.Cards;
+using Events.Gameplay;
 using Maps;
 using Networking;
 using Mirror;
 using UnityEngine;
 using UnityEngine.UI;
+using VDFramework.EventSystem;
 using Debug = UnityEngine.Debug;
 
 namespace Player
@@ -141,6 +143,11 @@ namespace Player
 			{
 				Destroy(gameObject);
 			}
+			else
+			{
+				EventManager.Instance.RaiseEvent(new CardAttackEvent(this, other));
+			}
+			
 		}
 
 	}

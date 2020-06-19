@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc41c1f8bf368cc4b9dee9606a04e1a6, type: 3}
   m_Name: Nuke
   m_EditorClassIdentifier: 
+  playSound: 1
+  soundToPlay: 0
   Description: THATS A LOTTA DAMAGE
   ETrigger: 128
   Damage: 9999

@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd291b915072264c997b6ffffd3335a, type: 3}
   m_Name: TestSuicideEffect
   m_EditorClassIdentifier: 
+  playSound: 1
+  soundToPlay: 0
   Description: 'Big OOF: Does commit die on Attack'

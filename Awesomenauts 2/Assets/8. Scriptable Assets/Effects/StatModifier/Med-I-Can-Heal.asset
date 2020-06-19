@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef576c405263d84da144a041184bf64, type: 3}
   m_Name: Med-I-Can-Heal
   m_EditorClassIdentifier: 
+  playSound: 1
+  soundToPlay: 0
   Description: Heals the target by 50% of its HP
   ETrigger: 128
   StatType: 1
   Amount: 1.5
   Multiply: 1
+  ApplyToPlayer: 0

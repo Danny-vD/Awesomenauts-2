@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a04ef4d4aae8ef459fbb716dcf69032, type: 3}
   m_Name: BurnStatusEffect
   m_EditorClassIdentifier: 
+  playSound: 1
+  soundToPlay: 0
   Description: Gives the target Sick Burns.
   Rounds: 2
   Effect: {fileID: 11400000, guid: 44238f4a4173fd44382fcb9ad58ba2bb, type: 2}
