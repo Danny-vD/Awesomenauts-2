@@ -93,14 +93,13 @@ namespace UI.Cards
 			Portrait.sprite = cardAesthetics.Portrait.sprite;
 		}
 
-		private string GetCardDescription(CardEntry entry)
+		private static string GetCardDescription(CardEntry entry)
 		{
-			StringBuilder stringBuilder = new StringBuilder("");
-			
-			foreach (AEffect effect in entry.effects)
+			StringBuilder stringBuilder = new StringBuilder();
+
+			for (int index = 0; index < entry.effects.Count; index++)
 			{
-				stringBuilder.Append(effect.Description);
-				stringBuilder.Append(Environment.NewLine);
+				stringBuilder.AppendLine(entry.effects[index].Description);
 			}
 
 			return stringBuilder.ToString();

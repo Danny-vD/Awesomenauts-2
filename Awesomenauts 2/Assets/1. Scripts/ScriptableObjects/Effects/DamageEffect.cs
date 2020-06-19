@@ -14,6 +14,8 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 		public override void TriggerEffect(Card c,CardSocket containingSocket, CardSocket targetSocket)
 		{
 			targetSocket.DockedCard.Statistics.SetValue(CardPlayerStatType.HP, targetSocket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.HP) - Damage);
+			
+			base.TriggerEffect(c, containingSocket, targetSocket);
 		}
 	}
 }

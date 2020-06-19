@@ -19,6 +19,7 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 			{
 				Rounds--;
 				Effect.TriggerEffect(c,containingSocket, targetSocket);
+				base.TriggerEffect(c, containingSocket, targetSocket);
 			}
 		}
 
