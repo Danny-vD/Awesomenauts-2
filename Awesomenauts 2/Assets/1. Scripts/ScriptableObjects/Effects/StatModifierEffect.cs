@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Maps;
 using Player;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 		public bool Multiply;
 		public bool ApplyToPlayer;
 
-		public override void TriggerEffect(Card c ,CardSocket containingSocket, CardSocket targetSocket)
+		public override IEnumerator TriggerEffect(Card c ,CardSocket containingSocket, CardSocket targetSocket)
 		{
 			EntityStatistics stat = ApplyToPlayer
 				? CardPlayer.ServerPlayers[MapTransformInfo.Instance.SocketManager.TID2CID(c.Statistics.GetValue<int>(CardPlayerStatType.TeamID))].PlayerStatistics
@@ -34,10 +35,12 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 				fval = Multiply ? fval * Amount : fval + Amount;
 
 				stat.SetValue(StatType, Convert.ChangeType(fval, t));
-				base.TriggerEffect(c, containingSocket, targetSocket);
+				//base.TriggerEffect(c, containingSocket, targetSocket);
 
 
 			}
+
+			yield return null;
 		}
 
 	}

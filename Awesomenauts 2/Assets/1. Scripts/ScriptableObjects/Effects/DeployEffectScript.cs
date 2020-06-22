@@ -11,9 +11,10 @@ public class DeployEffectScript : AEffect
 	public override EffectTrigger Trigger => EffectTrigger.OnPlay;
 	public AEffect Effect;
 
-	public override void TriggerEffect(Card c, CardSocket containingSocket, CardSocket targetSocket)
+	public override IEnumerator TriggerEffect(Card c, CardSocket containingSocket, CardSocket targetSocket)
 	{
-		if (targetSocket.DockedCard.EffectManager.Effects.Contains(this)) return;
+		if (targetSocket.DockedCard.EffectManager.Effects.Contains(this))yield return null;
 		targetSocket.DockedCard.EffectManager.Effects.Add(Effect);
+		yield return null;
 	}
 }

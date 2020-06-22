@@ -12,9 +12,9 @@ using UnityEngine;
 public class ShieldEffectScript : AEffect
 {
 	public override EffectTrigger Trigger => EffectTrigger.OnAttacked | EffectTrigger.OnAttacking;
-	
 
-	public override void TriggerEffect(Card cardToProtect, CardSocket containingSocket, CardSocket targetSocket)
+
+	public override IEnumerator TriggerEffect(Card cardToProtect, CardSocket containingSocket, CardSocket targetSocket)
 	{
 		cardToProtect.Statistics.SetValue(CardPlayerStatType.HP,
 			cardToProtect.Statistics.GetValue<int>(CardPlayerStatType.HP) +
@@ -22,5 +22,6 @@ public class ShieldEffectScript : AEffect
 
 
 		cardToProtect.EffectManager.Effects.Remove(this);
+		yield return null;
 	}
 }

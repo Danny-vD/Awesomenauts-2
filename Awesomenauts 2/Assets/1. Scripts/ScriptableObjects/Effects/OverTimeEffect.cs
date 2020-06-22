@@ -13,14 +13,17 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 		public int Rounds;
 		public AEffect Effect;
 
-		public override void TriggerEffect(Card c, CardSocket containingSocket, CardSocket targetSocket)
+		public override IEnumerator TriggerEffect(Card c, CardSocket containingSocket, CardSocket targetSocket)
 		{
 			if (Rounds > 0)
 			{
 				Rounds--;
-				Effect.TriggerEffect(c,containingSocket, targetSocket);
-				base.TriggerEffect(c, containingSocket, targetSocket);
+
+				yield return Effect.TriggerEffect(c, containingSocket, targetSocket);
+				//base.TriggerEffect(c, containingSocket, targetSocket);
 			}
+
+			yield return null;
 		}
 
 	}

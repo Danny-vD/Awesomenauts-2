@@ -1,3 +1,4 @@
+using System.Collections;
 using Maps;
 using Player;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects {
 	{
 		public override EffectTrigger Trigger => EffectTrigger.AfterAttacking;
 
-		public override void TriggerEffect(Card c, CardSocket containingSocket, CardSocket targetSocket)
+		public override IEnumerator TriggerEffect(Card c, CardSocket containingSocket, CardSocket targetSocket)
 		{
 
 			if (containingSocket.hasAuthority)
@@ -24,7 +25,8 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects {
 
 
 			Destroy(c.gameObject);
-			base.TriggerEffect(c, containingSocket, targetSocket);
+			//base.TriggerEffect(c, containingSocket, targetSocket);
+			yield return null;
 		}
 	}
 }

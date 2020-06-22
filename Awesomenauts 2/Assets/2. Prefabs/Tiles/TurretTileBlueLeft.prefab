@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4933747648612758868}
   - component: {fileID: 2253463021346607297}
   m_Layer: 12
-  m_Name: TurretTileBlue
+  m_Name: TurretTileBlueLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,6 +214,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TurretBlue1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3650183707229262360, guid: 241ad0d507069264bbfc68bf8f3b2c8a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 241ad0d507069264bbfc68bf8f3b2c8a, type: 3}

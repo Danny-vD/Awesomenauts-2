@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TurretShootEffect
   m_EditorClassIdentifier: 
   playSound: 0
+  AnimationName: 
   soundToPlay: 4
   Description: 
   Effect: {fileID: 11400000, guid: 22f2c066f44973a42954a33a1833b864, type: 2}

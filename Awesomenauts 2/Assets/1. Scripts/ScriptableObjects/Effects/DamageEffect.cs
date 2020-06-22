@@ -1,3 +1,4 @@
+using System.Collections;
 using Maps;
 using Player;
 using UnityEngine;
@@ -11,11 +12,15 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 		public EffectTrigger ETrigger = EffectTrigger.None;
 		public int Damage;
 
-		public override void TriggerEffect(Card c,CardSocket containingSocket, CardSocket targetSocket)
+		public override IEnumerator TriggerEffect(Card c, CardSocket containingSocket, CardSocket targetSocket)
 		{
-			targetSocket.DockedCard.Statistics.SetValue(CardPlayerStatType.HP, targetSocket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.HP) - Damage);
-			
-			base.TriggerEffect(c, containingSocket, targetSocket);
+			if (targetSocket.DockedCard != null)
+				targetSocket.DockedCard.Statistics.SetValue(CardPlayerStatType.HP, targetSocket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.HP) - Damage);
+
+
+
+			//base.TriggerEffect(c, containingSocket, targetSocket);
+			yield return null;
 		}
 	}
 }

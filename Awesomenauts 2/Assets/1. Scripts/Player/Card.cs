@@ -37,10 +37,16 @@ namespace Player
 		public CardState CardState { get; private set; } = CardState.OnDeck;
 		public CardType CardType => Statistics.GetValue<CardType>(CardPlayerStatType.CardType);
 
+		public Animator Animator;
+
 		// Start is called before the first frame update
 		void Start()
 		{
 			SetCoverState(isClient && !hasAuthority);
+
+			//Instanciate Animator in child objects if any
+			Animator = GetComponentInChildren<Animator>();
+			
 		}
 
 		public void SetSocket(CardSocket socket)
@@ -54,7 +60,7 @@ namespace Player
 			ApplyStatistics(data);
 			foreach (int effect in effects)
 			{
-                Debug.Log("Adding effect: "+ effect);
+				Debug.Log("Adding effect: " + effect);
 				EffectManager.Effects = new System.Collections.Generic.List<AEffect>();
 				EffectManager.Effects.Add(CardNetworkManager.Instance.AllEffects[effect]);
 			}
@@ -153,7 +159,7 @@ namespace Player
 			{
 				EventManager.Instance.RaiseEvent(new CardAttackEvent(this, other));
 			}
-			
+
 		}
 
 	}

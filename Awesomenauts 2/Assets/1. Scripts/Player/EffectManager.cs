@@ -22,7 +22,7 @@ namespace Player
                 if(i >= Effects.Count) continue;
                 AEffect aEffect = Effects[i];
 				if ((aEffect.Trigger & trigger) != 0)
-					aEffect.TriggerEffect(containingSocket == null ? c : containingSocket.DockedCard, containingSocket,
+					aEffect._TriggerEffect(containingSocket == null ? c : containingSocket.DockedCard, containingSocket,
 						targetCardSocket);
 			}
 		}

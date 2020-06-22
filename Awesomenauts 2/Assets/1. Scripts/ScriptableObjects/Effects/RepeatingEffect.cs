@@ -12,7 +12,7 @@ public class RepeatingEffect : AEffect
 	public override EffectTrigger Trigger => EffectTrigger.OnRoundStart;
 	public AEffect Effect;
 
-	public override void TriggerEffect(Card c, CardSocket containingSocket, CardSocket targetSocket)
+	public override IEnumerator TriggerEffect(Card c, CardSocket containingSocket, CardSocket targetSocket)
 	{
 
 		//Either BlueSide and A or B
@@ -30,10 +30,11 @@ public class RepeatingEffect : AEffect
 
 		if (next != null)
 		{
-			Effect.TriggerEffect(c, containingSocket, next);
+			Effect._TriggerEffect(c, containingSocket, next);
 		}
 
-		base.TriggerEffect(c, containingSocket, targetSocket);
+		yield return null;
+		//base.TriggerEffect(c, containingSocket, targetSocket);
 	}
 
 }
