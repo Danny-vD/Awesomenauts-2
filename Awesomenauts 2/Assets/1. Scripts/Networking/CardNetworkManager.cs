@@ -74,6 +74,10 @@ namespace Networking
 		public CardEntry[] CardEntries;
 		public int[] CardsInDeck { get; private set; } = new int[0];
 
+		
+
+		public TeamPrefabObject[] TeamPrefabs;
+
 
 		public Sprite GetCardImage(string name)
 		{
@@ -227,7 +231,13 @@ namespace Networking
 					else
 					{
 						CardPlayer.ServerPlayers[i].DrawCard(StartingCards - 1);
+
+
+
 					}
+
+
+
 				}
 
 				BoardLogic.Logic.StartGame();

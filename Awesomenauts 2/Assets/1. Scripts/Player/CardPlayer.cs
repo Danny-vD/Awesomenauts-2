@@ -158,21 +158,27 @@ namespace Player
 
 		public void DrawCard(CardEntry e)
 		{
+			Card c = CreateCard(e);
+			//Hand.AddToHand(c.GetComponent<NetworkIdentity>());
+			Hand.RpcAddToHand(c.netIdentity); //Add Card to the client
+		}
+
+		public Card CreateCard(CardEntry e)
+		{
+			e.Statistics.InitializeStatDictionary();
 			//Hand.AddCard(c);//Add the Card to the server
 			GameObject cardInstance = Instantiate(e.Prefab, Deck.DeckPosition, Quaternion.identity);
 			NetworkServer.Spawn(cardInstance, GetComponent<NetworkIdentity>().connectionToClient);
 			Card c = cardInstance.GetComponent<Card>();
 			c.Statistics = e.Statistics;
-			c.EffectManager  = new EffectManager(e.effects ?? new List<AEffect>());
+			c.EffectManager = new EffectManager(e.effects ?? new List<AEffect>());
 			c.Statistics.SetValue(CardPlayerStatType.TeamID, ClientID); //Set Team ID, used to find out to whom the card belongs.
 			c.Statistics.SetValue(CardPlayerStatType.CardType, e.CardType); //Set Team ID, used to find out to whom the card belongs.
 			byte[] networkData = e.StatisticsToNetworkableArray();
 			Debug.Log("Sending Stats");
 			Debug.Log("Card Type: " + c.Statistics.GetValue(CardPlayerStatType.CardType));
-			c.RpcSendStats(networkData, e.effects.Select(x=> CardNetworkManager.Instance.AllEffects.IndexOf(x)).ToArray());
-
-			//Hand.AddToHand(c.GetComponent<NetworkIdentity>());
-			Hand.RpcAddToHand(c.netIdentity); //Add Card to the client
+			c.RpcSendStats(networkData, e.effects.Select(x => CardNetworkManager.Instance.AllEffects.IndexOf(x)).ToArray());
+			return c;
 		}
 
 		[Client]

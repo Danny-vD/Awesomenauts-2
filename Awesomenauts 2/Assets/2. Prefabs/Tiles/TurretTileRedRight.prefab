@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8911067738432862548}
   - component: {fileID: 1846633015060824222}
   m_Layer: 12
-  m_Name: TurretTileRed
+  m_Name: TurretTileRedRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  SocketType: 1
   SocketSide: 0
   TeamID: 0
   yScale: 0.3

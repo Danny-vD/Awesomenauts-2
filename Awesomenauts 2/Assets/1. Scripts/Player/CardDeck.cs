@@ -56,7 +56,6 @@ namespace Player {
 		public CardEntry DrawCard()
 		{
 			CardEntry e = DeckContent.Dequeue();
-			e.Statistics.InitializeStatDictionary();
 			return e;
 		}
 

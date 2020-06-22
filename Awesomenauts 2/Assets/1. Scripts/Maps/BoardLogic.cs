@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Assets._1._Scripts.ScriptableObjects.Effects;
 using Networking;
 using Player;
@@ -111,6 +113,26 @@ namespace Maps
 
 
 			MapTransformInfo.Instance.SocketManager.AddPlayers(clientIDs, teamIDs);
+
+			for (int i = 0; i < CardPlayer.ServerPlayers.Count; i++)
+			{
+
+
+				Card turretLeft = CardPlayer.ServerPlayers[i].CreateCard(CardNetworkManager.Instance.TeamPrefabs[i].TurretLeft);
+				Card turretRight = CardPlayer.ServerPlayers[i].CreateCard(CardNetworkManager.Instance.TeamPrefabs[i].TurretRight);
+
+				//Find Ally Sockets for turrets
+				List<CardSocket> socks = new List<CardSocket>();
+				MapTransformInfo.Instance.SocketManager.CardSockets.Select(x => x.CardSockets).ToList()
+					.ForEach(x => socks.AddRange(x));
+				CardSocket ltS = socks.First(x => MapTransformInfo.Instance.SocketManager.IsFromTeam(CardPlayer.ServerPlayers[i].ClientID, x.transform) &&
+												  x.SocketType == SocketType.TurretLeft);
+				CardSocket rtS = socks.First(x => MapTransformInfo.Instance.SocketManager.IsFromTeam(CardPlayer.ServerPlayers[i].ClientID, x.transform) &&
+												  x.SocketType == SocketType.TurretRight);
+				ltS.RpcDockCard(turretLeft.netIdentity);
+				rtS.RpcDockCard(turretRight.netIdentity);
+				//Set Turrets for all clients
+			}
 
 			RpcBroadcastStartGame(clientIDs, teamIDs);
 			ServerEndTurn();

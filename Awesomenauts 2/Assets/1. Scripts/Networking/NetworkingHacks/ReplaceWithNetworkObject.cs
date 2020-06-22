@@ -8,11 +8,6 @@ using Mirror;
 using Networking;
 using UnityEngine;
 
-public interface ISocketResolver
-{
-	CardSocket GetSocket();
-}
-
 
 public class ReplaceWithNetworkObject : MonoBehaviour
 {
