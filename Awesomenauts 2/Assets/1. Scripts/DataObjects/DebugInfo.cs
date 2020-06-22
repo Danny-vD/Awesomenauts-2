@@ -5,6 +5,9 @@ namespace DataObjects {
 	public class DebugInfo
 	{
 		public bool DebugServerQuit;
+		public bool AllowUnrestrictedDecks;
+		public bool NoShuffleDecks;
+
 
 		public DebugInfo(bool debugServerQuit = false)
 		{

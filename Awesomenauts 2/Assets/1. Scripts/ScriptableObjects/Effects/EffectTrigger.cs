@@ -1,4 +1,8 @@
+using System;
+
 namespace Assets._1._Scripts.ScriptableObjects.Effects {
+
+	[Flags]
 	public enum EffectTrigger
 	{
 		None = 0,

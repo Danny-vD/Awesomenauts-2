@@ -17,8 +17,10 @@ namespace Player
 		public void TriggerEffects(EffectTrigger trigger, CardSocket containingSocket, CardSocket targetCardSocket,
 			Card c = null)
 		{
-			foreach (AEffect aEffect in Effects)
+			for (int i = Effects.Count - 1; i >= 0; i--)
 			{
+                if(i >= Effects.Count) continue;
+                AEffect aEffect = Effects[i];
 				if ((aEffect.Trigger & trigger) != 0)
 					aEffect.TriggerEffect(containingSocket == null ? c : containingSocket.DockedCard, containingSocket,
 						targetCardSocket);

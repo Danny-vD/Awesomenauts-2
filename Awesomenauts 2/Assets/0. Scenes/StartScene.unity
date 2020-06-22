@@ -460,8 +460,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667460365}
-  m_LocalRotation: {x: 0.21315989, y: 0.6743917, z: 0.21328396, w: -0.67399454}
-  m_LocalPosition: {x: 146.84499, y: -98.893234, z: -0.6660687}
+  m_LocalRotation: {x: -0.100869775, y: 0.8607164, z: 0.18778394, w: 0.46230924}
+  m_LocalPosition: {x: -21.950457, y: -15.31311, z: -7.600482}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -639,7 +639,7 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: AllEffects.Array.size
-      value: 16
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -765,6 +765,11 @@ PrefabInstance:
         type: 3}
       propertyPath: AvailableMaps.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[11].effects.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -1291,7 +1296,7 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[11].Statistics.StartStatistics.Array.data[0].value
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -1301,7 +1306,7 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[11].Statistics.StartStatistics.Array.data[1].value
-      value: Solar Krab Burger
+      value: Barrier Magazine
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -3724,7 +3729,31 @@ PrefabInstance:
         type: 3}
       propertyPath: CardEntries.Array.data[11].Sprites.Portrait
       value: 
-      objectReference: {fileID: 21300000, guid: d1faa7b5bf74aae418b4dbadb0d5b459,
+      objectReference: {fileID: 21300000, guid: ee98b685092419741ae364de4b7005cd,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: AllEffects.Array.data[16]
+      value: 
+      objectReference: {fileID: 11400000, guid: 636b6034e62c57d46b9161d73424e248,
+        type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: AllEffects.Array.data[17]
+      value: 
+      objectReference: {fileID: 11400000, guid: a96d7cf2176c0d24498321451e8ccc48,
+        type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[11].effects.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 636b6034e62c57d46b9161d73424e248,
+        type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: AvailableMaps.Array.data[0].Prefab
+      value: 
+      objectReference: {fileID: 509646945513241295, guid: e5e89093add4b9946b6302cb604e9bee,
         type: 3}
     - target: {fileID: 4467022757310397675, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -3797,7 +3826,11 @@ PrefabInstance:
       propertyPath: StartupArguments
       value: 'Master.Address.IP:localhost
 
-        Game.Mute:true'
+        Game.Mute:true
+
+        Game.DebugInfo.AllowUnrestrictedDecks:true
+
+        Game.DebugInfo.NoShuffleDecks:true'
       objectReference: {fileID: 0}
     - target: {fileID: 4467022757310397680, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}

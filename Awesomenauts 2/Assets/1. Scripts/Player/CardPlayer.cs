@@ -363,9 +363,9 @@ namespace Player
 			}
 		}
 
-		private void HandleReleasedCardFromBoard(NetworkIdentity draggedCardSocket, NetworkIdentity cardSocket)
+		private void HandleReleasedCardFromBoard(NetworkIdentity draggedCardSocket, NetworkIdentity targetCardSocket)
 		{
-			if (draggedCardSocket == null || cardSocket == null)
+			if (draggedCardSocket == null || targetCardSocket == null)
 			{
 				draggedCard = null;
 				dragging = false;
@@ -377,49 +377,49 @@ namespace Player
 				return;
 			}
 			CardSocket draggedSocket = draggedCardSocket.GetComponent<CardSocket>();
-			Card card = draggedSocket.DockedCard;
-			CardSocket s = cardSocket.GetComponent<CardSocket>();
-			if (card == null) return;
-			if (card.DragLogicFromBoard.CanTarget(this, s, card.AttachedCardSocket))
+			Card sourceCard = draggedSocket.DockedCard;
+			CardSocket targetSocket = targetCardSocket.GetComponent<CardSocket>();
+			if (sourceCard == null) return;
+			if (sourceCard.DragLogicFromBoard.CanTarget(this, targetSocket, sourceCard.AttachedCardSocket))
 			{
 				CardAction action =
-					card.DragLogicFromBoard.GetAction(this, s, card.AttachedCardSocket);
+					sourceCard.DragLogicFromBoard.GetAction(this, targetSocket, sourceCard.AttachedCardSocket);
 				if (action == CardAction.Attack)
 				{
-					Card c = s.DockedCard;
-					card.EffectManager.TriggerEffects(EffectTrigger.OnAttacking, card.AttachedCardSocket, s, card);
-					c.EffectManager.TriggerEffects(EffectTrigger.OnAttacked, s, card.AttachedCardSocket, c);
-					card.Attack(s.DockedCard);
-					card.EffectManager.TriggerEffects(EffectTrigger.AfterAttacking, card.AttachedCardSocket, s, card);
-					c.EffectManager.TriggerEffects(EffectTrigger.AfterAttacked, s, card.AttachedCardSocket, c);
+					Card targetCard = targetSocket.DockedCard;
+					sourceCard.EffectManager.TriggerEffects(EffectTrigger.OnAttacking, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
+					targetCard.EffectManager.TriggerEffects(EffectTrigger.OnAttacked, targetSocket, sourceCard.AttachedCardSocket, targetCard);
+					sourceCard.Attack(targetSocket.DockedCard);
+					sourceCard.EffectManager.TriggerEffects(EffectTrigger.AfterAttacking, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
+					targetCard.EffectManager.TriggerEffects(EffectTrigger.AfterAttacked, targetSocket, sourceCard.AttachedCardSocket, targetCard);
 				}
 				else if (action == CardAction.Move)
 				{
 					Debug.Log("MOVE");
-					card.EffectManager.TriggerEffects(EffectTrigger.OnMove, card.AttachedCardSocket, s, card);
+					sourceCard.EffectManager.TriggerEffects(EffectTrigger.OnMove, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
 
-					if (card.AttachedCardSocket != null)
+					if (sourceCard.AttachedCardSocket != null)
 					{
-						if (card.AttachedCardSocket.hasAuthority)
+						if (sourceCard.AttachedCardSocket.hasAuthority)
 						{
-							card.AttachedCardSocket.CmdUnDockCard();
+							sourceCard.AttachedCardSocket.CmdUnDockCard();
 						}
 						else
 						{
-							card.AttachedCardSocket.DockCard(null);
+							sourceCard.AttachedCardSocket.DockCard(null);
 						}
 					}
 
-					card.AttachedCardSocket?.CmdUnDockCard();
-					if (s.hasAuthority)
+					sourceCard.AttachedCardSocket?.CmdUnDockCard();
+					if (targetSocket.hasAuthority)
 					{
-						s.CmdDockCard(card.netIdentity);
+						targetSocket.CmdDockCard(sourceCard.netIdentity);
 					}
 					else
 					{
-						s.DockCard(card);
+						targetSocket.DockCard(sourceCard);
 					}
-					card.EffectManager.TriggerEffects(EffectTrigger.AfterMove, card.AttachedCardSocket, s, card);
+					sourceCard.EffectManager.TriggerEffects(EffectTrigger.AfterMove, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
 				}
 			}
 

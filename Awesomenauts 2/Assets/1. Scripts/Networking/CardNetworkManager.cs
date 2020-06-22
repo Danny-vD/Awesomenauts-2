@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 using Assets._1._Scripts.ScriptableObjects.Effects;
 using DataObjects;
@@ -13,6 +14,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using VDFramework.EventSystem;
+using VDFramework.Extensions;
 using Logger = MasterServer.Common.Logger;
 
 
@@ -119,7 +121,7 @@ namespace Networking
 			{
 				Stream s = File.OpenRead("./DeckConfig.xml");
 				XmlSerializer xs = new XmlSerializer(typeof(DeckConfig));
-				CardsInDeck = ((DeckConfig)xs.Deserialize(s)).CardIDs;
+				SetCardsInDeck(((DeckConfig)xs.Deserialize(s)).CardIDs);
 				s.Close();
 			}
 
@@ -173,7 +175,7 @@ namespace Networking
 			GameObject map = Instantiate(AvailableMaps[id].Prefab);
 			NetworkServer.Spawn(map);
 		}
-		
+
 		private void Update()
 		{
 			//if (initDelay > 0)
@@ -362,7 +364,8 @@ namespace Networking
 			//When adding a card you just remove or add the cards index to a list of int.
 			//Your Set Cards In Deck Array would just be the list.ToArray().
 
-			CardsInDeck = id; //Hack. You have to pass the int array with indices to this function instead of this one int.
+
+			CardsInDeck = !GameInitializer.Instance.GameData.DebugInfo.NoShuffleDecks ? id.Randomize().ToArray() : id;
 		}
 
 		public void ApplyEndPoint()
