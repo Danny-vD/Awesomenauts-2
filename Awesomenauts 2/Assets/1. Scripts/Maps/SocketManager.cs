@@ -167,5 +167,19 @@ namespace Maps
 				}
 			}
 		}
+
+		public CardSocket[] GetSocketsOnSide(SocketSide side)
+		{
+			List<CardSocket> ret = new List<CardSocket>();
+			foreach (KeyValuePair<int, CardTeamSocketData> cardTeamSocketData in SocketData)
+			{
+				foreach (CardSocket valueCardSocket in cardTeamSocketData.Value.CardSockets)
+				{
+					if ((side & valueCardSocket.SocketSide) == side && ret.All(x => valueCardSocket.netIdentity != x.netIdentity)) ret.Add(valueCardSocket);
+				}
+			}
+
+			return ret.ToArray();
+		}
 	}
 }
