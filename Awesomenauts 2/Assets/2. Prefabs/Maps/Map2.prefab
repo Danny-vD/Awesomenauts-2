@@ -898,6 +898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SocketSide: 9
   Prefab: {fileID: 3606115186347957009, guid: bc427d6327abe8d4791bad70c65ec81c, type: 3}
+  Sockets: []
 --- !u!1 &3876938646755974030
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,6 +956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SocketSide: 10
   Prefab: {fileID: 3606115186347957009, guid: bc427d6327abe8d4791bad70c65ec81c, type: 3}
+  Sockets: []
 --- !u!65 &7772705389186820158
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -982,6 +984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SocketSide: 6
   Prefab: {fileID: 3606115186347957009, guid: 78864c36753eea947a36ad637a07ca31, type: 3}
+  Sockets: []
 --- !u!1 &3876938646817113807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,6 +1049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SocketSide: 6
   Prefab: {fileID: 3606115186347957009, guid: 78864c36753eea947a36ad637a07ca31, type: 3}
+  Sockets: []
 --- !u!65 &5457848295893544138
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1073,6 +1077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SocketSide: 5
   Prefab: {fileID: 3606115186347957009, guid: 78864c36753eea947a36ad637a07ca31, type: 3}
+  Sockets: []
 --- !u!1 &3876938647262664562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,6 +1170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SocketSide: 9
   Prefab: {fileID: 3606115186347957009, guid: bc427d6327abe8d4791bad70c65ec81c, type: 3}
+  Sockets: []
 --- !u!65 &1150519075276167900
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1192,6 +1198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SocketSide: 5
   Prefab: {fileID: 3606115186347957009, guid: 78864c36753eea947a36ad637a07ca31, type: 3}
+  Sockets: []
 --- !u!65 &7981004998144951989
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1219,6 +1226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SocketSide: 5
   Prefab: {fileID: 3606115186347957009, guid: 78864c36753eea947a36ad637a07ca31, type: 3}
+  Sockets: []
 --- !u!65 &87724833657566708
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1246,6 +1254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SocketSide: 9
   Prefab: {fileID: 3606115186347957009, guid: bc427d6327abe8d4791bad70c65ec81c, type: 3}
+  Sockets: []
 --- !u!65 &8095361428039491324
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1273,6 +1282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SocketSide: 9
   Prefab: {fileID: 3606115186347957009, guid: bc427d6327abe8d4791bad70c65ec81c, type: 3}
+  Sockets: []
 --- !u!65 &245511579505595680
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1300,6 +1310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SocketSide: 6
   Prefab: {fileID: 3606115186347957009, guid: 78864c36753eea947a36ad637a07ca31, type: 3}
+  Sockets: []
 --- !u!1 &3876938647587426459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,6 +1369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SocketSide: 10
   Prefab: {fileID: 3606115186347957009, guid: bc427d6327abe8d4791bad70c65ec81c, type: 3}
+  Sockets: []
 --- !u!1 &3876938647661998805
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,6 +1428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SocketSide: 10
   Prefab: {fileID: 3606115186347957009, guid: bc427d6327abe8d4791bad70c65ec81c, type: 3}
+  Sockets: []
 --- !u!1 &3876938647801667302
 GameObject:
   m_ObjectHideFlags: 0
@@ -1473,6 +1486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SocketSide: 5
   Prefab: {fileID: 3606115186347957009, guid: 78864c36753eea947a36ad637a07ca31, type: 3}
+  Sockets: []
 --- !u!1 &3876938648004264967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,6 +1570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SocketSide: 6
   Prefab: {fileID: 3606115186347957009, guid: 78864c36753eea947a36ad637a07ca31, type: 3}
+  Sockets: []
 --- !u!1 &3876938648175858578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,6 +1630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SocketSide: 10
   Prefab: {fileID: 3606115186347957009, guid: bc427d6327abe8d4791bad70c65ec81c, type: 3}
+  Sockets: []
 --- !u!1 &3876938648296442137
 GameObject:
   m_ObjectHideFlags: 0
@@ -6840,7 +6856,7 @@ Transform:
   m_Children:
   - {fileID: 5110541310757904753}
   - {fileID: 5110541310278485571}
-  - {fileID: 5110541310421746774}
+  - {fileID: 5110541310421621976}
   - {fileID: 5110541310957507120}
   m_Father: {fileID: 5110541311589422371}
   m_RootOrder: 7
@@ -9847,7 +9863,7 @@ PrefabInstance:
     - {fileID: 11400002, guid: 843740dbe549a4a6ba9556d1b80001f5, type: 3}
     - {fileID: 11400000, guid: 843740dbe549a4a6ba9556d1b80001f5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 843740dbe549a4a6ba9556d1b80001f5, type: 3}
---- !u!4 &5110541310421746774 stripped
+--- !u!4 &5110541310421621976 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400006, guid: 843740dbe549a4a6ba9556d1b80001f5,
     type: 3}

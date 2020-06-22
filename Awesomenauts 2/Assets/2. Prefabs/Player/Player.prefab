@@ -447,11 +447,12 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   Anchor: {x: 0, y: 0, z: 0}
+  CameraTransform: {x: 0, y: 0, z: 0}
   MaxCardCount: 6
-  MaxCardRotation: 9.5
-  OffsetFromAnchor: 5
+  MaxCardRotation: 12
+  OffsetFromAnchor: 3.4
   Drag: 0.37
-  AnchorOffset: 5.7
+  AnchorOffset: 5.4
   DeltaYPerCard: -0.052
   DeltaYLocalPerCard: -0.039
   PlayerHandLayer:

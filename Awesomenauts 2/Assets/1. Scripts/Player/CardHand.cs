@@ -9,7 +9,7 @@ namespace Player {
 		public Vector3 Anchor;
 		private List<Card> CardsOnHand = new List<Card>();
 		private Card SelectedCard;
-
+		public Vector3 CameraTransform;
 
 		[Range(1, 10)]
 		public int MaxCardCount = 5;
@@ -59,7 +59,7 @@ namespace Player {
 			Vector3 newCardPos = cardTransform.position;
 			cardTransform.position = Vector3.Lerp(oldCardPos, newCardPos, Drag);
 
-			cardTransform.LookAt(Camera.main.transform);
+			cardTransform.LookAt(CameraTransform);
 
 			cardTransform.position += transform.up * deltaYLocal;
 		}
@@ -107,6 +107,12 @@ namespace Player {
 		public void TargetSetPosition(Vector3 HandAnchor)
 		{
 			Anchor = HandAnchor;
+		}
+
+		[TargetRpc]
+		public void TargetSetCameraPosition(Vector3 position)
+		{
+			CameraTransform = position;
 		}
 
 		public bool IsCardFromHand(Card c)

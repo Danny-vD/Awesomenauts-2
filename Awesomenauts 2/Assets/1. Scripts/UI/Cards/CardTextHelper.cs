@@ -1,3 +1,4 @@
+using System;
 using Player;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,29 +17,35 @@ namespace UI.Cards
 		// Start is called before the first frame update
 		private void Start()
 		{
-			RegisteredCard.Statistics.Register(CardPlayerStatType.HP, OnDefChanged, true);
-			RegisteredCard.Statistics.Register(CardPlayerStatType.Attack, OnAtkChanged, true);
-			RegisteredCard.Statistics.Register(CardPlayerStatType.Solar, OnSolarChange, true);
+			Register(RegisteredCard);
+		}
+
+		public void Register(Card c)
+		{
+			c.Statistics.Register(CardPlayerStatType.HP, OnDefChanged, true);
+			c.Statistics.Register(CardPlayerStatType.Attack, OnAtkChanged, true);
+			c.Statistics.Register(CardPlayerStatType.Solar, OnSolarChange, true);
 		}
 
 		private void OnSolarChange(object newvalue)
 		{
-			SolarText.text = newvalue.ToString();
+			SolarText.text = newvalue == null ? string.Empty : newvalue.ToString();
 		}
 
 		private void OnAtkChanged(object value)
 		{
-			AttackText.text = value.ToString();
+
+			AttackText.text = value == null ? string.Empty: value.ToString();
 		}
 
 		private void OnDefChanged(object value)
 		{
-			DefenseText.text = value.ToString();
+				DefenseText.text = value == null ? string.Empty : value.ToString();
 		}
 
 		private void OnDescriptionChanged(object value)
 		{
-			DescriptonText.text = value.ToString();
+			DescriptonText.text = value == null ? string.Empty : value.ToString();
 		}
 
 		// Update is called once per frame

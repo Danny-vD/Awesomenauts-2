@@ -3,6 +3,16 @@
   <CardIDs>
     <int>14</int>
     <int>2</int>
+    <int>23</int>
+    <int>25</int>
+    <int>24</int>
+    <int>22</int>
+    <int>21</int>
+    <int>20</int>
+    <int>19</int>
+    <int>18</int>
+    <int>17</int>
+    <int>16</int>
     <int>3</int>
     <int>4</int>
     <int>13</int>
@@ -11,6 +21,5 @@
     <int>8</int>
     <int>7</int>
     <int>10</int>
-    <int>23</int>
   </CardIDs>
 </DeckConfig>

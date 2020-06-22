@@ -6,6 +6,7 @@ using Events.Gameplay;
 using Maps;
 using Networking;
 using Mirror;
+using UI.Cards;
 using UnityEngine;
 using UnityEngine.UI;
 using VDFramework.EventSystem;
@@ -71,6 +72,10 @@ namespace Player
 			CardBorderRenderer.materials[0] = bi.BorderMaterial;
 			EffectManager = new EffectManager(CardNetworkManager.Instance.GetCardEffects(CardName.text));
 			CardDescription.text = EffectManager.GetEffectText();
+
+			CardTextHelper cth = GetComponentInChildren<CardTextHelper>();
+			cth.Register(this);
+
 			Statistics.Register(CardPlayerStatType.HP, OnHPChanged);
 			Statistics.Invalidate();
 			if (!Statistics.HasValue(CardPlayerStatType.Range)) Statistics.SetValue(CardPlayerStatType.Range, 1);
@@ -80,7 +85,8 @@ namespace Player
 
 		private void OnHPChanged(object newvalue)
 		{
-			if (newvalue == null || !(newvalue is int hp)) return;
+			if (newvalue == null || !(newvalue is int hp))
+				return;
 			if (hp <= 0)
 			{
 				EffectManager.TriggerEffects(EffectTrigger.OnDeath, AttachedCardSocket, null, this);
