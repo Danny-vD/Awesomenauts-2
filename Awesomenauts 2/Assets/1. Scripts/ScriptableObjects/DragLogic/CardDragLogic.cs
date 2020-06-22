@@ -23,6 +23,8 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 		private bool EmptySockets => (Target & SocketTarget.Empty) != 0;
 		private bool OccupiedSockets => (Target & SocketTarget.Occupied) != 0;
 
+		private bool NoSockets => Target == SocketTarget.Nothing;
+
 
 		public virtual CardAction GetAction(CardPlayer player, CardSocket socket, CardSocket socketOfDraggedCard)
 		{
@@ -44,6 +46,7 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 
 		public virtual bool CanTarget(CardPlayer player, CardSocket socket, CardSocket socketOfDraggedCard)
 		{
+			if (NoSockets) return false;
 			int range = socketOfDraggedCard != null && socketOfDraggedCard.HasCard
 				? socketOfDraggedCard.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.Range) : Range;
 			int xrange = socketOfDraggedCard != null && socketOfDraggedCard.HasCard
