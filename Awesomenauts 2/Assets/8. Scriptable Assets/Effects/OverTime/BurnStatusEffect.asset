@@ -15,5 +15,5 @@ MonoBehaviour:
   playSound: 1
   soundToPlay: 0
   Description: Gives the target Sick Burns.
-  Rounds: 2
+  Rounds: 5
   Effect: {fileID: 11400000, guid: 44238f4a4173fd44382fcb9ad58ba2bb, type: 2}

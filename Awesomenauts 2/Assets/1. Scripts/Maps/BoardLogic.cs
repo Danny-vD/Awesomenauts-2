@@ -109,7 +109,9 @@ namespace Maps
 				teamIDs[i] = i;
 			}
 
+
 			MapTransformInfo.Instance.SocketManager.AddPlayers(clientIDs, teamIDs);
+
 			RpcBroadcastStartGame(clientIDs, teamIDs);
 			ServerEndTurn();
 		}

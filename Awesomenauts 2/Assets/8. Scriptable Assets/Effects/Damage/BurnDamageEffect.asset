@@ -16,4 +16,4 @@ MonoBehaviour:
   soundToPlay: 0
   Description: 
   ETrigger: 0
-  Damage: 0
+  Damage: 1

@@ -81,8 +81,11 @@ namespace Maps
 
 			for (int i = 0; i < clientIDs.Length; i++)
 			{
-				IDMAP.Add(clientIDs[i], teamIDs[i]);
-				AddPlayer(clientIDs[i], teamIDs[i]);
+				if (!IDMAP.ContainsKey(clientIDs[i]))
+				{
+					IDMAP.Add(clientIDs[i], teamIDs[i]);
+					AddPlayer(clientIDs[i], teamIDs[i]);
+				}
 			}
 			foreach (KeyValuePair<int, List<CardSocket>> keyValuePair in socketMap)
 			{
