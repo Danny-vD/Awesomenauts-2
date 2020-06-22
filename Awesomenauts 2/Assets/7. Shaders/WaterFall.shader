@@ -28,6 +28,7 @@
     SubShader
     {
         Blend srcAlpha OneMinusSrcAlpha
+        ZTest Less
     
         Tags
         {
