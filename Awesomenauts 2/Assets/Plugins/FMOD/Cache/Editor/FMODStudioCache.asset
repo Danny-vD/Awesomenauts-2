@@ -107,7 +107,7 @@ MonoBehaviour:
   Path: event:/SFX/Cards/Death
   guid: 858ea931dd58434faccc2886d6e3e22f
   Banks:
-  - {fileID: 8704716452888540443}
+  - {fileID: -301548040861841133}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -259,7 +259,7 @@ MonoBehaviour:
   Path: event:/SFX/Cards/Draw
   guid: ae5467b51d376848b0ff99ab24857674
   Banks:
-  - {fileID: 8704716452888540443}
+  - {fileID: -301548040861841133}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -679,6 +679,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-5622592582734792352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../Fmod project/AwesomenautsCardGame/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637285235199857807
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-5550395742541816456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -749,7 +767,7 @@ MonoBehaviour:
   lastModified: 637274021467243734
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-5292530878241117845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -889,6 +907,23 @@ MonoBehaviour:
   Max: 2
   Default: 0
   Exists: 0
+--- !u!114 &-4667996792469922199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: LowHealth
+  m_EditorClassIdentifier: 
+  Name: LowHealth
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 1
 --- !u!114 &-4660798919760874534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1017,6 +1052,24 @@ MonoBehaviour:
   Max: 2
   Default: 1
   Exists: 0
+--- !u!114 &-4518960382670229659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: ../Fmod project/AwesomenautsCardGame/Build/Desktop/Music.bank
+  SubDir: 
+  lastModified: 637285235201097774
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-4493587275456769380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1173,7 +1226,7 @@ MonoBehaviour:
   Path: event:/SFX/Cards/MeleeAttack
   guid: fb8a4891abc5614a89cf48c66c601d61
   Banks:
-  - {fileID: 8704716452888540443}
+  - {fileID: -301548040861841133}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1361,7 +1414,7 @@ MonoBehaviour:
   Path: event:/SFX/Cards/RangedAttack
   guid: 01193cc6a8cb8345b73be294ab8029a2
   Banks:
-  - {fileID: 8704716452888540443}
+  - {fileID: -301548040861841133}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1633,7 +1686,7 @@ MonoBehaviour:
   lastModified: 637274021466894342
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-1756343840475804577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1850,7 +1903,7 @@ MonoBehaviour:
   Path: event:/SFX/Cards/Hit
   guid: c1fd9601df9d3940a7a2631aa96c5f0e
   Banks:
-  - {fileID: 8704716452888540443}
+  - {fileID: -301548040861841133}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -2131,6 +2184,24 @@ MonoBehaviour:
   Max: 10000
   Default: 0
   Exists: 1
+--- !u!114 &-301548040861841133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX.bank
+  m_EditorClassIdentifier: 
+  Path: ../Fmod project/AwesomenautsCardGame/Build/Desktop/SFX.bank
+  SubDir: 
+  lastModified: 637285235201192014
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-156146235809206508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2242,9 +2313,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 2346002851705601625}
-  - {fileID: -1890123470394138830}
-  - {fileID: -5444272123114088986}
-  - {fileID: 8704716452888540443}
+  - {fileID: -5622592582734792352}
+  - {fileID: -4518960382670229659}
+  - {fileID: -301548040861841133}
   EditorEvents:
   - {fileID: 8465530610990224212}
   - {fileID: 5732137078767682641}
@@ -2257,14 +2328,14 @@ MonoBehaviour:
   - {fileID: 8564949104952577150}
   - {fileID: -3862251320061228187}
   EditorParameters:
-  - {fileID: 1992362948443173657}
-  - {fileID: 3015599174135718170}
-  - {fileID: 3621340167549105134}
+  - {fileID: -4667996792469922199}
+  - {fileID: 1825992423524444987}
+  - {fileID: 914195994972226064}
   MasterBanks:
-  - {fileID: -1890123470394138830}
+  - {fileID: -5622592582734792352}
   StringsBanks:
   - {fileID: 2346002851705601625}
-  stringsBankWriteTime: 637274021466904411
+  stringsBankWriteTime: 637285235199882574
   cacheVersion: 3
 --- !u!114 &97679350199460098
 MonoBehaviour:
@@ -2517,6 +2588,23 @@ MonoBehaviour:
   Max: 2
   Default: 0
   Exists: 0
+--- !u!114 &914195994972226064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: IsInMenu
+  m_EditorClassIdentifier: 
+  Name: IsInMenu
+  Min: 0
+  Max: 2
+  Default: 1
+  Exists: 1
 --- !u!114 &921625548783949865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2685,6 +2773,23 @@ MonoBehaviour:
   Max: 2
   Default: 0
   Exists: 0
+--- !u!114 &1825992423524444987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: NexusDead
+  m_EditorClassIdentifier: 
+  Name: NexusDead
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 1
 --- !u!114 &1862920657273051037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2741,7 +2846,7 @@ MonoBehaviour:
   Min: 0
   Max: 2
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &2052743271898345641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2792,7 +2897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Fmod project/AwesomenautsCardGame/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637274021466904411
+  lastModified: 637285235199882574
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -2978,7 +3083,7 @@ MonoBehaviour:
   Min: 0
   Max: 2
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &3094695790689882156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3153,7 +3258,7 @@ MonoBehaviour:
   Min: 0
   Max: 2
   Default: 1
-  Exists: 1
+  Exists: 0
 --- !u!114 &3771909021640785824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3377,7 +3482,7 @@ MonoBehaviour:
   Path: event:/SFX/Cards/Place
   guid: 581144045b99504b99938ec019ec7993
   Banks:
-  - {fileID: 8704716452888540443}
+  - {fileID: -301548040861841133}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -3650,7 +3755,7 @@ MonoBehaviour:
   Path: event:/Ambient/Ambient
   guid: b94ea1dd85b75a44877a1e053334edc4
   Banks:
-  - {fileID: -5444272123114088986}
+  - {fileID: -4518960382670229659}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -3919,7 +4024,7 @@ MonoBehaviour:
   Path: event:/SFX/Nexus/Hit
   guid: 6d055d3f4e24484c85ef1227efaaba50
   Banks:
-  - {fileID: 8704716452888540443}
+  - {fileID: -301548040861841133}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -4199,7 +4304,7 @@ MonoBehaviour:
   Path: event:/Music/Music
   guid: 4045cadc1581cf4db7e6c5107c873c8b
   Banks:
-  - {fileID: -5444272123114088986}
+  - {fileID: -4518960382670229659}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -4222,7 +4327,7 @@ MonoBehaviour:
   Path: event:/SFX/Turret/Attack
   guid: ec8cc2f45d7af849a6a5dd8068894d2f
   Banks:
-  - {fileID: 8704716452888540443}
+  - {fileID: -301548040861841133}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -4264,7 +4369,7 @@ MonoBehaviour:
   lastModified: 637274021467283300
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &9014653830598041158
 MonoBehaviour:
   m_ObjectHideFlags: 0
