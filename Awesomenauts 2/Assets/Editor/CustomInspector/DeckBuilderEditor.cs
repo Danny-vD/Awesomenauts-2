@@ -58,10 +58,10 @@ namespace CustomInspector
 
 			cardTypeIcons = new[]
 			{
-				GetTexture("sv_icon_dot8_pix16_gizmo"),
-				GetTexture("sv_icon_dot6_pix16_gizmo"),
-				GetTexture("sv_icon_dot2_pix16_gizmo"),
-				GetTexture("sv_icon_dot1_pix16_gizmo"),
+				GetTexture("Deckbuilder/action_card_icon.png"),
+				GetTexture("Deckbuilder/melee_card_icon.png"),
+				GetTexture("Deckbuilder/ranged_card_icon.png"),
+				GetTexture("Deckbuilder/tank_card_icon.png"),
 			};
 
 			uiIcon = GetTexture("DeckBuilder/UIIcon.png");
