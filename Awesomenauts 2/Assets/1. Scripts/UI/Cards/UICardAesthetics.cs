@@ -65,7 +65,7 @@ namespace UI.Cards
 		{
 			UpdateAllText(GetCardDescription(entry),
 				stats.GetValue(CardPlayerStatType.Attack), stats.GetValue(CardPlayerStatType.HP),
-				stats.GetValue(CardPlayerStatType.CardName));
+				stats.GetValue(CardPlayerStatType.CardName), stats.GetValue(CardPlayerStatType.Solar));
 		}
 
 		private void SetAllText(Dictionary<Text, StringVariableWriter> texts)
