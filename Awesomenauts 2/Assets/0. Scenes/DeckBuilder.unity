@@ -4390,6 +4390,16 @@ MonoBehaviour:
   checkedSprite: {fileID: 21300000, guid: 1add5c5645344d040a0d318241082653, type: 3}
   buttonPrefab: {fileID: 9060812663933330378, guid: 9149593b24676514a921f659978e56bf,
     type: 3}
+  PrefixColorHex: A4B7BBFF
+  spritePerEnums:
+  - key: 8
+    value: {fileID: 21300000, guid: b31a79253670e1c4d94f4a201872e838, type: 3}
+  - key: 16
+    value: {fileID: 21300000, guid: cde72720d4a1c6140b08c8c3638913ca, type: 3}
+  - key: 32
+    value: {fileID: 21300000, guid: 49753c061a0b72447bf221ce2be190b5, type: 3}
+  - key: 64
+    value: {fileID: 21300000, guid: e7035836f16feed458ad93b9b790854a, type: 3}
 --- !u!114 &1613042081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4424,7 +4434,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 875, y: 50}
+  m_CellSize: {x: 875, y: 68}
   m_Spacing: {x: 20, y: 20}
   m_Constraint: 1
   m_ConstraintCount: 1
