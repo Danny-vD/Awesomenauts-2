@@ -1,4 +1,3 @@
-using Enums.Cards;
 using Events.Deckbuilder;
 using UI.Cards;
 using UnityEngine;
@@ -10,6 +9,9 @@ namespace DeckBuilder
 {
 	public class CardPreview : BetterMonoBehaviour
 	{
+		[SerializeField]
+		private Text cardName;
+		
 		private UICardAesthetics cardAesthetics;
 
 		private void Awake()
@@ -42,6 +44,7 @@ namespace DeckBuilder
 		
 		private void SetPreview(AbstractUICard card)
 		{
+			cardName.text = card.name;
 			cardAesthetics.Initialise(card.CardAesthetics);
 		}
 		
