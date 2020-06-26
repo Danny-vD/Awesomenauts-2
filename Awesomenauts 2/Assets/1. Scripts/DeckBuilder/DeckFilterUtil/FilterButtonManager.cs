@@ -24,7 +24,7 @@ namespace DeckBuilder.DeckFilterUtil
 		private string PrefixColorHex = "A4B7BBFF";
 
 		[SerializeField]
-		private List<SpritePerEnum> spritePerEnums;
+		private List<SpritePerEnum> spritePerEnums = null;
 
 		private readonly Dictionary<Button, bool> checkBoxStates = new Dictionary<Button, bool>();
 		

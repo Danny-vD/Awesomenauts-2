@@ -10,7 +10,7 @@ namespace DeckBuilder
 	public class CardPreview : BetterMonoBehaviour
 	{
 		[SerializeField]
-		private Text cardName;
+		private Text cardName = null;
 		
 		private UICardAesthetics cardAesthetics;
 

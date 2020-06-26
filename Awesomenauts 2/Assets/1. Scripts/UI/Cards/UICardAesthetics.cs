@@ -104,5 +104,17 @@ namespace UI.Cards
 
 			return stringBuilder.ToString();
 		}
+
+#if UNITY_EDITOR
+		[ContextMenu("Tutorial")]
+		private void WriteTutorial()
+		{
+			Debug.Log("{0} == Description\n" +
+					  "{1} == AttackValue\n" +
+					  "{2} == HP\n" +
+					  "{3} == Card name\n" +
+					  "{4} == Solar cost\n");
+		}
+#endif
 	}
 }
