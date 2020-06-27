@@ -57,7 +57,7 @@ namespace Utility {
 			Runner.RemoveAllCommands();
 			Runner.AddCommand(refCmd);
 
-			if (!Application.isEditor)
+			if (!Application.isEditor && !Debug.isDebugBuild)
 			{
 				Runner.RunCommands(Environment.GetCommandLineArgs());
 			}
