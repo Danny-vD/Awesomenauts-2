@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Maps
 {
-	public enum SocketType { TurretLeft, TurretRight, None }
+	public enum SocketType { TurretLeft, TurretRight, None, Awsomenaut }
 	public class CardSocket : NetworkBehaviour,IComparable<CardSocket>, IEquatable<CardSocket>
 	{
 

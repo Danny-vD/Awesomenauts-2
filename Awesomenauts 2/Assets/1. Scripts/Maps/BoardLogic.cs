@@ -114,6 +114,8 @@ namespace Maps
 
 
 			MapTransformInfo.Instance.SocketManager.AddPlayers(clientIDs, teamIDs);
+			Debug.Log("Player Count: "+ CardPlayer.ServerPlayers.Count);
+
 
 			for (int i = 0; i < CardPlayer.ServerPlayers.Count; i++)
 			{
@@ -121,7 +123,7 @@ namespace Maps
 
 				Card turretLeft = CardPlayer.ServerPlayers[i].CreateCard(CardNetworkManager.Instance.TeamPrefabs[i].TurretLeft);
 				Card turretRight = CardPlayer.ServerPlayers[i].CreateCard(CardNetworkManager.Instance.TeamPrefabs[i].TurretRight);
-
+				Card awsomenaut = CardPlayer.ServerPlayers[i].CreateCard(CardNetworkManager.Instance.TeamPrefabs[i].Awsomenaut);
 				//Find Ally Sockets for turrets
 				List<CardSocket> socks = new List<CardSocket>();
 				MapTransformInfo.Instance.SocketManager.CardSockets.Select(x => x.CardSockets).ToList()
@@ -130,9 +132,12 @@ namespace Maps
 												  x.SocketType == SocketType.TurretLeft);
 				CardSocket rtS = socks.First(x => MapTransformInfo.Instance.SocketManager.IsFromTeam(CardPlayer.ServerPlayers[i].ClientID, x.transform) &&
 												  x.SocketType == SocketType.TurretRight);
+				CardSocket awS = socks.First(x => MapTransformInfo.Instance.SocketManager.IsFromTeam(CardPlayer.ServerPlayers[i].ClientID, x.transform) &&
+				                                  x.SocketType == SocketType.Awsomenaut);
 				ltS.RpcDockCard(turretLeft.netIdentity);
 				rtS.RpcDockCard(turretRight.netIdentity);
-				//Set Turrets for all clients
+				awS.RpcDockCard(awsomenaut.netIdentity);
+				//Set Turrets/Awsomenauts for all clients
 			}
 
 			RpcBroadcastStartGame(clientIDs, teamIDs);
@@ -142,10 +147,10 @@ namespace Maps
 		private void RpcSetServerVersion(string version)
 		{
 
-			if (Version.Parse(version) < Version.Parse(Application.version))
-			{
+			//if (Version.Parse(version) < Version.Parse(Application.version))
+			//{
 
-			}
+			//}
 
 			DebugPanelInfo.instance.UpdateVersionText(version);
 		}
