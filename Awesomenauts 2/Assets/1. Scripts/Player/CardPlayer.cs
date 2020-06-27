@@ -19,6 +19,11 @@ namespace Player
 	{
 		public EntityStatistics PlayerStatistics;
 
+		private List<Card> MovedCards = new List<Card>();
+		public void ClearMovedCards() { MovedCards.Clear();}
+		public bool CanMoveCard(Card c) => !MovedCards.Contains(c);
+
+
 		public CardDragLogic DragFromHandLogic;
 		public CardDragLogic DragEffectFromHandLogic;
 
@@ -402,6 +407,7 @@ namespace Player
 				else if (action == CardAction.Move)
 				{
 					Debug.Log("MOVE");
+					MovedCards.Add(sourceCard);
 					sourceCard.EffectManager.TriggerEffects(EffectTrigger.OnMove, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
 
 					if (sourceCard.AttachedCardSocket != null)
@@ -426,6 +432,7 @@ namespace Player
 						targetSocket.DockCard(sourceCard);
 					}
 					sourceCard.EffectManager.TriggerEffects(EffectTrigger.AfterMove, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
+
 				}
 			}
 

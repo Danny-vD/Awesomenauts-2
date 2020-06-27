@@ -68,6 +68,7 @@ namespace Maps
 			}
 
 			CardPlayer current = CardPlayer.ServerPlayers[CurrentTurn];
+			current.ClearMovedCards();
 			CurrentTurnClient = current.ClientID;
 
 			Debug.Log("Next Turn Client ID: " + CurrentTurnClient + "\nTurnNumber: " + CurrentTurn);
@@ -167,6 +168,7 @@ namespace Maps
 			}
 
 			CardPlayer current = CardPlayer.ServerPlayers[CurrentTurn];
+			current.ClearMovedCards();
 			CurrentTurnClient = current.ClientID;
 
 			Debug.Log("Next Turn Client ID: " + CurrentTurnClient + "\nTurnNumber: " + CurrentTurn);

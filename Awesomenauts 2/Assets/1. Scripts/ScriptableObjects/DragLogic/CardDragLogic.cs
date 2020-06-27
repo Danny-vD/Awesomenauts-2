@@ -37,7 +37,7 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 					return CardAction.Attack;
 				}
 			}
-			else
+			else if(player.CanMoveCard(socketOfDraggedCard.DockedCard))
 			{
 				return CardAction.Move;
 			}
