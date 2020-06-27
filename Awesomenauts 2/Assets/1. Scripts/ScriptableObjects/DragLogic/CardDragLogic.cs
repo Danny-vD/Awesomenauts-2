@@ -57,7 +57,7 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 			if (!socket.HasCard && !EmptySockets && OccupiedSockets) return false;
 			if (OwnSockets && !EnemySockets && !NeutralSockets && player.ClientID != socket.ClientID) return false;
 			if (!OwnSockets && EnemySockets && !NeutralSockets && player.ClientID == socket.ClientID) return false;
-			if (!OwnSockets && !EnemySockets && NeutralSockets && socket.ClientID != -1) return false;
+			if (!NeutralSockets && (socket.SocketSide & SocketSide.Neutral) != 0) return false;
 			return true;
 		}
 
