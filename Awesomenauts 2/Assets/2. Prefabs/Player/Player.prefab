@@ -397,6 +397,8 @@ MonoBehaviour:
   DragFromHandLogic: {fileID: 11400000, guid: 233744c990c6e664f8fdd1f2997d9842, type: 2}
   DragEffectFromHandLogic: {fileID: 11400000, guid: c34e3657adfbbb94497ca5fecbf7a51b,
     type: 2}
+  DragNoTargetEffectFromHandLogic: {fileID: 11400000, guid: 7e62cb3d0e3bdc4468d2249c0aa96784,
+    type: 2}
   EnableInteractions: 0
   Hand: {fileID: 6473226967791899819}
   Deck: {fileID: 8843782206511802427}

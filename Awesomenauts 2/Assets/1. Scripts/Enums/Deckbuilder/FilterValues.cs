@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Enums.Deckbuilder
 {
@@ -13,5 +13,6 @@ namespace Enums.Deckbuilder
 		Melee = 16,
 		Ranged = 32,
 		Tank = 64,
+		NoTargetAction = 128,
 	}
 }

@@ -1,4 +1,4 @@
-﻿using Enums.Deckbuilder;
+using Enums.Deckbuilder;
 using JetBrains.Annotations;
 
 namespace Enums.Cards
@@ -16,5 +16,8 @@ namespace Enums.Cards
 
 		[UsedImplicitly]
 		Tank = FilterValues.Tank,
+
+		[UsedImplicitly]
+		ActionNoTarget = FilterValues.NoTargetAction,
 	}
 }

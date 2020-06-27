@@ -26,6 +26,7 @@ namespace Player
 
 		public CardDragLogic DragFromHandLogic;
 		public CardDragLogic DragEffectFromHandLogic;
+		public CardDragLogic DragNoTargetEffectFromHandLogic;
 
 		public static CardPlayer LocalPlayer;
 		public static List<CardPlayer> ServerPlayers = new List<CardPlayer>();
@@ -233,6 +234,7 @@ namespace Player
 		private void HandleDraggingCardFromHand()
 		{
 			CardDragLogic logic = draggedCard.CardType == CardType.Action ? DragEffectFromHandLogic : DragFromHandLogic;
+			logic = draggedCard.CardType == CardType.ActionNoTarget ? DragNoTargetEffectFromHandLogic : logic;
 			Vector3 dir = GetCardPosition(draggedCard, logic) - draggedCard.transform.position;
 			float m = Mathf.Clamp(dir.magnitude * DragIntertiaMultiplier, 0, MaxIntertia);
 
