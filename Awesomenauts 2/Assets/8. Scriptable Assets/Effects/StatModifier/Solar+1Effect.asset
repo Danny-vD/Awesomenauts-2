@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Solar+1Effect
   m_EditorClassIdentifier: 
   playSound: 1
+  AnimationName: 
+  AnimationLength: 0
   soundToPlay: 0
   Description: Adds one Solar.
   ETrigger: 128
   StatType: 0
   Amount: 1
   Multiply: 0
-  ApplyToPlayer: 1
+  EffectTarget: 1

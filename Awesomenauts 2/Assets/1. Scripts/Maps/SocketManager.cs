@@ -168,6 +168,20 @@ namespace Maps
 			}
 		}
 
+		public CardSocket[] GetCardSockets()
+		{
+			List<CardSocket> ret = new List<CardSocket>();
+			foreach (KeyValuePair<int, CardTeamSocketData> cardTeamSocketData in SocketData)
+			{
+				foreach (CardSocket valueCardSocket in cardTeamSocketData.Value.CardSockets)
+				{
+					ret.Add(valueCardSocket);
+				}
+			}
+
+			return ret.ToArray();
+		}
+
 		public CardSocket[] GetSocketsOnSide(SocketSide side)
 		{
 			List<CardSocket> ret = new List<CardSocket>();

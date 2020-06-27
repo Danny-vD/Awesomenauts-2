@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Med-I-Can-Heal
   m_EditorClassIdentifier: 
   playSound: 1
+  AnimationName: 
+  AnimationLength: 0
   soundToPlay: 0
   Description: Heals the target by 50% of its HP
   ETrigger: 128
   StatType: 1
   Amount: 1.5
   Multiply: 1
-  ApplyToPlayer: 0
+  EffectTarget: 1

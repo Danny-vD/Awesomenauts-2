@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: PsychoTrust
   m_EditorClassIdentifier: 
   playSound: 0
+  AnimationName: 
+  AnimationLength: 0
   soundToPlay: 4
   Description: +2 Range
   ETrigger: 128
   StatType: 7
   Amount: 2
   Multiply: 0
-  ApplyToPlayer: 0
+  EffectTarget: 1

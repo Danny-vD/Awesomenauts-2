@@ -9,16 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ef576c405263d84da144a041184bf64, type: 3}
-  m_Name: TwistedNightmare
+  m_Script: {fileID: 11500000, guid: 0f989233cfa1f4346b92210ce7ee4569, type: 3}
+  m_Name: UltimateBarrierMag
   m_EditorClassIdentifier: 
   playSound: 0
   AnimationName: 
   AnimationLength: 0
   soundToPlay: 4
-  Description: +2 Attack
-  ETrigger: 128
-  StatType: 2
-  Amount: 2
-  Multiply: 0
-  EffectTarget: 1
+  Description: Adds a Barrier Magazine to every Card on the specified lane.
+  Effect: {fileID: 11400000, guid: a96d7cf2176c0d24498321451e8ccc48, type: 2}
+  EffectTarget: 18
