@@ -33,6 +33,7 @@ namespace UI.DeckBuilder
 		private void Awake()
 		{
 			image = GetComponent<Image>();
+			GetComponent<Button>().onClick.AddListener(OnPointerClick);
 		}
 
 		private void OnEnable()
@@ -78,7 +79,7 @@ namespace UI.DeckBuilder
 
 		private void OnPointerClick()
 		{
-			if (canClick && Input.GetMouseButtonDown(0))
+			if (canClick)
 			{
 				GetComponentInParent<ButtonFunctionality>().LoadScene(1);
 			}
@@ -91,6 +92,7 @@ namespace UI.DeckBuilder
 				Sprite = NormalSprite;
 			}
 		}
+		
 
 		private void AddEventTriggers()
 		{
@@ -98,11 +100,6 @@ namespace UI.DeckBuilder
 				new EventTrigger.Entry
 					{eventID = EventTriggerType.PointerEnter};
 			pointerEnterEntry.callback.AddListener((data) => { OnPointerEnter(); });
-
-			EventTrigger.Entry pointerClickEntry =
-				new EventTrigger.Entry
-					{eventID = EventTriggerType.PointerClick};
-			pointerEnterEntry.callback.AddListener((data) => { OnPointerClick(); });
 
 			EventTrigger.Entry pointerExitEntry =
 				new EventTrigger.Entry
@@ -113,7 +110,6 @@ namespace UI.DeckBuilder
 				gameObject.EnsureComponent<EventTrigger>();
 
 			trigger.triggers.Add(pointerEnterEntry);
-			trigger.triggers.Add(pointerClickEntry);
 			trigger.triggers.Add(pointerExitEntry);
 		}
 	}

@@ -21,6 +21,7 @@ namespace DeckBuilder.DeckFilterUtil
 		private GameObject buttonPrefab = null;
 
 		[SerializeField]
+		[Tooltip("What color should \"Show\" prefix have?")]
 		private string PrefixColorHex = "A4B7BBFF";
 
 		[SerializeField]
