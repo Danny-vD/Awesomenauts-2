@@ -28,16 +28,18 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 
 		public virtual CardAction GetAction(CardPlayer player, CardSocket socket, CardSocket socketOfDraggedCard)
 		{
-			if (!CanTarget(player, socket, socketOfDraggedCard))
+			if (socket.SocketType == SocketType.None && !CanTarget(player, socket, socketOfDraggedCard))
+			{
 				return CardAction.None; //Failsave
-			if (socket.HasCard)
+			}
+			if (socket.HasCard && socket.SocketType != SocketType.None)
 			{
 				if (socket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.TeamID) != player.ClientID)
 				{
 					return CardAction.Attack;
 				}
 			}
-			else if(player.CanMoveCard(socketOfDraggedCard.DockedCard))
+			else if (player.CanMoveCard(socketOfDraggedCard.DockedCard))
 			{
 				return CardAction.Move;
 			}
