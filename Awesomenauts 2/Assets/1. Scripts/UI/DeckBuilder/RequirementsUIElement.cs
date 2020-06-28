@@ -56,7 +56,7 @@ namespace UI.DeckBuilder
 		
 		private void UpdateText()
 		{
-			if (text)
+			if (text && minMaxWriter != null)
 			{
 				text.text = minMaxWriter.UpdateText(currentAmount, minAmount, maxAmount);
 			}

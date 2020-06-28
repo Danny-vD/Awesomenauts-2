@@ -4,7 +4,6 @@ using System.Linq;
 using Enums.Cards;
 using Structs.Deckbuilder;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Utility;
 
 namespace UI.DeckBuilder
