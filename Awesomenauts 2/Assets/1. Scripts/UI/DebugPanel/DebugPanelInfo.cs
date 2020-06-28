@@ -9,18 +9,15 @@ namespace UI.DebugPanel
 	{
 
 		public Button EndTurnButton;
-		public Text SolarText;
+		public SolarDisplay SolarDisp;
 		private bool init;
 		public Text VersionText;
 		public static DebugPanelInfo instance;
 
 		void Awake()
 		{
-
+		
 			instance = this;
-
-
-
 		}
 
 		private void Update()
@@ -46,7 +43,7 @@ namespace UI.DebugPanel
 
 		private void OnUpdateSolar(object obj)
 		{
-			SolarText.text = $"Solar: {(int)obj}/10";
+			SolarDisp.SetSolar((int)obj);
 		}
 
 		//Connected to the UI in the Scene. Used to Disconnect from an active session.
