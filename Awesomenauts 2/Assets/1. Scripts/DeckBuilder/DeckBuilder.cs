@@ -248,8 +248,12 @@ namespace DeckBuilder
 
 			if (deckRequirements.IsValid())
 			{
+				EventManager.Instance.RaiseEvent(new ValidDeckEvent(true));
 				EventManager.Instance.RaiseEvent(new SaveDeckEvent(ConvertDeckToIDlist()));
+				return;
 			}
+			
+			EventManager.Instance.RaiseEvent(new ValidDeckEvent(false));
 		}
 	}
 }

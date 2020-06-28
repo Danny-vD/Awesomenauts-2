@@ -89,7 +89,6 @@ namespace Deckbuilder
 		{
 			if (GameInitializer.Instance.GameData.DebugInfo.AllowUnrestrictedDecks) return true;
 
-
 			// Foreach CardType: get the minMax, check if our cached Amount is within that range, if not: return false
 			if ((from pair in amountPerType
 				let minMax = minMaxPerCardTypes.First(item => item.Key == pair.Key).Value

@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets._1._Scripts.ScriptableObjects.Effects;
 using Enums.Cards;
 using Networking;
 using Player;
 using Structs.Deckbuilder;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using VDFramework;
 using VDFramework.Utility;
@@ -68,11 +65,14 @@ namespace UI.Cards
 		{
 			UpdateAllText(GetCardDescription(entry),
 				stats.GetValue(CardPlayerStatType.Attack), stats.GetValue(CardPlayerStatType.HP),
-				stats.GetValue(CardPlayerStatType.CardName));
+				stats.GetValue(CardPlayerStatType.CardName), stats.GetValue(CardPlayerStatType.Solar));
 		}
 
 		private void SetAllText(Dictionary<Text, StringVariableWriter> texts)
 		{
+			// This is actually pretty bad because it relies on:
+			// a. it having the same or less amount of elements as the parameter
+			// b. it having the same order of elements as the parameter
 			for (int i = 0; i < writerPerString.Count; i++)
 			{
 				writerPerString.ElementAt(i).Key.text = texts.ElementAt(i).Key.text;
@@ -104,5 +104,17 @@ namespace UI.Cards
 
 			return stringBuilder.ToString();
 		}
+
+#if UNITY_EDITOR
+		[ContextMenu("Tutorial")]
+		private void WriteTutorial()
+		{
+			Debug.Log("{0} == Description\n" +
+					  "{1} == AttackValue\n" +
+					  "{2} == HP\n" +
+					  "{3} == Card name\n" +
+					  "{4} == Solar cost\n");
+		}
+#endif
 	}
 }
