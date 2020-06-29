@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e8ef22b45a8f640a3556fbbcd02247, type: 3}
   m_Name: AllBuilds
   m_EditorClassIdentifier: 
+  ForceReleaseBuild: 1
   Options:
   - {fileID: 11400000, guid: 4bdaf295f051ffa46baa8adbb5905620, type: 2}
   - {fileID: 11400000, guid: a32513b70f5ea32408d117817b18feb9, type: 2}
