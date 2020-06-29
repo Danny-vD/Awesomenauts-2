@@ -90,12 +90,12 @@ namespace Deckbuilder
 			if (GameInitializer.Instance.GameData.DebugInfo.AllowUnrestrictedDecks) return true;
 
 			// Foreach CardType: get the minMax, check if our cached Amount is within that range, if not: return false
-			if ((from pair in amountPerType
-				let minMax = minMaxPerCardTypes.First(item => item.Key == pair.Key).Value
-				where pair.Value < minMax.x || pair.Value > minMax.y
-				select pair).Any())
+			foreach (KeyValuePair<CardType, int> pair in amountPerType)
 			{
-				return false;
+				IEnumerable<MinMaxPerCardType> entries = minMaxPerCardTypes.Where(item => item.Key == pair.Key);
+				if (!entries.Any()) break;
+				Vector2Int minMax = entries.First(item => item.Key == pair.Key).Value;
+				if (pair.Value < minMax.x || pair.Value > minMax.y) return false;
 			}
 
 			if (GetHighestCardAmount() > maxSameCard)

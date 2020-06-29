@@ -10,6 +10,7 @@ using Player;
 using Utility;
 using Mirror;
 using Mirror.Websocket;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -22,6 +23,10 @@ namespace Networking
 {
 	public class CardNetworkManager : NetworkManager
 	{
+
+		private string DeckPath => Application.platform == RuntimePlatform.Android
+			? Application.persistentDataPath + "/DeckConfig.xml" : "./DeckConfig.xml";
+
 
 		public class ExitFlag
 		{
@@ -74,7 +79,7 @@ namespace Networking
 		public CardEntry[] CardEntries;
 		public int[] CardsInDeck { get; private set; } = new int[0];
 
-		
+
 
 		public TeamPrefabObject[] TeamPrefabs;
 
@@ -121,21 +126,28 @@ namespace Networking
 
 		public override void Awake()
 		{
-			if (File.Exists("./DeckConfig.xml"))
+			if (File.Exists(DeckPath))
 			{
-				Stream s = File.OpenRead("./DeckConfig.xml");
+				Stream s = File.OpenRead(DeckPath);
 				XmlSerializer xs = new XmlSerializer(typeof(DeckConfig));
 				SetCardsInDeck(((DeckConfig)xs.Deserialize(s)).CardIDs);
 				s.Close();
+				ShowDataPathScript.Write("Loaded: " + CardsInDeck.Length + " Entries");
 			}
 
 			Application.quitting += Application_quitting;
 
 			EventManager.Instance.AddListener<SaveDeckEvent>(SaveDeckEventHandler);
+			EventManager.Instance.AddListener<ValidDeckEvent>(OnValidDeckEvent);
 			if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.Null) IsServer = true;
 			Logger.DefaultLogger = Debug.Log;
 			base.Awake();
 
+		}
+
+		private void OnValidDeckEvent(ValidDeckEvent obj)
+		{
+			ShowDataPathScript.Write("Deck Valid: " + obj.IsValid);
 		}
 
 		public struct DeckConfig
@@ -146,7 +158,8 @@ namespace Networking
 
 		private void Application_quitting()
 		{
-			Stream s = File.Create("./DeckConfig.xml");
+			ShowDataPathScript.Write("Saved: " + CardsInDeck.Length + " Entries");
+			Stream s = File.Create(DeckPath);
 			XmlSerializer xs = new XmlSerializer(typeof(DeckConfig));
 			xs.Serialize(s, new DeckConfig() { CardIDs = CardsInDeck });
 			s.Close();
@@ -154,7 +167,12 @@ namespace Networking
 
 		private void SaveDeckEventHandler(SaveDeckEvent obj)
 		{
+			ShowDataPathScript.Write("Saved: " + obj.CardIDs.Length + " Entries");
 			SetCardsInDeck(obj.CardIDs);
+			Stream s = File.Create(DeckPath);
+			XmlSerializer xs = new XmlSerializer(typeof(DeckConfig));
+			xs.Serialize(s, new DeckConfig() { CardIDs = CardsInDeck });
+			s.Close();
 		}
 
 		public override void Start()
@@ -171,6 +189,7 @@ namespace Networking
 			base.Start();
 
 			TimeStamp = Time.realtimeSinceStartup;
+
 		}
 
 		public void LoadMap(int id)
