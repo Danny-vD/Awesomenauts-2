@@ -1942,6 +1942,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 691200410}
     m_Modifications:
+    - target: {fileID: 163241749335400592, guid: 4660b4cff7d0a664499107943e8a2151,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 163241749343656592, guid: 4660b4cff7d0a664499107943e8a2151,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 163241749746350779, guid: 4660b4cff7d0a664499107943e8a2151,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 163241749844699912, guid: 4660b4cff7d0a664499107943e8a2151,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 163241750236443028, guid: 4660b4cff7d0a664499107943e8a2151,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -1918,13 +1918,13 @@ PrefabInstance:
         type: 3}
       propertyPath: DefaultCardBorder.BorderMesh
       value: 
-      objectReference: {fileID: 8492113740190188953, guid: 58bc5ca03b8234c4c88fa0a5f542bf15,
+      objectReference: {fileID: 5189133843189685848, guid: 1432037e05d37bc428d7067e35835ac6,
         type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: DefaultCardBorder.BorderMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 061a9801dfc218646896e479a16cd839, type: 2}
+      objectReference: {fileID: 2100000, guid: b4161a07e6238b745ab833989e8e0c85, type: 2}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: DefaultCardPortrait

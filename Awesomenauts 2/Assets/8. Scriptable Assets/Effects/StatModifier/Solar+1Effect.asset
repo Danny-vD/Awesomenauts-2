@@ -21,4 +21,4 @@ MonoBehaviour:
   StatType: 0
   Amount: 1
   Multiply: 0
-  EffectTarget: 1
+  EffectTarget: 4
