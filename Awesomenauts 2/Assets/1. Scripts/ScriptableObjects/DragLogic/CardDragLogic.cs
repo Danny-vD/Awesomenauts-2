@@ -32,7 +32,7 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 			{
 				return CardAction.None; //Failsave
 			}
-			if (socket.HasCard && socket.SocketType != SocketType.None)
+			if (socket.HasCard)
 			{
 				if (socket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.TeamID) != player.ClientID)
 				{
