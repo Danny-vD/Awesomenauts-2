@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Assets._1._Scripts.ScriptableObjects.Effects;
@@ -7,6 +8,7 @@ using Utility;
 using Mirror;
 using UI.DebugPanel;
 using UnityEngine;
+using Random = UnityEngine.Random;
 using Version = System.Version;
 
 namespace Maps
@@ -21,6 +23,8 @@ namespace Maps
 
 		private float TimeStamp;
 		public static BoardLogic Logic;
+		public Action OnEndTurn;
+		public Action OnStartTurn;
 
 		// Start is called before the first frame update
 		private void Awake()
@@ -73,7 +77,17 @@ namespace Maps
 
 			Debug.Log("Next Turn Client ID: " + CurrentTurnClient + "\nTurnNumber: " + CurrentTurn);
 			if (CardPlayer.LocalPlayer != null)
+			{
 				CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == CurrentTurnClient;
+				if (CardPlayer.LocalPlayer.ClientID == CurrentTurnClient)
+				{
+					OnStartTurn?.Invoke();
+				}
+				else
+				{
+					OnEndTurn?.Invoke();
+				}
+			}
 			MapTransformInfo.Instance.SocketManager.SetTurn(CurrentTurnClient);
 
 			//current.DrawCard(1); //Next player is drawing one card
@@ -159,6 +173,8 @@ namespace Maps
 		[Server]
 		public void ServerEndTurn()
 		{
+			if (!GameStarted) return;
+
 			if (CurrentTurn != -1)
 			{
 				MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.AfterRoundEnd,
@@ -178,7 +194,17 @@ namespace Maps
 
 			Debug.Log("Next Turn Client ID: " + CurrentTurnClient + "\nTurnNumber: " + CurrentTurn);
 			if (CardPlayer.LocalPlayer != null)
+			{
 				CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == CurrentTurnClient;
+				if (CardPlayer.LocalPlayer.ClientID == CurrentTurnClient)
+				{
+					OnStartTurn?.Invoke();
+				}
+				else
+				{
+					OnEndTurn?.Invoke();
+				}
+			}
 			MapTransformInfo.Instance.SocketManager.SetTurn(CurrentTurnClient);
 
 			current.DrawCard(1); //Next player is drawing one card
