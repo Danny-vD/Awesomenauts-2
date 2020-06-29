@@ -75,7 +75,7 @@ namespace Maps
 			current.ClearMovedCards();
 			CurrentTurnClient = current.ClientID;
 
-			Debug.Log("Next Turn Client ID: " + CurrentTurnClient + "\nTurnNumber: " + CurrentTurn);
+			//Debug.Log("Next Turn Client ID: " + CurrentTurnClient + "\nTurnNumber: " + CurrentTurn);
 			if (CardPlayer.LocalPlayer != null)
 			{
 				CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == CurrentTurnClient;
@@ -100,7 +100,7 @@ namespace Maps
 
 			//CurrentTurn++;
 
-			//Debug.Log("Client Received End Turn\nOld: " + CurrentTurnClient + "\nNew: " + next);
+			////Debug.Log("Client Received End Turn\nOld: " + CurrentTurnClient + "\nNew: " + next);
 			//CurrentTurnClient = next;
 			//CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == next;
 
@@ -128,7 +128,7 @@ namespace Maps
 
 
 			MapTransformInfo.Instance.SocketManager.AddPlayers(clientIDs, teamIDs);
-			Debug.Log("Player Count: "+ CardPlayer.ServerPlayers.Count);
+			//Debug.Log("Player Count: "+ CardPlayer.ServerPlayers.Count);
 
 
 			for (int i = 0; i < CardPlayer.ServerPlayers.Count; i++)
@@ -192,7 +192,7 @@ namespace Maps
 			current.ClearMovedCards();
 			CurrentTurnClient = current.ClientID;
 
-			Debug.Log("Next Turn Client ID: " + CurrentTurnClient + "\nTurnNumber: " + CurrentTurn);
+			//Debug.Log("Next Turn Client ID: " + CurrentTurnClient + "\nTurnNumber: " + CurrentTurn);
 			if (CardPlayer.LocalPlayer != null)
 			{
 				CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == CurrentTurnClient;
@@ -222,7 +222,7 @@ namespace Maps
 			//CardPlayer current = CardPlayer.ServerPlayers[CurrentTurn];
 			//CurrentTurnClient = current.ClientID;
 
-			//Debug.Log("Next Turn Client ID: " + CurrentTurnClient + "\nTurnNumber: " + CurrentTurn);
+			////Debug.Log("Next Turn Client ID: " + CurrentTurnClient + "\nTurnNumber: " + CurrentTurn);
 			//if (CardPlayer.LocalPlayer != null)
 			//	CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == CurrentTurnClient;
 			//MapTransformInfo.Instance.SocketManager.SetTurn(CurrentTurnClient);

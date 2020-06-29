@@ -86,7 +86,7 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 
 			List<CardSocket> path = AStar.AStar.Compute(socketOfDraggedCard, socket);
 
-			Debug.Log("A* Distance:" + path.Count);
+			//Debug.Log("A* Distance:" + path.Count);
 
 
 

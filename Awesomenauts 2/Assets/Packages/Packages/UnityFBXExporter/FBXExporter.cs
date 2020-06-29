@@ -80,7 +80,7 @@ namespace UnityFBXExporter
 			}
 			else
 			{
-				Debug.Log("Model Importer is null and can't import");
+				//Debug.Log("Model Importer is null and can't import");
 			}
 
 			AssetDatabase.Refresh(); 
@@ -420,7 +420,7 @@ namespace UnityFBXExporter
 				{
 					everyMaterial.Add(meshRenderers[i].sharedMaterials[n]);
 				}
-                //Debug.Log(meshRenderers[i].gameObject.name);
+                ////Debug.Log(meshRenderers[i].gameObject.name);
 			}
 
             Material[] everyDistinctMaterial = everyMaterial.Distinct().ToArray<Material>();

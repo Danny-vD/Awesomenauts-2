@@ -106,21 +106,21 @@ namespace Player
 			}
 
 			ServerPlayers.Add(this);
-			//Debug.Log($"isLocalPlayer: {isLocalPlayer}\nIsClient: {isClient}\nIsServer: {isServer}");
+			////Debug.Log($"isLocalPlayer: {isLocalPlayer}\nIsClient: {isClient}\nIsServer: {isServer}");
 		}
 
 		[Command]
 		private void CmdRequestClientID()
 		{
 			ClientID = GetComponent<NetworkIdentity>().connectionToClient.connectionId;
-			Debug.Log("ServerSide Client ID Set to: " + ClientID);
+			//Debug.Log("ServerSide Client ID Set to: " + ClientID);
 			TargetSetClientID(GetComponent<NetworkIdentity>().connectionToClient, ClientID);
 		}
 
 		[Command]
 		private void CmdSetReady()
 		{
-			Debug.Log("Client is ready.");
+			//Debug.Log("Client is ready.");
 			IsReady = true;
 		}
 
@@ -128,7 +128,7 @@ namespace Player
 		private void TargetSetClientID(NetworkConnection conn, int clientID)
 		{
 			ClientID = clientID;
-			Debug.Log("Client ID Set to: " + ClientID);
+			//Debug.Log("Client ID Set to: " + ClientID);
 
 			CmdSetReady();
 			IsReady = true;
@@ -164,12 +164,12 @@ namespace Player
 			int cardsToDraw = Mathf.Min(Hand.CardSlotsFree, amount);
 			if (cardsToDraw != amount)
 			{
-				Debug.Log("Adding To many cards to the hand, the maximum is: " + Hand.MaxCardCount);
+				//Debug.Log("Adding To many cards to the hand, the maximum is: " + Hand.MaxCardCount);
 			}
 
 
-			Debug.Log("Adding " + cardsToDraw + " cards to the hand of client: " +
-					  netIdentity.connectionToClient.connectionId);
+			//Debug.Log("Adding " + cardsToDraw + " cards to the hand of client: " +
+					  //netIdentity.connectionToClient.connectionId);
 
 			for (int i = 0; i < cardsToDraw; i++)
 			{
@@ -197,8 +197,8 @@ namespace Player
 			c.Statistics.SetValue(CardPlayerStatType.TeamID, ClientID); //Set Team ID, used to find out to whom the card belongs.
 			c.Statistics.SetValue(CardPlayerStatType.CardType, e.CardType); //Set Team ID, used to find out to whom the card belongs.
 			byte[] networkData = e.StatisticsToNetworkableArray();
-			Debug.Log("Sending Stats");
-			Debug.Log("Card Type: " + c.Statistics.GetValue(CardPlayerStatType.CardType));
+			//Debug.Log("Sending Stats");
+			//Debug.Log("Card Type: " + c.Statistics.GetValue(CardPlayerStatType.CardType));
 			c.RpcSendStats(networkData, e.effects.Select(x => CardNetworkManager.Instance.AllEffects.IndexOf(x)).ToArray());
 			return c;
 		}
@@ -206,7 +206,7 @@ namespace Player
 		[Client]
 		public void EndTurn()
 		{
-			Debug.Log("Trying to end Turn as Client: " + ClientID);
+			//Debug.Log("Trying to end Turn as Client: " + ClientID);
 			CmdEndTurn(ClientID);
 		}
 
@@ -230,7 +230,7 @@ namespace Player
 		[Command]
 		private void CmdRemoveFromHand(NetworkIdentity id)
 		{
-			Debug.Log("Card NULL: " + (id.GetComponent<Card>() == null));
+			//Debug.Log("Card NULL: " + (id.GetComponent<Card>() == null));
 
 			if (!CardNetworkManager.Instance.IsHost
 			) //To avoid reducing solar twice(on client side and host side when a client is hosting)
@@ -281,7 +281,7 @@ namespace Player
 				CmdPlaceCard(draggedCard.netIdentity, SnappedSocket.netIdentity);
 
 			}
-			Debug.Log("Released Card");
+			//Debug.Log("Released Card");
 
 		}
 
@@ -371,7 +371,7 @@ namespace Player
 
 			dragging = true;
 			draggedCard = c;
-			Debug.Log("Clicked On Card");
+			//Debug.Log("Clicked On Card");
 		}
 
 		#endregion
@@ -424,7 +424,7 @@ namespace Player
 				}
 				else if (action == CardAction.Move)
 				{
-					Debug.Log("MOVE");
+					//Debug.Log("MOVE");
 					MovedCards.Add(sourceCard);
 					sourceCard.EffectManager.TriggerEffects(EffectTrigger.OnMove, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
 
@@ -630,7 +630,7 @@ namespace Player
 		private Vector3 GetMousePositionOnDragLayer()
 		{
 			Ray r = Camera.ScreenPointToRay(Input.mousePosition);
-			Debug.Log("DragLayer: " + LayerMask.LayerToName(UnityTrashWorkaround(CardDragLayer)));
+			//Debug.Log("DragLayer: " + LayerMask.LayerToName(UnityTrashWorkaround(CardDragLayer)));
 			if (Physics.Raycast(r, out RaycastHit info, float.MaxValue, CardDragLayer))
 			{
 				return info.point;

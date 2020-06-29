@@ -194,7 +194,7 @@ namespace Networking
 
 		public void LoadMap(int id)
 		{
-			Debug.Log("Loading Map: " + id);
+			//Debug.Log("Loading Map: " + id);
 			GameObject map = Instantiate(AvailableMaps[id].Prefab);
 			NetworkServer.Spawn(map);
 		}
@@ -222,7 +222,7 @@ namespace Networking
 			{
 				if (SceneManager.GetActiveScene().name == "MenuScene")
 				{
-					Debug.Log("Starting Server...");
+					//Debug.Log("Starting Server...");
 					StartServer();
 				}
 				return;
@@ -313,14 +313,14 @@ namespace Networking
 		public override void OnClientDisconnect(NetworkConnection conn)
 		{
 			//GameInitializer.Master.SetConnectionSuccess(); //Only needs to be called if MasterServer API is in ReconnectLoop.
-			Debug.Log("Disconnected From Server");
+			//Debug.Log("Disconnected From Server");
 			CleanUp();
 			base.OnClientDisconnect(conn);
 		}
 
 		public override void OnServerDisconnect(NetworkConnection conn)
 		{
-			Debug.Log("Client Disconnected. Remaining: " + numPlayers);
+			//Debug.Log("Client Disconnected. Remaining: " + numPlayers);
 			if (numPlayers == 1 && !IsStopping)
 				Stop();
 			base.OnServerDisconnect(conn);
@@ -337,14 +337,14 @@ namespace Networking
 
 		public override void OnStopServer()
 		{
-			Debug.Log("Server Stopped.");
+			//Debug.Log("Server Stopped.");
 			CleanUp();
 			base.OnStopServer();
 		}
 
 		public override void OnStartHost()
 		{
-			Debug.Log("Is Host");
+			//Debug.Log("Is Host");
 			IsHost = true;
 			base.OnStartHost();
 
@@ -361,7 +361,7 @@ namespace Networking
 		{
 			StartNetwork();
 			IsServer = true;
-			Debug.Log("Is Server");
+			//Debug.Log("Is Server");
 			base.OnStartServer();
 		}
 
@@ -369,7 +369,7 @@ namespace Networking
 
 		public override void OnServerReady(NetworkConnection conn)
 		{
-			Debug.Log("Client Ready: " + conn.connectionId);
+			//Debug.Log("Client Ready: " + conn.connectionId);
 			base.OnServerReady(conn);
 
 		}
@@ -401,7 +401,7 @@ namespace Networking
 		{
 			if (CurrentEndPoint == null || CurrentEndPoint.Port <= 0 || CurrentEndPoint.Port >= ushort.MaxValue) return;
 
-			Debug.Log("New End Point: " + CurrentEndPoint);
+			//Debug.Log("New End Point: " + CurrentEndPoint);
 
 			networkAddress = CurrentEndPoint.IP;
 			(transport as WebsocketTransport).port = CurrentEndPoint.Port;
@@ -429,7 +429,7 @@ namespace Networking
 
 		private void CleanUp()
 		{
-			Debug.Log("Cleaning Up...");
+			//Debug.Log("Cleaning Up...");
 			CardPlayer.LocalPlayer = null;
 			CardPlayer.ServerPlayers.Clear();
 			BoardLogic.Logic = null;

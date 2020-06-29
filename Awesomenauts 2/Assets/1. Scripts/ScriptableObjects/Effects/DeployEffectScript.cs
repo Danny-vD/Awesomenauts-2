@@ -60,7 +60,7 @@ public class DeployEffectScript : AEffect
 			throw new Exception("No effect Target Specified in object: " + name);
 		}
 
-		Debug.Log("Deploying Effect: " + Effect.name + " on " + cards.Length + " Cards.");
+		//Debug.Log("Deploying Effect: " + Effect.name + " on " + cards.Length + " Cards.");
 		foreach (Card card in cards)
 		{
 			if (card.EffectManager.Effects.Contains(this)) continue;
