@@ -97,7 +97,9 @@ namespace UI.DeckBuilder
 
 		private IEnumerable<RequirementsUIElement> GetUIElements(CardType type)
 		{
-			return uiElements.First(pair => pair.Key == type).Value;
+			IEnumerable<RequirementsUIElement> collection = uiElements.FirstOrDefault(pair => pair.Key == type).Value;
+
+			return collection ?? new RequirementsUIElement[0];
 		}
 
 		private Vector2Int GetRestrictions(CardType type)

@@ -196,7 +196,7 @@ MonoBehaviour:
     isMuted: 0
   - key: 2
     value: 1
-    isMuted: 1
+    isMuted: 0
   - key: 3
     value: 1
     isMuted: 0
