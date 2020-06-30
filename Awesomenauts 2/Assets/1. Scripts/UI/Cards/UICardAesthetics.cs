@@ -109,11 +109,11 @@ namespace UI.Cards
 		[ContextMenu("Tutorial")]
 		private void WriteTutorial()
 		{
-			//Debug.Log("{0} == Description\n" +
-					  //"{1} == AttackValue\n" +
-					  //"{2} == HP\n" +
-					  //"{3} == Card name\n" +
-					  //"{4} == Solar cost\n");
+			Debug.Log("{0} == Description\n" +
+					  "{1} == AttackValue\n" +
+					  "{2} == HP\n" +
+					  "{3} == Card name\n" +
+					  "{4} == Solar cost\n");
 		}
 #endif
 	}
