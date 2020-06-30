@@ -1,9 +1,0 @@
-diff a/Awesomenauts 2/Assets/1. Scripts/Player/CardPlayerStatType.cs b/Awesomenauts 2/Assets/1. Scripts/Player/CardPlayerStatType.cs	(rejected hunks)
-@@ -6,7 +6,6 @@
- 		Attack,
- 		TeamID,
- 		CardName,
--		Description,
- 		CardType,
- 		Range,
-         CrossLaneRange,
