@@ -98,7 +98,7 @@ namespace UnityFBXExporter
 				// TODO: Figure out if this property can be written to the FBX file
 	//			if(mat.HasProperty("_MetallicGlossMap"))
 	//			{
-	//				Debug.Log("has metallic gloss map");
+	//				//Debug.Log("has metallic gloss map");
 	//				Color color = mat.GetColor("_Color");
 	//				tempObjectSb.AppendFormat("\t\t\tP: \"Specular\", \"Vector3D\", \"Vector\", \"\",{0},{1},{2}", color.r, color.g, color.r);
 	//				tempObjectSb.AppendLine();

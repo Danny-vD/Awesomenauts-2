@@ -60,7 +60,7 @@ namespace Player
 			ApplyStatistics(data);
 			foreach (int effect in effects)
 			{
-				Debug.Log("Adding effect: " + effect);
+				//Debug.Log("Adding effect: " + effect);
 				EffectManager.Effects = new System.Collections.Generic.List<AEffect>();
 				EffectManager.Effects.Add(CardNetworkManager.Instance.AllEffects[effect]);
 			}
@@ -68,7 +68,7 @@ namespace Player
 
 		private void ApplyStatistics(byte[] data)
 		{
-			Debug.Log("Received Stats");
+			//Debug.Log("Received Stats");
 			Statistics = CardEntry.FromNetwork(data);
 			StatisticsValid = true;
 			CardName.text = Statistics.GetValue<string>(CardPlayerStatType.CardName) ?? "";
@@ -122,7 +122,7 @@ namespace Player
 		/// <param name="covered"></param>
 		public void SetCoverState(bool covered)
 		{
-			//Debug.Log("Enable Cover Up Renderer: " + covered);
+			////Debug.Log("Enable Cover Up Renderer: " + covered);
 			CoverUpRenderer.enabled = covered;
 		}
 
@@ -142,7 +142,7 @@ namespace Player
 
 		public void Attack(Card other)
 		{
-			Debug.Log("ATTACK");
+			//Debug.Log("ATTACK");
 
 			int hpOwn = Statistics.GetValue<int>(CardPlayerStatType.HP);
 			int atkOwn = Statistics.GetValue<int>(CardPlayerStatType.Attack);

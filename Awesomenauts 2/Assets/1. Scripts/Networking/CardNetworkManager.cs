@@ -10,6 +10,7 @@ using Player;
 using Utility;
 using Mirror;
 using Mirror.Websocket;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -22,6 +23,10 @@ namespace Networking
 {
 	public class CardNetworkManager : NetworkManager
 	{
+
+		private string DeckPath => Application.platform == RuntimePlatform.Android
+			? Application.persistentDataPath + "/DeckConfig.xml" : "./DeckConfig.xml";
+
 
 		public class ExitFlag
 		{
@@ -74,7 +79,7 @@ namespace Networking
 		public CardEntry[] CardEntries;
 		public int[] CardsInDeck { get; private set; } = new int[0];
 
-		
+
 
 		public TeamPrefabObject[] TeamPrefabs;
 
@@ -121,21 +126,28 @@ namespace Networking
 
 		public override void Awake()
 		{
-			if (File.Exists("./DeckConfig.xml"))
+			if (File.Exists(DeckPath))
 			{
-				Stream s = File.OpenRead("./DeckConfig.xml");
+				Stream s = File.OpenRead(DeckPath);
 				XmlSerializer xs = new XmlSerializer(typeof(DeckConfig));
 				SetCardsInDeck(((DeckConfig)xs.Deserialize(s)).CardIDs);
 				s.Close();
+				ShowDataPathScript.Write("Loaded: " + CardsInDeck.Length + " Entries");
 			}
 
 			Application.quitting += Application_quitting;
 
 			EventManager.Instance.AddListener<SaveDeckEvent>(SaveDeckEventHandler);
+			EventManager.Instance.AddListener<ValidDeckEvent>(OnValidDeckEvent);
 			if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.Null) IsServer = true;
 			Logger.DefaultLogger = Debug.Log;
 			base.Awake();
 
+		}
+
+		private void OnValidDeckEvent(ValidDeckEvent obj)
+		{
+			ShowDataPathScript.Write("Deck Valid: " + obj.IsValid);
 		}
 
 		public struct DeckConfig
@@ -146,7 +158,8 @@ namespace Networking
 
 		private void Application_quitting()
 		{
-			Stream s = File.Create("./DeckConfig.xml");
+			ShowDataPathScript.Write("Saved: " + CardsInDeck.Length + " Entries");
+			Stream s = File.Create(DeckPath);
 			XmlSerializer xs = new XmlSerializer(typeof(DeckConfig));
 			xs.Serialize(s, new DeckConfig() { CardIDs = CardsInDeck });
 			s.Close();
@@ -154,7 +167,12 @@ namespace Networking
 
 		private void SaveDeckEventHandler(SaveDeckEvent obj)
 		{
+			ShowDataPathScript.Write("Saved: " + obj.CardIDs.Length + " Entries");
 			SetCardsInDeck(obj.CardIDs);
+			Stream s = File.Create(DeckPath);
+			XmlSerializer xs = new XmlSerializer(typeof(DeckConfig));
+			xs.Serialize(s, new DeckConfig() { CardIDs = CardsInDeck });
+			s.Close();
 		}
 
 		public override void Start()
@@ -171,11 +189,12 @@ namespace Networking
 			base.Start();
 
 			TimeStamp = Time.realtimeSinceStartup;
+
 		}
 
 		public void LoadMap(int id)
 		{
-			Debug.Log("Loading Map: " + id);
+			//Debug.Log("Loading Map: " + id);
 			GameObject map = Instantiate(AvailableMaps[id].Prefab);
 			NetworkServer.Spawn(map);
 		}
@@ -203,7 +222,7 @@ namespace Networking
 			{
 				if (SceneManager.GetActiveScene().name == "MenuScene")
 				{
-					Debug.Log("Starting Server...");
+					//Debug.Log("Starting Server...");
 					StartServer();
 				}
 				return;
@@ -294,14 +313,14 @@ namespace Networking
 		public override void OnClientDisconnect(NetworkConnection conn)
 		{
 			//GameInitializer.Master.SetConnectionSuccess(); //Only needs to be called if MasterServer API is in ReconnectLoop.
-			Debug.Log("Disconnected From Server");
+			//Debug.Log("Disconnected From Server");
 			CleanUp();
 			base.OnClientDisconnect(conn);
 		}
 
 		public override void OnServerDisconnect(NetworkConnection conn)
 		{
-			Debug.Log("Client Disconnected. Remaining: " + numPlayers);
+			//Debug.Log("Client Disconnected. Remaining: " + numPlayers);
 			if (numPlayers == 1 && !IsStopping)
 				Stop();
 			base.OnServerDisconnect(conn);
@@ -318,14 +337,14 @@ namespace Networking
 
 		public override void OnStopServer()
 		{
-			Debug.Log("Server Stopped.");
+			//Debug.Log("Server Stopped.");
 			CleanUp();
 			base.OnStopServer();
 		}
 
 		public override void OnStartHost()
 		{
-			Debug.Log("Is Host");
+			//Debug.Log("Is Host");
 			IsHost = true;
 			base.OnStartHost();
 
@@ -342,7 +361,7 @@ namespace Networking
 		{
 			StartNetwork();
 			IsServer = true;
-			Debug.Log("Is Server");
+			//Debug.Log("Is Server");
 			base.OnStartServer();
 		}
 
@@ -350,7 +369,7 @@ namespace Networking
 
 		public override void OnServerReady(NetworkConnection conn)
 		{
-			Debug.Log("Client Ready: " + conn.connectionId);
+			//Debug.Log("Client Ready: " + conn.connectionId);
 			base.OnServerReady(conn);
 
 		}
@@ -382,7 +401,7 @@ namespace Networking
 		{
 			if (CurrentEndPoint == null || CurrentEndPoint.Port <= 0 || CurrentEndPoint.Port >= ushort.MaxValue) return;
 
-			Debug.Log("New End Point: " + CurrentEndPoint);
+			//Debug.Log("New End Point: " + CurrentEndPoint);
 
 			networkAddress = CurrentEndPoint.IP;
 			(transport as WebsocketTransport).port = CurrentEndPoint.Port;
@@ -410,7 +429,7 @@ namespace Networking
 
 		private void CleanUp()
 		{
-			Debug.Log("Cleaning Up...");
+			//Debug.Log("Cleaning Up...");
 			CardPlayer.LocalPlayer = null;
 			CardPlayer.ServerPlayers.Clear();
 			BoardLogic.Logic = null;

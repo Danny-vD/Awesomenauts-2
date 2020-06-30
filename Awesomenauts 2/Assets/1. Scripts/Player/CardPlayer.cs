@@ -7,6 +7,7 @@ using Events.Gameplay;
 using Maps;
 using Networking;
 using Mirror;
+using UI.DebugPanel;
 using UnityEngine;
 using VDFramework.EventSystem;
 
@@ -20,7 +21,7 @@ namespace Player
 		public EntityStatistics PlayerStatistics;
 
 		private List<Card> MovedCards = new List<Card>();
-		public void ClearMovedCards() { MovedCards.Clear();}
+		public void ClearMovedCards() { MovedCards.Clear(); }
 		public bool CanMoveCard(Card c) => !MovedCards.Contains(c);
 
 
@@ -105,21 +106,21 @@ namespace Player
 			}
 
 			ServerPlayers.Add(this);
-			//Debug.Log($"isLocalPlayer: {isLocalPlayer}\nIsClient: {isClient}\nIsServer: {isServer}");
+			////Debug.Log($"isLocalPlayer: {isLocalPlayer}\nIsClient: {isClient}\nIsServer: {isServer}");
 		}
 
 		[Command]
 		private void CmdRequestClientID()
 		{
 			ClientID = GetComponent<NetworkIdentity>().connectionToClient.connectionId;
-			Debug.Log("ServerSide Client ID Set to: " + ClientID);
+			//Debug.Log("ServerSide Client ID Set to: " + ClientID);
 			TargetSetClientID(GetComponent<NetworkIdentity>().connectionToClient, ClientID);
 		}
 
 		[Command]
 		private void CmdSetReady()
 		{
-			Debug.Log("Client is ready.");
+			//Debug.Log("Client is ready.");
 			IsReady = true;
 		}
 
@@ -127,7 +128,7 @@ namespace Player
 		private void TargetSetClientID(NetworkConnection conn, int clientID)
 		{
 			ClientID = clientID;
-			Debug.Log("Client ID Set to: " + ClientID);
+			//Debug.Log("Client ID Set to: " + ClientID);
 
 			CmdSetReady();
 			IsReady = true;
@@ -136,9 +137,24 @@ namespace Player
 		// Update is called once per frame
 		private void Update()
 		{
+			if (!DebugPanelInfo.instance) return;
+			bool hoverCard = IsHoveringCard(AllCardLayers, out RaycastHit chit);
+			DebugPanelInfo.instance.CardPreviewCameraImage.enabled = hoverCard;
+			if (hoverCard)
+			{
+				Card c = chit.transform.GetComponent<Card>();
+				DebugPanelInfo.instance.CardPreviewCamera.transform.position = new Vector3(c.transform.position.x,
+					DebugPanelInfo.instance.CardPreviewCamera.transform.position.y, c.transform.position.z);
+				DebugPanelInfo.instance.CardPreviewCamera.transform.rotation = c.transform.rotation;
+				DebugPanelInfo.instance.CardPreviewCamera.transform.Rotate(Vector3.right,
+					180); //From looking up to looking on the card (down)
+				DebugPanelInfo.instance.CardPreviewCamera.transform.Rotate(Vector3.forward,
+					180); //Rotating so that the card is rotated correctly relative to the camera
+			}
+
 			if (EnableInteractions)
 			{
-				DragCard();
+				DragCard(hoverCard, chit);
 			}
 		}
 
@@ -148,12 +164,12 @@ namespace Player
 			int cardsToDraw = Mathf.Min(Hand.CardSlotsFree, amount);
 			if (cardsToDraw != amount)
 			{
-				Debug.Log("Adding To many cards to the hand, the maximum is: " + Hand.MaxCardCount);
+				//Debug.Log("Adding To many cards to the hand, the maximum is: " + Hand.MaxCardCount);
 			}
 
 
-			Debug.Log("Adding " + cardsToDraw + " cards to the hand of client: " +
-					  netIdentity.connectionToClient.connectionId);
+			//Debug.Log("Adding " + cardsToDraw + " cards to the hand of client: " +
+					  //netIdentity.connectionToClient.connectionId);
 
 			for (int i = 0; i < cardsToDraw; i++)
 			{
@@ -181,8 +197,8 @@ namespace Player
 			c.Statistics.SetValue(CardPlayerStatType.TeamID, ClientID); //Set Team ID, used to find out to whom the card belongs.
 			c.Statistics.SetValue(CardPlayerStatType.CardType, e.CardType); //Set Team ID, used to find out to whom the card belongs.
 			byte[] networkData = e.StatisticsToNetworkableArray();
-			Debug.Log("Sending Stats");
-			Debug.Log("Card Type: " + c.Statistics.GetValue(CardPlayerStatType.CardType));
+			//Debug.Log("Sending Stats");
+			//Debug.Log("Card Type: " + c.Statistics.GetValue(CardPlayerStatType.CardType));
 			c.RpcSendStats(networkData, e.effects.Select(x => CardNetworkManager.Instance.AllEffects.IndexOf(x)).ToArray());
 			return c;
 		}
@@ -190,7 +206,7 @@ namespace Player
 		[Client]
 		public void EndTurn()
 		{
-			Debug.Log("Trying to end Turn as Client: " + ClientID);
+			//Debug.Log("Trying to end Turn as Client: " + ClientID);
 			CmdEndTurn(ClientID);
 		}
 
@@ -214,7 +230,7 @@ namespace Player
 		[Command]
 		private void CmdRemoveFromHand(NetworkIdentity id)
 		{
-			Debug.Log("Card NULL: " + (id.GetComponent<Card>() == null));
+			//Debug.Log("Card NULL: " + (id.GetComponent<Card>() == null));
 
 			if (!CardNetworkManager.Instance.IsHost
 			) //To avoid reducing solar twice(on client side and host side when a client is hosting)
@@ -265,7 +281,7 @@ namespace Player
 				CmdPlaceCard(draggedCard.netIdentity, SnappedSocket.netIdentity);
 
 			}
-			Debug.Log("Released Card");
+			//Debug.Log("Released Card");
 
 		}
 
@@ -300,7 +316,7 @@ namespace Player
 			c.gameObject.layer = UnityTrashWorkaround(BoardLayer);
 			Hand.RemoveCard(c.GetComponent<Card>());
 
-			if (c.Statistics.GetValue<CardType>(CardPlayerStatType.CardType) == CardType.Action)
+			if (c.Statistics.GetValue<CardType>(CardPlayerStatType.CardType) == CardType.Action || c.Statistics.GetValue<CardType>(CardPlayerStatType.CardType) == CardType.ActionNoTarget)
 			{
 				Destroy(c.gameObject);
 				return;
@@ -355,7 +371,7 @@ namespace Player
 
 			dragging = true;
 			draggedCard = c;
-			Debug.Log("Clicked On Card");
+			//Debug.Log("Clicked On Card");
 		}
 
 		#endregion
@@ -408,7 +424,7 @@ namespace Player
 				}
 				else if (action == CardAction.Move)
 				{
-					Debug.Log("MOVE");
+					//Debug.Log("MOVE");
 					MovedCards.Add(sourceCard);
 					sourceCard.EffectManager.TriggerEffects(EffectTrigger.OnMove, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
 
@@ -513,16 +529,16 @@ namespace Player
 			}
 		}
 
-		private void DragCard()
+		private void DragCard(bool hoverCard, RaycastHit chit)
 		{
 			bool clicked = Input.GetMouseButton(0);
-			bool hoverCard = IsHoveringCard(AllCardLayers, out RaycastHit chit);
 			Card c = null;
 			if (hoverCard) c = chit.transform.GetComponent<Card>();
 			bool fromHand = c != null && Hand.IsCardFromHand(c);
 			bool fromOwnTeam = c != null && c.StatisticsValid &&
 							   c.Statistics.GetValue<int>(CardPlayerStatType.TeamID) == ClientID;
 			bool isPrevious = hoveredCard != null && c == hoveredCard;
+
 
 			if (hoverCard)
 			{
@@ -614,7 +630,7 @@ namespace Player
 		private Vector3 GetMousePositionOnDragLayer()
 		{
 			Ray r = Camera.ScreenPointToRay(Input.mousePosition);
-			Debug.Log("DragLayer: " + LayerMask.LayerToName(UnityTrashWorkaround(CardDragLayer)));
+			//Debug.Log("DragLayer: " + LayerMask.LayerToName(UnityTrashWorkaround(CardDragLayer)));
 			if (Physics.Raycast(r, out RaycastHit info, float.MaxValue, CardDragLayer))
 			{
 				return info.point;

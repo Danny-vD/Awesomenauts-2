@@ -110,7 +110,8 @@ namespace BuildInfo.AutomaticBuildScripts
 		{
 			for (int i = 0; i < Options.Length; i++)
 			{
-				Build(Options[i].ToBuildOptions(CleanDevelopBuildFlag(Options[i].options)));
+				BuildOptions o = forceReleaseBuild ? CleanDevelopBuildFlag(Options[i].options) : Options[i].options;
+				Build(Options[i].ToBuildOptions(o));
 			}
 		}
 

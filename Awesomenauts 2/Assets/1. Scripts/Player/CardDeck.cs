@@ -23,7 +23,7 @@ namespace Player {
 		[Command]
 		public void CmdSendDeckContent(int[] cardIds)
 		{
-			Debug.Log("Setting Content of Deck on Server..");
+			//Debug.Log("Setting Content of Deck on Server..");
 			SetDeckContent(cardIds); //Set on server
 			TargetSetDeckContent(cardIds); //Set On clients
 		}
@@ -33,7 +33,7 @@ namespace Player {
 		{
 			if (hasAuthority)
 			{
-				Debug.Log("Setting Content of Deck on Client..");
+				//Debug.Log("Setting Content of Deck on Client..");
 				SetDeckContent(CardNetworkManager.Instance.CardsInDeck);
 			}
 		}

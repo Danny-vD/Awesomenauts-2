@@ -67,7 +67,7 @@ namespace Player {
 		//[TargetRpc]
 		//public void TargetAddToHand(NetworkConnection target, NetworkIdentity id)
 		//{
-		//	Debug.Log("Adding cards to the hand of client: " + GetComponent<CardPlayer>().ClientID);
+		//	//Debug.Log("Adding cards to the hand of client: " + GetComponent<CardPlayer>().ClientID);
 
 		//	AddToHand(id);
 		//}

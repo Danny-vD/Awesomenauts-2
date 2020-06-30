@@ -8,6 +8,9 @@ namespace UI.DebugPanel
 	public class DebugPanelInfo : MonoBehaviour
 	{
 
+		public Camera CardPreviewCamera;
+		public Image CardPreviewCameraImage;
+
 		public Button EndTurnButton;
 		public SolarDisplay SolarDisp;
 		private bool init;
@@ -16,7 +19,6 @@ namespace UI.DebugPanel
 
 		void Awake()
 		{
-		
 			instance = this;
 		}
 

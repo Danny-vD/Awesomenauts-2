@@ -36,7 +36,7 @@ namespace Menu.UI {
 		public void OnDDValueChanged(int id)
 		{
 			mapPreview.sprite = ddMapList.options[id].image;
-			Debug.Log("Changing Icon: " + id);
+			//Debug.Log("Changing Icon: " + id);
 		}
 
 	}

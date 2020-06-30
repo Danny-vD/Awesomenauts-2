@@ -53,7 +53,7 @@ namespace Networking
 				connecting = false;
 
 				running = false;
-				Debug.Log("Error Code: " + e);
+				//Debug.Log("Error Code: " + e);
 				if (ex != null)
 					Debug.LogWarning("Received Exception: " + ex);
 			};

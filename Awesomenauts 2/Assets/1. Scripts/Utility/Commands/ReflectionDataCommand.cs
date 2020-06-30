@@ -38,7 +38,7 @@ namespace Utility.Commands
 			base(ReflectData, new[] { "-ss" }, "", true)
 		{
 			RootNodes = rootNodes;
-			Debug.Log("Root Nodes: " + RootNodes.Count);
+			//Debug.Log("Root Nodes: " + RootNodes.Count);
 		}
 
 		private static void ReflectData(StartupArgumentInfo info, string[] args)
@@ -47,7 +47,7 @@ namespace Utility.Commands
 			{
 				string[] parts = args[i].Split(':');
 				string fullpath = parts[0];
-				Debug.Log("Trying to Find Field: " + fullpath);
+				//Debug.Log("Trying to Find Field: " + fullpath);
 				if (parts.Length != 2 || fullpath.IndexOf('.') == -1)
 				{
 					continue;
@@ -59,7 +59,7 @@ namespace Utility.Commands
 					FieldInformations fis = RootNodes[root];
 					if (fis.Fields.ContainsKey(fullpath))
 					{
-						Debug.Log("Setting " + fullpath + " to " + data);
+						//Debug.Log("Setting " + fullpath + " to " + data);
 						UINetworkHelper.FieldInformation fi = fis.Fields[fullpath];
 						if (fi.info.FieldType == typeof(float))
 						{
@@ -80,12 +80,12 @@ namespace Utility.Commands
 					}
 					else
 					{
-						Debug.Log("Can not Find a Field with Path: " + fullpath);
+						//Debug.Log("Can not Find a Field with Path: " + fullpath);
 					}
 				}
 				else
 				{
-					Debug.Log("Can not Find a Field with Path: " + fullpath);
+					//Debug.Log("Can not Find a Field with Path: " + fullpath);
 				}
 			}
 		}

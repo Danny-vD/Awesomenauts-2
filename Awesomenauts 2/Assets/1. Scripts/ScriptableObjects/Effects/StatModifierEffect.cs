@@ -61,7 +61,7 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 				throw new Exception("No effect Target Specified in object: " + name);
 			}
 
-			Debug.Log("Applying Effect: " + name + " on " + stats.Length + " Cards.");
+			//Debug.Log("Applying Effect: " + name + " on " + stats.Length + " Cards.");
 
 			foreach (EntityStatistics stat in stats)
 			{

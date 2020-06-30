@@ -97,7 +97,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.92, y: 4.92, z: 0.19}
-  m_Center: {x: 0, y: 2.52, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6151965400110943593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ PrefabInstance:
     - target: {fileID: 96550046591615682, guid: 6b8d6942795464e418d690bac64bfc17,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.37
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 96550046591615682, guid: 6b8d6942795464e418d690bac64bfc17,
         type: 3}
@@ -239,6 +239,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardCover
       objectReference: {fileID: 0}
+    - target: {fileID: 3233520507896945098, guid: 6b8d6942795464e418d690bac64bfc17,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 5041332592162608457, guid: 6b8d6942795464e418d690bac64bfc17,
         type: 3}
       propertyPath: m_Enabled
@@ -270,10 +275,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardUI
       objectReference: {fileID: 0}
+    - target: {fileID: 722768308663616521, guid: 42eb7bed3945efb4595bcd8714bdb774,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 758492560217540300, guid: 42eb7bed3945efb4595bcd8714bdb774,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2308836383915588207, guid: 42eb7bed3945efb4595bcd8714bdb774,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 3302642027171386540, guid: 42eb7bed3945efb4595bcd8714bdb774,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3302642027171386540, guid: 42eb7bed3945efb4595bcd8714bdb774,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3369887751642709002, guid: 42eb7bed3945efb4595bcd8714bdb774,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4088878170882506839, guid: 42eb7bed3945efb4595bcd8714bdb774,
         type: 3}
@@ -291,6 +321,21 @@ PrefabInstance:
       propertyPath: SolarText
       value: 
       objectReference: {fileID: 4133991235758393938}
+    - target: {fileID: 6166839305123646949, guid: 42eb7bed3945efb4595bcd8714bdb774,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400351337370449709, guid: 42eb7bed3945efb4595bcd8714bdb774,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6794447243018165429, guid: 42eb7bed3945efb4595bcd8714bdb774,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 7061582006299922282, guid: 42eb7bed3945efb4595bcd8714bdb774,
         type: 3}
       propertyPath: m_RootOrder
@@ -314,12 +359,12 @@ PrefabInstance:
     - target: {fileID: 8057826596933347879, guid: 42eb7bed3945efb4595bcd8714bdb774,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8057826596933347879, guid: 42eb7bed3945efb4595bcd8714bdb774,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.7
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 8057826596933347879, guid: 42eb7bed3945efb4595bcd8714bdb774,
         type: 3}
@@ -507,6 +552,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CardModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6277568038462155055, guid: d4b64113efd4c2e409e26e01ccd9c58f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4b64113efd4c2e409e26e01ccd9c58f, type: 3}

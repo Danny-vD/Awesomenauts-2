@@ -451,10 +451,10 @@ MonoBehaviour:
   Anchor: {x: 0, y: 0, z: 0}
   CameraTransform: {x: 0, y: 0, z: 0}
   MaxCardCount: 6
-  MaxCardRotation: 12
+  MaxCardRotation: 18
   OffsetFromAnchor: 3.4
   Drag: 0.37
-  AnchorOffset: 5.4
+  AnchorOffset: 8.4
   DeltaYPerCard: -0.052
   DeltaYLocalPerCard: -0.039
   PlayerHandLayer:
