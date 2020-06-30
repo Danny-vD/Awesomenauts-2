@@ -143,13 +143,19 @@ namespace Player
 			if (hoverCard)
 			{
 				Card c = chit.transform.GetComponent<Card>();
+
 				DebugPanelInfo.instance.CardPreviewCamera.transform.position = new Vector3(c.transform.position.x,
-					DebugPanelInfo.instance.CardPreviewCamera.transform.position.y, c.transform.position.z);
+					c.transform.position.y + 6.5f, c.transform.position.z);
 				DebugPanelInfo.instance.CardPreviewCamera.transform.rotation = c.transform.rotation;
 				DebugPanelInfo.instance.CardPreviewCamera.transform.Rotate(Vector3.right,
 					180); //From looking up to looking on the card (down)
 				DebugPanelInfo.instance.CardPreviewCamera.transform.Rotate(Vector3.forward,
 					180); //Rotating so that the card is rotated correctly relative to the camera
+
+				if (c.gameObject.layer == 8) //CardHandLayer
+				{
+					DebugPanelInfo.instance.CardPreviewCamera.transform.Translate(0, -3.5f, 0, Space.Self);
+				}
 			}
 
 			if (EnableInteractions)
