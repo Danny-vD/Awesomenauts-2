@@ -888,6 +888,8 @@ MonoBehaviour:
       - key: 64
         value:
         - {fileID: 1903746651}
+      - key: 128
+        value: []
       sameCardCountUI: {fileID: 2139092903}
       totalCardCountUI: {fileID: 1315702072}
     minMaxPerCardTypes:
@@ -899,6 +901,8 @@ MonoBehaviour:
       minMax: {x: 0, y: 3}
     - cardType: 64
       minMax: {x: 0, y: 2}
+    - cardType: 128
+      minMax: {x: 0, y: 0}
     maxSameCard: 5
     maxTotalCards: 25
 --- !u!114 &363219363
@@ -972,10 +976,10 @@ RectTransform:
   m_Father: {fileID: 2042789979}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -3.899994}
-  m_SizeDelta: {x: 0, y: -173.9}
+  m_AnchorMin: {x: 0, y: 0.094301075}
+  m_AnchorMax: {x: 0.99057716, y: 0.896}
+  m_AnchoredPosition: {x: 4, y: 0.6000061}
+  m_SizeDelta: {x: 8, y: 11.100006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &389904368
 MonoBehaviour:
@@ -2392,13 +2396,13 @@ MonoBehaviour:
   m_Padding:
     m_Left: 20
     m_Right: 20
-    m_Top: 20
+    m_Top: 40
     m_Bottom: 20
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 195.5, y: 299}
-  m_Spacing: {x: 20, y: 20}
+  m_Spacing: {x: 50, y: 50}
   m_Constraint: 1
   m_ConstraintCount: 2
 --- !u!1 &1109673772
@@ -3654,10 +3658,10 @@ RectTransform:
   m_Father: {fileID: 1200898534}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5.1748962, y: -24.399994}
-  m_SizeDelta: {x: 10.3, y: -48.8}
+  m_AnchorMin: {x: 0, y: 0.0050000004}
+  m_AnchorMax: {x: 1, y: 0.93152416}
+  m_AnchoredPosition: {x: 5.1748962, y: 1.1000061}
+  m_SizeDelta: {x: 10.3, y: 10.200001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1450487382
 MonoBehaviour:
@@ -4176,17 +4180,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 20
-    m_Right: 20
-    m_Top: 20
+    m_Left: 50
+    m_Right: 0
+    m_Top: 40
     m_Bottom: 20
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 195.5, y: 299}
-  m_Spacing: {x: 20, y: 20}
+  m_Spacing: {x: 85, y: 50}
   m_Constraint: 1
-  m_ConstraintCount: 4
+  m_ConstraintCount: 3
 --- !u!114 &1592483064
 MonoBehaviour:
   m_ObjectHideFlags: 0
