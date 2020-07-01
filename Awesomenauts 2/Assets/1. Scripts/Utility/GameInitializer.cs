@@ -1,14 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Audio;
 using DataObjects;
 using Networking;
 using Utility.Commands;
 using Byt3.CommandRunner;
+using Enums.Audio;
 using Mirror;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Utility {
+namespace Utility
+{
 	public class GameInitializer : NetworkBehaviour
 	{
 		public static GameInitializer Instance;

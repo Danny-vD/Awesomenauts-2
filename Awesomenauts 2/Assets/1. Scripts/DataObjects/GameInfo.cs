@@ -8,6 +8,7 @@ namespace DataObjects {
 		public GameNetworkInfo Network;
 		public DebugInfo DebugInfo;
 		public int TargetFPS;
+		public bool Mute;
 
 		public GameInfo()
 		{

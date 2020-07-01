@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Enums.Audio;
 using Enums.Cards;
@@ -6,6 +6,7 @@ using Events.Gameplay;
 using Player;
 using Structs.Audio;
 using UnityEngine;
+using Utility;
 using VDFramework.EventSystem;
 using VDFramework.Singleton;
 using EventType = Enums.Audio.EventType;
@@ -27,6 +28,12 @@ namespace Audio
 			
 			SetInitialVolumes();
 			AudioPlayer.PlayEmitter(EmitterType.BackgroundMusic);
+		}
+
+		void Start()
+		{
+			if (GameInitializer.Instance.GameData.Mute)
+				SetVolume(BusType.Master, 0);
 		}
 
 		private void SetInitialVolumes()
