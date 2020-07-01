@@ -16,6 +16,7 @@ namespace Audio
 		private static readonly Dictionary<string, Bus> buses = new Dictionary<string, Bus>();
 
 		private static float masterVolume;
+		private static bool masterMute;
 		
 		/////////////////////////////////////////////////
 		//			Global parameters
@@ -110,6 +111,11 @@ namespace Audio
 			{
 				masterVolume = volume;
 			}
+
+			if (masterMute)
+			{
+				return;
+			}
 			
 			Bus bus = GetBus(masterBusPath);
 			bus.setVolume(volume);
@@ -124,6 +130,8 @@ namespace Audio
 		public static void SetMasterMute(bool isMuted)
 		{
 			SetMasterVolume(isMuted ? 0 : masterVolume, false);
+			
+			masterMute = isMuted;
 		}
 
 		public static float GetBusVolume(string busPath)
