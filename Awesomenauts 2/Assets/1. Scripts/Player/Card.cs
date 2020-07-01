@@ -49,6 +49,26 @@ namespace Player
 			
 		}
 
+		public void SetPreviewLayer(bool set)
+		{
+			for (int i = 0; i < transform.childCount; i++)
+			{
+				Transform child = transform.GetChild(i);
+				SetChildLayer(child, set);
+			}
+		}
+
+		private void SetChildLayer(Transform c, bool set)
+		{
+			c.gameObject.layer = set ? 13 : 0;
+			for (int i = 0; i < c.childCount; i++)
+			{
+				Transform child = c.GetChild(i);
+				SetChildLayer(child, set);
+			}
+		}
+		
+
 		public void SetSocket(CardSocket socket)
 		{
 			AttachedCardSocket = socket;

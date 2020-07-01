@@ -21,6 +21,9 @@ namespace Player
 		public EntityStatistics PlayerStatistics;
 
 		private List<Card> MovedCards = new List<Card>();
+		private List<Card> PreviewCards=new List<Card>();
+
+
 		public void ClearMovedCards() { MovedCards.Clear(); }
 		public bool CanMoveCard(Card c) => !MovedCards.Contains(c);
 
@@ -143,6 +146,11 @@ namespace Player
 			if (hoverCard)
 			{
 				Card c = chit.transform.GetComponent<Card>();
+
+				PreviewCards.ForEach(x=>x.SetPreviewLayer(false));
+				PreviewCards.Clear();
+				PreviewCards.Add(c);
+				c.SetPreviewLayer(true);
 
 				DebugPanelInfo.instance.CardPreviewCamera.transform.position = new Vector3(c.transform.position.x,
 					c.transform.position.y + 6.5f, c.transform.position.z);
