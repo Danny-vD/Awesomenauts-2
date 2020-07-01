@@ -27,13 +27,13 @@ namespace Particles
 
 		public GameObject InstantiateParticle(ParticleType particleType, Vector3 position, Transform parent = null)
 		{
-			GameObject toSpawn = GetGameObject(particleType);
+			GameObject toInstantiate = GetGameObject(particleType);
 
-			GameObject spawned = parent
-				? Instantiate(toSpawn, position, Quaternion.identity, parent)
-				: Instantiate(toSpawn, position, Quaternion.identity);
+			GameObject instantiated = parent
+				? Instantiate(toInstantiate, position, Quaternion.identity, parent)
+				: Instantiate(toInstantiate, position, Quaternion.identity);
 
-			return spawned;
+			return instantiated;
 		}
 
 		private GameObject GetGameObject(ParticleType particleType)
