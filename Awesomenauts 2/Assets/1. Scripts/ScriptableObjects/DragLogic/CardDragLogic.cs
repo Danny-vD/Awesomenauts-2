@@ -42,6 +42,7 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 			{
 				if (socket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.TeamID) != player.ClientID)
 				{
+					TooltipScript.Instance.SetTooltip(TooltipType.CardAttackAccepted);
 					return CardAction.Attack;
 				}
 
@@ -49,28 +50,56 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 			}
 			else
 			{
+				TooltipScript.Instance.SetTooltip(TooltipType.CardMovingAccepted);
 				return CardAction.Move;
 			}
 		}
 
 		public virtual bool CanTarget(CardPlayer player, CardSocket socket, CardSocket socketOfDraggedCard)
 		{
-			if (NoSockets) return false;
+			if (NoSockets)
+			{
+				TooltipScript.Instance.SetTooltip(TooltipType.CardCanNotBeTheTarget);
+				return false;
+			}
 			int range = socketOfDraggedCard != null && socketOfDraggedCard.HasCard
 				? socketOfDraggedCard.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.Range) : Range;
 			int xrange = socketOfDraggedCard != null && socketOfDraggedCard.HasCard
 				? socketOfDraggedCard.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.CrossLaneRange) : CrossLaneRange;
 
-			if (socketOfDraggedCard != null && range > 0 /*&& (socket.SocketSide & SocketSide.NonPlacable) != 0*/ &&
-			    !CanReach(socket, socketOfDraggedCard, range, xrange)) 
+			if (socketOfDraggedCard != null && range > 0 /*&& (socket.SocketSide & SocketSide.NonPlacable) != 0*/)
 			{
+				if (!CanReach(socket, socketOfDraggedCard, range, xrange))
+				{
+					return false;
+				}
+			}
+			if (socket.HasCard && EmptySockets && !OccupiedSockets)
+			{
+				TooltipScript.Instance.SetTooltip(TooltipType.CardCanNotBeTheTarget);
 				return false;
 			}
-			if (socket.HasCard && EmptySockets && !OccupiedSockets) return false;
-			if (!socket.HasCard && !EmptySockets && OccupiedSockets) return false;
-			if (OwnSockets && !EnemySockets && !NeutralSockets && player.ClientID != socket.ClientID) return false;
-			if (!OwnSockets && EnemySockets && !NeutralSockets && player.ClientID == socket.ClientID) return false;
-			if (!NeutralSockets && (socket.SocketSide & SocketSide.Neutral) != 0) return false;
+			if (!socket.HasCard && !EmptySockets && OccupiedSockets)
+			{
+
+				TooltipScript.Instance.SetTooltip(TooltipType.CardCanNotBeTheTarget);
+				return false;
+			}
+			if (OwnSockets && !EnemySockets && !NeutralSockets && player.ClientID != socket.ClientID)
+			{
+				TooltipScript.Instance.SetTooltip(TooltipType.CardCanNotBeTheTarget);
+				return false;
+			}
+			if (!OwnSockets && EnemySockets && !NeutralSockets && player.ClientID == socket.ClientID)
+			{
+				TooltipScript.Instance.SetTooltip(TooltipType.CardCanNotBeTheTarget);
+				return false;
+			}
+			if (!NeutralSockets && (socket.SocketSide & SocketSide.Neutral) != 0)
+			{
+				TooltipScript.Instance.SetTooltip(TooltipType.CardCanNotBeTheTarget);
+				return false;
+			}
 			return true;
 		}
 
@@ -90,7 +119,18 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 					{
 						if (Mathf.Abs(socket.transform.position.z - socketOfDraggedCard.transform.position.z) < 1) //If the sockets have "almost" the same z component(e.g. directly perpendicular to the lane)
 						{
-							return xrange > 0;
+							bool xret = xrange > 0;
+							if (!xret)
+							{
+								TooltipScript.Instance.SetTooltip(TooltipType.CanNotMoveCrossLane);
+							}
+
+							return xret;
+						}
+						else
+						{
+							TooltipScript.Instance.SetTooltip(TooltipType.CanNotMoveDiagonally);
+							return false;
 						}
 					}
 				}
@@ -103,10 +143,14 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 
 
 
-			return path.Count <= range; //Not factoring in the "cross lane"
+			bool ret= path.Count <= range; //Not factoring in the "cross lane"
 
+			if (!ret)
+			{
+				TooltipScript.Instance.SetTooltip(TooltipType.NotEnoughRange);
+			}
 
-
+			return ret;
 
 		}
 	}

@@ -15,7 +15,7 @@ public class ExceptionViewUI : MonoBehaviour
 	public Text Title;
 	public Text ExceptionMessage;
 	public Text StackTrace;
-
+	private Exception ex;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -33,8 +33,18 @@ public class ExceptionViewUI : MonoBehaviour
 		SceneManager.LoadScene("MenuScene");
 	}
 
+	public void Throw()
+	{
+		if (ex != null)
+		{
+			Debug.LogException(ex);
+		}
+	}
+
+
 	public void SetException(Exception ex, string titleText = "Error:")
 	{
+		this.ex = ex;
 		gameObject.SetActive(true);
 		Title.text = titleText;
 

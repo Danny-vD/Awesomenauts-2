@@ -165,6 +165,9 @@ namespace Networking
 
 		private void Application_quitting()
 		{
+			MasterServerComponent ms = GetComponent<MasterServerComponent>();
+			ms.AbortQueue();
+
 			ShowDataPathScript.Write("Saved: " + CardsInDeck.Length + " Entries");
 			Stream s = File.Create(DeckPath);
 			XmlSerializer xs = new XmlSerializer(typeof(DeckConfig));

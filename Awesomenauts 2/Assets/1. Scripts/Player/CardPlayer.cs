@@ -291,11 +291,12 @@ namespace Player
 			if (!snapping)
 			{
 				Hand.SetSelectedCard(null); //Return card to hand
+				waitForRelease = false;
 			}
 			else
 			{
+				Hand.SetSelectedCard(null); //Return card to hand
 				CmdPlaceCard(draggedCard.netIdentity, SnappedSocket.netIdentity);
-
 			}
 			//Debug.Log("Released Card");
 
@@ -365,7 +366,6 @@ namespace Player
 		{
 			if (!fromHand) return;
 
-			Hand.SetSelectedCard(c);
 			canSnap = true;
 			if (c.Statistics.HasValue(CardPlayerStatType.Solar))
 			{
@@ -373,16 +373,20 @@ namespace Player
 				int cardSolar = c.Statistics.GetValue<int>(CardPlayerStatType.Solar);
 				if (cardSolar > playerSolar)
 				{
+					TooltipScript.Instance.SetTooltip(TooltipType.NotEnoughSolar);
 					canSnap = false;
 					//return; //Not enough Solar
 				}
 				else
 				{
+					TooltipScript.Instance.SetTooltip(TooltipType.CardPlayAccepted);
+					Hand.SetSelectedCard(c);
 					canSnap = true;
 				}
 			}
 			else //Card has no solar costs or nothing defined as solar cost
 			{
+				Hand.SetSelectedCard(c);
 				canSnap = true;
 			}
 
@@ -501,6 +505,18 @@ namespace Player
 			{
 				CmdHandleReleasedCardFromBoard(draggedCard?.AttachedCardSocket?.netIdentity, s?.netIdentity);
 			}
+			else
+			{
+				draggedCard = null;
+				dragging = false;
+				snapping = false;
+				SnappedSocket = null;
+				canSnap = false;
+				Hand.SetSelectedCard(null);
+				waitForRelease = false;
+				ArrowDisplayHelper.SetArrowPositions(Vector3.zero, Vector3.zero, ArrowDisplayState.None);
+				return;
+			}
 
 		}
 
@@ -510,16 +526,23 @@ namespace Player
 
 
 			Vector3 arrowPos;
-			if (IsHoveringCard(SocketLayer, out RaycastHit info) &&
-				draggedCard.DragLogicFromBoard.CanTarget(this, info.collider.GetComponent<CardSocket>(), draggedCard.AttachedCardSocket))
+			if (IsHoveringCard(SocketLayer, out RaycastHit info))
 			{
 				arrowPos = info.collider.transform.position;
+				if (draggedCard.DragLogicFromBoard.CanTarget(this, info.collider.GetComponent<CardSocket>(), draggedCard.AttachedCardSocket))
+				{
+					ArrowDisplayHelper.SetArrowPositions(draggedCard.transform.position, arrowPos, ArrowDisplayState.Accept);
+				}
+				else
+				{
+					ArrowDisplayHelper.SetArrowPositions(draggedCard.transform.position, arrowPos, ArrowDisplayState.Invalid);
+				}
 			}
 			else
 			{
 				arrowPos = GetMousePositionOnDragLayer();
+				ArrowDisplayHelper.SetArrowPositions(draggedCard.transform.position, arrowPos, ArrowDisplayState.Default);
 			}
-			ArrowDisplayHelper.SetArrowPositions(draggedCard.transform.position, arrowPos);
 		}
 
 		#endregion
@@ -593,7 +616,7 @@ namespace Player
 						break; //DoNothing
 				}
 			}
-			else if (dragging && !clicked && draggedCard != null) //Card Released
+			else if (dragging && !clicked /*&& draggedCard != null*/) //Card Released
 			{
 				switch (draggedCard.CardState)
 				{

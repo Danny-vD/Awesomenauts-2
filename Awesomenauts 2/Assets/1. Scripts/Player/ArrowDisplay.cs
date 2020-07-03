@@ -2,14 +2,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Player {
+
+	public enum ArrowDisplayState {Default, Accept, Invalid, None}
+
 	[RequireComponent(typeof(LineRenderer))]
 	public class ArrowDisplay : MonoBehaviour
 	{
+
 		private LineRenderer lr;
 		private void Start()
 		{
 			lr = GetComponent<LineRenderer>();
 		}
+
+		public Material DefaultMaterial;
+		public Material InvalidMaterial;
+		public Material AcceptMaterial;
 
 		public bool UseSmoothing;
 
@@ -80,9 +88,24 @@ namespace Player {
 			lr.enabled = false;
 		}
 
-		public void SetArrowPositions(Vector3 start, Vector3 end)
+		public void SetArrowPositions(Vector3 start, Vector3 end, ArrowDisplayState state)
 		{
-			if (!lr.enabled) lr.enabled = true;
+			switch (state)
+			{
+				case ArrowDisplayState.Default:
+					lr.sharedMaterial = DefaultMaterial;
+					break;
+				case ArrowDisplayState.Accept:
+					lr.sharedMaterial = AcceptMaterial;
+					break;
+				case ArrowDisplayState.Invalid:
+					lr.sharedMaterial = InvalidMaterial;
+					break;
+				case ArrowDisplayState.None:
+					lr.enabled = false;
+					return;
+			}
+			lr.enabled = true;
 			Vector3[] positions = ProcessPoints(start, end);
 			lr.positionCount = positions.Length;
 			lr.SetPositions(positions);

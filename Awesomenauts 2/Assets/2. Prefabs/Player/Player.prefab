@@ -74,6 +74,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35596aec84286441b6d3c2c43e9395f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DefaultMaterial: {fileID: 2100000, guid: 28d9b8ccf629db042ba1478d02f5adfd, type: 2}
+  InvalidMaterial: {fileID: 2100000, guid: 358843d6e4d9bfc40923afe4b6bcaac6, type: 2}
+  AcceptMaterial: {fileID: 2100000, guid: 40b7896e1b48bf24d8c8e23d617c34b5, type: 2}
   UseSmoothing: 1
   TotalOffsetScale: 1
   ArrowMaxOffset: 5

@@ -10,7 +10,7 @@ using UnityEngine;
 namespace Maps
 {
 	public enum SocketType { TurretLeft, TurretRight, Default, Awsomenaut }
-	public class CardSocket : NetworkBehaviour,IComparable<CardSocket>, IEquatable<CardSocket>
+	public class CardSocket : NetworkBehaviour, IComparable<CardSocket>, IEquatable<CardSocket>
 	{
 
 
@@ -59,7 +59,7 @@ namespace Maps
 		/// </summary>
 		public CardSocket Parent { get; set; }
 
-		
+
 
 		/// <summary>
 		/// Compares the Nodes based on their total costs.
@@ -70,7 +70,7 @@ namespace Maps
 		/// <param name="other">The other node.</param>
 		/// <returns>A comparison between the costs.</returns>
 		public int CompareTo(CardSocket other) => TotalCost.CompareTo(other.TotalCost);
-        
+
 
 
 		/// <summary>
@@ -93,10 +93,10 @@ namespace Maps
 
 		public SocketSide SocketSide;
 		private float origY;
-		
+
 
 		public bool HasCard => DockedCard != null;
-        
+
 
 		public int TeamID;
 		public float yScale;
@@ -120,7 +120,7 @@ namespace Maps
 		[ClientRpc]
 		public void RpcSetNeighbours(NetworkIdentity[] neighboard)
 		{
-			SetNeighbours(neighboard.Select(x=>x.GetComponent<CardSocket>()).ToArray());
+			SetNeighbours(neighboard.Select(x => x.GetComponent<CardSocket>()).ToArray());
 		}
 
 
@@ -169,6 +169,9 @@ namespace Maps
 		{
 			DockedCard?.SetSocket(null);
 			DockedCard = dockedTransform;
+			DockedCard.transform.rotation = transform.rotation;
+			DockedCard.transform.Rotate(Vector3.right * -90, Space.Self);
+			DockedCard.transform.Rotate(Vector3.forward * 90, Space.Self);
 			DockedCard?.SetSocket(this);
 
 			ResetPositions();
