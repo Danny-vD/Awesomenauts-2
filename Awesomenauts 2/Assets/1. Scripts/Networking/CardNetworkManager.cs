@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -195,6 +196,7 @@ namespace Networking
 		public void LoadMap(int id)
 		{
 			//Debug.Log("Loading Map: " + id);
+			ReplaceWithNetworkObject.ApplyConnections = null;
 			GameObject map = Instantiate(AvailableMaps[id].Prefab);
 			NetworkServer.Spawn(map);
 		}
