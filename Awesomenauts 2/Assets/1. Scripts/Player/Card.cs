@@ -51,6 +51,11 @@ namespace Player
 
 		public void SetPreviewLayer(bool set)
 		{
+			if (this == null)
+			{
+				return;
+			}
+			
 			for (int i = 0; i < transform.childCount; i++)
 			{
 				Transform child = transform.GetChild(i);
