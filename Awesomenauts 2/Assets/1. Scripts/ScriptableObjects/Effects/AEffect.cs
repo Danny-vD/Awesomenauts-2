@@ -28,7 +28,7 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 
 		public abstract IEnumerator TriggerEffect(Card c, CardSocket containingSocket, CardSocket targetSocket);
 
-		public void _TriggerEffect(Card c, CardSocket containingSocket, CardSocket targetSocket)
+		public void InvokeEffect(Card c, CardSocket containingSocket, CardSocket targetSocket)
 		{
 			c.StartCoroutine(InternalTrigger(c, containingSocket, targetSocket));
 		}

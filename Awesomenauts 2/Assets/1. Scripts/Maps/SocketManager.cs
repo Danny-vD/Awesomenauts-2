@@ -162,7 +162,7 @@ namespace Maps
 				{
 					if (valueCardSocket.HasCard && valueCardSocket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.TeamID) == player.ClientID)
 					{
-						valueCardSocket.DockedCard.EffectManager.TriggerEffects(trigger, valueCardSocket, valueCardSocket, valueCardSocket.DockedCard);
+						valueCardSocket.DockedCard.EffectManager.InvokeEffects(trigger, valueCardSocket, valueCardSocket, valueCardSocket.DockedCard);
 					}
 				}
 			}

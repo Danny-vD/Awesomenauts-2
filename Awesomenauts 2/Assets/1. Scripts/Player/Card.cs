@@ -115,7 +115,7 @@ namespace Player
 				return;
 			if (hp <= 0)
 			{
-				EffectManager.TriggerEffects(EffectTrigger.OnDeath, AttachedCardSocket, null, this);
+				EffectManager.InvokeEffects(EffectTrigger.OnDeath, AttachedCardSocket, null, this);
 				GoCommitDie(); //Might move this into an effect class
 			}
 		}

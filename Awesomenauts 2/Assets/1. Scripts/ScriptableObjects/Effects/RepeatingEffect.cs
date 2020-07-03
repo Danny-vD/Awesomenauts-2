@@ -30,7 +30,7 @@ public class RepeatingEffect : AEffect
 
 		if (next != null)
 		{
-			Effect._TriggerEffect(c, containingSocket, next);
+			Effect.InvokeEffect(c, containingSocket, next);
 		}
 
 		yield return null;

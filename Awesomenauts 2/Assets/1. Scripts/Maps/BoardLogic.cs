@@ -60,8 +60,8 @@ namespace Maps
 
 			if (CurrentTurn != -1)
 			{
-				MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.AfterRoundEnd,
-					CardPlayer.ServerPlayers[CurrentTurn]);
+				CardPlayer.ServerPlayers.ForEach(x=> MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.AfterRoundEnd,
+					x));
 			}
 			CurrentTurn++;
 			if (MaxSolar >= 10) MaxSolar = 10;
@@ -75,7 +75,6 @@ namespace Maps
 			current.ClearMovedCards();
 			CurrentTurnClient = current.ClientID;
 
-			//Debug.Log("Next Turn Client ID: " + CurrentTurnClient + "\nTurnNumber: " + CurrentTurn);
 			if (CardPlayer.LocalPlayer != null)
 			{
 				CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == CurrentTurnClient;
@@ -90,21 +89,11 @@ namespace Maps
 			}
 			MapTransformInfo.Instance.SocketManager.SetTurn(CurrentTurnClient);
 
-			//current.DrawCard(1); //Next player is drawing one card
 			current.PlayerStatistics.SetValue(CardPlayerStatType.Solar, MaxSolar);
-			//if (CardNetworkManager.Instance.IsHost) return; //Has Already been set by ServerEndTurn if we are playing and hosting at the same time
+
+			CardPlayer.ServerPlayers.ForEach(x => MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.OnRoundStart, x));
 
 
-			MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.OnRoundStart, current);
-
-
-			//CurrentTurn++;
-
-			////Debug.Log("Client Received End Turn\nOld: " + CurrentTurnClient + "\nNew: " + next);
-			//CurrentTurnClient = next;
-			//CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == next;
-
-			//MapTransformInfo.Instance.SocketManager.SetTurn(CurrentTurnClient);
 		}
 
 		#endregion
@@ -147,7 +136,7 @@ namespace Maps
 				CardSocket rtS = socks.First(x => MapTransformInfo.Instance.SocketManager.IsFromTeam(CardPlayer.ServerPlayers[i].ClientID, x.transform) &&
 												  x.SocketType == SocketType.TurretRight);
 				CardSocket awS = socks.First(x => MapTransformInfo.Instance.SocketManager.IsFromTeam(CardPlayer.ServerPlayers[i].ClientID, x.transform) &&
-				                                  x.SocketType == SocketType.Awsomenaut);
+												  x.SocketType == SocketType.Awsomenaut);
 				ltS.RpcDockCard(turretLeft.netIdentity);
 				rtS.RpcDockCard(turretRight.netIdentity);
 				awS.RpcDockCard(awsomenaut.netIdentity);
@@ -192,7 +181,6 @@ namespace Maps
 			current.ClearMovedCards();
 			CurrentTurnClient = current.ClientID;
 
-			//Debug.Log("Next Turn Client ID: " + CurrentTurnClient + "\nTurnNumber: " + CurrentTurn);
 			if (CardPlayer.LocalPlayer != null)
 			{
 				CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == CurrentTurnClient;
@@ -213,22 +201,6 @@ namespace Maps
 
 
 			RpcBroadcastEndTurn();
-			//CurrentTurn++;
-			//if (CurrentTurn >= CardPlayer.ServerPlayers.Count)
-			//{
-			//	CurrentTurn = 0;
-			//}
-
-			//CardPlayer current = CardPlayer.ServerPlayers[CurrentTurn];
-			//CurrentTurnClient = current.ClientID;
-
-			////Debug.Log("Next Turn Client ID: " + CurrentTurnClient + "\nTurnNumber: " + CurrentTurn);
-			//if (CardPlayer.LocalPlayer != null)
-			//	CardPlayer.LocalPlayer.EnableInteractions = CardPlayer.LocalPlayer.ClientID == CurrentTurnClient;
-			//MapTransformInfo.Instance.SocketManager.SetTurn(CurrentTurnClient);
-			//RpcBroadcastEndTurn(CurrentTurnClient);
-
-			//current.DrawCard(1); //Next player is drawing one card
 
 
 

@@ -323,7 +323,7 @@ namespace Player
 			int sub = c.Statistics.GetValue<int>(CardPlayerStatType.Solar);
 			solar -= sub;
 			PlayerStatistics.SetValue(CardPlayerStatType.Solar, solar);
-			c.EffectManager.TriggerEffects(EffectTrigger.OnPlay, null, cs, c);
+			c.EffectManager.InvokeEffects(EffectTrigger.OnPlay, null, cs, c);
 
 			//Place card on board
 			//CmdRemoveFromHand(c.GetComponent<NetworkIdentity>());
@@ -355,7 +355,7 @@ namespace Player
 			{
 				Hand.SetSelectedCard(null);
 			}
-			c.EffectManager.TriggerEffects(EffectTrigger.AfterPlay, cs, null, c);
+			c.EffectManager.InvokeEffects(EffectTrigger.AfterPlay, cs, null, c);
 		}
 
 		private void HandleClickedOnCardOnHand(Card c, bool fromHand)
@@ -430,17 +430,17 @@ namespace Player
 				if (action == CardAction.Attack)
 				{
 					Card targetCard = targetSocket.DockedCard;
-					sourceCard.EffectManager.TriggerEffects(EffectTrigger.OnAttacking, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
-					targetCard.EffectManager.TriggerEffects(EffectTrigger.OnAttacked, targetSocket, sourceCard.AttachedCardSocket, targetCard);
+					sourceCard.EffectManager.InvokeEffects(EffectTrigger.OnAttacking, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
+					targetCard.EffectManager.InvokeEffects(EffectTrigger.OnAttacked, targetSocket, sourceCard.AttachedCardSocket, targetCard);
 					sourceCard.Attack(targetSocket.DockedCard);
-					sourceCard.EffectManager.TriggerEffects(EffectTrigger.AfterAttacking, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
-					targetCard.EffectManager.TriggerEffects(EffectTrigger.AfterAttacked, targetSocket, sourceCard.AttachedCardSocket, targetCard);
+					sourceCard.EffectManager.InvokeEffects(EffectTrigger.AfterAttacking, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
+					targetCard.EffectManager.InvokeEffects(EffectTrigger.AfterAttacked, targetSocket, sourceCard.AttachedCardSocket, targetCard);
 				}
 				else if (action == CardAction.Move)
 				{
 					//Debug.Log("MOVE");
 					MovedCards.Add(sourceCard);
-					sourceCard.EffectManager.TriggerEffects(EffectTrigger.OnMove, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
+					sourceCard.EffectManager.InvokeEffects(EffectTrigger.OnMove, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
 
 					if (sourceCard.AttachedCardSocket != null)
 					{
@@ -463,7 +463,7 @@ namespace Player
 					{
 						targetSocket.DockCard(sourceCard);
 					}
-					sourceCard.EffectManager.TriggerEffects(EffectTrigger.AfterMove, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
+					sourceCard.EffectManager.InvokeEffects(EffectTrigger.AfterMove, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
 
 				}
 			}

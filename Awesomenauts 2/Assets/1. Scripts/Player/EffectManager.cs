@@ -14,7 +14,7 @@ namespace Player
 			Effects = effects;
 		}
 
-		public void TriggerEffects(EffectTrigger trigger, CardSocket containingSocket, CardSocket targetCardSocket,
+		public void InvokeEffects(EffectTrigger trigger, CardSocket containingSocket, CardSocket targetCardSocket,
 			Card c = null)
 		{
 			for (int i = Effects.Count - 1; i >= 0; i--)
@@ -22,7 +22,7 @@ namespace Player
                 if(i >= Effects.Count) continue;
                 AEffect aEffect = Effects[i];
 				if ((aEffect.Trigger & trigger) != 0)
-					aEffect._TriggerEffect(containingSocket == null ? c : containingSocket.DockedCard, containingSocket,
+					aEffect.InvokeEffect(containingSocket == null ? c : containingSocket.DockedCard, containingSocket,
 						targetCardSocket);
 			}
 		}
