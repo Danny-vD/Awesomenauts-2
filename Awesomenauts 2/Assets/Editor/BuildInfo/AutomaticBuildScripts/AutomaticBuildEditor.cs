@@ -41,19 +41,16 @@ namespace BuildInfo.AutomaticBuildScripts
 
 			if (File.Exists("../../AwsomenautsDeploy/upload.bat") && GUILayout.Button("Upload All"))
 			{
+				enable = false;
+				Process p = Process.Start("cmd.exe", "/C call ..\\..\\AwsomenautsDeploy\\Console\\ChangeVersion.bat");
+				p.EnableRaisingEvents = true;
+
 				myScript.Clean();
 				myScript.Build(true);
 				myScript.Deploy();
-
-				enable = false;
-				Process p = Process.Start("cmd.exe", "/C ..\\..\\AwsomenautsDeploy\\Console\\ChangeVersion.bat");
-				p.EnableRaisingEvents = true;
-				p.Exited += (sender, args) =>
-				{
-					Process p1 = Process.Start("cmd.exe", "/C ..\\..\\AwsomenautsDeploy\\upload.bat");
-					p1.EnableRaisingEvents = true;
-					p1.Exited += (sender1, args1) => OnClose();
-				};
+				Process p1 = Process.Start("cmd.exe", "/C ..\\..\\AwsomenautsDeploy\\upload.bat");
+				p1.EnableRaisingEvents = true;
+				p1.Exited += (sender1, args1) => OnClose();
 			}
 		}
 
