@@ -72,7 +72,7 @@ namespace Maps
 			}
 
 			CardPlayer current = CardPlayer.ServerPlayers[CurrentTurn];
-			current.ClearMovedCards();
+			current.ClearUsedCards();
 			CurrentTurnClient = current.ClientID;
 
 			if (CardPlayer.LocalPlayer != null)
@@ -178,7 +178,7 @@ namespace Maps
 			}
 
 			CardPlayer current = CardPlayer.ServerPlayers[CurrentTurn];
-			current.ClearMovedCards();
+			current.ClearUsedCards();
 			CurrentTurnClient = current.ClientID;
 
 			if (CardPlayer.LocalPlayer != null)

@@ -32,18 +32,25 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 			{
 				return CardAction.None; //Failsave
 			}
+
+			if (!player.CanUseCard(socketOfDraggedCard.DockedCard))
+			{
+				return CardAction.None;
+			}
+
 			if (socket.HasCard)
 			{
 				if (socket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.TeamID) != player.ClientID)
 				{
 					return CardAction.Attack;
 				}
+
+				return CardAction.None;
 			}
-			else if (player.CanMoveCard(socketOfDraggedCard.DockedCard))
+			else
 			{
 				return CardAction.Move;
 			}
-			return CardAction.None;
 		}
 
 		public virtual bool CanTarget(CardPlayer player, CardSocket socket, CardSocket socketOfDraggedCard)

@@ -2,20 +2,6 @@
 <DeckConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <CardIDs>
     <int>3</int>
-    <int>7</int>
-    <int>3</int>
-    <int>3</int>
-    <int>7</int>
-    <int>7</int>
-    <int>3</int>
-    <int>7</int>
-    <int>3</int>
-    <int>7</int>
-    <int>7</int>
-    <int>7</int>
-    <int>7</int>
-    <int>3</int>
-    <int>3</int>
     <int>3</int>
     <int>7</int>
     <int>7</int>
@@ -25,11 +11,9 @@
     <int>7</int>
     <int>3</int>
     <int>3</int>
+    <int>3</int>
     <int>7</int>
-    <int>7</int>
-    <int>7</int>
-    <int>7</int>
-    <int>7</int>
+    <int>3</int>
     <int>7</int>
     <int>7</int>
     <int>3</int>
@@ -38,10 +22,26 @@
     <int>3</int>
     <int>7</int>
     <int>3</int>
+    <int>7</int>
+    <int>3</int>
     <int>3</int>
     <int>7</int>
     <int>7</int>
+    <int>7</int>
+    <int>7</int>
     <int>3</int>
+    <int>7</int>
+    <int>3</int>
+    <int>3</int>
+    <int>7</int>
+    <int>7</int>
+    <int>7</int>
+    <int>7</int>
+    <int>7</int>
+    <int>7</int>
+    <int>3</int>
+    <int>7</int>
+    <int>7</int>
     <int>3</int>
   </CardIDs>
 </DeckConfig>

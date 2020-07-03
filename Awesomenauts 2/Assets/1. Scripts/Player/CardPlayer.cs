@@ -20,12 +20,12 @@ namespace Player
 	{
 		public EntityStatistics PlayerStatistics;
 
-		private List<Card> MovedCards = new List<Card>();
+		private List<Card> UsedCardsThisTurn = new List<Card>();
 		private List<Card> PreviewCards=new List<Card>();
 
 
-		public void ClearMovedCards() { MovedCards.Clear(); }
-		public bool CanMoveCard(Card c) => !MovedCards.Contains(c);
+		public void ClearUsedCards() { UsedCardsThisTurn.Clear(); }
+		public bool CanUseCard(Card c) => !UsedCardsThisTurn.Contains(c);
 
 
 		public CardDragLogic DragFromHandLogic;
@@ -285,6 +285,8 @@ namespace Player
 
 		private void HandleReleasedCardFromHand()
 		{
+			if (waitForRelease) return;
+			waitForRelease = true;
 			dragging = false;
 			if (!snapping)
 			{
@@ -309,6 +311,7 @@ namespace Player
 		private void RpcPlaceCard(NetworkIdentity draggedCardIdentity, NetworkIdentity socket)
 		{
 			PlaceCard(draggedCardIdentity, socket);
+			waitForRelease = false;
 		}
 
 		private void PlaceCard(NetworkIdentity draggedCardIdentity, NetworkIdentity socket)
@@ -429,6 +432,7 @@ namespace Player
 					sourceCard.DragLogicFromBoard.GetAction(this, targetSocket, sourceCard.AttachedCardSocket);
 				if (action == CardAction.Attack)
 				{
+					UsedCardsThisTurn.Add(sourceCard);
 					Card targetCard = targetSocket.DockedCard;
 					sourceCard.EffectManager.InvokeEffects(EffectTrigger.OnAttacking, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
 					targetCard.EffectManager.InvokeEffects(EffectTrigger.OnAttacked, targetSocket, sourceCard.AttachedCardSocket, targetCard);
@@ -439,7 +443,7 @@ namespace Player
 				else if (action == CardAction.Move)
 				{
 					//Debug.Log("MOVE");
-					MovedCards.Add(sourceCard);
+					UsedCardsThisTurn.Add(sourceCard);
 					sourceCard.EffectManager.InvokeEffects(EffectTrigger.OnMove, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
 
 					if (sourceCard.AttachedCardSocket != null)
@@ -468,12 +472,10 @@ namespace Player
 				}
 			}
 
-			if (hasAuthority)
-			{
-				ArrowDisplayHelper.Deactivate();
-				dragging = false;
-				draggedCard = null;
-			}
+			ArrowDisplayHelper.Deactivate();
+			dragging = false;
+			draggedCard = null;
+
 
 		}
 
@@ -482,15 +484,19 @@ namespace Player
 		private void RpcHandleReleasedCardFromBoard(NetworkIdentity draggedCardSocket, NetworkIdentity cardSocket)
 		{
 			HandleReleasedCardFromBoard(draggedCardSocket, cardSocket);
+			waitForRelease = false;
 		}
 		[Command]
 		private void CmdHandleReleasedCardFromBoard(NetworkIdentity draggedCardSocket, NetworkIdentity cardSocket)
 		{
 			RpcHandleReleasedCardFromBoard(draggedCardSocket, cardSocket);
 		}
+
+		private bool waitForRelease;
 		private void HandleReleasedCardFromBoard()
 		{
-
+			if (waitForRelease) return;
+			waitForRelease = true;
 			if (HasPlacedCard(out RaycastHit info, out CardSocket s))
 			{
 				CmdHandleReleasedCardFromBoard(draggedCard?.AttachedCardSocket?.netIdentity, s?.netIdentity);
