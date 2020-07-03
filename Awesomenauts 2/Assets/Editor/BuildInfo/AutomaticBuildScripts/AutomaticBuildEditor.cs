@@ -17,27 +17,27 @@ namespace BuildInfo.AutomaticBuildScripts
 			if (!enable) return;
 			if (target == null) return;
 			AutomaticBuildScript myScript = (AutomaticBuildScript) target;
-			if (GUILayout.Button("Build All"))
-			{
-				myScript.Build(myScript.ForceReleaseBuild);
-			}
+			//if (GUILayout.Button("Build All"))
+			//{
+			//	myScript.Build(myScript.ForceReleaseBuild);
+			//}
 
-			if (GUILayout.Button("Clean All"))
-			{
-				myScript.Clean();
-			}
+			//if (GUILayout.Button("Clean All"))
+			//{
+			//	myScript.Clean();
+			//}
 
-			if (GUILayout.Button("Deploy All"))
-			{
-				myScript.Deploy();
-			}
+			//if (GUILayout.Button("Deploy All"))
+			//{
+			//	myScript.Deploy();
+			//}
 
-			if (GUILayout.Button("Rebuild All"))
-			{
-				myScript.Clean();
-				myScript.Build(myScript.ForceReleaseBuild);
-				myScript.Deploy();
-			}
+			//if (GUILayout.Button("Rebuild All"))
+			//{
+			//	myScript.Clean();
+			//	myScript.Build(myScript.ForceReleaseBuild);
+			//	myScript.Deploy();
+			//}
 
 			if (File.Exists("../../AwsomenautsDeploy/upload.bat") && GUILayout.Button("Upload All"))
 			{
