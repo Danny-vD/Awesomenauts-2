@@ -27,8 +27,12 @@ namespace Networking
 
 		public ExceptionViewUI ExUI;
 
-		private string DeckPath => Application.platform == RuntimePlatform.Android
-			? Application.persistentDataPath + "/DeckConfig.xml" : "./DeckConfig.xml";
+		private static string DataPath => Application.platform == RuntimePlatform.Android
+			? Application.persistentDataPath + "/" : "./";
+
+		public static string DeckPath => DataPath + "DeckConfig.xml";
+		public static string ErrorPath => DataPath + "CrashLogs/";
+		public static string GetErrorFile(string key) => ErrorPath + DateTime.Now.ToString("yy-MM-dd-hh-mm-ss") + "-" + DateTime.Now.Millisecond + "_" + key + ".log";
 
 
 		public class ExitFlag
@@ -202,14 +206,14 @@ namespace Networking
 
 		private void OnServerErr(int arg0, Exception arg1)
 		{
-			ExUI.SetMessage(arg1.GetType().Name, $"Client {arg0}: {arg1.Message}");
-            Stop();
+			ExUI.SetException(arg1, $"Host Error({arg0}):");
+			Stop();
 			CleanUp();
 		}
 
 		private void OnClientErr(Exception arg0)
 		{
-			ExUI.SetMessage(arg0.GetType().Name, arg0.Message);
+			ExUI.SetException(arg0, "Client Error:");
 			Stop();
 			CleanUp();
 		}

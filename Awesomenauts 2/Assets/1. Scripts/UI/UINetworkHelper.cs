@@ -10,7 +10,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using VDFramework.Singleton;
 
-namespace UI {
+namespace UI
+{
 	public class UINetworkHelper : Singleton<UINetworkHelper>
 	{
 		public struct FieldInformation
@@ -24,15 +25,12 @@ namespace UI {
 
 		CancellationTokenSource ts = new CancellationTokenSource();
 
-		
+
 
 		public GameObject MainMenu;
 		public GameObject LoadingScreen;
-		public GameObject ErrorScreen;
-		public Text ErrorText;
-		private string errText;
-		private string errTitle;
-		public Text ErrorTitle;
+		private MatchMakingErrorCode ErrorCode = MatchMakingErrorCode.None;
+		private Exception Exception;
 		public Text QueueStatus;
 		private string StatusText;
 		private float TimeStamp;
@@ -53,8 +51,9 @@ namespace UI {
 		{
 			if (CardNetworkManager.Exit != null)
 			{
-				MainMenu.SetActive(false);
-				UpdateErrText("Game Error", CardNetworkManager.Exit.message);
+				//MainMenu.SetActive(false);
+				CardNetworkManager.Instance.ExUI.SetException(new Exception("Game Error: " + CardNetworkManager.Exit.message));
+				//UpdateErrText("Game Error", CardNetworkManager.Exit.message);
 				CardNetworkManager.Exit = null;
 			}
 
@@ -112,7 +111,7 @@ namespace UI {
 
 			if (UpdateErrorStatus)
 			{
-				UpdateErrText(errTitle, errText);
+				UpdateErrText(Exception, ErrorCode);
 			}
 		}
 
@@ -127,13 +126,20 @@ namespace UI {
 			QueueStatus.text =
 				$"{text}{TimeStampUI}";
 		}
-		private void UpdateErrText(string title, string text)
+		private void UpdateErrText(Exception ex, MatchMakingErrorCode e)
 		{
-			ErrorTitle.text = title;
-			ErrorText.text = text;
-			ErrorScreen?.SetActive(true);
-			LoadingScreen?.SetActive(false);
 			UpdateErrorStatus = false;
+			if (ex != null)
+			{
+				CardNetworkManager.Instance.ExUI.SetException(ex, Enum.GetName(e.GetType(), e));
+			}
+			else
+			{
+				Exception exx = new Exception(Enum.GetName(e.GetType(), e));
+				CardNetworkManager.Instance.ExUI.SetException(exx, Enum.GetName(e.GetType(), e));
+			}
+
+			LoadingScreen?.SetActive(false);
 		}
 
 		#region Button Functions
@@ -168,14 +174,6 @@ namespace UI {
 			}
 		}
 
-		public void WriteError(string title, string text)
-		{
-			DisplayTimestamp = false;
-			errTitle = title;
-			errText = text;
-			UpdateErrorStatus = true;
-		}
-
 		public void FindGame()
 		{
 			UpdateQueueStatus = true;
@@ -185,11 +183,10 @@ namespace UI {
 			MasterServerAPI.ConnectionEvents ev = new MasterServerAPI.ConnectionEvents();
 			ev.OnError += (MatchMakingErrorCode e, Exception ex) =>
 			{
+				ErrorCode = e;
+				Exception = ex;
 				DisplayTimestamp = false;
 				UpdateQueueStatus = true;
-
-				errTitle = "Error Code: " + e;
-				errText = ex == null ? "No Exception Provided." : ex.Message;
 				UpdateErrorStatus = true;
 			};
 			ev.OnStatusUpdate += SetText;

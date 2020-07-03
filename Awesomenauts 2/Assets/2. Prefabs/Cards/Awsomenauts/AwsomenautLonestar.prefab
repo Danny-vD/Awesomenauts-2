@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7792581520170358666}
   - component: {fileID: 9193507948343317550}
   m_Layer: 9
-  m_Name: BlueTurretCardPrefab
+  m_Name: AwsomenautLonestar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
