@@ -47,9 +47,7 @@ public class ReplaceWithNetworkObject : MonoBehaviour
 		
 
 		NetworkServer.Spawn(inst);
-
 		ApplyConnections += ApplyCons;
-        
 		return instance;
 	}
 
