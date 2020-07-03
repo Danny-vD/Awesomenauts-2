@@ -169,9 +169,12 @@ namespace Maps
 		{
 			DockedCard?.SetSocket(null);
 			DockedCard = dockedTransform;
-			DockedCard.transform.rotation = transform.rotation;
-			DockedCard.transform.Rotate(Vector3.right * -90, Space.Self);
-			DockedCard.transform.Rotate(Vector3.forward * 90, Space.Self);
+			if (DockedCard != null)
+			{
+				DockedCard.transform.rotation = transform.rotation;
+				DockedCard.transform.Rotate(Vector3.right * -90, Space.Self);
+				DockedCard.transform.Rotate(Vector3.forward * 90, Space.Self);
+			}
 			DockedCard?.SetSocket(this);
 
 			ResetPositions();
