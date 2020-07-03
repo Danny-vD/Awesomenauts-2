@@ -28,7 +28,7 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 
 		public virtual CardAction GetAction(CardPlayer player, CardSocket socket, CardSocket socketOfDraggedCard)
 		{
-			if (socket.SocketType == SocketType.None && !CanTarget(player, socket, socketOfDraggedCard))
+			if (/*socket.SocketType == SocketType.Default && */!CanTarget(player, socket, socketOfDraggedCard))
 			{
 				return CardAction.None; //Failsave
 			}
@@ -54,7 +54,11 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 			int xrange = socketOfDraggedCard != null && socketOfDraggedCard.HasCard
 				? socketOfDraggedCard.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.CrossLaneRange) : CrossLaneRange;
 
-			if (socketOfDraggedCard != null && range > 0 && !CanReach(socket, socketOfDraggedCard, range, xrange)) return false;
+			if (socketOfDraggedCard != null && range > 0 /*&& (socket.SocketSide & SocketSide.NonPlacable) != 0*/ &&
+			    !CanReach(socket, socketOfDraggedCard, range, xrange)) 
+			{
+				return false;
+			}
 			if (socket.HasCard && EmptySockets && !OccupiedSockets) return false;
 			if (!socket.HasCard && !EmptySockets && OccupiedSockets) return false;
 			if (OwnSockets && !EnemySockets && !NeutralSockets && player.ClientID != socket.ClientID) return false;
@@ -66,8 +70,10 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 		private bool CanReach(CardSocket socket, CardSocket socketOfDraggedCard, int range, int xrange)
 		{
 
-			if ((socket.SocketSide & SocketSide.NonPlacable) != 0) return false;
-			if ((socket.SocketSide & (SocketSide.SideA | SocketSide.SideB)) != 0 && (socketOfDraggedCard.SocketSide & (SocketSide.SideA | SocketSide.SideB)) != 0 && (socket.SocketSide & SocketSide.SideA) != (socketOfDraggedCard.SocketSide & SocketSide.SideA)) //When both sockets belong to a lane and the lanes are different
+			//if ((socket.SocketSide & SocketSide.NonPlacable) != 0) return false;
+			if ((socket.SocketSide & (SocketSide.SideA | SocketSide.SideB)) != 0 &&
+			    (socketOfDraggedCard.SocketSide & (SocketSide.SideA | SocketSide.SideB)) != 0 &&
+			    (socket.SocketSide & SocketSide.SideA) != (socketOfDraggedCard.SocketSide & SocketSide.SideA))  //When both sockets belong to a lane and the lanes are different
 			{
 				if ((socket.SocketSide & (SocketSide.BlueSide | SocketSide.RedSide)) != 0 && //If the cards are one of the sides
 					(socketOfDraggedCard.SocketSide & (SocketSide.BlueSide | SocketSide.RedSide)) != 0)

@@ -9,6 +9,7 @@ namespace UI.Cards
 	{
 		public Card RegisteredCard;
 		public Text DescriptonText;
+		public Slider s;
 
 		public Text AttackText;
 		public Text SolarText;
@@ -35,12 +36,16 @@ namespace UI.Cards
 		private void OnAtkChanged(object value)
 		{
 
-			AttackText.text = value == null ? string.Empty: value.ToString();
+			AttackText.text = value == null ? string.Empty : value.ToString();
 		}
 
 		private void OnDefChanged(object value)
 		{
-				DefenseText.text = value == null ? string.Empty : value.ToString();
+			DefenseText.text = value == null ? string.Empty : value.ToString();
+			if (value != null && s != null)
+			{
+				s.value = (float) (int) value / 10;
+			}
 		}
 
 		private void OnDescriptionChanged(object value)

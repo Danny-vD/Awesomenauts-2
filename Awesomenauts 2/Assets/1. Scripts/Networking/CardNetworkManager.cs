@@ -25,6 +25,8 @@ namespace Networking
 	public class CardNetworkManager : NetworkManager
 	{
 
+		public ExceptionViewUI ExUI;
+
 		private string DeckPath => Application.platform == RuntimePlatform.Android
 			? Application.persistentDataPath + "/DeckConfig.xml" : "./DeckConfig.xml";
 
@@ -191,6 +193,25 @@ namespace Networking
 
 			TimeStamp = Time.realtimeSinceStartup;
 
+			Transport.activeTransport.OnClientError.RemoveAllListeners();
+			Transport.activeTransport.OnClientError.AddListener(OnClientErr);
+			Transport.activeTransport.OnServerError.RemoveAllListeners();
+			Transport.activeTransport.OnServerError.AddListener(OnServerErr);
+
+		}
+
+		private void OnServerErr(int arg0, Exception arg1)
+		{
+			ExUI.SetMessage(arg1.GetType().Name, $"Client {arg0}: {arg1.Message}");
+            Stop();
+			CleanUp();
+		}
+
+		private void OnClientErr(Exception arg0)
+		{
+			ExUI.SetMessage(arg0.GetType().Name, arg0.Message);
+			Stop();
+			CleanUp();
 		}
 
 		public void LoadMap(int id)
@@ -426,7 +447,6 @@ namespace Networking
 
 			if (GameInitializer.Data.HeadlessInfo.CloseOnMatchEnded) Application.Quit();
 		}
-
 
 
 		private void CleanUp()

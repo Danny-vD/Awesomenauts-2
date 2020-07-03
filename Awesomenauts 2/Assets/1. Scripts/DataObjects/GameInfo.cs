@@ -9,6 +9,7 @@ namespace DataObjects {
 		public DebugInfo DebugInfo;
 		public int TargetFPS;
 		public bool Mute;
+		public string StartupAction;
 
 		public GameInfo()
 		{

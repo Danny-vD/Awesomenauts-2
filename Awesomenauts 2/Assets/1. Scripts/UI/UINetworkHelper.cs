@@ -8,9 +8,10 @@ using MasterServer.Client;
 using MasterServer.Common.Networking.Packets;
 using UnityEngine;
 using UnityEngine.UI;
+using VDFramework.Singleton;
 
 namespace UI {
-	public class UINetworkHelper : MonoBehaviour
+	public class UINetworkHelper : Singleton<UINetworkHelper>
 	{
 		public struct FieldInformation
 		{
@@ -22,6 +23,8 @@ namespace UI {
 		public InputField[] fields;
 
 		CancellationTokenSource ts = new CancellationTokenSource();
+
+		
 
 		public GameObject MainMenu;
 		public GameObject LoadingScreen;
@@ -163,6 +166,14 @@ namespace UI {
 				ep.IP = text;
 				CardNetworkManager.Instance.CurrentEndPoint = ep;
 			}
+		}
+
+		public void WriteError(string title, string text)
+		{
+			DisplayTimestamp = false;
+			errTitle = title;
+			errText = text;
+			UpdateErrorStatus = true;
 		}
 
 		public void FindGame()

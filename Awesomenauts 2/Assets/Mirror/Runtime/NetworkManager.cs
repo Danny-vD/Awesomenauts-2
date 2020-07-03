@@ -400,7 +400,7 @@ namespace Mirror
                 return;
             }
             if (LogFilter.Debug) Debug.Log("NetworkManager StartClient address:" + networkAddress);
-
+			
             NetworkClient.Connect(networkAddress);
 
             OnStartClient();
