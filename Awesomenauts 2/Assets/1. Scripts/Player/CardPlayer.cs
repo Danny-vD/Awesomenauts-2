@@ -217,10 +217,10 @@ namespace Player
 			//Hand.AddCard(c);//Add the Card to the server
 			GameObject cardInstance = Instantiate(e.Prefab, Deck.DeckPosition, Quaternion.identity);
 			Card c = cardInstance.GetComponent<Card>();
-
-			if (e.Model != null)
+			GameObject modelPrefab = e.Model.Get(ClientID);
+			if (modelPrefab != null)
 			{
-				GameObject model = Instantiate(e.Model, c.Model.position, Quaternion.identity, c.Model);
+				GameObject model = Instantiate(modelPrefab, c.Model.position, Quaternion.identity, c.Model);
 			}
 			NetworkServer.Spawn(cardInstance, GetComponent<NetworkIdentity>().connectionToClient);
 

@@ -6325,6 +6325,222 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3603905379483180849, guid: cf97eae144cea124bad30aef3bbde681,
         type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: DefaultCardBorder.RedTeam.BorderMesh
+      value: 
+      objectReference: {fileID: 5189133843189685848, guid: 1432037e05d37bc428d7067e35835ac6,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: DefaultCardBorder.RedTeam.BorderDefaultMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 27f625ef7ff966248b52d2b2a6f14618, type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: DefaultCardBorder.RedTeam.BorderMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 27f625ef7ff966248b52d2b2a6f14618, type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: DefaultCardBorder.RedTeam.BorderRanged
+      value: 
+      objectReference: {fileID: 2100000, guid: 60104fede5121dc499de387f0385f192, type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: DefaultCardBorder.RedTeam.BorderTank
+      value: 
+      objectReference: {fileID: 2100000, guid: a3d09fa3bce49e746b7a49ee6e15b9c2, type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: DefaultCardBorder.RedTeam.BorderAction
+      value: 
+      objectReference: {fileID: 2100000, guid: 42a4021396d2dd843b705fc359d9bf0b, type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: DefaultCardBorder.BlueTeam.BorderMesh
+      value: 
+      objectReference: {fileID: 5189133843189685848, guid: 1432037e05d37bc428d7067e35835ac6,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: DefaultCardBorder.BlueTeam.BorderDefaultMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: b4161a07e6238b745ab833989e8e0c85, type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: DefaultCardBorder.BlueTeam.BorderMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: b4161a07e6238b745ab833989e8e0c85, type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: DefaultCardBorder.BlueTeam.BorderRanged
+      value: 
+      objectReference: {fileID: 2100000, guid: 5687b1071b0d83c4fad37ed64108d5ea, type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: DefaultCardBorder.BlueTeam.BorderTank
+      value: 
+      objectReference: {fileID: 2100000, guid: 1cbffbf91509a854daec4d81ca2c2433, type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: DefaultCardBorder.BlueTeam.BorderAction
+      value: 
+      objectReference: {fileID: 2100000, guid: db5040ab2052b1449bc702c16b889047, type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: DefaultCardBorder.RedTeam.BorderMeleeMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 27f625ef7ff966248b52d2b2a6f14618, type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: DefaultCardBorder.BlueTeam.BorderMeleeMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: b4161a07e6238b745ab833989e8e0c85, type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[2].Model.RedTeam
+      value: 
+      objectReference: {fileID: 7999794207726517518, guid: 36234b16643913f44b748502d03b2b53,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[2].Model.BlueTeam
+      value: 
+      objectReference: {fileID: 3002137706064027944, guid: f3951fb6153e63e469bfc8e2926b5ff2,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[3].Model.RedTeam
+      value: 
+      objectReference: {fileID: 1269242006179194969, guid: bd96173cabd526447b166b4eebbeeef9,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[3].Model.BlueTeam
+      value: 
+      objectReference: {fileID: 1326255431742333049, guid: 96416f528ba2baf41a90c27af10c10be,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[4].Model.RedTeam
+      value: 
+      objectReference: {fileID: 1518552023573711390, guid: ec179f87c7b73814babf527b13b75f65,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[4].Model.BlueTeam
+      value: 
+      objectReference: {fileID: 7355868476678998503, guid: fd73a7e8ed450054f9f30c367b1749bc,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[5].Model.RedTeam
+      value: 
+      objectReference: {fileID: 7028620591155420899, guid: 07a029a27088dd24890712f3086030f5,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[5].Model.BlueTeam
+      value: 
+      objectReference: {fileID: 8970612416882956493, guid: f017ad8e0599a6f4e9486ee9dba8647c,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[7].Model.RedTeam
+      value: 
+      objectReference: {fileID: 1728038097469870810, guid: af8840ac6831fb049a3872aa95b53803,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[7].Model.BlueTeam
+      value: 
+      objectReference: {fileID: 3373345146398093155, guid: ceb64c332b75d344aa26d16dca78e50e,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[8].Model.RedTeam
+      value: 
+      objectReference: {fileID: 3571387672207216014, guid: e29f9abe514cc794aae65a17809a0122,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[8].Model.BlueTeam
+      value: 
+      objectReference: {fileID: 6540096182271882300, guid: 1945add953c61964d9bd21b1bdf188a3,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[9].Model.RedTeam
+      value: 
+      objectReference: {fileID: 1916843688301366962, guid: 8388079fe693d4c4495e044a25304abb,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[9].Model.BlueTeam
+      value: 
+      objectReference: {fileID: 8089521362600297847, guid: 4242450b3c98b5941b9a6c0135bccbd8,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[10].Model.RedTeam
+      value: 
+      objectReference: {fileID: 9149746159594025163, guid: a2a71733b7d1a9b4284dd5b570ca5446,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[10].Model.BlueTeam
+      value: 
+      objectReference: {fileID: 3297067460691737802, guid: 723bd169953e0aa45889f2bed08aeab7,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[12].Model.RedTeam
+      value: 
+      objectReference: {fileID: 799754945981790194, guid: 351b0dc1a3ce5184f8dda8dfd44d514f,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[12].Model.BlueTeam
+      value: 
+      objectReference: {fileID: 5297377538564566897, guid: a007660732968874c9750dfca372f114,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[13].Model.RedTeam
+      value: 
+      objectReference: {fileID: 4901216538894244450, guid: eae1b09a09c6ec94ca7a630e594acbd7,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[13].Model.BlueTeam
+      value: 
+      objectReference: {fileID: 1826559998905363077, guid: 7cebd90169eb95448b978b91788648f1,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[14].Model.RedTeam
+      value: 
+      objectReference: {fileID: 3456268666952389186, guid: 1d673bf26e955b84abcf8a8fe0d21ede,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[14].Model.BlueTeam
+      value: 
+      objectReference: {fileID: 7534751348436351390, guid: 2f6a47e06e80e0e449aa3749c620b56a,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[15].Model.RedTeam
+      value: 
+      objectReference: {fileID: 5933515939617996759, guid: 47c3eb585b1dc7a4f8260b0cb65dab6a,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[15].Model.BlueTeam
+      value: 
+      objectReference: {fileID: 3603905379483180849, guid: cf97eae144cea124bad30aef3bbde681,
+        type: 3}
     - target: {fileID: 4467022757310397675, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: m_Name

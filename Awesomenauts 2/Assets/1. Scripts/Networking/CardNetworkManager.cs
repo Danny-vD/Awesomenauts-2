@@ -24,7 +24,7 @@ namespace Networking
 {
 	public class CardNetworkManager : NetworkManager
 	{
-		
+
 
 		private static string DataPath => Application.platform == RuntimePlatform.Android
 			? Application.persistentDataPath + "/" : "./";
@@ -44,7 +44,7 @@ namespace Networking
 		public List<AEffect> AllEffects;
 
 		public Sprite DefaultCardPortrait;
-		public BorderInfo DefaultCardBorder;
+		public TeamBorderInfo DefaultCardBorder;
 
 		public static CardNetworkManager Instance => singleton as CardNetworkManager;
 		public bool IsHost { get; private set; }
@@ -102,18 +102,32 @@ namespace Networking
 
 			return DefaultCardPortrait;
 		}
-		public BorderInfo GetCardBorder(string name)
+
+
+		public GameObject GetCardModel(string name, int teamID)
 		{
 			foreach (CardEntry cardEntry in CardEntries)
 			{
+				if (cardEntry.Statistics.GetValue<string>(CardPlayerStatType.CardName) == name && cardEntry.Model.Get(teamID) != null)
+				{
+					return cardEntry.Model.Get(teamID);
+				}
+			}
 
+			return null;
+		}
+
+		public BorderInfo GetCardBorder(string name, int teamID)
+		{
+			foreach (CardEntry cardEntry in CardEntries)
+			{
 				if (cardEntry.Statistics.GetValue<string>(CardPlayerStatType.CardName) == name && cardEntry.cardBorder.IsValid)
 				{
 					return cardEntry.cardBorder;
 				}
 			}
 
-			return DefaultCardBorder;
+			return DefaultCardBorder.Get(teamID);
 		}
 
 		public List<AEffect> GetCardEffects(string name)
@@ -132,6 +146,15 @@ namespace Networking
 
 		public override void Awake()
 		{
+			for (int i = 0; i < CardEntries.Length; i++)
+			{
+				CardEntry cardEntry = CardEntries[i];
+
+				cardEntry.index = i;
+
+				CardEntries[i] = cardEntry;
+			}
+
 			if (File.Exists(DeckPath))
 			{
 				Stream s = File.OpenRead(DeckPath);

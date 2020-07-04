@@ -16,7 +16,7 @@ namespace Player
 {
 	public class Card : NetworkBehaviour
 	{
-
+		public Transform[] CardParts;
 		public Image CardImage;
 		public Text CardName;
 		public Text CardDescription;
@@ -58,10 +58,9 @@ namespace Player
 				return;
 			}
 
-			for (int i = 0; i < transform.childCount; i++)
+			for (int i = 0; i < CardParts.Length; i++)
 			{
-				Transform child = transform.GetChild(i);
-				SetChildLayer(child, set);
+				SetChildLayer(CardParts[i], set);
 			}
 		}
 
@@ -110,11 +109,24 @@ namespace Player
 			StatisticsValid = true;
 			CardName.text = Statistics.GetValue<string>(CardPlayerStatType.CardName) ?? "";
 			CardImage.sprite = CardNetworkManager.Instance.GetCardImage(CardName.text);
-			BorderInfo bi = CardNetworkManager.Instance.GetCardBorder(CardName.text);
+			BorderInfo bi = CardNetworkManager.Instance.GetCardBorder(CardName.text, stat.GetValue<int>(CardPlayerStatType.TeamID));
 			CardBorderFilter.mesh = bi.BorderMesh;
-			CardBorderRenderer.materials[0] = bi.BorderMaterial;
+			CardType type = (CardType)stat.GetValue<int>(CardPlayerStatType.CardType);
+			CardBorderRenderer.sharedMaterial = bi.GetMaterial(type);
 			EffectManager = new EffectManager(CardNetworkManager.Instance.GetCardEffects(CardName.text));
 			CardDescription.text = EffectManager.GetEffectText();
+
+			if (Model != null && Model.childCount == 0)
+			{
+				GameObject modelPrefab = CardNetworkManager.Instance.GetCardModel(
+					Statistics.GetValue<string>(CardPlayerStatType.CardName),
+					Statistics.GetValue<int>(CardPlayerStatType.TeamID));
+				if (modelPrefab != null)
+				{
+					GameObject model = Instantiate(modelPrefab, Model.position, Quaternion.identity, Model);
+				}
+			}
+
 
 			CardTextHelper cth = GetComponentInChildren<CardTextHelper>();
 			cth.Register(this);

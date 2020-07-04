@@ -15,8 +15,6 @@ using UnityEngine;
 
 namespace Networking
 {
-	
-
 	/// <summary>
 	/// Info Object for a Card
 	/// </summary>
@@ -25,10 +23,12 @@ namespace Networking
 	{
 		//Inspector Fields
 		//Stats/Designs/etc
+		[HideInInspector]
+		public int index;
 		public bool InternalCard;
 		public EntityStatistics Statistics;
 		public GameObject Prefab;
-		public GameObject Model;
+		public CardModelAsset Model;
 		public BorderInfo cardBorder;
 		public CardType CardType;
 		public CardSprites Sprites;
@@ -58,19 +58,19 @@ namespace Networking
 			MemoryStream ms = new MemoryStream();
 			if (!SerializerSingleton.Serializer.TryWritePacket(ms, Statistics)) ExceptionViewUI.Instance.SetException(new Byt3Exception("Serializer Write Error"), "Serialization Exception:");
 
-			return ms.GetBuffer().Take((int) ms.Position).ToArray();
+			return ms.GetBuffer().Take((int)ms.Position).ToArray();
 
 		}
-		
+
 		public static EntityStatistics FromNetwork(byte[] buffer)
 		{
 			InitializeSerializer();
-			MemoryStream ms = new MemoryStream(buffer) {Position = 0};
+			MemoryStream ms = new MemoryStream(buffer) { Position = 0 };
 			bool ret = SerializerSingleton.Serializer.TryReadPacket(ms, out EntityStatistics stat);
 			if (!ret) ExceptionViewUI.Instance.SetException(new Byt3Exception("Read packet Exception"), "Deserialization Exception:");
 
 			return stat;
-			
+
 		}
 	}
 }
