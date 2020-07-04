@@ -11,16 +11,13 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 {
 	public abstract class AEffect : ScriptableObject
 	{
-		[SerializeField]
-		private bool playSound = false;
+		public bool playSound = false;
+		
+		public string AnimationName;
 
-		[SerializeField]
-		private string AnimationName;
-		[SerializeField]
-		private float AnimationLength;
-
-		[SerializeField]
-		private EventType soundToPlay = EventType.SFX_CARDS_CardPlace;
+		public float AnimationLength;
+		
+		public EventType soundToPlay = EventType.SFX_CARDS_CardPlace;
 
 		public string Description;
 		public virtual EffectTrigger Trigger => EffectTrigger.AfterPlay;

@@ -66,8 +66,9 @@ namespace UI
 			StartTimestamp = Time.realtimeSinceStartup;
 		}
 
-		private void OnDestroy()
+		protected override void OnDestroy()
 		{
+			base.OnDestroy();
 			ts.Cancel();
 
 		}
