@@ -54,5 +54,10 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 		{
 			AudioPlayer.PlaySound(@event, @object);
 		}
+
+		public override string ToString()
+		{
+			return $"\t{GetType().Name}\n\tTrigger: {Trigger}\n\tDescription: {Description}";
+		}
 	}
 }

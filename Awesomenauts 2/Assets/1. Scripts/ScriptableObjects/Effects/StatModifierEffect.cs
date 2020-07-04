@@ -21,12 +21,32 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 		{
 
 			EntityStatistics[] stats = null;
-			if (EffectTarget == EffectTarget.Player)
+			if ((EffectTarget & EffectTarget.Player) != 0)
 			{
-				stats = new[]{CardPlayer
-					.ServerPlayers[
-						MapTransformInfo.Instance.SocketManager.TID2CID(
-							c.Statistics.GetValue<int>(CardPlayerStatType.TeamID))].PlayerStatistics};
+				//stats = new[]{CardPlayer
+				//	.ServerPlayers[
+				//		MapTransformInfo.Instance.SocketManager.TID2CID(
+				//			c.Statistics.GetValue<int>(CardPlayerStatType.TeamID))].PlayerStatistics};
+				if ((EffectTarget & EffectTarget.Enemies) != 0)
+				{
+
+					stats = CardPlayer.ServerPlayers.Where(x =>
+							x.PlayerStatistics.GetValue<int>(CardPlayerStatType.TeamID) !=
+							c.Statistics.GetValue<int>(CardPlayerStatType.TeamID)).Select(x => x.PlayerStatistics)
+						.ToArray();
+				}
+				else if ((EffectTarget & EffectTarget.Allies) != 0)
+				{
+					int id = MapTransformInfo.Instance.SocketManager.TID2CID(
+						c.Statistics.GetValue<int>(CardPlayerStatType.TeamID));
+					stats = new[]{CardPlayer
+						.ServerPlayers[id].PlayerStatistics};
+				}
+				else
+				{
+					throw new Exception("No effect Target Specified in object: " + name);
+				}
+
 			}
 			else if (EffectTarget == EffectTarget.TargetSocket)
 			{
@@ -44,6 +64,10 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 				{
 					stats = MapTransformInfo.Instance.SocketManager.GetSocketsOnSide(side).Where(x => x.HasCard && c.Statistics.GetValue<int>(CardPlayerStatType.TeamID) == x.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.TeamID)).Select(x => x.DockedCard.Statistics).ToArray();
 				}
+				else
+				{
+					throw new Exception("No effect Target Specified in object: " + name);
+				}
 			}
 			else if ((EffectTarget & EffectTarget.Board) != 0)
 			{
@@ -54,6 +78,10 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 				else if ((EffectTarget & EffectTarget.Allies) != 0)
 				{
 					stats = MapTransformInfo.Instance.SocketManager.GetCardSockets().Where(x => x.HasCard && c.Statistics.GetValue<int>(CardPlayerStatType.TeamID) == x.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.TeamID)).Select(x => x.DockedCard.Statistics).ToArray();
+				}
+				else
+				{
+					throw new Exception("No effect Target Specified in object: " + name);
 				}
 			}
 			else
@@ -83,5 +111,12 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 			yield return null;
 		}
 
+		public override string ToString()
+		{
+			string ret = base.ToString();
+			ret +=
+				$"\n\tStatType: {StatType}\n\tEffectTarget: {EffectTarget}\n\tAmount: {Amount}\n\tMultiply: {Multiply}";
+			return ret;
+		}
 	}
 }

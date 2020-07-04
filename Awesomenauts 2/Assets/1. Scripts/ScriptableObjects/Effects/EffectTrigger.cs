@@ -25,5 +25,6 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects {
 		/// </summary>
 		OnRoundEnd = 2048,
 		OnRoundStart = 4096,
+		OnDraw = 8192,
 	}
 }

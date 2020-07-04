@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets._1._Scripts.ScriptableObjects.Effects;
 using Mirror;
 using UnityEngine;
 
@@ -83,6 +84,7 @@ namespace Player {
 			Card c = id.GetComponent<Card>();
 			if (c != null)
 			{
+				c.EffectManager.InvokeEffects(EffectTrigger.OnDraw, null, null, c);
 				c.gameObject.layer = CardPlayer.UnityTrashWorkaround(PlayerHandLayer);
 				AddCard(c);
 				c.SetState(CardState.OnHand);

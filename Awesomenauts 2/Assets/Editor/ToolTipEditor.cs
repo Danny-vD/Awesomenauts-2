@@ -4,10 +4,10 @@ using UnityEditor;
 [CustomEditor(typeof(TooltipScript))]
 public class ToolTipEditor : UnityEditor.Editor
 {
-	
+
 	public override void OnInspectorGUI()
 	{
-		TooltipScript scr = (TooltipScript) target;
+		TooltipScript scr = (TooltipScript)target;
 		for (int i = 0; i < scr.Tooltips.Count; i++)
 		{
 			TooltipScript.Tooltip t = scr.Tooltips[i];
@@ -18,5 +18,5 @@ public class ToolTipEditor : UnityEditor.Editor
 
 		base.OnInspectorGUI();
 	}
-	
+
 }

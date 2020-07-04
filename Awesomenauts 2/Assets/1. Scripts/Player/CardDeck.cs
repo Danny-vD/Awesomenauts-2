@@ -8,7 +8,12 @@ namespace Player {
 	{
 		private Vector3 GravePosition;
 		public Vector3 DeckPosition;
+
+		public CardEntry FatigueCard;
+
 		private Queue<CardEntry> DeckContent;
+
+
 
 		private NetworkIdentity id;
 
@@ -55,6 +60,7 @@ namespace Player {
 		[Server]
 		public CardEntry DrawCard()
 		{
+			if (DeckContent.Count == 0) return FatigueCard;
 			CardEntry e = DeckContent.Dequeue();
 			return e;
 		}

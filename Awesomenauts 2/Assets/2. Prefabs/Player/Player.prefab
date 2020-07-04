@@ -437,6 +437,33 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   DeckPosition: {x: 0, y: 0, z: 0}
+  FatigueCard:
+    InternalCard: 0
+    Statistics:
+      StartStatistics:
+      - type: 0
+        dataType: 0
+        value: 0
+      - type: 2
+        dataType: 0
+        value: 1
+      - type: 4
+        dataType: 2
+        value: Fatigue Card
+    Prefab: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
+      type: 3}
+    cardBorder:
+      BorderMesh: {fileID: 0}
+      BorderMaterial: {fileID: 0}
+    CardType: 128
+    Sprites:
+      Border: {fileID: 0}
+      Body: {fileID: 0}
+      Portrait: {fileID: 0}
+    Awesomenaut: 0
+    Amount: 0
+    effects:
+    - {fileID: 11400000, guid: ce23901075455a84ea62050a70de982d, type: 2}
 --- !u!114 &6473226967791899819
 MonoBehaviour:
   m_ObjectHideFlags: 0
