@@ -60,16 +60,16 @@ namespace Maps
 
 			if (CurrentTurn != -1)
 			{
-				CardPlayer.ServerPlayers.ForEach(x=> MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.AfterRoundEnd,
+				CardPlayer.ServerPlayers.ForEach(x => MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.AfterRoundEnd,
 					x));
 			}
 			CurrentTurn++;
-			if (MaxSolar >= 10) MaxSolar = 10;
 			if (CurrentTurn >= CardPlayer.ServerPlayers.Count)
 			{
 				CurrentTurn = 0;
 				MaxSolar++;
 			}
+			if (MaxSolar >= 10) MaxSolar = 10;
 
 			CardPlayer current = CardPlayer.ServerPlayers[CurrentTurn];
 			current.ClearUsedCards();
@@ -105,6 +105,10 @@ namespace Maps
 		[Server]
 		public void StartGame()
 		{
+			if (GameInitializer.Data.DebugInfo.StartSolar != -1)
+			{
+				MaxSolar = GameInitializer.Data.DebugInfo.StartSolar;
+			}
 			RpcSetServerVersion(Application.version);
 			GameStarted = true;
 			int[] clientIDs = new int[CardPlayer.ServerPlayers.Count];
@@ -175,12 +179,12 @@ namespace Maps
 					CardPlayer.ServerPlayers[CurrentTurn]);
 			}
 			CurrentTurn++;
-			if (MaxSolar >= 10) MaxSolar = 10;
 			if (CurrentTurn >= CardPlayer.ServerPlayers.Count)
 			{
 				CurrentTurn = 0;
 				MaxSolar++;
 			}
+			if (MaxSolar >= 10) MaxSolar = 10;
 
 			CardPlayer current = CardPlayer.ServerPlayers[CurrentTurn];
 			current.ClearUsedCards();

@@ -123,7 +123,7 @@ namespace Player
 					Statistics.GetValue<int>(CardPlayerStatType.TeamID));
 				if (modelPrefab != null)
 				{
-					GameObject model = Instantiate(modelPrefab, Model.position, Quaternion.identity, Model);
+					GameObject model = Instantiate(modelPrefab, Model.position, modelPrefab.transform.rotation, Model);
 				}
 			}
 

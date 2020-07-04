@@ -6610,7 +6610,9 @@ PrefabInstance:
     - target: {fileID: 4467022757310397680, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: StartupArguments
-      value: Game.DebugInfo.AllowUnrestrictedDecks:true
+      value: 'Game.DebugInfo.AllowUnrestrictedDecks:true
+
+        Game.DebugInfo.StartSolar:9'
       objectReference: {fileID: 0}
     - target: {fileID: 4467022757310397680, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}

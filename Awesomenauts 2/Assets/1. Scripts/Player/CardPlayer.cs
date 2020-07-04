@@ -220,7 +220,7 @@ namespace Player
 			GameObject modelPrefab = e.Model.Get(ClientID);
 			if (modelPrefab != null)
 			{
-				GameObject model = Instantiate(modelPrefab, c.Model.position, Quaternion.identity, c.Model);
+				GameObject model = Instantiate(modelPrefab, c.Model.position, modelPrefab.transform.rotation, c.Model);
 			}
 			NetworkServer.Spawn(cardInstance, GetComponent<NetworkIdentity>().connectionToClient);
 
