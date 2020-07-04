@@ -2602,6 +2602,35 @@ MonoBehaviour:
   - {fileID: 1095771847}
   SolarActive: {fileID: 21300000, guid: cd195c10d8e7e934b87f545cfc1a92cf, type: 3}
   SolarInactive: {fileID: 21300000, guid: 940127aaab3ba604a944a085fa2925df, type: 3}
+  Mode: 4
+  Speed: 3
+  Multiplicator: 65
+  Delay: 0.25
+  Modulus: 1
+  CustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 0
+    m_RotationOrder: 4
 --- !u!114 &1656045833
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -160,7 +160,7 @@ namespace Maps
 
 			//}
 
-			DebugPanelInfo.instance.UpdateVersionText(version);
+			DebugPanelInfo.Instance.UpdateVersionText(version);
 		}
 
 		//Ends the turn

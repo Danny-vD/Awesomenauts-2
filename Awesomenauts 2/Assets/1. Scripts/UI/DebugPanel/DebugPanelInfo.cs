@@ -2,10 +2,11 @@ using Networking;
 using Player;
 using UnityEngine;
 using UnityEngine.UI;
+using VDFramework.Singleton;
 
 namespace UI.DebugPanel
 {
-	public class DebugPanelInfo : MonoBehaviour
+	public class DebugPanelInfo : Singleton<DebugPanelInfo>
 	{
 
 		public Camera CardPreviewCamera;
@@ -15,12 +16,7 @@ namespace UI.DebugPanel
 		public SolarDisplay SolarDisp;
 		private bool init;
 		public Text VersionText;
-		public static DebugPanelInfo instance;
-
-		void Awake()
-		{
-			instance = this;
-		}
+		
 
 		private void Update()
 		{

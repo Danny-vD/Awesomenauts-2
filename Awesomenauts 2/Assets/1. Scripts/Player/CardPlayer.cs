@@ -152,9 +152,9 @@ namespace Player
 		// Update is called once per frame
 		private void Update()
 		{
-			if (!DebugPanelInfo.instance) return;
+			if (!DebugPanelInfo.Instance) return;
 			bool hoverCard = IsHoveringCard(AllCardLayers, out RaycastHit chit);
-			DebugPanelInfo.instance.CardPreviewCameraImage.enabled = hoverCard;
+			DebugPanelInfo.Instance.CardPreviewCameraImage.enabled = hoverCard;
 			if (hoverCard)
 			{
 				Card c = chit.transform.GetComponent<Card>();
@@ -164,17 +164,17 @@ namespace Player
 				PreviewCards.Add(c);
 				c.SetPreviewLayer(true);
 
-				DebugPanelInfo.instance.CardPreviewCamera.transform.position = new Vector3(c.transform.position.x,
+				DebugPanelInfo.Instance.CardPreviewCamera.transform.position = new Vector3(c.transform.position.x,
 					c.transform.position.y + 6.5f, c.transform.position.z);
-				DebugPanelInfo.instance.CardPreviewCamera.transform.rotation = c.transform.rotation;
-				DebugPanelInfo.instance.CardPreviewCamera.transform.Rotate(Vector3.right,
+				DebugPanelInfo.Instance.CardPreviewCamera.transform.rotation = c.transform.rotation;
+				DebugPanelInfo.Instance.CardPreviewCamera.transform.Rotate(Vector3.right,
 					180); //From looking up to looking on the card (down)
-				DebugPanelInfo.instance.CardPreviewCamera.transform.Rotate(Vector3.forward,
+				DebugPanelInfo.Instance.CardPreviewCamera.transform.Rotate(Vector3.forward,
 					180); //Rotating so that the card is rotated correctly relative to the camera
 
 				if (c.gameObject.layer == 8) //CardHandLayer
 				{
-					DebugPanelInfo.instance.CardPreviewCamera.transform.Translate(0, -3.5f, 0, Space.Self);
+					DebugPanelInfo.Instance.CardPreviewCamera.transform.Translate(0, -3.5f, 0, Space.Self);
 				}
 			}
 
@@ -306,6 +306,7 @@ namespace Player
 			if (waitForRelease) return;
 			waitForRelease = true;
 			dragging = false;
+			DebugPanelInfo.Instance.SolarDisp.SetSolarCost(0);
 			if (!snapping)
 			{
 				Hand.SetSelectedCard(null); //Return card to hand
@@ -397,6 +398,7 @@ namespace Player
 				}
 				else
 				{
+					DebugPanelInfo.Instance.SolarDisp.SetSolarCost(cardSolar);
 					TooltipScript.Instance.SetTooltip(TooltipType.CardPlayAccepted);
 					Hand.SetSelectedCard(c);
 					canSnap = true;
