@@ -18,7 +18,9 @@ namespace Player
 
 	public class CardPlayer : NetworkBehaviour
 	{
-		public EntityStatistics PlayerStatistics;
+		public EntityStatistics PlayerStatistics => Awsomenaut?.Statistics;
+		[HideInInspector]
+		public Card Awsomenaut;
 
 		private List<Card> UsedCardsThisTurn = new List<Card>();
 		private List<Card> PreviewCards=new List<Card>();
@@ -92,7 +94,6 @@ namespace Player
 		// Start is called before the first frame update
 		private void Start()
 		{
-			PlayerStatistics.InitializeStatDictionary();
 			Camera = Camera.main;
 			if (isLocalPlayer)
 			{
@@ -135,6 +136,17 @@ namespace Player
 
 			CmdSetReady();
 			IsReady = true;
+		}
+
+		[ClientRpc]
+		public void RpcSetAwsomenaut(NetworkIdentity id)
+		{
+			SetAwsomenaut(id);
+		}
+
+		public void SetAwsomenaut(NetworkIdentity id)
+		{
+			Awsomenaut = id.GetComponent<Card>();
 		}
 
 		// Update is called once per frame

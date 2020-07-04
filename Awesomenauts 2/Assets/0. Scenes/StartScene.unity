@@ -2627,7 +2627,7 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: TeamPrefabs.Array.data[1].TurretLeft.Statistics.StartStatistics.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -5862,7 +5862,7 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: TeamPrefabs.Array.data[1].TurretLeft.Statistics.StartStatistics.Array.data[0].value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -6121,7 +6121,7 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: TeamPrefabs.Array.data[0].Awsomenaut.Statistics.StartStatistics.Array.data[0].value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -6233,6 +6233,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ce23901075455a84ea62050a70de982d,
         type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: TeamPrefabs.Array.data[1].TurretLeft.Statistics.StartStatistics.Array.data[3].type
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: TeamPrefabs.Array.data[1].TurretLeft.Statistics.StartStatistics.Array.data[3].value
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: TeamPrefabs.Array.data[1].TurretLeft.Statistics.StartStatistics.Array.data[4].type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: TeamPrefabs.Array.data[1].TurretLeft.Statistics.StartStatistics.Array.data[4].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4467022757310397675, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: m_Name

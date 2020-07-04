@@ -140,6 +140,11 @@ namespace Maps
 				ltS.RpcDockCard(turretLeft.netIdentity);
 				rtS.RpcDockCard(turretRight.netIdentity);
 				awS.RpcDockCard(awsomenaut.netIdentity);
+
+				CardPlayer.ServerPlayers[i].RpcSetAwsomenaut(awsomenaut.netIdentity);
+				CardPlayer.ServerPlayers[i].SetAwsomenaut(awsomenaut.netIdentity);
+
+
 				//Set Turrets/Awsomenauts for all clients
 			}
 

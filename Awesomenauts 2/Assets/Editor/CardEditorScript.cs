@@ -59,3 +59,51 @@ public class CardEditorScript : UnityEditor.Editor
 	}
 
 }
+[CustomEditor(typeof(CardPlayer))]
+public class CardPlayerEditorScript : UnityEditor.Editor
+{
+	private CardPlayer player;
+	void OnEnable()
+	{
+		player = (CardPlayer)target;
+	}
+
+	public override void OnInspectorGUI()
+	{
+
+		base.OnInspectorGUI();
+
+		Card scr = player.Awsomenaut;
+
+		StringBuilder sb = new StringBuilder();
+		if (scr == null)
+		{
+			GUILayout.TextArea("No Awsomenaut Attached");
+			return;
+		}
+		sb.AppendLine(
+			$"Entity Name: {(scr.Statistics.HasValue(CardPlayerStatType.CardName) ? scr.Statistics.GetValue<string>(CardPlayerStatType.CardName) : "NoName")}");
+
+		sb.AppendLine(
+			$"Entity Type: { (CardType)(scr.Statistics.HasValue(CardPlayerStatType.CardType) ? scr.Statistics.GetValue<int>(CardPlayerStatType.CardType) : 0)}");
+
+		sb.AppendLine(
+			$"Entity Solar: { (scr.Statistics.HasValue(CardPlayerStatType.Solar) ? scr.Statistics.GetValue<int>(CardPlayerStatType.Solar) : 0)}");
+
+		sb.AppendLine(
+			$"Entity HP: { (scr.Statistics.HasValue(CardPlayerStatType.HP) ? scr.Statistics.GetValue<int>(CardPlayerStatType.HP) : 0)}");
+
+		sb.AppendLine(
+			$"Entity Attack: { (scr.Statistics.HasValue(CardPlayerStatType.Attack) ? scr.Statistics.GetValue<int>(CardPlayerStatType.Attack) : 0)}");
+
+		sb.AppendLine(
+			$"Entity Range: { (scr.Statistics.HasValue(CardPlayerStatType.Range) ? scr.Statistics.GetValue<int>(CardPlayerStatType.Range) : 0)}");
+
+		sb.AppendLine(
+			$"Entity XRange: { (scr.Statistics.HasValue(CardPlayerStatType.CrossLaneRange) ? scr.Statistics.GetValue<int>(CardPlayerStatType.CrossLaneRange) : 0)}");
+		
+		GUILayout.TextArea(sb.ToString());
+
+	}
+
+}

@@ -24,7 +24,7 @@ namespace UI.DebugPanel
 
 		private void Update()
 		{
-			if (!init && CardPlayer.LocalPlayer != null)
+			if (!init && CardPlayer.LocalPlayer != null && CardPlayer.LocalPlayer.PlayerStatistics != null)
 			{
 				CardPlayer.LocalPlayer.PlayerStatistics.Register(CardPlayerStatType.Solar, OnUpdateSolar);
 				OnUpdateSolar(CardPlayer.LocalPlayer.PlayerStatistics.GetValue<int>(CardPlayerStatType.Solar));

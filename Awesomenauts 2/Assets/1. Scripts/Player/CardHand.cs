@@ -84,7 +84,11 @@ namespace Player {
 			Card c = id.GetComponent<Card>();
 			if (c != null)
 			{
-				c.EffectManager.InvokeEffects(EffectTrigger.OnDraw, null, null, c);
+				if (c.EffectManager.InvokeEffects(EffectTrigger.OnDraw, null, null, c))
+				{
+					Destroy(c.gameObject);
+					return;
+				}
 				c.gameObject.layer = CardPlayer.UnityTrashWorkaround(PlayerHandLayer);
 				AddCard(c);
 				c.SetState(CardState.OnHand);

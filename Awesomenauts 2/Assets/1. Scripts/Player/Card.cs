@@ -46,7 +46,7 @@ namespace Player
 
 			//Instanciate Animator in child objects if any
 			Animator = GetComponentInChildren<Animator>();
-			
+
 		}
 
 		public void SetPreviewLayer(bool set)
@@ -55,7 +55,7 @@ namespace Player
 			{
 				return;
 			}
-			
+
 			for (int i = 0; i < transform.childCount; i++)
 			{
 				Transform child = transform.GetChild(i);
@@ -72,7 +72,7 @@ namespace Player
 				SetChildLayer(child, set);
 			}
 		}
-		
+
 
 		public void SetSocket(CardSocket socket)
 		{
@@ -94,7 +94,9 @@ namespace Player
 		private void ApplyStatistics(byte[] data)
 		{
 			//Debug.Log("Received Stats");
-			Statistics = CardEntry.FromNetwork(data);
+			EntityStatistics stat = CardEntry.FromNetwork(data);
+			stat.ReregisterEvents(Statistics);
+			Statistics = stat;
 			StatisticsValid = true;
 			CardName.text = Statistics.GetValue<string>(CardPlayerStatType.CardName) ?? "";
 			CardImage.sprite = CardNetworkManager.Instance.GetCardImage(CardName.text);

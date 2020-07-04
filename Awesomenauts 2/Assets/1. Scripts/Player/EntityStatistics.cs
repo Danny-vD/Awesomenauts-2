@@ -10,9 +10,27 @@ namespace Player {
 		public Dictionary<CardPlayerStatType, CardPlayerStat> Stats;
 
 		public List<InternalStat> StartStatistics;
+		private Dictionary<CardPlayerStatType, object> PreInitChanges = new Dictionary<CardPlayerStatType, object>();
+
+		public bool IsValid { get; private set; }
 
 		public delegate void OnStatTypeChanged(object newValue);
 		private Dictionary<CardPlayerStatType, OnStatTypeChanged> registeredEvents = new Dictionary<CardPlayerStatType, OnStatTypeChanged>();
+
+		public void ReregisterEvents(EntityStatistics statistics)
+		{
+			foreach (KeyValuePair<CardPlayerStatType, OnStatTypeChanged> statisticsRegisteredEvent in statistics.registeredEvents)
+			{
+				if (registeredEvents.ContainsKey(statisticsRegisteredEvent.Key))
+				{
+					registeredEvents[statisticsRegisteredEvent.Key] += statisticsRegisteredEvent.Value;
+				}
+				else
+				{
+					registeredEvents[statisticsRegisteredEvent.Key] = statisticsRegisteredEvent.Value;
+				}
+			}
+		}
 
 		public void Register(CardPlayerStatType type, OnStatTypeChanged del, bool directUpdate = false)
 		{
@@ -60,6 +78,17 @@ namespace Player {
 				}
 			}
 
+			SetValid();
+
+		}
+
+		public void SetValid()
+		{
+			IsValid = true;
+			foreach (KeyValuePair<CardPlayerStatType, object> preInitChange in PreInitChanges)
+			{
+				SetValue(preInitChange.Key, preInitChange.Value);
+			}
 		}
 
 		public void Invalidate()
@@ -90,6 +119,12 @@ namespace Player {
 		public void SetValue(CardPlayerStatType type, object value)
 		{
 			//Debug.Log($"Setting Stat Type: {type} to value: {value}");
+
+			if (!IsValid)
+			{
+				PreInitChanges.Add(type, value);
+				return;
+			}
 
 			if (registeredEvents.ContainsKey(type))
 				registeredEvents[type](value); //Call the Events.
