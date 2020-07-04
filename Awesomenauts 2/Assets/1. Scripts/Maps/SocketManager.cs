@@ -31,25 +31,6 @@ namespace Maps
 		/// </summary>
 		private Dictionary<int, CardTeamSocketData> SocketData = null;
 
-		// Start is called before the first frame update
-		void Start()
-		{
-			if (!CardNetworkManager.Instance.IsServer) return;
-
-
-
-			//foreach (CardTeamSocketData cardTeamSocketData in CardSockets)
-			//{
-			//	for (int i = 0; i < cardTeamSocketData.CardSockets.Count; i++)
-			//	{
-			//		CardSocket cardSocket = cardTeamSocketData.CardSockets[i];
-			//		CardSocket cs = Instantiate(cardSocket);
-			//		Destroy(cardSocket);
-			//		cardTeamSocketData.CardSockets[i] = cs;
-			//		NetworkServer.Spawn(cs.gameObject);
-			//	}
-			//}
-		}
 
 		public void RegisterSocket(int id, CardSocket socket)
 		{
