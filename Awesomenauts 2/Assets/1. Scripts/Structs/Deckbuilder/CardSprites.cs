@@ -1,8 +1,12 @@
-﻿using System;
+using System;
+using Networking;
 using UnityEngine;
 
 namespace Structs.Deckbuilder
 {
+	[Serializable]
+	public class PortraitAsset : TeamAsset<Sprite> { }
+
 	[Serializable]
 	public struct CardSprites
 	{
@@ -11,5 +15,6 @@ namespace Structs.Deckbuilder
 		public Sprite Body;
 
 		public Sprite Portrait;
+		public PortraitAsset TeamPortrait;
 	}
 }

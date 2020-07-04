@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets._1._Scripts.ScriptableObjects.DragLogic;
@@ -92,50 +94,71 @@ namespace Player
 		public int ClientID { get; private set; }
 
 		// Start is called before the first frame update
-		private void Start()
+		private void Awake()
 		{
 			Camera = Camera.main;
-			if (isLocalPlayer)
+
+		}
+
+		private void Start()
+		{
+			if (isClient && hasAuthority)
 			{
 				LocalPlayer = this;
+			}
+			if(isServer)
+			{
+				ClientID = ServerPlayers.Count;
+				ServerPlayers.Add(this);
+			}
+		}
 
+		[Command]
+		private void CmdSetReady(int id)
+		{
+			SetReady(id);
+		}
 
-				//Got replaced by a non dynamic function BoardLogic.ClientRequestEndTurn()
-				//DebugPanelInfo dpi = FindObjectOfType<DebugPanelInfo>();
-				//if (dpi != null)
-				//{
-				//    dpi.RegisterEndTurn(EndTurn);
-				//}
-				CmdRequestClientID();
+		private void SetReady(int id)
+		{
+			Debug.Log("Client: " + id + " is ready.");
+			IsReady = true;
+			if (id != ClientID)
+			{
+				ExceptionViewUI.Instance.SetException(new Exception("ClientIDMismatch"), "Client ID Missmatch");
+				return;
+			}
+			BoardLogic.Logic.SetClientReady(ClientID);
+		}
+
+		[ClientRpc]
+		public void RpcSetClientPlayerID(int id, int[] clientIds)
+		{
+			SetClientPlayerId(id, clientIds);
+		}
+
+		private void SetClientPlayerId(int id, int[] clientIds)
+		{
+			ClientID = id;
+			if (ServerPlayers.Count <= id) ServerPlayers.Add(this);
+			else
+			{
+				ServerPlayers[id] = this;
 			}
 
-			ServerPlayers.Add(this);
-			////Debug.Log($"isLocalPlayer: {isLocalPlayer}\nIsClient: {isClient}\nIsServer: {isServer}");
+			StartCoroutine(WaitForMapRoutine(id, clientIds));
 		}
 
-		[Command]
-		private void CmdRequestClientID()
+		private IEnumerator WaitForMapRoutine(int id, int[] clientIds)
 		{
-			ClientID = GetComponent<NetworkIdentity>().connectionToClient.connectionId;
-			//Debug.Log("ServerSide Client ID Set to: " + ClientID);
-			TargetSetClientID(GetComponent<NetworkIdentity>().connectionToClient, ClientID);
-		}
+			while (MapTransformInfo.Instance == null) yield return new WaitForEndOfFrame();
 
-		[Command]
-		private void CmdSetReady()
-		{
-			//Debug.Log("Client is ready.");
-			IsReady = true;
-		}
 
-		[TargetRpc]
-		private void TargetSetClientID(NetworkConnection conn, int clientID)
-		{
-			ClientID = clientID;
-			//Debug.Log("Client ID Set to: " + ClientID);
+			MapTransformInfo.Instance.SocketManager.AddPlayers(clientIds);
 
-			CmdSetReady();
-			IsReady = true;
+			Debug.Log("Client: " + id + " is ready.");
+			CmdSetReady(id);
+			yield return null;
 		}
 
 		[ClientRpc]
@@ -152,7 +175,7 @@ namespace Player
 		// Update is called once per frame
 		private void Update()
 		{
-			if (!DebugPanelInfo.Instance) return;
+			if (!DebugPanelInfo.Instance || LocalPlayer == null) return;
 			bool hoverCard = IsHoveringCard(AllCardLayers, out RaycastHit chit);
 			DebugPanelInfo.Instance.CardPreviewCameraImage.enabled = hoverCard;
 			if (hoverCard)
@@ -185,6 +208,7 @@ namespace Player
 		}
 
 
+		[Server]
 		public void DrawCard(int amount)
 		{
 			int cardsToDraw = Mathf.Min(Hand.CardSlotsFree, amount);
@@ -204,6 +228,7 @@ namespace Player
 			}
 		}
 
+		[Server]
 		public void DrawCard(CardEntry e)
 		{
 			Card c = CreateCard(e);
@@ -211,6 +236,7 @@ namespace Player
 			Hand.RpcAddToHand(c.netIdentity); //Add Card to the client
 		}
 
+		[Server]
 		public Card CreateCard(CardEntry e)
 		{
 			e.Statistics.InitializeStatDictionary();
@@ -248,11 +274,18 @@ namespace Player
 			if (BoardLogic.Logic.CurrentTurnClient == clientID) BoardLogic.Logic.ServerEndTurn();
 		}
 
-		[TargetRpc]
-		public void TargetSetCameraPosition(NetworkConnection target, Vector3 pos, Quaternion rot, bool InvertCardValues)
+		[ClientRpc]
+		public void RpcSetCameraPosition(Vector3 pos, Quaternion rot, bool invertValues)
 		{
+			if (hasAuthority)
+				SetCameraPosition(pos, rot, invertValues);
+		}
+
+		private void SetCameraPosition(Vector3 pos, Quaternion rot, bool invertValues)
+		{
+			if (Camera == null) return;
 			Camera.transform.SetPositionAndRotation(pos, rot);
-			if (InvertCardValues)
+			if (invertValues)
 			{
 				invertCardRotation = true;
 				Hand.InvertValues();

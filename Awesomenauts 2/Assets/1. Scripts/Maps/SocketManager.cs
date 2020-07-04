@@ -20,6 +20,8 @@ namespace Maps
 			public List<CardSocket> CardSockets;
 		}
 
+		private bool playersSet;
+
 		/// <summary>
 		/// Contains the Information on who has authority over with sockets.
 		/// </summary>
@@ -40,21 +42,14 @@ namespace Maps
 
 		private Dictionary<int, List<CardSocket>> socketMap = new Dictionary<int, List<CardSocket>>();
 
-		private Dictionary<int, int> IDMAP = new Dictionary<int, int>();
-
-
-		public int TID2CID(int cid)
-		{
-			return IDMAP[cid];
-		}
-
 		/// <summary>
 		/// Maps the ClientIDS to the Corresponding Team IDS
 		/// </summary>
 		/// <param name="clientIDs"></param>
 		/// <param name="teamIDs"></param>
-		public void AddPlayers(int[] clientIDs, int[] teamIDs)
+		public void AddPlayers(int[] clientIDs)
 		{
+			if (playersSet) return;
 			if (SocketData == null)
 				SocketData = new Dictionary<int, CardTeamSocketData>();
 
@@ -62,12 +57,10 @@ namespace Maps
 
 			for (int i = 0; i < clientIDs.Length; i++)
 			{
-				if (!IDMAP.ContainsKey(clientIDs[i]))
-				{
-					IDMAP.Add(clientIDs[i], teamIDs[i]);
-					AddPlayer(clientIDs[i], teamIDs[i]);
-				}
+				AddPlayer(clientIDs[i]);
 			}
+
+
 			foreach (KeyValuePair<int, List<CardSocket>> keyValuePair in socketMap)
 			{
 				SocketData[SocketData.ElementAt(keyValuePair.Key).Key].CardSockets = keyValuePair.Value;
@@ -75,11 +68,12 @@ namespace Maps
 
 			for (int i = 0; i < clientIDs.Length; i++)
 			{
-				foreach (CardSocket cardSocket in CardSockets[teamIDs[i]].CardSockets)
+				foreach (CardSocket cardSocket in CardSockets[clientIDs[i]].CardSockets)
 				{
 					cardSocket.SetClientID(clientIDs[i]);
 				}
 			}
+
 			socketMap.Clear();
 
 		}
@@ -89,15 +83,11 @@ namespace Maps
 		/// </summary>
 		/// <param name="clientID"></param>
 		/// <param name="teamID"></param>
-		private void AddPlayer(int clientID, int teamID)
+		private void AddPlayer(int clientID)
 		{
 			if (!SocketData.ContainsKey(clientID))
 			{
-				SocketData.Add(clientID, CardSockets[teamID]);
-				//foreach (CardSocket cardSocket in CardSockets[teamID].CardSockets)
-				//{
-				//	cardSocket.SetClientID(clientID);
-				//}
+				SocketData.Add(clientID, CardSockets[clientID]);
 			}
 		}
 

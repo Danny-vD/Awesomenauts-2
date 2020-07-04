@@ -28,6 +28,9 @@ public class CardEditorScript : UnityEditor.Editor
 			$"Entity Type: { (CardType)(scr.Statistics.HasValue(CardPlayerStatType.CardType) ? scr.Statistics.GetValue<int>(CardPlayerStatType.CardType) : 0)}");
 
 		sb.AppendLine(
+			$"Entity Owner ID: { (CardType)(scr.Statistics.HasValue(CardPlayerStatType.TeamID) ? scr.Statistics.GetValue<int>(CardPlayerStatType.TeamID) : -1)}");
+
+		sb.AppendLine(
 			$"Entity Solar: { (scr.Statistics.HasValue(CardPlayerStatType.Solar) ? scr.Statistics.GetValue<int>(CardPlayerStatType.Solar) : 0)}");
 
 		sb.AppendLine(
@@ -82,7 +85,14 @@ public class CardPlayerEditorScript : UnityEditor.Editor
 			return;
 		}
 		sb.AppendLine(
+			$"Client ID: {player.ClientID}");
+		
+		sb.AppendLine(
 			$"Entity Name: {(scr.Statistics.HasValue(CardPlayerStatType.CardName) ? scr.Statistics.GetValue<string>(CardPlayerStatType.CardName) : "NoName")}");
+
+		sb.AppendLine(
+			$"Entity Owner ID: { (scr.Statistics.HasValue(CardPlayerStatType.TeamID) ? scr.Statistics.GetValue<int>(CardPlayerStatType.TeamID) : -1)}");
+
 
 		sb.AppendLine(
 			$"Entity Type: { (CardType)(scr.Statistics.HasValue(CardPlayerStatType.CardType) ? scr.Statistics.GetValue<int>(CardPlayerStatType.CardType) : 0)}");

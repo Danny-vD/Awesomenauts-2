@@ -43,7 +43,6 @@ namespace Player
 		// Start is called before the first frame update
 		void Start()
 		{
-			SetCoverState(isClient && !hasAuthority);
 
 			//Instanciate Animator in child objects if any
 			Animator = GetComponentInChildren<Animator>();
@@ -53,11 +52,6 @@ namespace Player
 
 		public void SetPreviewLayer(bool set)
 		{
-			if (this == null)
-			{
-				return;
-			}
-
 			for (int i = 0; i < CardParts.Length; i++)
 			{
 				SetChildLayer(CardParts[i], set);
@@ -66,6 +60,7 @@ namespace Player
 
 		private void SetChildLayer(Transform c, bool set)
 		{
+			if (c == null) return;
 			c.gameObject.layer = set ? 13 : 0;
 			for (int i = 0; i < c.childCount; i++)
 			{
@@ -107,6 +102,7 @@ namespace Player
 			stat.ReregisterEvents(Statistics);
 			Statistics = stat;
 			StatisticsValid = true;
+			SetCoverState(CardPlayer.LocalPlayer != null && Statistics.GetValue<int>(CardPlayerStatType.TeamID) != CardPlayer.LocalPlayer.ClientID);
 			CardName.text = Statistics.GetValue<string>(CardPlayerStatType.CardName) ?? "";
 			CardImage.sprite = CardNetworkManager.Instance.GetCardImage(CardName.text);
 			BorderInfo bi = CardNetworkManager.Instance.GetCardBorder(CardName.text, stat.GetValue<int>(CardPlayerStatType.TeamID));

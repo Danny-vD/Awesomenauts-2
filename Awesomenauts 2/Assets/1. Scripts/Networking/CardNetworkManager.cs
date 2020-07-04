@@ -283,33 +283,16 @@ namespace Networking
 
 			if (!IsServer || BoardLogic.Logic == null) return;
 
-			if (CardPlayer.ServerPlayers.Count == 2 && CardPlayer.AllPlayersReady && !BoardLogic.Logic.GameStarted)
+			if (numPlayers == 2 && CardPlayer.ServerPlayers.Count == 2 && BoardLogic.Logic.CanStartGame)
 			{
-
+				Debug.Log("Setting Up Players.");
 				//Thread.Sleep(1000); //Hack: Wait for client to create the player after connection established.
 				SetUpPlayer(0);
 				SetUpPlayer(1);
 
+				Debug.Log("Applying Socket Node Connections.");
 				ReplaceWithNetworkObject.ApplyConnections();
 
-				for (int i = 0; i < CardPlayer.ServerPlayers.Count; i++)
-				{
-					if (i != 0)
-					{
-						CardPlayer.ServerPlayers[i].DrawCard(StartingCards);
-						CardPlayer.ServerPlayers[i].DrawCard(CompensationCard);
-					}
-					else
-					{
-						CardPlayer.ServerPlayers[i].DrawCard(StartingCards - 1);
-
-
-
-					}
-
-
-
-				}
 
 				BoardLogic.Logic.StartGame();
 
@@ -332,7 +315,7 @@ namespace Networking
 			CardPlayer.ServerPlayers[id].Hand.RpcSetCameraPosition(MapTransformInfo.Instance.PlayerTransformInfos[id].CameraPosition.position);
 
 			//Remote Call to the Client.
-			CardPlayer.ServerPlayers[id].TargetSetCameraPosition(CardPlayer.ServerPlayers[id].connectionToClient, MapTransformInfo.Instance.PlayerTransformInfos[id].CameraPosition.position, MapTransformInfo.Instance.PlayerTransformInfos[id].CameraPosition.rotation, id == 1);
+			CardPlayer.ServerPlayers[id].RpcSetCameraPosition(MapTransformInfo.Instance.PlayerTransformInfos[id].CameraPosition.position, MapTransformInfo.Instance.PlayerTransformInfos[id].CameraPosition.rotation, id == 1);
 
 		}
 

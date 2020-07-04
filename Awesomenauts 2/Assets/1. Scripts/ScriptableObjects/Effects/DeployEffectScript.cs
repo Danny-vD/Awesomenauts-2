@@ -23,8 +23,7 @@ public class DeployEffectScript : AEffect
 		{
 			cards = new[]{CardPlayer
 				.ServerPlayers[
-					MapTransformInfo.Instance.SocketManager.TID2CID(
-						c.Statistics.GetValue<int>(CardPlayerStatType.TeamID))].Awsomenaut};
+					c.Statistics.GetValue<int>(CardPlayerStatType.TeamID)].Awsomenaut};
 		}
 		else if (EffectTarget == EffectTarget.TargetSocket)
 		{

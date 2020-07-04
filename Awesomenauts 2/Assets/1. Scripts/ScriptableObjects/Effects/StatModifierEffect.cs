@@ -39,8 +39,7 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 				}
 				else if ((EffectTarget & EffectTarget.Allies) != 0)
 				{
-					int id = MapTransformInfo.Instance.SocketManager.TID2CID(
-						c.Statistics.GetValue<int>(CardPlayerStatType.TeamID));
+					int id = c.Statistics.GetValue<int>(CardPlayerStatType.TeamID);
 					stats = new[]{CardPlayer
 						.ServerPlayers[id].PlayerStatistics};
 				}

@@ -147,7 +147,7 @@ namespace Mirror
             Transport.activeTransport.OnClientConnected.AddListener(OnConnected);
             Transport.activeTransport.OnClientDataReceived.AddListener(OnDataReceived);
             Transport.activeTransport.OnClientDisconnected.AddListener(OnDisconnected);
-            //Transport.activeTransport.OnClientError.AddListener(OnError);
+            Transport.activeTransport.OnClientError.AddListener(OnError);
         }
 
         static void OnError(Exception exception)

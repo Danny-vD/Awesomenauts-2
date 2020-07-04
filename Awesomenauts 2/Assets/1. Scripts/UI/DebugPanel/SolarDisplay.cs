@@ -45,9 +45,13 @@ namespace UI.DebugPanel
 		public void SetSolar(int amount)
 		{
 			displayedSolar = amount;
-			SolarText.text = $"{(int)amount}/10";
-			SolarImages.ForEach(x => x.sprite = SolarInactive);
-			SolarImages.Take(amount).ToList().ForEach(x => x.sprite = SolarActive);
+			if (SolarText != null)
+				SolarText.text = $"{(int)amount}/10";
+			if(SolarImages.All(x => x != null))
+			{
+				SolarImages.ForEach(x => x.sprite = SolarInactive);
+				SolarImages.Take(amount).ToList().ForEach(x => x.sprite = SolarActive);
+			}
 		}
 
 		public void SetSolarCost(int amount)
@@ -81,7 +85,7 @@ namespace UI.DebugPanel
 
 		void Update()
 		{
-			if (cost != 0)
+			if (cost != 0 && SolarText != null)
 			{
 				Animate(displayedSolar, cost, Delay, Speed, Mode, Modulus, Multiplicator, SolarImages, SolarText);
 			}
