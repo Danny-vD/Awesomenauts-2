@@ -23,7 +23,7 @@ namespace Player
 		public Card Awsomenaut;
 
 		private List<Card> UsedCardsThisTurn = new List<Card>();
-		private List<Card> PreviewCards=new List<Card>();
+		private List<Card> PreviewCards = new List<Card>();
 
 
 		public void ClearUsedCards() { UsedCardsThisTurn.Clear(); }
@@ -159,7 +159,7 @@ namespace Player
 			{
 				Card c = chit.transform.GetComponent<Card>();
 
-				PreviewCards.ForEach(x=>x.SetPreviewLayer(false));
+				PreviewCards.ForEach(x => x.SetPreviewLayer(false));
 				PreviewCards.Clear();
 				PreviewCards.Add(c);
 				c.SetPreviewLayer(true);
@@ -195,7 +195,7 @@ namespace Player
 
 
 			//Debug.Log("Adding " + cardsToDraw + " cards to the hand of client: " +
-					  //netIdentity.connectionToClient.connectionId);
+			//netIdentity.connectionToClient.connectionId);
 
 			for (int i = 0; i < cardsToDraw; i++)
 			{
@@ -216,8 +216,14 @@ namespace Player
 			e.Statistics.InitializeStatDictionary();
 			//Hand.AddCard(c);//Add the Card to the server
 			GameObject cardInstance = Instantiate(e.Prefab, Deck.DeckPosition, Quaternion.identity);
-			NetworkServer.Spawn(cardInstance, GetComponent<NetworkIdentity>().connectionToClient);
 			Card c = cardInstance.GetComponent<Card>();
+
+			if (e.Model != null)
+			{
+				GameObject model = Instantiate(e.Model, c.Model.position, Quaternion.identity, c.Model);
+			}
+			NetworkServer.Spawn(cardInstance, GetComponent<NetworkIdentity>().connectionToClient);
+
 			c.Statistics = e.Statistics;
 			c.EffectManager = new EffectManager(e.effects ?? new List<AEffect>());
 			c.Statistics.SetValue(CardPlayerStatType.TeamID, ClientID); //Set Team ID, used to find out to whom the card belongs.

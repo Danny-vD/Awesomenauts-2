@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Byt3.Serialization;
 using Byt3.Serialization.Serializers;
+using Byt3.Utilities.Exceptions;
 using MasterServer.Common;
 using Networking.Statistics;
 using Player;
@@ -23,9 +24,15 @@ namespace Networking.NetworkingHacks
 				MemoryStream ms = new MemoryStream(s.ReadBytes()) { Position = 0 };
 
 				bool ret = SerializerSingleton.Serializer.TryReadPacket(ms, out NetworkEntityStat stat);
-				if (!ret) throw new Exception("Read packet Exception");
+				if (!ret)
+				{
+					ExceptionViewUI.Instance.SetException(new Byt3Exception("Entity Statistics Read packet Exception"), "Deserialization Exception:");
+				}
+				else
+				{
+					es.SetValue(stat.StatType, stat.Value);
+				}
 
-				es.SetValue(stat.StatType, stat.Value);
 			}
 
 			return es;
@@ -44,12 +51,18 @@ namespace Networking.NetworkingHacks
 					ValueType = cardPlayerStat.Value.GetValue().GetType()
 				};
 				MemoryStream ms = new MemoryStream();
-				if (!SerializerSingleton.Serializer.TryWritePacket(ms, stat)) throw new Exception("Serializer Write Error");
+				if (!SerializerSingleton.Serializer.TryWritePacket(ms, stat))
+				{
+					ExceptionViewUI.Instance.SetException(new Byt3Exception("Entity Statistics Serializer Write Error"), "Serialization Exception:");
+				}
+				else
+				{
+					byte[] buf = new byte[ms.Length];
+					ms.Position = 0;
+					ms.Read(buf, 0, buf.Length);
+					s.Write(buf);
+				}
 
-				byte[] buf = new byte[ms.Length];
-				ms.Position = 0;
-				ms.Read(buf, 0, buf.Length);
-				s.Write(buf);
 			}
 		}
 	}

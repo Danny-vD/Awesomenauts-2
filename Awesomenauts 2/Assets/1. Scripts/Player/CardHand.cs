@@ -109,14 +109,25 @@ namespace Player {
 			CardsOnHand.Remove(card);
 		}
 
-		[TargetRpc]
-		public void TargetSetPosition(Vector3 HandAnchor)
+		[ClientRpc]
+		public void RpcSetPosition(Vector3 HandAnchor)
+		{
+			SetPosition(HandAnchor);
+		}
+
+
+		public void SetPosition(Vector3 HandAnchor)
 		{
 			Anchor = HandAnchor;
 		}
 
-		[TargetRpc]
-		public void TargetSetCameraPosition(Vector3 position)
+		[ClientRpc]
+		public void RpcSetCameraPosition(Vector3 position)
+		{
+            SetCameraPosition(position);
+		}
+
+		public void SetCameraPosition(Vector3 position)
 		{
 			CameraTransform = position;
 		}

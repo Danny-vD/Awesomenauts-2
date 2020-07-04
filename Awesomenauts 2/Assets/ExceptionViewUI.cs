@@ -7,8 +7,9 @@ using Networking;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using VDFramework.Singleton;
 
-public class ExceptionViewUI : MonoBehaviour
+public class ExceptionViewUI : Singleton<ExceptionViewUI>
 {
 
 	public Text ExceptionType;
@@ -19,7 +20,7 @@ public class ExceptionViewUI : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-
+		gameObject.SetActive(false);
 	}
 
 	// Update is called once per frame

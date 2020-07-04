@@ -65,12 +65,21 @@ namespace Player {
 			return e;
 		}
 
-		[TargetRpc]
-		public void TargetSetPositions(Vector3 deckPosition, Vector3 gravePosition)
+		[ClientRpc]
+		public void RpcSetPositions(Vector3 deckPosition, Vector3 gravePosition)
+		{
+			SetPositions(deckPosition, gravePosition);
+		}
+
+		public void SetPositions(Vector3 deckPosition, Vector3 gravePosition)
 		{
 			DeckPosition = deckPosition;
 			GravePosition = gravePosition;
-		}
+		}	
+		
+
+
+
 		// Update is called once per frame
 		void Update()
 		{

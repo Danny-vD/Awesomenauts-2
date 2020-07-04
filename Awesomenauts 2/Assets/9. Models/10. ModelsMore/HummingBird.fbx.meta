@@ -15,7 +15,12 @@ ModelImporter:
   - first:
       74: -1982907613751335249
     second: RangerDeath
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MinionLP_defaultMat1
+    second: {fileID: 2100000, guid: cc36b31a8536ae741b814f37bd7ed092, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -162,7 +167,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 100
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -208,7 +213,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 100
     rootMotionBoneName: HIP_BASE
     hasTranslationDoF: 0
     hasExtraRoot: 0

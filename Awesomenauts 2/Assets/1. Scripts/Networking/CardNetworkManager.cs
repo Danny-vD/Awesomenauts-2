@@ -24,8 +24,7 @@ namespace Networking
 {
 	public class CardNetworkManager : NetworkManager
 	{
-
-		public ExceptionViewUI ExUI;
+		
 
 		private static string DataPath => Application.platform == RuntimePlatform.Android
 			? Application.persistentDataPath + "/" : "./";
@@ -209,14 +208,14 @@ namespace Networking
 
 		private void OnServerErr(int arg0, Exception arg1)
 		{
-			ExUI.SetException(arg1, $"Host Error({arg0}):");
+			ExceptionViewUI.Instance.SetException(arg1, $"Host Error({arg0}):");
 			Stop();
 			CleanUp();
 		}
 
 		private void OnClientErr(Exception arg0)
 		{
-			ExUI.SetException(arg0, "Client Error:");
+			ExceptionViewUI.Instance.SetException(arg0, "Client Error:");
 			Stop();
 			CleanUp();
 		}
@@ -302,9 +301,12 @@ namespace Networking
 
 		private void SetUpPlayer(int id)
 		{
-			CardPlayer.ServerPlayers[id].Deck.TargetSetPositions(MapTransformInfo.Instance.PlayerTransformInfos[id].DeckPosition.position, MapTransformInfo.Instance.PlayerTransformInfos[id].GravePosition.position);
-			CardPlayer.ServerPlayers[id].Hand.TargetSetPosition(MapTransformInfo.Instance.PlayerTransformInfos[id].HandPosition.position);
-			CardPlayer.ServerPlayers[id].Hand.TargetSetCameraPosition(MapTransformInfo.Instance.PlayerTransformInfos[id].CameraPosition.position);
+			CardPlayer.ServerPlayers[id].Deck.RpcSetPositions(MapTransformInfo.Instance.PlayerTransformInfos[id].DeckPosition.position, MapTransformInfo.Instance.PlayerTransformInfos[id].GravePosition.position);
+			CardPlayer.ServerPlayers[id].Deck.SetPositions(MapTransformInfo.Instance.PlayerTransformInfos[id].DeckPosition.position, MapTransformInfo.Instance.PlayerTransformInfos[id].GravePosition.position);
+			CardPlayer.ServerPlayers[id].Hand.SetPosition(MapTransformInfo.Instance.PlayerTransformInfos[id].HandPosition.position);
+			CardPlayer.ServerPlayers[id].Hand.RpcSetPosition(MapTransformInfo.Instance.PlayerTransformInfos[id].HandPosition.position);
+			CardPlayer.ServerPlayers[id].Hand.SetCameraPosition(MapTransformInfo.Instance.PlayerTransformInfos[id].CameraPosition.position);
+			CardPlayer.ServerPlayers[id].Hand.RpcSetCameraPosition(MapTransformInfo.Instance.PlayerTransformInfos[id].CameraPosition.position);
 
 			//Remote Call to the Client.
 			CardPlayer.ServerPlayers[id].TargetSetCameraPosition(CardPlayer.ServerPlayers[id].connectionToClient, MapTransformInfo.Instance.PlayerTransformInfos[id].CameraPosition.position, MapTransformInfo.Instance.PlayerTransformInfos[id].CameraPosition.rotation, id == 1);

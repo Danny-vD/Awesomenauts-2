@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets._1._Scripts.ScriptableObjects.Effects;
 using Maps;
+using Networking;
 using Player;
 using UnityEngine;
 
@@ -20,12 +21,10 @@ public class DeployEffectScript : AEffect
 		Card[] cards = null;
 		if (EffectTarget == EffectTarget.Player)
 		{
-			throw new Exception("Currently impossible to use the player as a target to deploy an effect: " + Effect.name);
-			//TODO: When implementing the awsomenauts we need to add the awsomenaut as a card here
-			//cards = new[]{CardPlayer
-			//	.ServerPlayers[
-			//		MapTransformInfo.Instance.SocketManager.TID2CID(
-			//			c.Statistics.GetValue<int>(CardPlayerStatType.TeamID))].PlayerStatistics};
+			cards = new[]{CardPlayer
+				.ServerPlayers[
+					MapTransformInfo.Instance.SocketManager.TID2CID(
+						c.Statistics.GetValue<int>(CardPlayerStatType.TeamID))].Awsomenaut};
 		}
 		else if (EffectTarget == EffectTarget.TargetSocket)
 		{
@@ -50,14 +49,14 @@ public class DeployEffectScript : AEffect
 			{
 				cards = MapTransformInfo.Instance.SocketManager.GetCardSockets().Where(x => x.HasCard && c.Statistics.GetValue<int>(CardPlayerStatType.TeamID) != x.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.TeamID)).Select(x => x.DockedCard).ToArray();
 			}
-			else if((EffectTarget & EffectTarget.Allies) != 0)
+			else if ((EffectTarget & EffectTarget.Allies) != 0)
 			{
 				cards = MapTransformInfo.Instance.SocketManager.GetCardSockets().Where(x => x.HasCard && c.Statistics.GetValue<int>(CardPlayerStatType.TeamID) == x.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.TeamID)).Select(x => x.DockedCard).ToArray();
 			}
 		}
 		else
 		{
-			throw new Exception("No effect Target Specified in object: " + name);
+			ExceptionViewUI.Instance.SetException(new EffectException("No effect Target Specified in object: " + name));
 		}
 
 		//Debug.Log("Deploying Effect: " + Effect.name + " on " + cards.Length + " Cards.");
@@ -66,7 +65,7 @@ public class DeployEffectScript : AEffect
 			if (card.EffectManager.Effects.Contains(this)) continue;
 			card.EffectManager.Effects.Add(Effect);
 		}
-		
+
 		yield return null;
 	}
 }

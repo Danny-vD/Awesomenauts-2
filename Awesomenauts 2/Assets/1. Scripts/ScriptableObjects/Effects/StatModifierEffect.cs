@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Linq;
+using Byt3.Utilities.Exceptions;
 using Maps;
+using Networking;
 using Player;
 using UnityEngine;
 
@@ -44,7 +46,8 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 				}
 				else
 				{
-					throw new Exception("No effect Target Specified in object: " + name);
+
+					ExceptionViewUI.Instance.SetException(new EffectException("No effect Target Specified in object: " + name));
 				}
 
 			}
@@ -66,7 +69,7 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 				}
 				else
 				{
-					throw new Exception("No effect Target Specified in object: " + name);
+					ExceptionViewUI.Instance.SetException(new EffectException("No effect Target Specified in object: " + name));
 				}
 			}
 			else if ((EffectTarget & EffectTarget.Board) != 0)
@@ -81,12 +84,12 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 				}
 				else
 				{
-					throw new Exception("No effect Target Specified in object: " + name);
+					ExceptionViewUI.Instance.SetException(new EffectException("No effect Target Specified in object: " + name));
 				}
 			}
 			else
 			{
-				throw new Exception("No effect Target Specified in object: " + name);
+				ExceptionViewUI.Instance.SetException(new EffectException("No effect Target Specified in object: " + name));
 			}
 
 			//Debug.Log("Applying Effect: " + name + " on " + stats.Length + " Cards.");

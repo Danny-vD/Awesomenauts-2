@@ -21,6 +21,7 @@ namespace Player
 		public Text CardName;
 		public Text CardDescription;
 
+		public Transform Model;
 
 		public EffectManager EffectManager;
 
@@ -49,6 +50,7 @@ namespace Player
 
 		}
 
+
 		public void SetPreviewLayer(bool set)
 		{
 			if (this == null)
@@ -76,7 +78,15 @@ namespace Player
 
 		public void SetSocket(CardSocket socket)
 		{
+			if (Model != null && AttachedCardSocket != null)
+			{
+				Model.gameObject.SetActive(false);
+			}
 			AttachedCardSocket = socket;
+			if (Model != null && AttachedCardSocket != null)
+			{
+				Model.gameObject.SetActive(true);
+			}
 		}
 
 		[ClientRpc]

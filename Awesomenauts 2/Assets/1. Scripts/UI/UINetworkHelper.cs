@@ -52,7 +52,7 @@ namespace UI
 			if (CardNetworkManager.Exit != null)
 			{
 				//MainMenu.SetActive(false);
-				CardNetworkManager.Instance.ExUI.SetException(new Exception("Game Error: " + CardNetworkManager.Exit.message));
+				ExceptionViewUI.Instance.SetException(new Exception("Game Error: " + CardNetworkManager.Exit.message));
 				//UpdateErrText("Game Error", CardNetworkManager.Exit.message);
 				CardNetworkManager.Exit = null;
 			}
@@ -131,12 +131,12 @@ namespace UI
 			UpdateErrorStatus = false;
 			if (ex != null)
 			{
-				CardNetworkManager.Instance.ExUI.SetException(ex, Enum.GetName(e.GetType(), e));
+				ExceptionViewUI.Instance.SetException(ex, Enum.GetName(e.GetType(), e));
 			}
 			else
 			{
 				Exception exx = new Exception(Enum.GetName(e.GetType(), e));
-				CardNetworkManager.Instance.ExUI.SetException(exx, Enum.GetName(e.GetType(), e));
+				ExceptionViewUI.Instance.SetException(exx, Enum.GetName(e.GetType(), e));
 			}
 
 			LoadingScreen?.SetActive(false);

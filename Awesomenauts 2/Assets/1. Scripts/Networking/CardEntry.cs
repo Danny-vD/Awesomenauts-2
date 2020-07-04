@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Assets._1._Scripts.ScriptableObjects.Effects;
+using Byt3.Utilities.Exceptions;
 using Player;
 using Enums.Cards;
 using Enums.Character;
@@ -27,6 +28,7 @@ namespace Networking
 		public bool InternalCard;
 		public EntityStatistics Statistics;
 		public GameObject Prefab;
+		public GameObject Model;
 		public BorderInfo cardBorder;
 		public CardType CardType;
 		public CardSprites Sprites;
@@ -54,7 +56,7 @@ namespace Networking
 		{
 			InitializeSerializer();
 			MemoryStream ms = new MemoryStream();
-			if (!SerializerSingleton.Serializer.TryWritePacket(ms, Statistics)) throw new Exception("Serializer Write Error");
+			if (!SerializerSingleton.Serializer.TryWritePacket(ms, Statistics)) ExceptionViewUI.Instance.SetException(new Byt3Exception("Serializer Write Error"), "Serialization Exception:");
 
 			return ms.GetBuffer().Take((int) ms.Position).ToArray();
 
@@ -65,7 +67,7 @@ namespace Networking
 			InitializeSerializer();
 			MemoryStream ms = new MemoryStream(buffer) {Position = 0};
 			bool ret = SerializerSingleton.Serializer.TryReadPacket(ms, out EntityStatistics stat);
-			if (!ret) throw new Exception("Read packet Exception");
+			if (!ret) ExceptionViewUI.Instance.SetException(new Byt3Exception("Read packet Exception"), "Deserialization Exception:");
 
 			return stat;
 			
