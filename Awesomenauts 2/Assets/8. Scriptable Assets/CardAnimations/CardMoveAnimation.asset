@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CardMoveAnimation
   m_EditorClassIdentifier: 
   Particles: []
-  AnimationDuration: 1
+  AnimationDuration: 0.5
   AnimationSpeed:
     serializedVersion: 2
     m_Curve:

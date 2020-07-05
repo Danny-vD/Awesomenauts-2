@@ -1,4 +1,6 @@
 using System.Collections;
+using Assets._1._Scripts.ScriptableObjects.Effects;
+using Player;
 using UnityEngine;
 
 namespace Assets._1._Scripts.AnimationSystem
@@ -13,8 +15,11 @@ namespace Assets._1._Scripts.AnimationSystem
 		public float AnimationYIntensity;
 		public AnimationCurve AnimationYCurve;
 		public bool ResetToInitialPosition;
+		
+
 		public override IEnumerator Play(AnimationPlayer player, Transform target)
 		{
+
 			base.Play(player, target);
 
 			Vector3 initPos = player.transform.position;
