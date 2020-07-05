@@ -19,6 +19,8 @@ namespace Player
 {
 	public class Card : NetworkBehaviour
 	{
+		private int lastHp;
+
 		public bool IsLocked { get; private set; }
 		public Transform[] CardParts;
 		public Image CardImage;
@@ -161,12 +163,18 @@ namespace Player
 		{
 			if (newvalue == null || !(newvalue is int hp))
 				return;
+
 			if (hp <= 0)
 			{
 				EffectManager.InvokeEffects(EffectTrigger.OnDeath, AttachedCardSocket, null, this);
 				StartCoroutine(WaitForUnlock(GoCommitDie));
 				//GoCommitDie(); //Might move this into an effect class
 			}
+			else if (lastHp > hp) //Damage has been done
+			{
+				EffectManager.InvokeEffects(EffectTrigger.OnAttacked, AttachedCardSocket, null, this);
+			}
+			lastHp = hp;
 		}
 
 		public void GoCommitDie()

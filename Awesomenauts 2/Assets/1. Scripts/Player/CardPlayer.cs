@@ -505,7 +505,7 @@ namespace Player
 					UsedCardsThisTurn.Add(sourceCard);
 					Card targetCard = targetSocket.DockedCard;
 					sourceCard.EffectManager.InvokeEffects(EffectTrigger.OnAttacking, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
-					targetCard.EffectManager.InvokeEffects(EffectTrigger.OnAttacked, targetSocket, sourceCard.AttachedCardSocket, targetCard);
+					//targetCard.EffectManager.InvokeEffects(EffectTrigger.OnAttacked, targetSocket, sourceCard.AttachedCardSocket, targetCard);
 					sourceCard.Attack(targetSocket.DockedCard);
 					sourceCard.EffectManager.InvokeEffects(EffectTrigger.AfterAttacking, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
 					targetCard.EffectManager.InvokeEffects(EffectTrigger.AfterAttacked, targetSocket, sourceCard.AttachedCardSocket, targetCard);
