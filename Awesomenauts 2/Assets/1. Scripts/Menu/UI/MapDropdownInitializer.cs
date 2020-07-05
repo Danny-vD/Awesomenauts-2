@@ -7,12 +7,16 @@ namespace Menu.UI {
 	public class MapDropdownInitializer : MonoBehaviour
 	{
 		private Dropdown ddMapList;
-
+		
 		public Image mapPreview;
 		// Start is called before the first frame update
 		void Start()
 		{
 			CardNetworkManager manager = CardNetworkManager.Instance;
+			if (manager == null)
+			{
+				return;
+			}
 
 			ddMapList = GetComponent<Dropdown>();
 

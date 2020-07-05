@@ -17,7 +17,7 @@ namespace Utility
 	public class GameInitializer : NetworkBehaviour
 	{
 		public static GameInitializer Instance;
-		public static MasterServerComponent Master => Instance.MasterServerComp;
+		public static MasterServerComponent Master => Instance?.MasterServerComp;
 		public static GameInfo Data => Instance == null ? null : Instance.GameData;
 
 

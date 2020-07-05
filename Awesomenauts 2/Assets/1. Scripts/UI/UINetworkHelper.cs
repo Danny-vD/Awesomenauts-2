@@ -26,7 +26,6 @@ namespace UI
 		CancellationTokenSource ts = new CancellationTokenSource();
 
 
-
 		public GameObject MainMenu;
 		public GameObject LoadingScreen;
 		private MatchMakingErrorCode ErrorCode = MatchMakingErrorCode.None;
@@ -58,6 +57,9 @@ namespace UI
 			}
 
 
+			if (GameInitializer.Data == null) return;
+
+
 			foreach (InputField inputField in fields)
 			{
 				inputField.SetTextWithoutNotify(GameInitializer.Data.Network.DefaultAddress.IP);
@@ -75,7 +77,15 @@ namespace UI
 
 		public void AbortQueue()
 		{
-			GameInitializer.Master.AbortQueue();
+			if (GameInitializer.Master == null)
+			{
+				LoadingScreen.SetActive(false);
+			}
+			else
+			{
+				GameInitializer.Master.AbortQueue();
+			}
+
 		}
 
 		private void OnMasterServerFoundMatch(MasterServerAPI.ServerInstanceResultPacket serverinstance)
@@ -94,14 +104,17 @@ namespace UI
 
 		private void Update()
 		{
-			LastUpdateTimestamp = Time.realtimeSinceStartup;
-			if (!FindMatchOnlyDelayFlag && GameInitializer.Data.Network.FindMatchOnly && GameInitializer.Data.Network.FindMatchOnlyDelay != 0)
+			if (GameInitializer.Data != null)
 			{
-				float add = GameInitializer.Data.Network.FindMatchOnlyDelay / 1000f;
-				if (StartTimestamp + add < Time.realtimeSinceStartup)
+				LastUpdateTimestamp = Time.realtimeSinceStartup;
+				if (!FindMatchOnlyDelayFlag && GameInitializer.Data.Network.FindMatchOnly && GameInitializer.Data.Network.FindMatchOnlyDelay != 0)
 				{
-					FindMatchOnlyDelayFlag = true;
-					buttonFindMatch.onClick.Invoke();
+					float add = GameInitializer.Data.Network.FindMatchOnlyDelay / 1000f;
+					if (StartTimestamp + add < Time.realtimeSinceStartup)
+					{
+						FindMatchOnlyDelayFlag = true;
+						buttonFindMatch.onClick.Invoke();
+					}
 				}
 			}
 
@@ -147,21 +160,21 @@ namespace UI
 
 		public void StartClient()
 		{
-			CardNetworkManager.Instance.ApplyEndPoint();
-			CardNetworkManager.Instance.StartClient();
+			CardNetworkManager.Instance?.ApplyEndPoint();
+			CardNetworkManager.Instance?.StartClient();
 		}
 
 		public void StartHost()
 		{
-			CardNetworkManager.Instance.ApplyEndPoint();
-			CardNetworkManager.Instance.StartHost();
+			CardNetworkManager.Instance?.ApplyEndPoint();
+			CardNetworkManager.Instance?.StartHost();
 		}
 
 
 		public void StartServer()
 		{
-			CardNetworkManager.Instance.ApplyEndPoint();
-			CardNetworkManager.Instance.StartServer();
+			CardNetworkManager.Instance?.ApplyEndPoint();
+			CardNetworkManager.Instance?.StartServer();
 		}
 
 
@@ -181,19 +194,23 @@ namespace UI
 			DisplayTimestamp = true;
 			SetText("Connecting to Master Server..");
 
+			if (GameInitializer.Master == null) return;
+
 			MasterServerAPI.ConnectionEvents ev = new MasterServerAPI.ConnectionEvents();
-			ev.OnError += (MatchMakingErrorCode e, Exception ex) =>
-			{
-				ErrorCode = e;
-				Exception = ex;
-				DisplayTimestamp = false;
-				UpdateQueueStatus = true;
-				UpdateErrorStatus = true;
-			};
+			ev.OnError += OnFindGameError;
 			ev.OnStatusUpdate += SetText;
 			ev.OnSuccess += OnMasterServerFoundMatch;
 
 			GameInitializer.Master.ConnectToServer(ev);
+		}
+
+		private void OnFindGameError(MatchMakingErrorCode e, Exception ex)
+		{
+			ErrorCode = e;
+			Exception = ex;
+			DisplayTimestamp = false;
+			UpdateQueueStatus = true;
+			UpdateErrorStatus = true;
 		}
 		#endregion
 
