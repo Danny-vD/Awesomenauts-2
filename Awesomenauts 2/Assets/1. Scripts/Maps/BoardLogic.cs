@@ -116,8 +116,8 @@ namespace Maps
 
 			if (CurrentTurn != -1)
 			{
-				CardPlayer.ServerPlayers.ForEach(x => MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.AfterRoundEnd,
-					x));
+				MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.OnRoundEnd,
+					CardPlayer.ServerPlayers[CurrentTurn]);
 			}
 			CurrentTurn++;
 			if (CurrentTurn >= CardPlayer.ServerPlayers.Count)
@@ -147,7 +147,7 @@ namespace Maps
 
 			current.PlayerStatistics.SetValue(CardPlayerStatType.Solar, MaxSolar);
 
-			CardPlayer.ServerPlayers.ForEach(x => MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.OnRoundStart, x));
+			MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.OnRoundStart, current);
 
 		}
 

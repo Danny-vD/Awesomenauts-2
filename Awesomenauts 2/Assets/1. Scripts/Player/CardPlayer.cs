@@ -373,7 +373,7 @@ namespace Player
 			Card c = draggedCardIdentity.GetComponent<Card>();
 			CardSocket cs = socket.GetComponent<CardSocket>();
 
-
+			UsedCardsThisTurn.Add(c); //Card that got placed is not able to do any additional action in the turn
 
 			int solar = PlayerStatistics.GetValue<int>(CardPlayerStatType.Solar);
 			int sub = c.Statistics.GetValue<int>(CardPlayerStatType.Solar);
