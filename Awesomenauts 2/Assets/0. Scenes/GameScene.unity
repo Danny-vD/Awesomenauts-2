@@ -874,6 +874,7 @@ GameObject:
   - component: {fileID: 454618433}
   - component: {fileID: 454618432}
   - component: {fileID: 454618435}
+  - component: {fileID: 454618436}
   m_Layer: 5
   m_Name: EndTurn
   m_TagString: Untagged
@@ -956,6 +957,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 454618436}
+        m_MethodName: TriggerShake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &454618433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1005,6 +1017,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Button: {fileID: 454618432}
+--- !u!114 &454618436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454618430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb6bcb31886e34489afe22cb68c6ec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShakeTime: 0.15
+  ShakeSpeed: 50
+  ShakeIntensity:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 5.789778
+      outSlope: 5.789778
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.07144085
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: -0.045086525
+      outSlope: -0.045086525
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.24548635
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -6.2950344
+      outSlope: -6.2950344
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.058995843
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  IntensityMultiplier: 3
 --- !u!1 &498766810
 GameObject:
   m_ObjectHideFlags: 0
@@ -1821,6 +1881,7 @@ GameObject:
   - component: {fileID: 1052625919}
   - component: {fileID: 1052625918}
   - component: {fileID: 1052625917}
+  - component: {fileID: 1052625920}
   m_Layer: 5
   m_Name: Leave Server
   m_TagString: Untagged
@@ -1903,6 +1964,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1052625920}
+        m_MethodName: TriggerShake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1052625918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1939,6 +2011,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1052625915}
   m_CullTransparentMesh: 0
+--- !u!114 &1052625920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052625915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb6bcb31886e34489afe22cb68c6ec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShakeTime: 0.15
+  ShakeSpeed: 50
+  ShakeIntensity:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 5.789778
+      outSlope: 5.789778
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.07144085
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: -0.045086525
+      outSlope: -0.045086525
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.24548635
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -6.2950344
+      outSlope: -6.2950344
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.058995843
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  IntensityMultiplier: 3
 --- !u!1 &1095771845
 GameObject:
   m_ObjectHideFlags: 0

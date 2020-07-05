@@ -244,10 +244,16 @@ namespace Player
 			GameObject cardInstance = Instantiate(e.Prefab, Deck.DeckPosition, Quaternion.identity);
 			Card c = cardInstance.GetComponent<Card>();
 			GameObject modelPrefab = e.Model.Get(ClientID);
-			if (modelPrefab != null)
-			{
-				GameObject model = Instantiate(modelPrefab, c.Model.position, modelPrefab.transform.rotation, c.Model);
-			}
+			//if (modelPrefab != null)
+			//{
+			//	GameObject model = Instantiate(modelPrefab, c.Model.position, modelPrefab.transform.rotation);
+			//	if (c.Animator == null)
+			//	{
+			//		c.Animator = model.GetComponent<Animator>();
+			//	}
+
+			//	model.transform.parent = c.Model;
+			//}
 			NetworkServer.Spawn(cardInstance, GetComponent<NetworkIdentity>().connectionToClient);
 
 			c.Statistics = e.Statistics;

@@ -7110,6 +7110,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: c1282c2e610cad9488a64b1469a7a55f,
         type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[0].name
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4467022757310397675, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: m_Name

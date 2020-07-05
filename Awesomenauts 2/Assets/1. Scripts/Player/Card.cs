@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Diagnostics;
 using Assets._1._Scripts.ScriptableObjects.DragLogic;
 using Assets._1._Scripts.ScriptableObjects.Effects;
@@ -16,6 +18,7 @@ namespace Player
 {
 	public class Card : NetworkBehaviour
 	{
+		public bool IsLocked { get; private set; }
 		public Transform[] CardParts;
 		public Image CardImage;
 		public Text CardName;
@@ -45,8 +48,14 @@ namespace Player
 		{
 
 			//Instanciate Animator in child objects if any
-			Animator = GetComponentInChildren<Animator>();
+			if (Animator == null)
+				Animator = GetComponentInChildren<Animator>();
 
+		}
+
+		public void Lock(bool lockState)
+		{
+			IsLocked = lockState;
 		}
 
 
@@ -87,10 +96,10 @@ namespace Player
 		public void RpcSendStats(byte[] data, int[] effects)
 		{
 			ApplyStatistics(data);
+			EffectManager.Effects = new System.Collections.Generic.List<AEffect>();
 			foreach (int effect in effects)
 			{
 				//Debug.Log("Adding effect: " + effect);
-				EffectManager.Effects = new System.Collections.Generic.List<AEffect>();
 				EffectManager.Effects.Add(CardNetworkManager.Instance.AllEffects[effect]);
 			}
 		}
@@ -120,6 +129,10 @@ namespace Player
 				if (modelPrefab != null)
 				{
 					GameObject model = Instantiate(modelPrefab, Model.position, modelPrefab.transform.rotation, Model);
+					if (Animator == null)
+					{
+						Animator = model.GetComponent<Animator>();
+					}
 				}
 			}
 
@@ -134,6 +147,13 @@ namespace Player
 		}
 
 
+		private IEnumerator WaitForUnlock(Action action)
+		{
+			while (IsLocked) yield return 1;
+			action();
+		}
+
+
 		private void OnHPChanged(object newvalue)
 		{
 			if (newvalue == null || !(newvalue is int hp))
@@ -141,7 +161,8 @@ namespace Player
 			if (hp <= 0)
 			{
 				EffectManager.InvokeEffects(EffectTrigger.OnDeath, AttachedCardSocket, null, this);
-				GoCommitDie(); //Might move this into an effect class
+				StartCoroutine(WaitForUnlock(GoCommitDie));
+				//GoCommitDie(); //Might move this into an effect class
 			}
 		}
 

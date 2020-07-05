@@ -17,4 +17,4 @@ MonoBehaviour:
   AnimationLength: 0.67
   soundToPlay: 4
   Description: 
-  TargetTrigger: 768
+  TargetTrigger: 256
