@@ -24,7 +24,7 @@ public class CameraController : MonoBehaviour
 		init = true;
 	}
 
-	private Camera camera;
+	private Camera PlayerCamera;
 	public float MaxZoom = 5f;
 	public float ZoomSpeed = 1f;
 
@@ -34,7 +34,7 @@ public class CameraController : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		camera = Camera.main;
+		PlayerCamera = Camera.main;
 	}
 
 	// Update is called once per frame
@@ -74,7 +74,7 @@ public class CameraController : MonoBehaviour
 		if (s > 0 && s < MaxZoom)
 		{
 			currentScroll += scroll;
-			originalPosition += camera.transform.forward * scroll;
+			originalPosition += PlayerCamera.transform.forward * scroll;
 		}
 	}
 }
