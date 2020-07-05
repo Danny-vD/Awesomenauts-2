@@ -21,6 +21,8 @@ namespace Networking
 	[Serializable]
 	public struct CardEntry
 	{
+		public string name;
+
 		//Inspector Fields
 		//Stats/Designs/etc
 		[HideInInspector]
