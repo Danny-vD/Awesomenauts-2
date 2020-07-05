@@ -103,7 +103,7 @@ MonoBehaviour:
   yScale: 0.3
   yOffset: 1
   yCardOffset: 1
-  timeScale: 2
+  timeScale: 0
   timeOffset: 0
 --- !u!65 &-8911067738432862548
 BoxCollider:
