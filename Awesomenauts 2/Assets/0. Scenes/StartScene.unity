@@ -9306,7 +9306,7 @@ PrefabInstance:
         type: 3}
       propertyPath: CardEntries.Array.data[30].cardBorder.BorderDefaultMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: a3d09fa3bce49e746b7a49ee6e15b9c2, type: 2}
+      objectReference: {fileID: 2100000, guid: 1e1532b93e7bfc8468a72346fcd074b6, type: 2}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[30].cardBorder.BorderMesh
@@ -9317,7 +9317,7 @@ PrefabInstance:
         type: 3}
       propertyPath: CardEntries.Array.data[31].cardBorder.BorderDefaultMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 1cbffbf91509a854daec4d81ca2c2433, type: 2}
+      objectReference: {fileID: 2100000, guid: b4161a07e6238b745ab833989e8e0c85, type: 2}
     - target: {fileID: 4467022757310397675, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: m_Name
