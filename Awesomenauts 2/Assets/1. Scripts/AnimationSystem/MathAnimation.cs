@@ -57,7 +57,9 @@ namespace Assets._1._Scripts.AnimationSystem
 				Vector3 localOff = new Vector3(AnimationXCurve.Evaluate(p) * AnimationXIntensity, AnimationYCurve.Evaluate(p) * AnimationYIntensity);
 
 				if (UsePosition)
+				{
 					player.transform.position = current;
+				}
 
 				Vector3 dir = target.position - initPos;
 				dir.y = 0;
@@ -69,7 +71,9 @@ namespace Assets._1._Scripts.AnimationSystem
 				Vector3 scaleAnim = new Vector3(ScaleAnimationCurveX.Evaluate(p), ScaleAnimationCurveY.Evaluate(p), ScaleAnimationCurveZ.Evaluate(p));
 				Vector3 localScale = new Vector3(initScale.x * scaleAnim.x, initScale.y * scaleAnim.y, initScale.z * scaleAnim.z);
 				if (UseScale)
+				{
 					player.transform.localScale = localScale;
+				}
 
 				yield return new WaitForEndOfFrame();
 			}
