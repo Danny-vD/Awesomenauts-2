@@ -7,10 +7,10 @@ namespace Player {
 	public class CardHand : NetworkBehaviour
 	{
 
-		public Vector3 Anchor;
+		public Transform Anchor;
 		private List<Card> CardsOnHand = new List<Card>();
 		private Card SelectedCard;
-		public Vector3 CameraTransform;
+		public Transform CameraTransform;
 
 		[Range(1, 10)]
 		public int MaxCardCount = 5;
@@ -118,7 +118,7 @@ namespace Player {
 
 		public void SetPosition(Vector3 HandAnchor)
 		{
-			Anchor = HandAnchor;
+			Anchor = CardDeck.CreateObject(HandAnchor, Quaternion.identity, transform);
 		}
 
 		[ClientRpc]
@@ -129,7 +129,7 @@ namespace Player {
 
 		public void SetCameraPosition(Vector3 position)
 		{
-			CameraTransform = position;
+			CameraTransform = CardDeck.CreateObject(position, Quaternion.identity, transform);
 		}
 
 		public bool IsCardFromHand(Card c)
@@ -148,7 +148,7 @@ namespace Player {
 					ii = Mathf.Abs(ii);
 					float deltaY = OffsetFromAnchor + DeltaYPerCard * ii;
 					float deltaYLocal = DeltaYLocalPerCard * ii;
-					SetCardTransform(CardsOnHand[i].transform, i, Anchor, deltaY, deltaYLocal);
+					SetCardTransform(CardsOnHand[i].transform, i, Anchor.position, deltaY, deltaYLocal);
 				}
 			}
 		}

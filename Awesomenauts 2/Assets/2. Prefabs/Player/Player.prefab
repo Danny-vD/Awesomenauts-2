@@ -289,6 +289,7 @@ GameObject:
   - component: {fileID: 8187218240326370038}
   - component: {fileID: 8843782206511802427}
   - component: {fileID: 6473226967791899819}
+  - component: {fileID: 5193974923336601206}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -389,14 +390,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  PlayerStatistics:
-    StartStatistics:
-    - type: 0
-      dataType: 0
-      value: 1
-    - type: 1
-      dataType: 0
-      value: 10
+  CameraController: {fileID: 5193974923336601206}
+  Awsomenaut: {fileID: 0}
   DragFromHandLogic: {fileID: 11400000, guid: 233744c990c6e664f8fdd1f2997d9842, type: 2}
   DragEffectFromHandLogic: {fileID: 11400000, guid: c34e3657adfbbb94497ca5fecbf7a51b,
     type: 2}
@@ -436,8 +431,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  DeckPosition: {x: 0, y: 0, z: 0}
+  DeckPosition: {fileID: 0}
   FatigueCard:
+    name: 
+    index: 0
     InternalCard: 0
     Statistics:
       StartStatistics:
@@ -452,14 +449,23 @@ MonoBehaviour:
         value: Fatigue Card
     Prefab: {fileID: 3956143674828082830, guid: da009bd6069cee940b25b97523e74371,
       type: 3}
+    Model:
+      RedTeam: {fileID: 0}
+      BlueTeam: {fileID: 0}
     cardBorder:
       BorderMesh: {fileID: 0}
-      BorderMaterial: {fileID: 0}
+      BorderDefaultMaterial: {fileID: 0}
+      BorderMeleeMaterial: {fileID: 0}
+      BorderRanged: {fileID: 0}
+      BorderTank: {fileID: 0}
+      BorderAction: {fileID: 0}
     CardType: 128
     Sprites:
       Border: {fileID: 0}
       Body: {fileID: 0}
-      Portrait: {fileID: 0}
+      TeamPortrait:
+        RedTeam: {fileID: 0}
+        BlueTeam: {fileID: 0}
     Awesomenaut: 0
     Amount: 0
     effects:
@@ -478,8 +484,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  Anchor: {x: 0, y: 0, z: 0}
-  CameraTransform: {x: 0, y: 0, z: 0}
+  Anchor: {fileID: 0}
+  CameraTransform: {fileID: 0}
   MaxCardCount: 6
   MaxCardRotation: 18
   OffsetFromAnchor: 3.4
@@ -490,3 +496,25 @@ MonoBehaviour:
   PlayerHandLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &5193974923336601206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7945849342318279925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d1b08d9738aefa45aca306cb358ab40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxZoom: 15
+  ZoomSpeed: 1
+  MaxPlanarMove:
+    serializedVersion: 2
+    x: -20
+    y: -10
+    width: 25
+    height: 20
+  InversionOffset: {x: 20, y: 0}
+  MoveSpeed: 0.5

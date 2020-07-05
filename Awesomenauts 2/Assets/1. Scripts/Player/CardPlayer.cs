@@ -20,6 +20,8 @@ namespace Player
 
 	public class CardPlayer : NetworkBehaviour
 	{
+		public CameraController CameraController;
+
 		public EntityStatistics PlayerStatistics => Awsomenaut?.Statistics;
 		[HideInInspector]
 		public Card Awsomenaut;
@@ -97,7 +99,6 @@ namespace Player
 		private void Awake()
 		{
 			Camera = Camera.main;
-
 		}
 
 		private void Start()
@@ -105,6 +106,11 @@ namespace Player
 			if (isClient && hasAuthority)
 			{
 				LocalPlayer = this;
+				Camera.transform.parent = transform;
+			}
+			else
+			{
+				CameraController.enabled = false;
 			}
 			if(isServer)
 			{
@@ -241,7 +247,7 @@ namespace Player
 		{
 			e.Statistics.InitializeStatDictionary();
 			//Hand.AddCard(c);//Add the Card to the server
-			GameObject cardInstance = Instantiate(e.Prefab, Deck.DeckPosition, Quaternion.identity);
+			GameObject cardInstance = Instantiate(e.Prefab, Deck.DeckPosition.position, Quaternion.identity);
 			Card c = cardInstance.GetComponent<Card>();
 			GameObject modelPrefab = e.Model.Get(ClientID);
 			//if (modelPrefab != null)
@@ -291,6 +297,7 @@ namespace Player
 		{
 			if (Camera == null) return;
 			Camera.transform.SetPositionAndRotation(pos, rot);
+			CameraController.SetOriginalPosition(transform.position, invertValues);
 			if (invertValues)
 			{
 				invertCardRotation = true;

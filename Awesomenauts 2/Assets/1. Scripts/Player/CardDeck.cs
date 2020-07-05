@@ -3,11 +3,12 @@ using Networking;
 using Mirror;
 using UnityEngine;
 
-namespace Player {
+namespace Player
+{
 	public class CardDeck : NetworkBehaviour
 	{
-		private Vector3 GravePosition;
-		public Vector3 DeckPosition;
+		private Transform GravePosition;
+		public Transform DeckPosition;
 
 		public CardEntry FatigueCard;
 
@@ -73,10 +74,19 @@ namespace Player {
 
 		public void SetPositions(Vector3 deckPosition, Vector3 gravePosition)
 		{
-			DeckPosition = deckPosition;
-			GravePosition = gravePosition;
-		}	
-		
+			DeckPosition = CreateObject(deckPosition, Quaternion.identity, transform);
+			GravePosition = CreateObject(gravePosition, Quaternion.identity, transform);
+		}
+
+
+		public static Transform CreateObject(Vector3 position, Quaternion rotation, Transform parent)
+		{
+			GameObject obj = new GameObject();
+			obj.transform.position = position;
+			obj.transform.rotation = rotation;
+			obj.transform.parent = parent;
+			return obj.transform;
+		}
 
 
 
