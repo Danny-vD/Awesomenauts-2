@@ -180,6 +180,7 @@ namespace UI
 
 		public void IPChanged(string text)
 		{
+			if (CardNetworkManager.Instance == null) return;
 			if (!string.IsNullOrEmpty(text))
 			{
 				EndPointInfo ep = CardNetworkManager.Instance.CurrentEndPoint;
