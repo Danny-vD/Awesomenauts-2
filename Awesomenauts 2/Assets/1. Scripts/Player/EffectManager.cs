@@ -36,7 +36,7 @@ namespace Player
 		public string GetEffectText()
 		{
 			StringBuilder sb = new StringBuilder();
-
+			if (Effects == null) return "";
 			for (int i = 0; i < Effects.Count; i++)
 			{
 				sb.AppendLine(Effects[i].Description);

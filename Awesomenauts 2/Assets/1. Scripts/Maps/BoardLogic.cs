@@ -58,9 +58,9 @@ namespace Maps
 		{
 			for (int i = 0; i < CardPlayer.ServerPlayers.Count; i++)
 			{
-				Card turretLeft = CardPlayer.ServerPlayers[i].CreateCard(CardNetworkManager.Instance.TeamPrefabs[i].TurretLeft);
-				Card turretRight = CardPlayer.ServerPlayers[i].CreateCard(CardNetworkManager.Instance.TeamPrefabs[i].TurretRight);
-				Card awsomenaut = CardPlayer.ServerPlayers[i].CreateCard(CardNetworkManager.Instance.TeamPrefabs[i].Awsomenaut);
+				Card turretLeft = CardPlayer.ServerPlayers[i].CreateCard(CardNetworkManager.Instance.Turret);
+				Card turretRight = CardPlayer.ServerPlayers[i].CreateCard(CardNetworkManager.Instance.Turret);
+				Card awsomenaut = CardPlayer.ServerPlayers[i].CreateCard(CardNetworkManager.Instance.GetAwsomenaut(i));
 				//Find Ally Sockets for turrets
 				List<CardSocket> socks = new List<CardSocket>();
 				MapTransformInfo.Instance.SocketManager.CardSockets.Select(x => x.CardSockets).ToList()
@@ -72,8 +72,11 @@ namespace Maps
 				CardSocket awS = socks.First(x => MapTransformInfo.Instance.SocketManager.IsFromTeam(CardPlayer.ServerPlayers[i].ClientID, x.transform) &&
 												  x.SocketType == SocketType.Awsomenaut);
 				ltS.RpcDockCard(turretLeft.netIdentity);
+				ltS.DockCard(turretLeft);
 				rtS.RpcDockCard(turretRight.netIdentity);
+				rtS.DockCard(turretRight);
 				awS.RpcDockCard(awsomenaut.netIdentity);
+				awS.DockCard(awsomenaut);
 
 				CardPlayer.ServerPlayers[i].RpcSetAwsomenaut(awsomenaut.netIdentity);
 				CardPlayer.ServerPlayers[i].SetAwsomenaut(awsomenaut.netIdentity);
@@ -87,7 +90,7 @@ namespace Maps
 				if (i != 0)
 				{
 					CardPlayer.ServerPlayers[i].DrawCard(CardNetworkManager.Instance.StartingCards);
-					CardPlayer.ServerPlayers[i].DrawCard(CardNetworkManager.Instance.CompensationCard);
+					CardPlayer.ServerPlayers[i].DrawCard(CardNetworkManager.Instance.GetEntry("Solar Boost"));
 				}
 				else
 				{

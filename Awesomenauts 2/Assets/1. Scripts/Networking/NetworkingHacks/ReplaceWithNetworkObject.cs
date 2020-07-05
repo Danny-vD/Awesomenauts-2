@@ -11,6 +11,7 @@ using UnityEngine;
 
 public class ReplaceWithNetworkObject : MonoBehaviour
 {
+	public SocketType SocketType;
 	public SocketSide SocketSide;
 	public GameObject Prefab;
 
@@ -44,7 +45,7 @@ public class ReplaceWithNetworkObject : MonoBehaviour
 		GameObject inst= Instantiate(Prefab, transform.position, transform.rotation);
 		instance = inst.GetComponent<CardSocket>();
 		instance.SocketSide = SocketSide;
-		
+		instance.SocketType = SocketType;
 
 		NetworkServer.Spawn(inst);
 		ApplyConnections += ApplyCons;

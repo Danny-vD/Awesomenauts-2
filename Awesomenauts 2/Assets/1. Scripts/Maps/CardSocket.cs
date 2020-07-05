@@ -179,6 +179,7 @@ namespace Maps
 			DockedCard = dockedTransform;
 			if (DockedCard != null)
 			{
+				DockedCard.SetState(CardState.OnBoard);
 				DockedCard.transform.rotation = transform.rotation;
 				DockedCard.transform.Rotate(Vector3.right * -90, Space.Self);
 				DockedCard.transform.Rotate(Vector3.forward * 90, Space.Self);

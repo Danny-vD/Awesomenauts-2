@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 356724895079948299}
   - component: {fileID: 7672256517576576369}
+  - component: {fileID: 4332784126888927641}
   m_Layer: 0
   m_Name: TurretBlue1
   m_TagString: Untagged
@@ -24,8 +25,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3650183707229262360}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -18.586288, y: -4.343455, z: -8.569345}
+  m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.025532002, y: 0.025532, z: 0.025532002}
   m_Children:
   - {fileID: 4676976101505446999}
@@ -36,7 +37,7 @@ Transform:
   - {fileID: 2555189575553480420}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: -90, z: -90}
 --- !u!95 &7672256517576576369
 Animator:
   serializedVersion: 3
@@ -56,6 +57,20 @@ Animator:
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4332784126888927641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3650183707229262360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db8b83e791b60d448fb23aa690aa903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animations: []
+  Animator: {fileID: 0}
 --- !u!1 &4657861949171884541
 GameObject:
   m_ObjectHideFlags: 0

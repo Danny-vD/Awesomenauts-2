@@ -53,6 +53,7 @@ namespace Player {
 		[Serializable]
 		public class InternalStat
 		{
+			public string name;
 			public CardPlayerStatType type;
 			public CardPlayerStatDataType dataType;
 			public string value;

@@ -126,14 +126,26 @@ namespace Player
 			EffectManager = new EffectManager(CardNetworkManager.Instance.GetCardEffects(CardName.text));
 			CardDescription.text = EffectManager.GetEffectText();
 
-			if (Model != null && Model.childCount == 0)
+			if (Model != null)
 			{
-				GameObject modelPrefab = CardNetworkManager.Instance.GetCardModel(
-					Statistics.GetValue<string>(CardPlayerStatType.CardName),
-					Statistics.GetValue<int>(CardPlayerStatType.TeamID));
-				if (modelPrefab != null)
+				if (Model.childCount == 0)
 				{
-					GameObject model = Instantiate(modelPrefab, Model.position, modelPrefab.transform.rotation, Model);
+					GameObject modelPrefab = CardNetworkManager.Instance.GetCardModel(
+						Statistics.GetValue<string>(CardPlayerStatType.CardName),
+						Statistics.GetValue<int>(CardPlayerStatType.TeamID));
+					if (modelPrefab != null)
+					{
+						GameObject model = Instantiate(modelPrefab, Model.position, modelPrefab.transform.rotation,
+							Model);
+						if (Animator == null)
+						{
+							Animator = model.GetComponent<AnimationPlayer>();
+						}
+					}
+				}
+				else
+				{
+					GameObject model = Model.GetChild(0).gameObject;
 					if (Animator == null)
 					{
 						Animator = model.GetComponent<AnimationPlayer>();
@@ -209,10 +221,16 @@ namespace Player
 
 			if (state == CardState.OnBoard)
 			{
+				bool fromHand = gameObject.layer == CardPlayer.LocalPlayer.Hand.PlayerHandLayer;
+				gameObject.layer = CardPlayer.UnityTrashWorkaround(CardPlayer.LocalPlayer.BoardLayer);
 				SetCoverState(false);
 				//Reverse the Turning over
-				Quaternion turnOverRot = Quaternion.AngleAxis(-180, transform.up);
-				transform.rotation *= turnOverRot;
+				if (!fromHand)
+				{
+					Quaternion turnOverRot = Quaternion.AngleAxis(-180, transform.up);
+					transform.rotation *= turnOverRot;
+				}
+
 			}
 		}
 

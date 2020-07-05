@@ -80,67 +80,62 @@ namespace Networking
 		public MapEntry[] AvailableMaps;
 
 		public int StartingCards = 4;
-		public CardEntry CompensationCard;
 		public GameObject BoardLogicPrefab;
 		public CardEntry[] CardEntries;
 		public int[] CardsInDeck { get; private set; } = new int[0];
 
+		public CardEntry Turret => GetEntry("Turret");
 
+		//      [Serializable]
+		//public class TeamPrefabAsset : TeamAsset<TeamPrefabObject> { }
+		//public TeamPrefabAsset TeamPrefabs;
 
-		public TeamPrefabObject[] TeamPrefabs;
+		public CardEntry GetAwsomenaut(int teamID)
+		{
+			return teamID == 1 ? GetEntry("Voltar") : GetEntry("Lonestar");
+		}
+
 
 
 		public Sprite GetCardImage(string name, int teamID)
 		{
-			foreach (CardEntry cardEntry in CardEntries)
-			{
-				if (cardEntry.Statistics.GetValue<string>(CardPlayerStatType.CardName) == name)
-				{
-					return cardEntry.Sprites.TeamPortrait.Get(teamID);
-				}
-			}
-
+			CardEntry e = GetEntry(name);
+			if (e.Sprites.TeamPortrait != null)
+				return e.Sprites.TeamPortrait.Get(teamID) != null ? e.Sprites.TeamPortrait.Get(teamID) : DefaultCardPortrait;
 			return DefaultCardPortrait;
 		}
 
 
 		public GameObject GetCardModel(string name, int teamID)
 		{
-			foreach (CardEntry cardEntry in CardEntries)
-			{
-				if (cardEntry.Statistics.GetValue<string>(CardPlayerStatType.CardName) == name && cardEntry.Model.Get(teamID) != null)
-				{
-					return cardEntry.Model.Get(teamID);
-				}
-			}
-
-			return null;
+			CardEntry e = GetEntry(name);
+			return e.Model?.Get(teamID);
 		}
 
-		public BorderInfo GetCardBorder(string name, int teamID)
-		{
-			foreach (CardEntry cardEntry in CardEntries)
-			{
-				if (cardEntry.Statistics.GetValue<string>(CardPlayerStatType.CardName) == name && cardEntry.cardBorder.IsValid)
-				{
-					return cardEntry.cardBorder;
-				}
-			}
-
-			return DefaultCardBorder.Get(teamID);
-		}
-
-		public List<AEffect> GetCardEffects(string name)
+		public CardEntry GetEntry(string name)
 		{
 			foreach (CardEntry cardEntry in CardEntries)
 			{
 				if (cardEntry.Statistics.GetValue<string>(CardPlayerStatType.CardName) == name)
 				{
-					return cardEntry.effects;
+					return cardEntry;
 				}
 			}
+			ExceptionViewUI.Instance.SetException(new UnityException("Can not find card with Name: " + name));
+			return new CardEntry();
+		}
 
-			return new List<AEffect>();
+		public BorderInfo GetCardBorder(string name, int teamID)
+		{
+			CardEntry e = GetEntry(name);
+			if (e.cardBorder != null)
+				return e.cardBorder.IsValid ? e.cardBorder : DefaultCardBorder.Get(teamID);
+			return DefaultCardBorder.Get(teamID);
+		}
+
+		public List<AEffect> GetCardEffects(string name)
+		{
+			return GetEntry(name).effects;
 		}
 
 
@@ -209,7 +204,6 @@ namespace Networking
 
 		public override void Start()
 		{
-			CompensationCard.Statistics.InitializeStatDictionary();
 
 			foreach (CardEntry cardEntry in CardEntries)
 			{

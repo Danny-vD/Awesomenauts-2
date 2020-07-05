@@ -17,10 +17,26 @@ public class CardNetworkManagerEditor : UnityEditor.Editor
 			for (int i = 0; i < scr.CardEntries.Length; i++)
 			{
 				CardEntry e = scr.CardEntries[i];
-				e.name = GetEntryName(e);
-				scr.CardEntries[i] = e;
+				scr.CardEntries[i] = Apply(e);
 			}
 		}
+	}
+
+	private void SetStatName(EntityStatistics.InternalStat stat)
+	{
+		stat.name = $"{stat.type}[{stat.dataType}]: {stat.value}";
+	}
+
+	private CardEntry Apply(CardEntry e)
+	{
+		e.name = GetEntryName(e);
+
+		for (int j = 0; j < e.Statistics.StartStatistics.Count; j++)
+		{
+			SetStatName(e.Statistics.StartStatistics[j]);
+		}
+
+		return e;
 	}
 
 	private string GetEntryName(CardEntry e)

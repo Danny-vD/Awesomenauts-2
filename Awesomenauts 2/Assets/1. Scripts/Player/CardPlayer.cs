@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets._1._Scripts.AnimationSystem;
 using Assets._1._Scripts.ScriptableObjects.DragLogic;
 using Assets._1._Scripts.ScriptableObjects.Effects;
 using Enums.Cards;
@@ -163,7 +164,10 @@ namespace Player
 			MapTransformInfo.Instance.SocketManager.AddPlayers(clientIds);
 
 			Debug.Log("Client: " + id + " is ready.");
-			CmdSetReady(id);
+			if(hasAuthority)
+			{
+				CmdSetReady(id);
+			}
 			yield return null;
 		}
 
@@ -250,16 +254,16 @@ namespace Player
 			GameObject cardInstance = Instantiate(e.Prefab, Deck.DeckPosition.position, Quaternion.identity);
 			Card c = cardInstance.GetComponent<Card>();
 			GameObject modelPrefab = e.Model.Get(ClientID);
-			//if (modelPrefab != null)
-			//{
-			//	GameObject model = Instantiate(modelPrefab, c.Model.position, modelPrefab.transform.rotation);
-			//	if (c.Animator == null)
-			//	{
-			//		c.Animator = model.GetComponent<Animator>();
-			//	}
+			if (modelPrefab != null)
+			{
+				GameObject model = Instantiate(modelPrefab, c.Model.position, modelPrefab.transform.rotation);
+				if (c.Animator == null)
+				{
+					c.Animator = model.GetComponent<AnimationPlayer>();
+				}
 
-			//	model.transform.parent = c.Model;
-			//}
+				model.transform.parent = c.Model;
+			}
 			NetworkServer.Spawn(cardInstance, GetComponent<NetworkIdentity>().connectionToClient);
 
 			c.Statistics = e.Statistics;

@@ -10,7 +10,7 @@ namespace Assets._1._Scripts.AnimationSystem
 		public List<CardAnimationEntry> Animations;
 		public Animator Animator;
 
-		private void Start()
+		private void Awake()
 		{
 			if (Animator == null) Animator = GetComponent<Animator>();
 		}

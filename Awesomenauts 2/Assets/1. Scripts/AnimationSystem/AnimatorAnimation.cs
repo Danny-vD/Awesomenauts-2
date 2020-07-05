@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Assets._1._Scripts.AnimationSystem {
+namespace Assets._1._Scripts.AnimationSystem
+{
 	[CreateAssetMenu(menuName = "Scriptable Objects/CardAnimation/AnimatorAnimation")]
 	public class AnimatorAnimation : CardAnimation
 	{
@@ -12,9 +13,9 @@ namespace Assets._1._Scripts.AnimationSystem {
 		{
 			base.Play(player, target);
 
-			if (player.Animator == null)
+			if (player == null || player.Animator == null)
 			{
-				ExceptionViewUI.Instance.SetException(new UnityException("Animation "+ AnimationName + " could not be triggered"));
+				ExceptionViewUI.Instance.SetException(new UnityException("Animation " + AnimationName + " could not be triggered"));
 			}
 
 			player.Animator.Play(AnimationName);
