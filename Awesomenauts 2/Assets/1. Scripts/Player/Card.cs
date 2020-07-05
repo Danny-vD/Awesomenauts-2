@@ -104,7 +104,7 @@ namespace Player
 			StatisticsValid = true;
 			SetCoverState(CardPlayer.LocalPlayer != null && Statistics.GetValue<int>(CardPlayerStatType.TeamID) != CardPlayer.LocalPlayer.ClientID);
 			CardName.text = Statistics.GetValue<string>(CardPlayerStatType.CardName) ?? "";
-			CardImage.sprite = CardNetworkManager.Instance.GetCardImage(CardName.text);
+			CardImage.sprite = CardNetworkManager.Instance.GetCardImage(CardName.text, Statistics.GetValue<int>(CardPlayerStatType.TeamID));
 			BorderInfo bi = CardNetworkManager.Instance.GetCardBorder(CardName.text, stat.GetValue<int>(CardPlayerStatType.TeamID));
 			CardBorderFilter.mesh = bi.BorderMesh;
 			CardType type = (CardType)stat.GetValue<int>(CardPlayerStatType.CardType);

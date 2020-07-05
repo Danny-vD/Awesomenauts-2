@@ -90,13 +90,13 @@ namespace Networking
 		public TeamPrefabObject[] TeamPrefabs;
 
 
-		public Sprite GetCardImage(string name)
+		public Sprite GetCardImage(string name, int teamID)
 		{
 			foreach (CardEntry cardEntry in CardEntries)
 			{
 				if (cardEntry.Statistics.GetValue<string>(CardPlayerStatType.CardName) == name)
 				{
-					return cardEntry.Sprites.Portrait;
+					return cardEntry.Sprites.TeamPortrait.Get(teamID);
 				}
 			}
 

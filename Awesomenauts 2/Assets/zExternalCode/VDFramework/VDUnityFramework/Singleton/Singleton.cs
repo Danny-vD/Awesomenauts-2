@@ -1,4 +1,6 @@
-﻿using VDFramework.Exceptions;
+using System;
+using UnityEngine;
+using VDFramework.Exceptions;
 
 namespace VDFramework.Singleton
 {
@@ -14,6 +16,10 @@ namespace VDFramework.Singleton
 				// ReSharper disable once ConvertIfStatementToNullCoalescingExpression
 				if (instance == null)
 				{
+					if (typeof(MonoBehaviour).IsAssignableFrom(typeof(TSingleton))) //Fix to prevent invalid mono behaviours to be created.
+					{
+                        Debug.LogWarning("Use of singleton(" + typeof(TSingleton).Name + ") before it was assigned.");
+					}
 					instance = SingletonInstanceCreator<TSingleton>.CreateInstance();
 				}
 

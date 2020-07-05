@@ -6541,6 +6541,335 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3603905379483180849, guid: cf97eae144cea124bad30aef3bbde681,
         type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[2].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 1144bbb160b3c794a9371231f799a38e,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[2].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: cb457170ea2d6ff49a22e222f9b6612a,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[3].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 74c6d25c41a0fd3468e3ed4dca0b13f9,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[3].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 67be2bc515fac914e8c06c57dbc152e6,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[4].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: e53da5274cb6ad24ebc8b58ba46497b2,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[4].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 2a302f9eb1d3828409c9843ec23eb3a2,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[5].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: b89dccef3ffeb1c4190ecf2f630dfaae,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[5].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 24b10708d1b8a464e914edf10507899c,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[6].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 32de12df66cac6342a5a118a3895708a,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[6].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 32de12df66cac6342a5a118a3895708a,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[6].InternalCard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[7].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: c21acb51bd2c88d4f8189a7f4bfd7357,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[7].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 24254ffae5906d041b02a9261919900c,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[8].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: e0b14dcce554ad54aa854433128e0dc9,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[8].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f2edb2b8055fa04b9f426713e2f6a83,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[9].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 3626a3ade49d2c343a4eba864c5da150,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[9].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 0e311fa417644c54ba1f8de4ac04181d,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[10].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 49ce5e4639cf1d944a12e43ea365e3c3,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[10].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 96ffd932bf9a82b4098f48856f6a196a,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[11].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: ee98b685092419741ae364de4b7005cd,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[11].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: ee98b685092419741ae364de4b7005cd,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[12].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: b36218a206ffd5c4ba144510c2b65a1a,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[12].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: ca260761ef443914cbe5378dd1c3ba2b,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[13].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 35bea1d382b49cd45b0d0b94c6cea328,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[13].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 6626696bdb5e1b84ba1e3ae7c04aa80f,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[14].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 5958e1dbeba1fb64389420fccdb24307,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[14].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 4d03811f2e2dd4146bf76c19cc2a0a05,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[15].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 6b2d298ed9be53b4fa19a4e395962867,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[15].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: e04e14d3fc39a3e428f828a933e99728,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[16].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 3e9846827e0cafc4688ec9c837f8e03d,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[16].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 3e9846827e0cafc4688ec9c837f8e03d,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[17].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 32de12df66cac6342a5a118a3895708a,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[17].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 32de12df66cac6342a5a118a3895708a,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[18].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: d1faa7b5bf74aae418b4dbadb0d5b459,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[18].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: d1faa7b5bf74aae418b4dbadb0d5b459,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[19].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 9feb0bdc44665c743932ef7cbd861c72,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[19].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 9feb0bdc44665c743932ef7cbd861c72,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[20].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: a6df4d9f90b41464b8372f97a6e97ecb,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[20].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: a6df4d9f90b41464b8372f97a6e97ecb,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[21].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f7edfae65cb39c4aa4b0e47b9aa6821,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[21].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f7edfae65cb39c4aa4b0e47b9aa6821,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[22].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d271ffb8ab99274b920b236082c14a6,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[22].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d271ffb8ab99274b920b236082c14a6,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[23].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 09c8359517236fa4cb960a1acd527d73,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[23].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 09c8359517236fa4cb960a1acd527d73,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[24].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: dae5e014aa4e43f478209a008f59fe30,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[24].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: dae5e014aa4e43f478209a008f59fe30,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[25].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 1e5f995fcfddbb1409fd2b66ee552558,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[25].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 1e5f995fcfddbb1409fd2b66ee552558,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[26].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: af010735d694fa94eaa8a3689953ef97,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[26].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: af010735d694fa94eaa8a3689953ef97,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[27].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 09538990113727b4ab48daccb6cd18e8,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[27].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 09538990113727b4ab48daccb6cd18e8,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[28].Sprites.TeamPortrait.RedTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 7834ff42ccbcf7c4e97b20d58e60c996,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[28].Sprites.TeamPortrait.BlueTeam
+      value: 
+      objectReference: {fileID: 21300000, guid: 7834ff42ccbcf7c4e97b20d58e60c996,
+        type: 3}
     - target: {fileID: 4467022757310397675, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: m_Name

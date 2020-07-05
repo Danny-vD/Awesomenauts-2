@@ -19,8 +19,7 @@ namespace Maps
 			public string name;
 			public List<CardSocket> CardSockets;
 		}
-
-		private bool playersSet;
+		
 
 		/// <summary>
 		/// Contains the Information on who has authority over with sockets.
@@ -49,7 +48,6 @@ namespace Maps
 		/// <param name="teamIDs"></param>
 		public void AddPlayers(int[] clientIDs)
 		{
-			if (playersSet) return;
 			if (SocketData == null)
 				SocketData = new Dictionary<int, CardTeamSocketData>();
 

@@ -83,7 +83,7 @@ namespace UI.Cards
 		{
 			Border.sprite = sprites.Border;
 			Body.sprite = sprites.Body;
-			Portrait.sprite = sprites.Portrait;
+			Portrait.sprite = sprites.TeamPortrait.Get(0);
 		}
 
 		private void SetAllSprites(UICardAesthetics cardAesthetics)

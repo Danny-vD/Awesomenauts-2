@@ -23,9 +23,9 @@ namespace DeckBuilder
 			{
 				CardEntry entry = CardNetworkManager.Instance.CardEntries[id];
 
-				if (entry.Sprites.Portrait == null)
+				if (entry.Sprites.TeamPortrait.Get(0) == null)
 				{
-					entry.Sprites.Portrait = CardNetworkManager.Instance.DefaultCardPortrait;
+					entry.Sprites.TeamPortrait = CardNetworkManager.Instance.DefaultCardPortrait;
 				}
 				
 				AbstractUICard card = InstantiateCardEntry(entry, parentTransform, id);
