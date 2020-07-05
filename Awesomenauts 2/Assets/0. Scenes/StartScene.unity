@@ -897,7 +897,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 673513892c071634b8462e1c50342e28, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2410,7 +2410,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 9d0d33120d72e21418e828a6fdc3be15, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -8112,13 +8112,13 @@ PrefabInstance:
         type: 3}
       propertyPath: CardEntries.Array.data[30].Sprites.TeamPortrait.RedTeam
       value: 
-      objectReference: {fileID: 21300000, guid: 7834ff42ccbcf7c4e97b20d58e60c996,
+      objectReference: {fileID: 21300000, guid: 97cc3169417d9ec44a069908aeb332e3,
         type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[30].Sprites.TeamPortrait.BlueTeam
       value: 
-      objectReference: {fileID: 21300000, guid: 7834ff42ccbcf7c4e97b20d58e60c996,
+      objectReference: {fileID: 21300000, guid: 97cc3169417d9ec44a069908aeb332e3,
         type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -8203,13 +8203,13 @@ PrefabInstance:
         type: 3}
       propertyPath: CardEntries.Array.data[31].Sprites.TeamPortrait.RedTeam
       value: 
-      objectReference: {fileID: 21300000, guid: 7834ff42ccbcf7c4e97b20d58e60c996,
+      objectReference: {fileID: 21300000, guid: 6156b46caa084dd47beae1e83437c572,
         type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[31].Sprites.TeamPortrait.BlueTeam
       value: 
-      objectReference: {fileID: 21300000, guid: 7834ff42ccbcf7c4e97b20d58e60c996,
+      objectReference: {fileID: 21300000, guid: 6156b46caa084dd47beae1e83437c572,
         type: 3}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -9296,6 +9296,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 91c81b5bdff543e43ad1ea6d86fece96,
         type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[31].cardBorder.BorderMesh
+      value: 
+      objectReference: {fileID: 5189133843189685848, guid: 1432037e05d37bc428d7067e35835ac6,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[30].cardBorder.BorderDefaultMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: a3d09fa3bce49e746b7a49ee6e15b9c2, type: 2}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[30].cardBorder.BorderMesh
+      value: 
+      objectReference: {fileID: 5189133843189685848, guid: 1432037e05d37bc428d7067e35835ac6,
+        type: 3}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[31].cardBorder.BorderDefaultMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 1cbffbf91509a854daec4d81ca2c2433, type: 2}
     - target: {fileID: 4467022757310397675, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: m_Name
