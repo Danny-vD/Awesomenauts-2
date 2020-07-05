@@ -38,6 +38,7 @@ namespace Assets._1._Scripts.AnimationSystem
 				dir.y = 0;
 				Quaternion localRot = Quaternion.FromToRotation(Vector3.back, dir);
 				localOff = localRot * localOff;
+				localOff.y = Mathf.Abs(localOff.y);
 				player.transform.position += localOff;
 
 				yield return new WaitForEndOfFrame();
