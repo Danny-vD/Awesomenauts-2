@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: AttackRangedEffect
   m_EditorClassIdentifier: 
   playSound: 0
-  AnimationName: Attack
-  AnimationLength: 0.915
+  Animation: {fileID: 11400000, guid: bf6634c16b3b40344b03601d1df490c9, type: 2}
   soundToPlay: 4
   Description: 
   TargetTrigger: 256

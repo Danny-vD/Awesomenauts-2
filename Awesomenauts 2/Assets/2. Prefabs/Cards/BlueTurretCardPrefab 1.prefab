@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &295468020020344980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680334387662327649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db8b83e791b60d448fb23aa690aa903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animations: []
+  Animator: {fileID: 5728830652858421256}
 --- !u!1 &3956143674828082830
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,9 +162,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  CardParts: []
   CardImage: {fileID: 7085066563451477589}
   CardName: {fileID: 5530715091747876964}
   CardDescription: {fileID: 2530231275869864176}
+  Model: {fileID: 0}
   CardBorderFilter: {fileID: 311660846462850844}
   CardBorderRenderer: {fileID: 4162829490558602344}
   CoverUpRenderer: {fileID: 6320907050121226772}
@@ -481,9 +497,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b4d2624f6d75fd42b6a078bd95df878, type: 3}
+--- !u!1 &1680334387662327649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1140822807531870657, guid: 4b4d2624f6d75fd42b6a078bd95df878,
+    type: 3}
+  m_PrefabInstance: {fileID: 1766743067620365984}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2380969210951662962 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4147355199189494738, guid: 4b4d2624f6d75fd42b6a078bd95df878,
+    type: 3}
+  m_PrefabInstance: {fileID: 1766743067620365984}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5728830652858421256 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6270240303913600680, guid: 4b4d2624f6d75fd42b6a078bd95df878,
     type: 3}
   m_PrefabInstance: {fileID: 1766743067620365984}
   m_PrefabAsset: {fileID: 0}

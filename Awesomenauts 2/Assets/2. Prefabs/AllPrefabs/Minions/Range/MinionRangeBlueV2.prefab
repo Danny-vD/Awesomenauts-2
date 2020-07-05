@@ -1035,6 +1035,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5274945191651809579}
   - component: {fileID: 1326255431742333048}
+  - component: {fileID: -8473458021426220835}
   m_Layer: 0
   m_Name: MinionRangeBlueV2
   m_TagString: Untagged
@@ -1077,6 +1078,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-8473458021426220835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326255431742333049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db8b83e791b60d448fb23aa690aa903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animations:
+  - name: Die
+    animation: {fileID: 11400000, guid: cc87162e66597f9448ec05effff75830, type: 2}
+  Animator: {fileID: 0}
 --- !u!1 &1326255431766224697
 GameObject:
   m_ObjectHideFlags: 0

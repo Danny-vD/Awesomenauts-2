@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Diagnostics;
+using Assets._1._Scripts.AnimationSystem;
 using Assets._1._Scripts.ScriptableObjects.DragLogic;
 using Assets._1._Scripts.ScriptableObjects.Effects;
 using Enums.Cards;
@@ -41,7 +42,7 @@ namespace Player
 		public CardState CardState { get; private set; } = CardState.OnDeck;
 		public CardType CardType => Statistics.GetValue<CardType>(CardPlayerStatType.CardType);
 
-		public Animator Animator;
+		public AnimationPlayer Animator;
 
 		// Start is called before the first frame update
 		void Start()
@@ -49,7 +50,9 @@ namespace Player
 
 			//Instanciate Animator in child objects if any
 			if (Animator == null)
-				Animator = GetComponentInChildren<Animator>();
+			{
+				Animator = GetComponentInChildren<AnimationPlayer>();
+			}
 
 		}
 
@@ -131,7 +134,7 @@ namespace Player
 					GameObject model = Instantiate(modelPrefab, Model.position, modelPrefab.transform.rotation, Model);
 					if (Animator == null)
 					{
-						Animator = model.GetComponent<Animator>();
+						Animator = model.GetComponent<AnimationPlayer>();
 					}
 				}
 			}

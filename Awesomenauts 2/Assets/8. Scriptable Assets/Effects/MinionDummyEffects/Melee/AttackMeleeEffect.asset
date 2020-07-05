@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: AttackMeleeEffect
   m_EditorClassIdentifier: 
   playSound: 0
-  AnimationName: Attack
-  AnimationLength: 0.67
+  Animation: {fileID: 11400000, guid: 49b6a031bd036e4448e1a4b6e37c7780, type: 2}
   soundToPlay: 4
   Description: 
   TargetTrigger: 256

@@ -102,6 +102,7 @@ namespace Maps
 		public float yScale;
 		public float yOffset;
 		public float yCardOffset;
+		public float yModelOffset;
 		public float timeScale;
 		public float timeOffset;
 
@@ -111,6 +112,8 @@ namespace Maps
 		public int ClientID { get; private set; }
 
 		public Card DockedCard { get; private set; }
+
+		public Transform CardTarget;
 
 		public void SetClientID(int id)
 		{
@@ -135,6 +138,11 @@ namespace Maps
 		{
 			origY = transform.position.y;
 			MapTransformInfo.Instance.SocketManager.RegisterSocket(TeamID, this);
+			Transform t = new GameObject().transform;
+			t.parent = transform;
+
+			t.localPosition = Vector3.up * (yCardOffset + yModelOffset);
+			CardTarget = t;
 		}
 
 		/// <summary>

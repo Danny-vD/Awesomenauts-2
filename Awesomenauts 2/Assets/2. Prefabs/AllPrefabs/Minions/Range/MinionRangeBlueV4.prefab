@@ -1755,6 +1755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 29750640381609621}
   - component: {fileID: 8970612416882956492}
+  - component: {fileID: -2712894720029516124}
   m_Layer: 0
   m_Name: MinionRangeBlueV4
   m_TagString: Untagged
@@ -1797,3 +1798,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-2712894720029516124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8970612416882956493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db8b83e791b60d448fb23aa690aa903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animations:
+  - name: Die
+    animation: {fileID: 11400000, guid: cc87162e66597f9448ec05effff75830, type: 2}
+  Animator: {fileID: 0}

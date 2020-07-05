@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: TankAttackedDummyEffect
   m_EditorClassIdentifier: 
   playSound: 0
-  AnimationName: Hit
-  AnimationLength: 1.995
+  Animation: {fileID: 11400000, guid: 0f56bd8086a54ff40929d82f2d0d4c2c, type: 2}
   soundToPlay: 4
   Description: 
   TargetTrigger: 512

@@ -359,6 +359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5195493193752768053}
   - component: {fileID: 799754945981790195}
+  - component: {fileID: -5282555883664646932}
   m_Layer: 0
   m_Name: MinionTankRedV1
   m_TagString: Untagged
@@ -405,6 +406,22 @@ Animator:
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-5282555883664646932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799754945981790194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db8b83e791b60d448fb23aa690aa903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animations:
+  - name: Die
+    animation: {fileID: 11400000, guid: 4cb8b2d75fa763d43bc50334b02fce8d, type: 2}
+  Animator: {fileID: 0}
 --- !u!1 &799754946585860973
 GameObject:
   m_ObjectHideFlags: 0

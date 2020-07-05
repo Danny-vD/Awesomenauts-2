@@ -103,8 +103,10 @@ MonoBehaviour:
   yScale: 0.3
   yOffset: 1
   yCardOffset: 1
+  yModelOffset: 2.89
   timeScale: 0
   timeOffset: 0
+  CardTarget: {fileID: 0}
 --- !u!65 &-8911067738432862548
 BoxCollider:
   m_ObjectHideFlags: 0

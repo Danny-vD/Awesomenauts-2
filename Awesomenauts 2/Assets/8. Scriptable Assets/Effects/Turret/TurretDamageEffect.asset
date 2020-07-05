@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: TurretDamageEffect
   m_EditorClassIdentifier: 
   playSound: 0
-  AnimationName: shoot
-  AnimationLength: 1.7085714
+  Animation: {fileID: 11400000, guid: 2e98586282eb4bf40aca20a0229ce9b8, type: 2}
   soundToPlay: 4
   Description: 
   ETrigger: 0

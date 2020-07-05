@@ -516,29 +516,33 @@ namespace Player
 					UsedCardsThisTurn.Add(sourceCard);
 					sourceCard.EffectManager.InvokeEffects(EffectTrigger.OnMove, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
 
-					if (sourceCard.AttachedCardSocket != null)
+					StartCoroutine(WaitForCard(sourceCard, () =>
 					{
-						if (sourceCard.AttachedCardSocket.hasAuthority)
+						if (sourceCard.AttachedCardSocket != null)
 						{
-							sourceCard.AttachedCardSocket.CmdUnDockCard();
+							if (sourceCard.AttachedCardSocket.hasAuthority)
+							{
+								sourceCard.AttachedCardSocket.CmdUnDockCard();
+							}
+							else
+							{
+								sourceCard.AttachedCardSocket.DockCard(null);
+							}
+						}
+
+						sourceCard.AttachedCardSocket?.CmdUnDockCard();
+						if (targetSocket.hasAuthority)
+						{
+							targetSocket.CmdDockCard(sourceCard.netIdentity);
 						}
 						else
 						{
-							sourceCard.AttachedCardSocket.DockCard(null);
+							targetSocket.DockCard(sourceCard);
 						}
-					}
+						sourceCard.EffectManager.InvokeEffects(EffectTrigger.AfterMove, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
 
-					sourceCard.AttachedCardSocket?.CmdUnDockCard();
-					if (targetSocket.hasAuthority)
-					{
-						targetSocket.CmdDockCard(sourceCard.netIdentity);
-					}
-					else
-					{
-						targetSocket.DockCard(sourceCard);
-					}
-					sourceCard.EffectManager.InvokeEffects(EffectTrigger.AfterMove, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
-
+					}));
+					
 				}
 			}
 
@@ -549,6 +553,16 @@ namespace Player
 
 		}
 
+
+		private IEnumerator WaitForCard(Card c, Action a)
+		{
+			while (c.IsLocked)
+			{
+				yield return new WaitForEndOfFrame();
+			}
+
+			a();
+		}
 
 		[ClientRpc]
 		private void RpcHandleReleasedCardFromBoard(NetworkIdentity draggedCardSocket, NetworkIdentity cardSocket)

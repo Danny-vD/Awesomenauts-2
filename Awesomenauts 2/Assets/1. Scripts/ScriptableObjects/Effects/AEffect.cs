@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets._1._Scripts.AnimationSystem;
 using Audio;
 using Maps;
 using Player;
@@ -12,10 +13,8 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 	public abstract class AEffect : ScriptableObject
 	{
 		public bool playSound = false;
-		
-		public string AnimationName;
 
-		public float AnimationLength;
+		public CardAnimation Animation;
 		
 		public EventType soundToPlay = EventType.SFX_CARDS_CardPlace;
 
@@ -48,17 +47,16 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 				targetSocket.DockedCard.Lock(true);
 			}
 
-
 			c.Lock(true);
 
 			if (playSound)
 			{
 				PlaySound(soundToPlay, c.gameObject);
 			}
-			if (c.Animator != null && !string.IsNullOrEmpty(AnimationName))
+			if (c.Animator != null && Animation != null)
 			{
-				c.Animator.Play(AnimationName);
-				yield return new WaitForSeconds(AnimationLength);
+				yield return c.Animator.Play(Animation, targetSocket?.CardTarget);
+				//yield return new WaitForSeconds(AnimationLength);
 			}
 
 			yield return TriggerEffect(c, containingSocket, targetSocket);

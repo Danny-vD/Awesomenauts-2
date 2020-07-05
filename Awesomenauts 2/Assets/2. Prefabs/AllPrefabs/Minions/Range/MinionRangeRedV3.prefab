@@ -107,6 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1518552025276798154}
   - component: {fileID: 1518552023573711389}
+  - component: {fileID: 112443354903277504}
   m_Layer: 0
   m_Name: MinionRangeRedV3
   m_TagString: Untagged
@@ -149,6 +150,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &112443354903277504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518552023573711390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db8b83e791b60d448fb23aa690aa903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animations:
+  - name: Die
+    animation: {fileID: 11400000, guid: cc87162e66597f9448ec05effff75830, type: 2}
+  Animator: {fileID: 0}
 --- !u!1 &1518552023604110146
 GameObject:
   m_ObjectHideFlags: 0
