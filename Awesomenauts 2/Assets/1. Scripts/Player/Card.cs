@@ -217,6 +217,7 @@ namespace Player
 
 		public void SetState(CardState state)
 		{
+			if (CardPlayer.LocalPlayer == null) return;
 			CardState = state;
 
 			if (state == CardState.OnBoard)
