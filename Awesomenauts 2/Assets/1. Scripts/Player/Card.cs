@@ -143,10 +143,6 @@ namespace Player
 				EffectManager.InvokeEffects(EffectTrigger.OnDeath, AttachedCardSocket, null, this);
 				GoCommitDie(); //Might move this into an effect class
 			}
-			else
-			{
-				Debug.Log("");
-			}
 		}
 
 		public void GoCommitDie()
