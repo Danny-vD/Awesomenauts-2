@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Enums.Cards;
-using Structs.Deckbuilder;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Structs.Deckbuilder;
+using AwsomenautsCardGame.Utility;
 using UnityEngine;
-using Utility;
 
-namespace UI.DeckBuilder
+namespace AwsomenautsCardGame.UI.DeckBuilder
 {
 	[Serializable]
 	public class DeckRequirementsUI

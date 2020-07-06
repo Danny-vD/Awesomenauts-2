@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using VDFramework.Singleton;
+using VDFramework.VDUnityFramework.Singleton;
 
-namespace VDFramework.EventSystem
+namespace VDFramework.SharedClasses.EventSystem
 {
 	public class EventManager : Singleton<EventManager>
 	{
@@ -51,7 +51,7 @@ namespace VDFramework.EventSystem
 		public void AddListener<TEvent>(Action<TEvent> listener, int priorityOrder = 0)
 			where TEvent : VDEvent
 		{
-			EventHandler handler = new VDFramework.EventSystem.EventHandler<TEvent>(listener, priorityOrder);
+			EventHandler handler = new EventHandler<TEvent>(listener, priorityOrder);
 
 			AddListenerInternal<TEvent>(handler);
 		}

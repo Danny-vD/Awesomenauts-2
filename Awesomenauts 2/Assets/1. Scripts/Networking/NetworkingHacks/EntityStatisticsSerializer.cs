@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.IO;
+using AwsomenautsCardGame.Player;
+using AwsomenautsCardGame.UI;
 using Byt3.Serialization;
 using Byt3.Serialization.Serializers;
 using Byt3.Utilities.Exceptions;
 using MasterServer.Common;
-using Networking.Statistics;
-using Player;
 
-namespace Networking.NetworkingHacks
+namespace AwsomenautsCardGame.Networking.NetworkingHacks
 {
 	public class EntityStatisticsSerializer : ASerializer<EntityStatistics>
 	{

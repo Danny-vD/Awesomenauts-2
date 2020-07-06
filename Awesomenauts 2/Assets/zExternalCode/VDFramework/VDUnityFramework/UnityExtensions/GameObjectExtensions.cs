@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VDFramework.UnityExtensions
+namespace VDFramework.VDUnityFramework.UnityExtensions
 {
 	public static class GameObjectExtensions
 	{

@@ -1,16 +1,16 @@
 using System.Collections.Generic;
-using Networking;
+using AwsomenautsCardGame.Networking;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Menu.UI {
+namespace AwsomenautsCardGame.Menu.UI {
 	public class MapDropdownInitializer : MonoBehaviour
 	{
 		private Dropdown ddMapList;
 		
 		public Image mapPreview;
 		// Start is called before the first frame update
-		void Start()
+		private void Start()
 		{
 			CardNetworkManager manager = CardNetworkManager.Instance;
 			if (manager == null)

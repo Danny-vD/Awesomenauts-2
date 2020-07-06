@@ -1,4 +1,4 @@
-﻿namespace Enums.Audio
+﻿namespace AwsomenautsCardGame.Enums.Audio
 {
 	public enum BusType
 	{

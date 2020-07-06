@@ -3,7 +3,7 @@ using FMOD.Studio;
 using FMODUnity;
 using Guid = System.Guid;
 
-namespace ExtentionMethods.FMODUnity
+namespace AwsomenautsCardGame.ExtentionMethods.FMODUnity
 {
 	public static class StudioEventEmitterExtentions
 	{

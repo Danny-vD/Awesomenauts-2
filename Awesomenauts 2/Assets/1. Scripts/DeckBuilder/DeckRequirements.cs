@@ -1,17 +1,17 @@
-using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Enums.Cards;
-using Events.Deckbuilder;
-using Structs.Deckbuilder;
-using UI.Cards;
-using UI.DeckBuilder;
-using Utility;
-using VDFramework.EventSystem;
-using VDFramework.Extensions;
+using VDFramework.SharedClasses.EventSystem;
+using VDFramework.SharedClasses.Extensions;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Events.Deckbuilder;
+using AwsomenautsCardGame.Structs.Deckbuilder;
+using AwsomenautsCardGame.UI.Cards;
+using AwsomenautsCardGame.UI.DeckBuilder;
+using AwsomenautsCardGame.Utility;
+using UnityEngine;
 
-namespace Deckbuilder
+namespace AwsomenautsCardGame.DeckBuilder
 {
 	[Serializable]
 	public class DeckRequirements

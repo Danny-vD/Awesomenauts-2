@@ -1,6 +1,6 @@
 using System;
 
-namespace Enums.Character
+namespace AwsomenautsCardGame.Enums.Character
 {
 	[Flags]
 	public enum Awesomenaut

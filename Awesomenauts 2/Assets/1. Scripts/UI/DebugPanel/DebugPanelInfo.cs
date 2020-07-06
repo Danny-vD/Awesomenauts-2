@@ -1,10 +1,10 @@
-using Networking;
-using Player;
+using VDFramework.VDUnityFramework.Singleton;
+using AwsomenautsCardGame.Networking;
+using AwsomenautsCardGame.Player;
 using UnityEngine;
 using UnityEngine.UI;
-using VDFramework.Singleton;
 
-namespace UI.DebugPanel
+namespace AwsomenautsCardGame.UI.DebugPanel
 {
 	public class DebugPanelInfo : Singleton<DebugPanelInfo>
 	{

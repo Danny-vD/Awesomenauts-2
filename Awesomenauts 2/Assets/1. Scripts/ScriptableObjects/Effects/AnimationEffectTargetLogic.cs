@@ -1,8 +1,10 @@
 using System.Linq;
-using Maps;
-using Player;
+using AwsomenautsCardGame.Maps;
+using AwsomenautsCardGame.Networking.NetworkingHacks;
+using AwsomenautsCardGame.Player;
+using AwsomenautsCardGame.UI;
 
-namespace Assets._1._Scripts.ScriptableObjects.Effects {
+namespace AwsomenautsCardGame.ScriptableObjects.Effects {
 	public static class AnimationEffectTargetLogic
 	{
 		public static Card[] GetTargets(EffectTarget target, Card sourceCard, CardSocket targetSocket)

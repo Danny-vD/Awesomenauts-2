@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Enums.Deckbuilder;
-using VDFramework.EventSystem;
+using VDFramework.SharedClasses.EventSystem;
+using AwsomenautsCardGame.Enums.Deckbuilder;
 
-namespace Events.Deckbuilder
+namespace AwsomenautsCardGame.Events.Deckbuilder
 {
 	public class SortingsChangedEvent : VDEvent
 	{

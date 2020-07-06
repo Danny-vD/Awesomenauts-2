@@ -1,7 +1,7 @@
-using Enums.Deckbuilder;
+using AwsomenautsCardGame.Enums.Deckbuilder;
 using JetBrains.Annotations;
 
-namespace Enums.Cards
+namespace AwsomenautsCardGame.Enums.Cards
 {
 	public enum CardType
 	{

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using Enums.Deckbuilder;
+using VDFramework.SharedClasses.Extensions;
+using VDFramework.VDUnityFramework.BaseClasses;
+using AwsomenautsCardGame.Enums.Deckbuilder;
 using UnityEngine;
 using UnityEngine.UI;
-using VDFramework;
-using VDFramework.Extensions;
 
-namespace DeckBuilder.DeckSorterUtil
+namespace AwsomenautsCardGame.DeckBuilder.DeckSorterUtil
 {
 	public class SortButtonManager : BetterMonoBehaviour
 	{

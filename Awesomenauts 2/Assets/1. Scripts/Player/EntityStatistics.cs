@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Player {
+namespace AwsomenautsCardGame.Player {
 	[Serializable]
 	public class EntityStatistics
 	{

@@ -1,9 +1,9 @@
-﻿using Enums.Audio;
+﻿using AwsomenautsCardGame.Enums.Audio;
 using FMODUnity;
 using UnityEngine;
-using EventType = Enums.Audio.EventType;
+using EventType = AwsomenautsCardGame.Enums.Audio.EventType;
 
-namespace Audio
+namespace AwsomenautsCardGame.Audio
 {
 	public static class AudioPlayer
 	{
@@ -30,12 +30,12 @@ namespace Audio
 			AudioManager.Instance.EventPaths.GetEmitter(emitter).Stop();
 		}
 
-		public static void PlaySound(EventType @event, GameObject location)
+		public static void PlaySound(Enums.Audio.EventType @event, GameObject location)
 		{
 			RuntimeManager.PlayOneShotAttached(AudioManager.Instance.EventPaths.GetPath(@event), location);
 		}
 
-		public static void PlaySound(EventType @event)
+		public static void PlaySound(Enums.Audio.EventType @event)
 		{
 			RuntimeManager.PlayOneShotAttached(AudioManager.Instance.EventPaths.GetPath(@event), AudioManager.Instance.gameObject);
 		}

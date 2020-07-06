@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.DebugPanel
+namespace AwsomenautsCardGame.UI.DebugPanel
 {
 	public class SolarDisplay : MonoBehaviour
 	{
@@ -83,7 +83,7 @@ namespace UI.DebugPanel
 			}
 		}
 
-		void Update()
+		private void Update()
 		{
 			if (cost != 0 && SolarText != null)
 			{
@@ -92,7 +92,7 @@ namespace UI.DebugPanel
 
 		}
 
-		void LateUpdate()
+		private void LateUpdate()
 		{
 			if (resetFrame)
 			{

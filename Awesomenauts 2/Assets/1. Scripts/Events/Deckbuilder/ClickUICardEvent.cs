@@ -1,7 +1,7 @@
-using UI.Cards;
-using VDFramework.EventSystem;
+using VDFramework.SharedClasses.EventSystem;
+using AwsomenautsCardGame.UI.Cards;
 
-namespace Events.Deckbuilder
+namespace AwsomenautsCardGame.Events.Deckbuilder
 {
 	public class ClickUICardEvent : VDEvent
 	{

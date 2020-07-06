@@ -1,4 +1,4 @@
-using UI.DebugPanel;
+using AwsomenautsCardGame.UI.DebugPanel;
 using UnityEditor;
 using UnityEngine;
 

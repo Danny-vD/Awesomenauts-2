@@ -1,7 +1,7 @@
 using System.Text;
-using Assets._1._Scripts.ScriptableObjects.Effects;
-using Enums.Cards;
-using Player;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Player;
+using AwsomenautsCardGame.ScriptableObjects.Effects;
 using UnityEditor;
 using UnityEngine;
 

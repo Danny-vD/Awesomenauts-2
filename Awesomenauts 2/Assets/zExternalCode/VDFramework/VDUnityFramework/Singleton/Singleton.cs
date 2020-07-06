@@ -1,7 +1,8 @@
+using VDFramework.SharedClasses.Exceptions;
+using VDFramework.VDUnityFramework.BaseClasses;
 using UnityEngine;
-using VDFramework.Exceptions;
 
-namespace VDFramework.Singleton
+namespace VDFramework.VDUnityFramework.Singleton
 {
 	public abstract class Singleton<TSingleton> : BetterMonoBehaviour
 		where TSingleton : Singleton<TSingleton>

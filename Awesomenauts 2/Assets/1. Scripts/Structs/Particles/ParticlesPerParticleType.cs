@@ -1,9 +1,9 @@
 ﻿using System;
-using Enums.Particles;
-using Interfaces;
+using AwsomenautsCardGame.Enums.Particles;
+using AwsomenautsCardGame.Interfaces;
 using UnityEngine;
 
-namespace Structs.Particles
+namespace AwsomenautsCardGame.Structs.Particles
 {
 	[Serializable]
 	public struct ParticlesPerParticleType : IKeyValuePair<ParticleType, GameObject>

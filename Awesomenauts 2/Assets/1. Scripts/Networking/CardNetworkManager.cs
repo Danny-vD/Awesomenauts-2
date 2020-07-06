@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
-using Assets._1._Scripts.ScriptableObjects.Effects;
-using DataObjects;
-using Events.Deckbuilder;
-using Maps;
-using Player;
-using Utility;
+using VDFramework.SharedClasses.EventSystem;
+using VDFramework.SharedClasses.Extensions;
+using AwsomenautsCardGame.DataObjects;
+using AwsomenautsCardGame.Events.Deckbuilder;
+using AwsomenautsCardGame.Maps;
+using AwsomenautsCardGame.Menu;
+using AwsomenautsCardGame.Networking.NetworkingHacks;
+using AwsomenautsCardGame.Player;
+using AwsomenautsCardGame.ScriptableObjects.Effects;
+using AwsomenautsCardGame.UI;
+using AwsomenautsCardGame.Utility;
 using Mirror;
 using Mirror.Websocket;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-using VDFramework.EventSystem;
-using VDFramework.Extensions;
 using Logger = MasterServer.Common.Logger;
 
 
-namespace Networking
+namespace AwsomenautsCardGame.Networking
 {
 	public class CardNetworkManager : NetworkManager
 	{
@@ -155,12 +158,12 @@ namespace Networking
 				XmlSerializer xs = new XmlSerializer(typeof(DeckConfig));
 				SetCardsInDeck(((DeckConfig)xs.Deserialize(s)).CardIDs);
 				s.Close();
-				ShowDataPathScript.Write("Loaded: " + CardsInDeck.Length + " Entries");
+				MainMenuInfoTextScript.Write("Loaded: " + CardsInDeck.Length + " Entries");
 			}
 			else
 			{
                 SetCardsInDeck(GameInitializer.Instance.DefaultDeck);
-                ShowDataPathScript.Write("Loaded: Default Deck");
+                MainMenuInfoTextScript.Write("Loaded: Default Deck");
 			}
 
 			Application.quitting += Application_quitting;
@@ -175,7 +178,7 @@ namespace Networking
 
 		private void OnValidDeckEvent(ValidDeckEvent obj)
 		{
-			ShowDataPathScript.Write("Deck Valid: " + obj.IsValid);
+			MainMenuInfoTextScript.Write("Deck Valid: " + obj.IsValid);
 		}
 
 		public struct DeckConfig
@@ -189,7 +192,7 @@ namespace Networking
 			MasterServerComponent ms = GetComponent<MasterServerComponent>();
 			ms.AbortQueue();
 
-			ShowDataPathScript.Write("Saved: " + CardsInDeck.Length + " Entries");
+			MainMenuInfoTextScript.Write("Saved: " + CardsInDeck.Length + " Entries");
 			Stream s = File.Create(DeckPath);
 			XmlSerializer xs = new XmlSerializer(typeof(DeckConfig));
 			xs.Serialize(s, new DeckConfig() { CardIDs = CardsInDeck });
@@ -198,7 +201,7 @@ namespace Networking
 
 		private void SaveDeckEventHandler(SaveDeckEvent obj)
 		{
-			ShowDataPathScript.Write("Saved: " + obj.CardIDs.Length + " Entries");
+			MainMenuInfoTextScript.Write("Saved: " + obj.CardIDs.Length + " Entries");
 			SetCardsInDeck(obj.CardIDs);
 			Stream s = File.Create(DeckPath);
 			XmlSerializer xs = new XmlSerializer(typeof(DeckConfig));

@@ -1,6 +1,6 @@
 using System;
 using System.Threading;
-using DataObjects;
+using AwsomenautsCardGame.DataObjects;
 using MasterServer.Client;
 using MasterServer.Common;
 using MasterServer.Common.Networking.Packets;
@@ -8,7 +8,7 @@ using MasterServer.Common.Networking.Packets.Serializers;
 using Mirror;
 using UnityEngine;
 
-namespace Networking
+namespace AwsomenautsCardGame.Networking
 {
 	public class MasterServerComponent : MonoBehaviour
 	{

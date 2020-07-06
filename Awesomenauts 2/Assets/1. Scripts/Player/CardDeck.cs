@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Networking;
+using AwsomenautsCardGame.Networking;
 using Mirror;
 using UnityEngine;
 
-namespace Player
+namespace AwsomenautsCardGame.Player
 {
 	public class CardDeck : NetworkBehaviour
 	{
@@ -19,7 +19,7 @@ namespace Player
 		private NetworkIdentity id;
 
 		// Start is called before the first frame update
-		void Start()
+		private void Start()
 		{
 			id = GetComponent<NetworkIdentity>();
 			if (isLocalPlayer)
@@ -91,7 +91,7 @@ namespace Player
 
 
 		// Update is called once per frame
-		void Update()
+		private void Update()
 		{
 
 		}

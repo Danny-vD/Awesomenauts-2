@@ -1,12 +1,12 @@
-﻿using Events.Deckbuilder;
+﻿using VDFramework.SharedClasses.EventSystem;
+using VDFramework.VDUnityFramework.BaseClasses;
+using VDFramework.VDUnityFramework.UnityExtensions;
+using AwsomenautsCardGame.Events.Deckbuilder;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using VDFramework;
-using VDFramework.EventSystem;
-using VDFramework.UnityExtensions;
 
-namespace UI.DeckBuilder
+namespace AwsomenautsCardGame.UI.DeckBuilder
 {
 	[RequireComponent(typeof(Image))]
 	public class ExitButton : BetterMonoBehaviour

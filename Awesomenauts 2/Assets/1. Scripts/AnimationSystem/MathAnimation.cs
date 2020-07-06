@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Assets._1._Scripts.AnimationSystem
+namespace AwsomenautsCardGame.AnimationSystem
 {
 	[Flags]
 	public enum MathAnimationFilter

@@ -1,11 +1,11 @@
-using Events.Deckbuilder;
-using UI.Cards;
+using VDFramework.SharedClasses.EventSystem;
+using VDFramework.VDUnityFramework.BaseClasses;
+using AwsomenautsCardGame.Events.Deckbuilder;
+using AwsomenautsCardGame.UI.Cards;
 using UnityEngine;
 using UnityEngine.UI;
-using VDFramework;
-using VDFramework.EventSystem;
 
-namespace DeckBuilder
+namespace AwsomenautsCardGame.DeckBuilder
 {
 	public class CardPreview : BetterMonoBehaviour
 	{

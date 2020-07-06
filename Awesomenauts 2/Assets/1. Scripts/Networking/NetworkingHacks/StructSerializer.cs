@@ -1,7 +1,7 @@
 ﻿using Byt3.Serialization;
 using Byt3.Serialization.Serializers;
 
-namespace Networking.NetworkingHacks {
+namespace AwsomenautsCardGame.Networking.NetworkingHacks {
 	public class StructSerializer<T> : ASerializer<T>
 		where T : struct
 	{

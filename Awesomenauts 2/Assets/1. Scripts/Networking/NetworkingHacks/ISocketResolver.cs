@@ -1,6 +1,8 @@
-using Maps;
+using AwsomenautsCardGame.Maps;
 
-public interface ISocketResolver
-{
-	CardSocket GetSocket();
+namespace AwsomenautsCardGame.Networking.NetworkingHacks {
+	public interface ISocketResolver
+	{
+		CardSocket GetSocket();
+	}
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Assets._1._Scripts.AnimationSystem
+namespace AwsomenautsCardGame.AnimationSystem
 {
 	public class AnimationPlayer : MonoBehaviour
 	{

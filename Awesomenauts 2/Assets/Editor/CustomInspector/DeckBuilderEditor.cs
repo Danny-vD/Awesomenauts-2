@@ -1,14 +1,15 @@
-﻿using Enums.Cards;
+using AwsomenautsCardGame.DeckBuilder;
+using AwsomenautsCardGame.Enums.Cards;
 using UnityEditor;
 using UnityEngine;
 using static Utility.EditorUtils;
 
 namespace CustomInspector
 {
-	[CustomEditor(typeof(DeckBuilder.DeckBuilder))]
+	[CustomEditor(typeof(DeckBuilder))]
 	public class DeckBuilderEditor : Editor
 	{
-		private DeckBuilder.DeckBuilder deckBuilder;
+		private DeckBuilder deckBuilder;
 
 		private bool deckRequirementsFoldout;
 		private bool minMaxCardFoldOut;
@@ -37,7 +38,7 @@ namespace CustomInspector
 
 		private void OnEnable()
 		{
-			deckBuilder = target as global::DeckBuilder.DeckBuilder;
+			deckBuilder = target as DeckBuilder;
 			deckBuilder.UpdateDictionaries();
 
 			currentDeckParent    = serializedObject.FindProperty("currentDeckParent");

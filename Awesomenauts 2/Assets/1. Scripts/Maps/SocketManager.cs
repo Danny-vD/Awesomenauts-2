@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets._1._Scripts.ScriptableObjects.Effects;
-using Player;
+using AwsomenautsCardGame.Networking.NetworkingHacks;
+using AwsomenautsCardGame.Player;
+using AwsomenautsCardGame.ScriptableObjects.Effects;
 using UnityEngine;
 
-namespace Maps
+namespace AwsomenautsCardGame.Maps
 {
 	public class SocketManager : MonoBehaviour
 	{

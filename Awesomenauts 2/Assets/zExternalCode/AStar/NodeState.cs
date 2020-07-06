@@ -1,4 +1,4 @@
-﻿namespace AStar
+﻿namespace ExternalCode.AStar
 {
     /// <summary>
     /// The states the nodes can have.

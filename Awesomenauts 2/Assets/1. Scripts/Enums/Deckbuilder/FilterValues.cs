@@ -1,6 +1,6 @@
 using System;
 
-namespace Enums.Deckbuilder
+namespace AwsomenautsCardGame.Enums.Deckbuilder
 {
 	[Flags]
 	public enum FilterValues

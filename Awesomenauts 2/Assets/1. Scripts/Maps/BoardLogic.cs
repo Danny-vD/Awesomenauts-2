@@ -1,16 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets._1._Scripts.ScriptableObjects.Effects;
-using Networking;
-using Player;
-using Utility;
+using AwsomenautsCardGame.Networking;
+using AwsomenautsCardGame.Player;
+using AwsomenautsCardGame.ScriptableObjects.Effects;
+using AwsomenautsCardGame.UI.DebugPanel;
+using AwsomenautsCardGame.Utility;
 using Mirror;
-using UI.DebugPanel;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Maps
+namespace AwsomenautsCardGame.Maps
 {
 	public class BoardLogic : NetworkBehaviour
 	{

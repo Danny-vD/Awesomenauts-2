@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using Enums.Deckbuilder;
-using Events.Deckbuilder;
-using UI.Cards;
-using VDFramework.EventSystem;
+using VDFramework.SharedClasses.EventSystem;
+using AwsomenautsCardGame.Enums.Deckbuilder;
+using AwsomenautsCardGame.Events.Deckbuilder;
+using AwsomenautsCardGame.UI.Cards;
 using Object = UnityEngine.Object;
 
-namespace DeckBuilder.DeckSorterUtil
+namespace AwsomenautsCardGame.DeckBuilder.DeckSorterUtil
 {
 	public class DeckSorterMethods
 	{

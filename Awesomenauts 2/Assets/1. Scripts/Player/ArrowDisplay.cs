@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Player {
+namespace AwsomenautsCardGame.Player {
 
 	public enum ArrowDisplayState {Default, Accept, Invalid, None}
 

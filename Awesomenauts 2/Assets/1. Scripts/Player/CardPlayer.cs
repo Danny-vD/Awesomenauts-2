@@ -2,17 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Assets._1._Scripts.AnimationSystem;
-using Assets._1._Scripts.ScriptableObjects.DragLogic;
-using Assets._1._Scripts.ScriptableObjects.Effects;
-using Enums.Cards;
-using Maps;
-using Networking;
+using AwsomenautsCardGame.AnimationSystem;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Maps;
+using AwsomenautsCardGame.Networking;
+using AwsomenautsCardGame.ScriptableObjects.DragLogic;
+using AwsomenautsCardGame.ScriptableObjects.Effects;
+using AwsomenautsCardGame.TooltipSystem;
+using AwsomenautsCardGame.UI;
+using AwsomenautsCardGame.UI.DebugPanel;
 using Mirror;
-using UI.DebugPanel;
 using UnityEngine;
 
-namespace Player
+namespace AwsomenautsCardGame.Player
 {
 
 

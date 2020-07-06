@@ -1,16 +1,16 @@
 using System;
 using System.Reflection;
 using System.Threading;
-using DataObjects;
-using Networking;
-using Utility;
+using VDFramework.VDUnityFramework.Singleton;
+using AwsomenautsCardGame.DataObjects;
+using AwsomenautsCardGame.Networking;
+using AwsomenautsCardGame.Utility;
 using MasterServer.Client;
 using MasterServer.Common.Networking.Packets;
 using UnityEngine;
 using UnityEngine.UI;
-using VDFramework.Singleton;
 
-namespace UI
+namespace AwsomenautsCardGame.UI
 {
 	public class UINetworkHelper : Singleton<UINetworkHelper>
 	{
@@ -23,7 +23,7 @@ namespace UI
 
 		public InputField[] fields;
 
-		CancellationTokenSource ts = new CancellationTokenSource();
+		private CancellationTokenSource ts = new CancellationTokenSource();
 
 
 		public GameObject MainMenu;
@@ -46,7 +46,7 @@ namespace UI
 		private bool UpdateQueueStatus;
 		private bool UpdateErrorStatus;
 
-		void Start()
+		private void Start()
 		{
 			if (CardNetworkManager.Exit != null)
 			{

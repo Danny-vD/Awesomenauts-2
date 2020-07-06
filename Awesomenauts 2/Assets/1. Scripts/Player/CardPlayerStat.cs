@@ -1,6 +1,6 @@
 using System;
 
-namespace Player {
+namespace AwsomenautsCardGame.Player {
 	public abstract class CardPlayerStat
 	{
 		public abstract object GetValue();

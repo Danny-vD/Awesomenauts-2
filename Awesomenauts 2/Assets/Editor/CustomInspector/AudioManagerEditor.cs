@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
-using Audio;
-using Enums.Audio;
-using Structs.Audio;
+using AwsomenautsCardGame.Enums.Audio;
+using AwsomenautsCardGame.Structs.Audio;
+using AwsomenautsCardGame.Utility;
+using AwsomenautsCardGame.Audio;
 using UnityEditor;
 using UnityEngine;
-using Utility;
-using EventType = Enums.Audio.EventType;
+using EventType = AwsomenautsCardGame.Enums.Audio.EventType;
 using static Utility.EditorUtils;
 
 namespace CustomInspector

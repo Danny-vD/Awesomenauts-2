@@ -1,9 +1,9 @@
 ﻿using System;
-using Enums.Cards;
-using Interfaces;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Interfaces;
 using UnityEngine;
 
-namespace Structs.Deckbuilder
+namespace AwsomenautsCardGame.Structs.Deckbuilder
 {
 	[Serializable]
 	public struct MinMaxPerCardType : IKeyValuePair<CardType, Vector2Int>

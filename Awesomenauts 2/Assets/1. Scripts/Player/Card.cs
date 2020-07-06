@@ -1,19 +1,19 @@
 using System;
 using System.Collections;
-using Assets._1._Scripts.AnimationSystem;
-using Assets._1._Scripts.ScriptableObjects.DragLogic;
-using Assets._1._Scripts.ScriptableObjects.Effects;
-using Enums.Cards;
-using Events.Gameplay;
-using Maps;
-using Networking;
+using VDFramework.SharedClasses.EventSystem;
+using AwsomenautsCardGame.AnimationSystem;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Events.Gameplay;
+using AwsomenautsCardGame.Maps;
+using AwsomenautsCardGame.Networking;
+using AwsomenautsCardGame.ScriptableObjects.DragLogic;
+using AwsomenautsCardGame.ScriptableObjects.Effects;
+using AwsomenautsCardGame.UI.Cards;
 using Mirror;
-using UI.Cards;
 using UnityEngine;
 using UnityEngine.UI;
-using VDFramework.EventSystem;
 
-namespace Player
+namespace AwsomenautsCardGame.Player
 {
 	public class Card : NetworkBehaviour
 	{
@@ -45,7 +45,7 @@ namespace Player
 		public AnimationPlayer Animator;
 
 		// Start is called before the first frame update
-		void Start()
+		private void Start()
 		{
 
 			//Instanciate Animator in child objects if any

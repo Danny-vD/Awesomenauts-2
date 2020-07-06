@@ -1,4 +1,4 @@
-namespace Enums.Deckbuilder
+namespace AwsomenautsCardGame.Enums.Deckbuilder
 {
 	public enum SortValue
 	{

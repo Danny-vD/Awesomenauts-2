@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VDFramework.Singleton
+namespace VDFramework.VDUnityFramework.Singleton
 {
 	public static class SingletonInstanceCreator<T>
 		where T : Component

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Networking {
+namespace AwsomenautsCardGame.Networking {
 	[Serializable]
 	public class CardModelAsset : TeamAsset<GameObject> { }
 }

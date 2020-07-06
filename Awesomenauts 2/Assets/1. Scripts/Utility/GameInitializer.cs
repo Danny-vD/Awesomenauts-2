@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
-using DataObjects;
-using Networking;
-using Utility.Commands;
+using AwsomenautsCardGame.DataObjects;
+using AwsomenautsCardGame.Networking;
+using AwsomenautsCardGame.UI;
+using AwsomenautsCardGame.Utility.Commands;
 using Byt3.CommandRunner;
 using Mirror;
-using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Utility
+namespace AwsomenautsCardGame.Utility
 {
 	public class GameInitializer : NetworkBehaviour
 	{
@@ -43,7 +43,7 @@ namespace Utility
 
 		public List<string> AllPaths;
 
-		void Awake()
+		private void Awake()
 		{
 			DontDestroyOnLoad(gameObject);
 			//GameData = new CardNetworkManager.GameInfo(); //Editor does this for us
@@ -54,7 +54,7 @@ namespace Utility
 		}
 
 		// Start is called before the first frame update
-		void Start()
+		private void Start()
 		{
 			SceneManager.sceneLoaded += SceneManagerOnSceneLoaded;
 			SceneManager.LoadScene(NextScene);

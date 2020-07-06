@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Maps {
+namespace AwsomenautsCardGame.Maps {
 	public class MapTransformInfo : MonoBehaviour
 	{
 		/// <summary>
@@ -29,13 +29,13 @@ namespace Maps {
 
 		public static MapTransformInfo Instance;
 		// Start is called before the first frame update
-		void Start()
+		private void Start()
 		{
 			Instance = this;
 		}
 
 		// Update is called once per frame
-		void Update()
+		private void Update()
 		{
         
 		}

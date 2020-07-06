@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Structs.Deckbuilder
+namespace AwsomenautsCardGame.Structs.Deckbuilder
 {
 	[Serializable]
 	public struct CardSprites

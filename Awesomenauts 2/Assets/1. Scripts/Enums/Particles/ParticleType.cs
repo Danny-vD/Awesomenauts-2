@@ -1,4 +1,4 @@
-﻿namespace Enums.Particles
+﻿namespace AwsomenautsCardGame.Enums.Particles
 {
 	public enum ParticleType
 	{

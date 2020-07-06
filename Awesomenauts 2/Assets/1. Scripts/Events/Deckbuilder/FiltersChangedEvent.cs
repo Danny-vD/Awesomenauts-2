@@ -1,8 +1,8 @@
-﻿using Enums.Character;
-using Enums.Deckbuilder;
-using VDFramework.EventSystem;
+﻿using VDFramework.SharedClasses.EventSystem;
+using AwsomenautsCardGame.Enums.Character;
+using AwsomenautsCardGame.Enums.Deckbuilder;
 
-namespace Events.Deckbuilder
+namespace AwsomenautsCardGame.Events.Deckbuilder
 {
 	public class FiltersChangedEvent : VDEvent
 	{

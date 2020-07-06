@@ -1,6 +1,6 @@
 using System;
 
-namespace Assets._1._Scripts.ScriptableObjects.Effects {
+namespace AwsomenautsCardGame.ScriptableObjects.Effects {
 	public class EffectException : Exception
 	{
 		public EffectException(string message, Exception inner):base(message, inner) { }

@@ -1,9 +1,9 @@
 using System.Collections;
-using Maps;
-using Player;
+using AwsomenautsCardGame.Maps;
+using AwsomenautsCardGame.Player;
 using UnityEngine;
 
-namespace Assets._1._Scripts.ScriptableObjects.Effects
+namespace AwsomenautsCardGame.ScriptableObjects.Effects
 {
 
 

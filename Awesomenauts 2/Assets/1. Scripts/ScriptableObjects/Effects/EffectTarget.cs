@@ -1,6 +1,6 @@
 using System;
 
-namespace Assets._1._Scripts.ScriptableObjects.Effects
+namespace AwsomenautsCardGame.ScriptableObjects.Effects
 {
 
 	[Flags]

@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿using VDFramework.VDUnityFramework.BaseClasses;
+using UnityEngine;
 using UnityEngine.UI;
-using VDFramework;
 
-namespace UI.Cards
+namespace AwsomenautsCardGame.UI.Cards
 {
 	[RequireComponent(typeof(Text))]
 	public class CardAmountCounter : BetterMonoBehaviour

@@ -1,11 +1,11 @@
-﻿using Enums.Cards;
-using Enums.Character;
-using Enums.Deckbuilder;
-using UI.Cards;
+﻿using VDFramework.VDUnityFramework.Singleton;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Enums.Character;
+using AwsomenautsCardGame.Enums.Deckbuilder;
+using AwsomenautsCardGame.UI.Cards;
 using UnityEngine;
-using VDFramework.Singleton;
 
-namespace Utility.UI
+namespace AwsomenautsCardGame.Utility.UI
 {
 	public class UICardFactory : Singleton<UICardFactory>
 	{

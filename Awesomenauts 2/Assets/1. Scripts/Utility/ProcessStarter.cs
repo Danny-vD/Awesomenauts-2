@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
-using VDFramework;
+using VDFramework.VDUnityFramework.BaseClasses;
 
-namespace Utility
+namespace AwsomenautsCardGame.Utility
 {
 	public class ProcessStarter : BetterMonoBehaviour
 	{

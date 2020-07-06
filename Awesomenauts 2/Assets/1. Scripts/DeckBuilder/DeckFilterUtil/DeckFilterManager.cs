@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using Enums.Character;
-using Enums.Deckbuilder;
-using UI.Cards;
+using AwsomenautsCardGame.Enums.Character;
+using AwsomenautsCardGame.Enums.Deckbuilder;
+using AwsomenautsCardGame.UI.Cards;
 
-namespace DeckBuilder.DeckFilterUtil
+namespace AwsomenautsCardGame.DeckBuilder.DeckFilterUtil
 {
 	public static class DeckFilterManager
 	{

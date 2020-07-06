@@ -2,7 +2,7 @@
 using FMOD.Studio;
 using FMODUnity;
 
-namespace Audio
+namespace AwsomenautsCardGame.Audio
 {
 	public static class AudioParameterManager
 	{

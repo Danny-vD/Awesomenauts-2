@@ -1,9 +1,9 @@
 ﻿using System;
-using Enums.Deckbuilder;
-using Interfaces;
+using AwsomenautsCardGame.Enums.Deckbuilder;
+using AwsomenautsCardGame.Interfaces;
 using UnityEngine;
 
-namespace Structs.Deckbuilder
+namespace AwsomenautsCardGame.Structs.Deckbuilder
 {
 	[Serializable]
 	public struct SpritePerEnum : IKeyValuePair<FilterValues, Sprite>

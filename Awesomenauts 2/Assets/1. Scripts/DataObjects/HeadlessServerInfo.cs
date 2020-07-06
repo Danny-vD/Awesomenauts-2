@@ -1,6 +1,6 @@
 using System;
 
-namespace DataObjects
+namespace AwsomenautsCardGame.DataObjects
 {
 	[Serializable]
 	public class HeadlessServerInfo

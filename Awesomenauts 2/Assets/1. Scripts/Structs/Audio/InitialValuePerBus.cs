@@ -1,9 +1,9 @@
 ﻿using System;
-using Interfaces;
+using AwsomenautsCardGame.Enums.Audio;
+using AwsomenautsCardGame.Interfaces;
 using UnityEngine;
-using Enums.Audio;
 
-namespace Structs.Audio
+namespace AwsomenautsCardGame.Structs.Audio
 {
 	[Serializable]
 	public struct InitialValuePerBus : IKeyValuePair<BusType, float>

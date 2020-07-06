@@ -1,8 +1,8 @@
-using Player;
+using AwsomenautsCardGame.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Cards
+namespace AwsomenautsCardGame.UI.Cards
 {
 	public class CardTextHelper : MonoBehaviour
 	{

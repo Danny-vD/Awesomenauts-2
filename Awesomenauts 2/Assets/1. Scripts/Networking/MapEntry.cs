@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Networking {
+namespace AwsomenautsCardGame.Networking {
 	/// <summary>
 	/// Info Object for a Map
 	/// </summary>

@@ -1,5 +1,5 @@
-﻿using Enums.Particles;
-using Particles;
+using AwsomenautsCardGame.Enums.Particles;
+using AwsomenautsCardGame.Particles;
 using UnityEditor;
 using UnityEngine;
 using static Utility.EditorUtils;

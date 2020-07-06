@@ -1,4 +1,4 @@
-﻿namespace VDFramework.Utility
+﻿namespace VDFramework.SharedClasses.Utility
 {
 	public class StringVariableWriter
 	{

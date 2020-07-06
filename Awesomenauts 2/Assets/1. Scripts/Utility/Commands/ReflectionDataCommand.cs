@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using UI;
+using AwsomenautsCardGame.UI;
 using Byt3.CommandRunner;
 
-namespace Utility.Commands
+namespace AwsomenautsCardGame.Utility.Commands
 {
 	public class ReflectionDataCommand : AbstractCommand
 	{

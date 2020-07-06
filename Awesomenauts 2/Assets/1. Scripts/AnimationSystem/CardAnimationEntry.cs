@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets._1._Scripts.AnimationSystem {
+namespace AwsomenautsCardGame.AnimationSystem {
 	[Serializable]
 	public class CardAnimationEntry
 	{

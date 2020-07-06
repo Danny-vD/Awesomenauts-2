@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AStar
+namespace ExternalCode.AStar
 {
     /// <summary>
     /// Generic Priority Queue.

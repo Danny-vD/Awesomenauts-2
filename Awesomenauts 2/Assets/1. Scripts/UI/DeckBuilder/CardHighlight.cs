@@ -1,11 +1,11 @@
-﻿using Enums.Deckbuilder;
-using Events.Deckbuilder;
-using UI.Cards;
+﻿using VDFramework.SharedClasses.EventSystem;
+using VDFramework.VDUnityFramework.BaseClasses;
+using AwsomenautsCardGame.Enums.Deckbuilder;
+using AwsomenautsCardGame.Events.Deckbuilder;
+using AwsomenautsCardGame.UI.Cards;
 using UnityEngine;
-using VDFramework;
-using VDFramework.EventSystem;
 
-namespace UI.DeckBuilder
+namespace AwsomenautsCardGame.UI.DeckBuilder
 {
 	public class CardHighlight : BetterMonoBehaviour
 	{

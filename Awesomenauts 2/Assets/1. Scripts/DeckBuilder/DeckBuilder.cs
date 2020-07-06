@@ -1,17 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
-using Deckbuilder;
-using DeckBuilder.DeckFilterUtil;
-using Enums.Deckbuilder;
-using Events.Deckbuilder;
-using Networking;
-using UI.Cards;
+using VDFramework.SharedClasses.EventSystem;
+using VDFramework.VDUnityFramework.BaseClasses;
+using AwsomenautsCardGame.DeckBuilder.DeckFilterUtil;
+using AwsomenautsCardGame.Enums.Deckbuilder;
+using AwsomenautsCardGame.Events.Deckbuilder;
+using AwsomenautsCardGame.Networking;
+using AwsomenautsCardGame.UI.Cards;
+using AwsomenautsCardGame.Utility.UI;
 using UnityEngine;
-using Utility.UI;
-using VDFramework;
-using VDFramework.EventSystem;
 
-namespace DeckBuilder
+namespace AwsomenautsCardGame.DeckBuilder
 {
 	public class DeckBuilder : BetterMonoBehaviour
 	{

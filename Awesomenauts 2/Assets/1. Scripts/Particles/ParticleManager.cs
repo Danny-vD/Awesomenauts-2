@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Enums.Particles;
-using Structs.Particles;
+using VDFramework.VDUnityFramework.Singleton;
+using AwsomenautsCardGame.Enums.Particles;
+using AwsomenautsCardGame.Structs.Particles;
+using AwsomenautsCardGame.Utility;
 using UnityEngine;
-using Utility;
-using VDFramework.Singleton;
 
-namespace Particles
+namespace AwsomenautsCardGame.Particles
 {
 	public class ParticleManager : Singleton<ParticleManager>
 	{

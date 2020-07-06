@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Enums.Cards;
-using Interfaces;
-using UI.DeckBuilder;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Interfaces;
+using AwsomenautsCardGame.UI.DeckBuilder;
 using UnityEngine;
 
-namespace Structs.Deckbuilder
+namespace AwsomenautsCardGame.Structs.Deckbuilder
 {
 	[Serializable]
 	public struct UIElementsPerCardType : IKeyValuePair<CardType, List<RequirementsUIElement>>

@@ -1,4 +1,4 @@
-namespace Enums.Announcer
+namespace AwsomenautsCardGame.Enums.Announcer
 {
 	public enum Announcer
 	{

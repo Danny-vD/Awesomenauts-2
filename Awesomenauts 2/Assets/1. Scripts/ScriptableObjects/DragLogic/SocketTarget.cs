@@ -1,6 +1,6 @@
 using System;
 
-namespace Assets._1._Scripts.ScriptableObjects.DragLogic
+namespace AwsomenautsCardGame.ScriptableObjects.DragLogic
 {
 	[Flags]
 	public enum SocketTarget

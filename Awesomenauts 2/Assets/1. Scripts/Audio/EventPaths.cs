@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Enums.Audio;
+using VDFramework.SharedClasses.Extensions;
+using AwsomenautsCardGame.Enums.Audio;
+using AwsomenautsCardGame.Structs.Audio;
+using AwsomenautsCardGame.Utility;
 using FMODUnity;
-using Structs.Audio;
 using UnityEngine;
-using Utility;
-using VDFramework.Extensions;
-using EventType = Enums.Audio.EventType;
+using EventType = AwsomenautsCardGame.Enums.Audio.EventType;
 
-namespace Audio
+namespace AwsomenautsCardGame.Audio
 {
 	[Serializable]
 	public class EventPaths
@@ -33,11 +33,11 @@ namespace Audio
 
 		public void UpdateDictionaries()
 		{
-			FakeDictionaryUtil.PopulateEnumDictionary<EventPathPerEvent, EventType, string>(events);
+			FakeDictionaryUtil.PopulateEnumDictionary<EventPathPerEvent, Enums.Audio.EventType, string>(events);
 
 			FakeDictionaryUtil.PopulateEnumDictionary<BusPathPerBus, BusType, string>(buses);
 
-			FakeDictionaryUtil.PopulateEnumDictionary<EventsPerEmitter, EmitterType, EventType>(emitterEvents);
+			FakeDictionaryUtil.PopulateEnumDictionary<EventsPerEmitter, EmitterType, Enums.Audio.EventType>(emitterEvents);
 		}
 
 		public void AddEmitters(GameObject gameObject)
@@ -51,7 +51,7 @@ namespace Audio
 			}
 		}
 
-		public string GetPath(EventType eventType)
+		public string GetPath(Enums.Audio.EventType eventType)
 		{
 			return events.First(item => item.Key.Equals(eventType)).Value;
 		}
@@ -68,7 +68,7 @@ namespace Audio
 
 		private string GetPathForEmitter(EmitterType emitterType)
 		{
-			EventType eventType = emitterEvents.First(item => item.Key == emitterType).Value;
+			Enums.Audio.EventType eventType = emitterEvents.First(item => item.Key == emitterType).Value;
 			return GetPath(eventType);
 		}
 	}

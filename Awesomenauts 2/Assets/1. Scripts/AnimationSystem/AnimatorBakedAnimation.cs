@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Assets._1._Scripts.AnimationSystem {
+namespace AwsomenautsCardGame.AnimationSystem {
 	[CreateAssetMenu(menuName = "Scriptable Objects/CardAnimation/AnimatorBakedAnimation")]
 	public class AnimatorBakedAnimation : CardAnimation
 	{

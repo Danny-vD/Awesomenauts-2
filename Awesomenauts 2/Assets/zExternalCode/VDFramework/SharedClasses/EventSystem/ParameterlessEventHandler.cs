@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VDFramework.EventSystem
+namespace VDFramework.SharedClasses.EventSystem
 {
 	internal class ParameterlessEventHandler : EventHandler
 	{

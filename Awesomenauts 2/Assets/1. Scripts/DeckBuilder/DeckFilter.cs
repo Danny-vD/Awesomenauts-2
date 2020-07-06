@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using Enums.Character;
-using Enums.Deckbuilder;
-using Events.Deckbuilder;
-using UI.Cards;
-using VDFramework.EventSystem;
+using VDFramework.SharedClasses.EventSystem;
+using AwsomenautsCardGame.Enums.Character;
+using AwsomenautsCardGame.Enums.Deckbuilder;
+using AwsomenautsCardGame.Events.Deckbuilder;
+using AwsomenautsCardGame.UI.Cards;
 
-namespace DeckBuilder
+namespace AwsomenautsCardGame.DeckBuilder
 {
 	public class DeckFilter
 	{

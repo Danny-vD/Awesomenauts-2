@@ -1,12 +1,11 @@
 using System;
 using System.IO;
+using AwsomenautsCardGame.Player;
 using Byt3.Serialization;
 using Byt3.Serialization.Serializers;
 using MasterServer.Common;
-using Networking.Statistics;
-using Player;
 
-namespace Networking.NetworkingHacks {
+namespace AwsomenautsCardGame.Networking.NetworkingHacks {
 	public class EntityStatSerializer : ASerializer<NetworkEntityStat>
 	{
 		public override NetworkEntityStat DeserializePacket(PrimitiveValueWrapper s)

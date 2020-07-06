@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Text;
-using Assets._1._Scripts.ScriptableObjects.Effects;
-using Maps;
+using AwsomenautsCardGame.Maps;
+using AwsomenautsCardGame.ScriptableObjects.Effects;
 
-namespace Player
+namespace AwsomenautsCardGame.Player
 {
 	public class EffectManager
 	{

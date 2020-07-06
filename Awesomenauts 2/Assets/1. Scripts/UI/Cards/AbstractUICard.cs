@@ -1,17 +1,17 @@
 using System;
-using DeckBuilder.DeckFilterUtil;
-using Enums.Cards;
-using Enums.Character;
-using Enums.Deckbuilder;
-using Events.Deckbuilder;
+using VDFramework.SharedClasses.EventSystem;
+using VDFramework.VDUnityFramework.BaseClasses;
+using VDFramework.VDUnityFramework.UnityExtensions;
+using AwsomenautsCardGame.DeckBuilder.DeckFilterUtil;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Enums.Character;
+using AwsomenautsCardGame.Enums.Deckbuilder;
+using AwsomenautsCardGame.Events.Deckbuilder;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using VDFramework;
-using VDFramework.EventSystem;
-using VDFramework.UnityExtensions;
 
-namespace UI.Cards
+namespace AwsomenautsCardGame.UI.Cards
 {
 	[DisallowMultipleComponent]
 	public abstract class AbstractUICard : BetterMonoBehaviour, IEquatable<AbstractUICard>

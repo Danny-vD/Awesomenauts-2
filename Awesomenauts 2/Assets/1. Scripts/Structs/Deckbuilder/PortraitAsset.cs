@@ -1,8 +1,8 @@
 ﻿using System;
-using Networking;
+using AwsomenautsCardGame.Networking;
 using UnityEngine;
 
-namespace Structs.Deckbuilder {
+namespace AwsomenautsCardGame.Structs.Deckbuilder {
 	[Serializable]
 	public class PortraitAsset : TeamAsset<Sprite>
 	{

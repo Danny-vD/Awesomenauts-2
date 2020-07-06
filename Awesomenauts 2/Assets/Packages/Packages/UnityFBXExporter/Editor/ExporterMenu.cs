@@ -1,4 +1,4 @@
-﻿// ===============================================================================================
+// ===============================================================================================
 //	The MIT License (MIT) for UnityFBXExporter
 //
 //  UnityFBXExporter was created for Building Crafter (http://u3d.as/ovC) a tool to rapidly 
@@ -26,7 +26,6 @@
 // ===============================================================================================
 
 using UnityEngine;
-using System.Collections;
 using UnityEditor;
 
 namespace UnityFBXExporter

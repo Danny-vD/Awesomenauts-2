@@ -1,6 +1,6 @@
-﻿using VDFramework.EventSystem;
+﻿using VDFramework.SharedClasses.EventSystem;
 
-namespace Events.Deckbuilder
+namespace AwsomenautsCardGame.Events.Deckbuilder
 {
 	public class ValidDeckEvent : VDEvent
 	{

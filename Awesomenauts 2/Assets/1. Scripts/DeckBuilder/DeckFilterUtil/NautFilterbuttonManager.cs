@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Enums.Character;
+using VDFramework.SharedClasses.Extensions;
+using VDFramework.VDUnityFramework.BaseClasses;
+using AwsomenautsCardGame.Enums.Character;
 using UnityEngine;
 using UnityEngine.UI;
-using VDFramework;
-using VDFramework.Extensions;
 
-namespace DeckBuilder.DeckFilterUtil
+namespace AwsomenautsCardGame.DeckBuilder.DeckFilterUtil
 {
 	public class NautFilterbuttonManager : BetterMonoBehaviour
 	{

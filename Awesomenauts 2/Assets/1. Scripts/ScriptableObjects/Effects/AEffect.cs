@@ -1,12 +1,12 @@
 using System.Collections;
-using Assets._1._Scripts.AnimationSystem;
-using Audio;
-using Maps;
-using Player;
+using AwsomenautsCardGame.AnimationSystem;
+using AwsomenautsCardGame.Audio;
+using AwsomenautsCardGame.Maps;
+using AwsomenautsCardGame.Player;
 using UnityEngine;
-using EventType = Enums.Audio.EventType;
+using EventType = AwsomenautsCardGame.Enums.Audio.EventType;
 
-namespace Assets._1._Scripts.ScriptableObjects.Effects
+namespace AwsomenautsCardGame.ScriptableObjects.Effects
 {
 	public abstract class AEffect : ScriptableObject
 	{
@@ -14,7 +14,7 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 
 		public CardAnimation Animation;
 		
-		public EventType soundToPlay = EventType.SFX_CARDS_CardPlace;
+		public Enums.Audio.EventType soundToPlay = Enums.Audio.EventType.SFX_CARDS_CardPlace;
 
 		public string Description;
 		public virtual EffectTrigger Trigger => EffectTrigger.AfterPlay;
@@ -62,7 +62,7 @@ namespace Assets._1._Scripts.ScriptableObjects.Effects
 			targetSocket?.DockedCard?.Lock(false);
 		}
 
-		private static void PlaySound(EventType @event, GameObject @object)
+		private static void PlaySound(Enums.Audio.EventType @event, GameObject @object)
 		{
 			AudioPlayer.PlaySound(@event, @object);
 		}

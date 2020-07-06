@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Assets._1._Scripts.ScriptableObjects.Effects;
+using AwsomenautsCardGame.ScriptableObjects.Effects;
 using Mirror;
 using UnityEngine;
 
-namespace Player {
+namespace AwsomenautsCardGame.Player {
 	public class CardHand : NetworkBehaviour
 	{
 

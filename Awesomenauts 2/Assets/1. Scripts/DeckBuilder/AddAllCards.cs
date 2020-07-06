@@ -1,13 +1,13 @@
 using System.Collections.Generic;
-using DeckBuilder.DeckFilterUtil;
-using Enums.Deckbuilder;
-using Networking;
-using Player;
-using UI.Cards;
+using AwsomenautsCardGame.DeckBuilder.DeckFilterUtil;
+using AwsomenautsCardGame.Enums.Deckbuilder;
+using AwsomenautsCardGame.Networking;
+using AwsomenautsCardGame.Player;
+using AwsomenautsCardGame.UI.Cards;
+using AwsomenautsCardGame.Utility.UI;
 using UnityEngine;
-using Utility.UI;
 
-namespace DeckBuilder
+namespace AwsomenautsCardGame.DeckBuilder
 {
 	public static class AddAllCards
 	{

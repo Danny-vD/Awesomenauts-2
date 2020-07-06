@@ -1,9 +1,12 @@
 using System.Collections.Generic;
-using Maps;
-using Player;
+using ExternalCode.AStar;
+using AwsomenautsCardGame.Maps;
+using AwsomenautsCardGame.Networking.NetworkingHacks;
+using AwsomenautsCardGame.Player;
+using AwsomenautsCardGame.TooltipSystem;
 using UnityEngine;
 
-namespace Assets._1._Scripts.ScriptableObjects.DragLogic
+namespace AwsomenautsCardGame.ScriptableObjects.DragLogic
 {
 	[CreateAssetMenu(menuName = "Scriptable Objects/DragLogic/DefaultLogic")]
 	public class CardDragLogic : ScriptableObject
@@ -133,7 +136,7 @@ namespace Assets._1._Scripts.ScriptableObjects.DragLogic
 			}
 			//if (socket == null || socketOfDraggedCard == null) return true;
 
-			List<CardSocket> path = AStar.AStar.Compute(socketOfDraggedCard, socket);
+			List<CardSocket> path = AStar.Compute(socketOfDraggedCard, socket);
 
 			//Debug.Log("A* Distance:" + path.Count);
 

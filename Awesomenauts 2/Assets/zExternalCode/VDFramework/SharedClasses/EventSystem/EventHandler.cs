@@ -2,7 +2,7 @@ using System;
 
 #pragma warning disable 660,661 //Did not override gethashcode
 
-namespace VDFramework.EventSystem
+namespace VDFramework.SharedClasses.EventSystem
 {
 	internal abstract class EventHandler : IComparable<EventHandler>
 	{

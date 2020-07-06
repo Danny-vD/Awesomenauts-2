@@ -2,18 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Assets._1._Scripts.ScriptableObjects.Effects;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Enums.Character;
+using AwsomenautsCardGame.Networking.NetworkingHacks;
+using AwsomenautsCardGame.Player;
+using AwsomenautsCardGame.ScriptableObjects.Effects;
+using AwsomenautsCardGame.Structs.Deckbuilder;
+using AwsomenautsCardGame.UI;
 using Byt3.Utilities.Exceptions;
-using Player;
-using Enums.Cards;
-using Enums.Character;
 using MasterServer.Common;
-using Networking.NetworkingHacks;
-using Networking.Statistics;
-using Structs.Deckbuilder;
 using UnityEngine;
 
-namespace Networking
+namespace AwsomenautsCardGame.Networking
 {
 	/// <summary>
 	/// Info Object for a Card

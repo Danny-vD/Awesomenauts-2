@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
-using Networking;
+using AwsomenautsCardGame.Networking;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI {
+namespace AwsomenautsCardGame.UI {
 	public class TransportProtocolDropdownHelper : MonoBehaviour
 	{
 		private Dropdown dd = null;

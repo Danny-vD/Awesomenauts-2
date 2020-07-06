@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+﻿using VDFramework.SharedClasses.Utility;
+using VDFramework.VDUnityFramework.BaseClasses;
+using UnityEngine;
 using UnityEngine.UI;
-using VDFramework;
-using VDFramework.Utility;
 
-namespace UI.DeckBuilder
+namespace AwsomenautsCardGame.UI.DeckBuilder
 {
 	public class RequirementsUIElement : BetterMonoBehaviour
 	{

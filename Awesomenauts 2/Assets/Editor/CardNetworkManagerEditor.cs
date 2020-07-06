@@ -1,6 +1,6 @@
 using System.Linq;
-using Networking;
-using Player;
+using AwsomenautsCardGame.Networking;
+using AwsomenautsCardGame.Player;
 using UnityEditor;
 using UnityEngine;
 

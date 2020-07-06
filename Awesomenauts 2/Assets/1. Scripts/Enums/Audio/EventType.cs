@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Enums.Audio
+namespace AwsomenautsCardGame.Enums.Audio
 {
 	[SuppressMessage("ReSharper", "InconsistentNaming")]
 	public enum EventType

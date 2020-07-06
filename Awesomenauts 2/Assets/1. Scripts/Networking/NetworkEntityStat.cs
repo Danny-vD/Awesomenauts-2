@@ -1,7 +1,7 @@
 using System;
-using Player;
+using AwsomenautsCardGame.Player;
 
-namespace Networking.Statistics
+namespace AwsomenautsCardGame.Networking
 {
 	public class NetworkEntityStat
 	{

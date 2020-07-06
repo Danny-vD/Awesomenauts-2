@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Enums.Deckbuilder;
-using Structs.Deckbuilder;
+using VDFramework.SharedClasses.Extensions;
+using VDFramework.VDUnityFramework.BaseClasses;
+using AwsomenautsCardGame.Enums.Deckbuilder;
+using AwsomenautsCardGame.Structs.Deckbuilder;
 using UnityEngine;
 using UnityEngine.UI;
-using VDFramework;
-using VDFramework.Extensions;
 
-namespace DeckBuilder.DeckFilterUtil
+namespace AwsomenautsCardGame.DeckBuilder.DeckFilterUtil
 {
 	public class FilterButtonManager : BetterMonoBehaviour
 	{

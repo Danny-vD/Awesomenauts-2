@@ -1,7 +1,7 @@
-﻿using Events.Deckbuilder;
-using VDFramework.EventSystem;
+﻿using VDFramework.SharedClasses.EventSystem;
+using AwsomenautsCardGame.Events.Deckbuilder;
 
-namespace UI.Cards
+namespace AwsomenautsCardGame.UI.Cards
 {
 	public class AvailableUICard : AbstractUICard
 	{

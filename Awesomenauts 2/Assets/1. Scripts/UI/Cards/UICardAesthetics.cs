@@ -1,16 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Enums.Cards;
-using Networking;
-using Player;
-using Structs.Deckbuilder;
+using VDFramework.SharedClasses.Utility;
+using VDFramework.VDUnityFramework.BaseClasses;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Networking;
+using AwsomenautsCardGame.Player;
+using AwsomenautsCardGame.Structs.Deckbuilder;
 using UnityEngine;
 using UnityEngine.UI;
-using VDFramework;
-using VDFramework.Utility;
 
-namespace UI.Cards
+namespace AwsomenautsCardGame.UI.Cards
 {
 	public class UICardAesthetics : BetterMonoBehaviour
 	{

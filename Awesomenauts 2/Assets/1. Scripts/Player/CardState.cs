@@ -1,4 +1,4 @@
-namespace Player {
+namespace AwsomenautsCardGame.Player {
 	public enum CardState
 	{
 		OnDeck,

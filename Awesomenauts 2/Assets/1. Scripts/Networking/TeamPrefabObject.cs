@@ -1,6 +1,6 @@
 using System;
 
-namespace Networking {
+namespace AwsomenautsCardGame.Networking {
 	[Serializable]
 	public struct TeamPrefabObject
 	{

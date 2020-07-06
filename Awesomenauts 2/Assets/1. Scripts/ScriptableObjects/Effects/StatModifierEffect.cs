@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
 using System.Linq;
-using Maps;
-using Player;
+using AwsomenautsCardGame.Maps;
+using AwsomenautsCardGame.Player;
 using UnityEngine;
 
-namespace Assets._1._Scripts.ScriptableObjects.Effects
+namespace AwsomenautsCardGame.ScriptableObjects.Effects
 {
 	[CreateAssetMenu(menuName = "Scriptable Objects/Effects/StatModifierEffect")]
 	public class StatModifierEffect : AEffect

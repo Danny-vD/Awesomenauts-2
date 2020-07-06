@@ -1,7 +1,7 @@
-using VDFramework;
+using VDFramework.VDUnityFramework.BaseClasses;
 using UnityEngine.SceneManagement;
 
-namespace UI
+namespace AwsomenautsCardGame.UI
 {
 	public class ButtonFunctionality : BetterMonoBehaviour
 	{

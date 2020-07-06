@@ -1,4 +1,4 @@
-namespace Networking {
+namespace AwsomenautsCardGame.Networking {
 	/// <summary>
 	/// Enum for the Supported Transport Types
 	/// </summary>

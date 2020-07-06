@@ -1,12 +1,13 @@
 using System;
 using System.Linq;
-using AStar;
+using ExternalCode.AStar;
+using AwsomenautsCardGame.Networking;
+using AwsomenautsCardGame.Networking.NetworkingHacks;
+using AwsomenautsCardGame.Player;
 using Mirror;
-using Networking;
-using Player;
 using UnityEngine;
 
-namespace Maps
+namespace AwsomenautsCardGame.Maps
 {
 	public enum SocketType { TurretLeft, TurretRight, Default, Awsomenaut }
 	public class CardSocket : NetworkBehaviour, IComparable<CardSocket>, IEquatable<CardSocket>
@@ -133,7 +134,7 @@ namespace Maps
 		}
 
 		// Start is called before the first frame update
-		void Start()
+		private void Start()
 		{
 			origY = transform.position.y;
 			MapTransformInfo.Instance.SocketManager.RegisterSocket(TeamID, this);
@@ -225,7 +226,7 @@ namespace Maps
 		}
 
 		// Update is called once per frame
-		void Update()
+		private void Update()
 		{
 			if (!Initialized && CardNetworkManager.Instance.numPlayers == 2)
 			{

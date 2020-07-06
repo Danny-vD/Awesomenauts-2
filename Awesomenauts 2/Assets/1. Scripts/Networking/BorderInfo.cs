@@ -1,8 +1,8 @@
 using System;
-using Enums.Cards;
+using AwsomenautsCardGame.Enums.Cards;
 using UnityEngine;
 
-namespace Networking {
+namespace AwsomenautsCardGame.Networking {
 	[Serializable]
 	public class BorderInfo
 	{

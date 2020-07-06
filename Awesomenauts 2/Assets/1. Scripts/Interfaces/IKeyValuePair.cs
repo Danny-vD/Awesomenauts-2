@@ -1,6 +1,6 @@
 using System;
 
-namespace Interfaces
+namespace AwsomenautsCardGame.Interfaces
 {
 	public interface IKeyValuePair<TKey, TValue> : IEquatable<IKeyValuePair<TKey, TValue>>
 	{

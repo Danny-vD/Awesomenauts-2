@@ -1,11 +1,11 @@
 using System;
-using Events.Deckbuilder;
+using VDFramework.SharedClasses.EventSystem;
+using VDFramework.VDUnityFramework.BaseClasses;
+using AwsomenautsCardGame.Events.Deckbuilder;
 using UnityEngine;
 using UnityEngine.UI;
-using VDFramework;
-using VDFramework.EventSystem;
 
-namespace UI.DeckBuilder
+namespace AwsomenautsCardGame.UI.DeckBuilder
 {
 	[RequireComponent(typeof(Image), typeof(Button))]
 	public class ToggleFilterButton : BetterMonoBehaviour

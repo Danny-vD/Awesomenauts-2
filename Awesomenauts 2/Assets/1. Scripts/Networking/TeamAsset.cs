@@ -1,4 +1,4 @@
-namespace Networking {
+namespace AwsomenautsCardGame.Networking {
 	public class TeamAsset<T>
 	{
 		public T RedTeam;

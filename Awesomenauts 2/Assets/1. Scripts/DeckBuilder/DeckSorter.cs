@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using DeckBuilder.DeckSorterUtil;
-using Enums.Deckbuilder;
-using Events.Deckbuilder;
-using UI.Cards;
-using VDFramework.EventSystem;
+using VDFramework.SharedClasses.EventSystem;
+using AwsomenautsCardGame.DeckBuilder.DeckSorterUtil;
+using AwsomenautsCardGame.Enums.Deckbuilder;
+using AwsomenautsCardGame.Events.Deckbuilder;
+using AwsomenautsCardGame.UI.Cards;
 
-namespace DeckBuilder
+namespace AwsomenautsCardGame.DeckBuilder
 {
 	public class DeckSorter
 	{

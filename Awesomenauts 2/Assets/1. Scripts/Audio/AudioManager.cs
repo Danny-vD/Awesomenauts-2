@@ -1,12 +1,12 @@
 using System.Collections.Generic;
-using Enums.Audio;
-using Enums.Cards;
-using Structs.Audio;
-using Utility;
-using VDFramework.Singleton;
-using EventType = Enums.Audio.EventType;
+using VDFramework.VDUnityFramework.Singleton;
+using AwsomenautsCardGame.Enums.Audio;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Structs.Audio;
+using AwsomenautsCardGame.Utility;
+using EventType = AwsomenautsCardGame.Enums.Audio.EventType;
 
-namespace Audio
+namespace AwsomenautsCardGame.Audio
 {
 	public class AudioManager : Singleton<AudioManager>
 	{
@@ -58,7 +58,7 @@ namespace Audio
 			return AudioParameterManager.GetBusVolume(EventPaths.GetPath(busType));
 		}
 
-		private static EventType GetAttackEventForCardType(CardType cardType)
+		private static Enums.Audio.EventType GetAttackEventForCardType(CardType cardType)
 		{
 			return cardType == CardType.Ranged ? EventType.SFX_CARDS_RangedAttack : EventType.SFX_CARDS_MeleeAttack;
 		}
