@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7792581520170358666}
   - component: {fileID: 9193507948343317550}
   m_Layer: 9
-  m_Name: NonMovableCard
+  m_Name: NonMovableCardWithHP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -751,30 +751,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5788590643758101541}
     m_Modifications:
+    - target: {fileID: 509187553057804908, guid: 8e855ca2f5b989e489791fcfe49fc18d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 509187553057804908, guid: 8e855ca2f5b989e489791fcfe49fc18d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 2511554198239145455, guid: 8e855ca2f5b989e489791fcfe49fc18d,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.356
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2511554198239145455, guid: 8e855ca2f5b989e489791fcfe49fc18d,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.356
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2511554198239145455, guid: 8e855ca2f5b989e489791fcfe49fc18d,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4956854237321122174, guid: 8e855ca2f5b989e489791fcfe49fc18d,
+        type: 3}
+      propertyPath: m_Value
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6413952151291946435, guid: 8e855ca2f5b989e489791fcfe49fc18d,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.356
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6413952151291946435, guid: 8e855ca2f5b989e489791fcfe49fc18d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8656786183170252040, guid: 8e855ca2f5b989e489791fcfe49fc18d,
         type: 3}
@@ -784,7 +799,7 @@ PrefabInstance:
     - target: {fileID: 8656786183170252040, guid: 8e855ca2f5b989e489791fcfe49fc18d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8705445559205863906, guid: 8e855ca2f5b989e489791fcfe49fc18d,
         type: 3}
@@ -799,7 +814,7 @@ PrefabInstance:
     - target: {fileID: 8705445559205863906, guid: 8e855ca2f5b989e489791fcfe49fc18d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.26
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8705445559205863906, guid: 8e855ca2f5b989e489791fcfe49fc18d,
         type: 3}
@@ -894,17 +909,17 @@ PrefabInstance:
     - target: {fileID: 8705445559205863906, guid: 8e855ca2f5b989e489791fcfe49fc18d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.033333335
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8705445559205863906, guid: 8e855ca2f5b989e489791fcfe49fc18d,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.033333335
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8705445559205863906, guid: 8e855ca2f5b989e489791fcfe49fc18d,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.033333335
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e855ca2f5b989e489791fcfe49fc18d, type: 3}

@@ -20,7 +20,7 @@ namespace AwsomenautsCardGame.Maps
 		public bool GameStarted;
 		private bool gameStarting;
 
-		private int MaxSolar = 1;
+		public int MaxSolar { get; private set; }
 		private int CurrentTurn = -1;
 		public int CurrentTurnClient { get; private set; }
 
@@ -90,12 +90,12 @@ namespace AwsomenautsCardGame.Maps
 			{
 				if (i != 0)
 				{
-					CardPlayer.ServerPlayers[i].DrawCard(CardNetworkManager.Instance.StartingCards);
+					CardPlayer.ServerPlayers[i].DrawCard(CardNetworkManager.Instance.StartingCards - 1);
 					CardPlayer.ServerPlayers[i].DrawCard(CardNetworkManager.Instance.GetEntry("Solar Boost"));
 				}
 				else
 				{
-					CardPlayer.ServerPlayers[i].DrawCard(CardNetworkManager.Instance.StartingCards - 1);
+					CardPlayer.ServerPlayers[i].DrawCard(CardNetworkManager.Instance.StartingCards);
 				}
 			}
 
@@ -111,6 +111,12 @@ namespace AwsomenautsCardGame.Maps
 		[ClientRpc]
 		public void RpcBroadcastEndTurn()
 		{
+			A();
+		}
+
+		private void A()
+		{
+			CardPlayer p = CardPlayer.LocalPlayer;
 			if (!isServer)
 				EndTurn();
 		}
@@ -123,13 +129,20 @@ namespace AwsomenautsCardGame.Maps
 				MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.OnRoundEnd,
 					CardPlayer.ServerPlayers[CurrentTurn]);
 			}
+			else
+			{
+                MaxSolar++;
+			}
 			CurrentTurn++;
 			if (CurrentTurn >= CardPlayer.ServerPlayers.Count)
 			{
 				CurrentTurn = 0;
 				MaxSolar++;
 			}
-			if (MaxSolar >= 10) MaxSolar = 10;
+			if (MaxSolar >= 10)
+			{
+				MaxSolar = 10;
+			}
 
 			CardPlayer current = CardPlayer.ServerPlayers[CurrentTurn];
 			current.ClearUsedCards();
@@ -152,7 +165,6 @@ namespace AwsomenautsCardGame.Maps
 			current.PlayerStatistics.SetValue(CardPlayerStatType.Solar, MaxSolar);
 
 			MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.OnRoundStart, current);
-
 		}
 
 		#endregion

@@ -4,7 +4,8 @@ using AwsomenautsCardGame.DataObjects.Game;
 using AwsomenautsCardGame.Enums.Cards;
 using UnityEngine;
 
-namespace AwsomenautsCardGame.Gameplay.Cards {
+namespace AwsomenautsCardGame.Gameplay.Cards
+{
 	[Serializable]
 	public class EntityStatistics
 	{
@@ -129,30 +130,34 @@ namespace AwsomenautsCardGame.Gameplay.Cards {
 				return;
 			}
 
-			if (registeredEvents.ContainsKey(type))
-				registeredEvents[type](value); //Call the Events.
-			if (Stats.ContainsKey(type)) Stats[type].SetValue(value);
+			if (Stats.ContainsKey(type))
+			{
+				Stats[type].SetValue(value);
+			}
 			else
 			{
-				CardPlayerStat stat=null;
-				if (value is int v)
+				CardPlayerStat stat = null;
+				switch (value)
 				{
-					stat = new CardPlayerStat<int>(v);
-				}
-				else if (value is Enum e)
-				{
-					stat = new CardPlayerStat<int>((int)Convert.ChangeType(e, typeof(int)));
-				}
-				else if (value is float f)
-				{
-					stat = new CardPlayerStat<float>(f);
-				}
-				else
-				{
-					stat = new CardPlayerStat<string>(value.ToString());
+					case int v:
+						stat = new CardPlayerStat<int>(v);
+						break;
+					case Enum e:
+						stat = new CardPlayerStat<int>((int)Convert.ChangeType(e, typeof(int)));
+						break;
+					case float f:
+						stat = new CardPlayerStat<float>(f);
+						break;
+					default:
+						stat = new CardPlayerStat<string>(value.ToString());
+						break;
 				}
 
 				Stats.Add(type, stat);
+			}
+			if (registeredEvents.ContainsKey(type))
+			{
+				registeredEvents[type](value); //Call the Events.
 			}
 		}
 	}

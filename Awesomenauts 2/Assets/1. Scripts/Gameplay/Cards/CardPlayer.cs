@@ -310,24 +310,6 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 			}
 		}
 
-		[Command]
-		private void CmdRemoveFromHand(NetworkIdentity id)
-		{
-			//Debug.Log("Card NULL: " + (id.GetComponent<Card>() == null));
-
-			if (!CardNetworkManager.Instance.IsHost
-			) //To avoid reducing solar twice(on client side and host side when a client is hosting)
-			{
-				int solar = PlayerStatistics.GetValue<int>(CardPlayerStatType.Solar);
-				int sub = id.GetComponent<Card>().Statistics.GetValue<int>(CardPlayerStatType.Solar);
-				solar -= sub;
-				PlayerStatistics.SetValue(CardPlayerStatType.Solar, solar);
-			}
-
-			id.gameObject.layer = UnityTrashWorkaround(BoardLayer);
-			Hand.RemoveCard(id.GetComponent<Card>());
-		}
-
 		#region DragCardFromHand
 
 		private void HandleDraggingCardFromHand()

@@ -111,7 +111,16 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 		{
 			//Debug.Log("Received Stats");
 			EntityStatistics stat = CardEntry.FromNetwork(data);
+
+
+
 			stat.ReregisterEvents(Statistics);
+
+			if (Statistics.HasValue(CardPlayerStatType.Solar) && stat.HasValue(CardPlayerStatType.Solar) && stat.GetValue<int>(CardPlayerStatType.Solar) != Statistics.GetValue<int>(CardPlayerStatType.Solar))
+			{
+				stat.SetValue(CardPlayerStatType.Solar, Statistics.GetValue<int>(CardPlayerStatType.Solar));
+			}
+
 			Statistics = stat;
 			StatisticsValid = true;
 			SetCoverState(CardPlayer.LocalPlayer != null && Statistics.GetValue<int>(CardPlayerStatType.TeamID) != CardPlayer.LocalPlayer.ClientID);
@@ -133,12 +142,12 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 						Statistics.GetValue<int>(CardPlayerStatType.TeamID));
 					if (modelPrefab != null)
 					{
-						GameObject model = Instantiate(modelPrefab, Model.position, modelPrefab.transform.rotation,
-							Model);
+						GameObject model = Instantiate(modelPrefab, Model.position, modelPrefab.transform.rotation);
 						if (Animator == null)
 						{
 							Animator = model.GetComponent<AnimationPlayer>();
 						}
+						model.transform.parent = Model;
 					}
 				}
 				else

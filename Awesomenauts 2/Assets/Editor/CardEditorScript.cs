@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using AwsomenautsCardGame.Enums.Cards;
 using AwsomenautsCardGame.Gameplay.Cards;
@@ -84,33 +85,47 @@ public class CardPlayerEditorScript : UnityEditor.Editor
 			GUILayout.TextArea("No Awsomenaut Attached");
 			return;
 		}
-		sb.AppendLine(
-			$"Client ID: {player.ClientID}");
-		
-		sb.AppendLine(
-			$"Entity Name: {(scr.Statistics.HasValue(CardPlayerStatType.CardName) ? scr.Statistics.GetValue<string>(CardPlayerStatType.CardName) : "NoName")}");
 
-		sb.AppendLine(
-			$"Entity Owner ID: { (scr.Statistics.HasValue(CardPlayerStatType.TeamID) ? scr.Statistics.GetValue<int>(CardPlayerStatType.TeamID) : -1)}");
+		try
+		{
+			sb.AppendLine(
+				$"Client ID: {player.ClientID}");
+
+			sb.AppendLine(
+				$"Entity Name: {(scr.Statistics.HasValue(CardPlayerStatType.CardName) ? scr.Statistics.GetValue<string>(CardPlayerStatType.CardName) : "NoName")}");
+
+			sb.AppendLine(
+				$"Entity Owner ID: { (scr.Statistics.HasValue(CardPlayerStatType.TeamID) ? scr.Statistics.GetValue<int>(CardPlayerStatType.TeamID) : -1)}");
+			
+			sb.AppendLine(
+				$"Entity Type: { (CardType)(scr.Statistics.HasValue(CardPlayerStatType.CardType) ? scr.Statistics.GetValue<int>(CardPlayerStatType.CardType) : 0)}");
+
+			sb.AppendLine(
+				$"Entity Solar: { (scr.Statistics.HasValue(CardPlayerStatType.Solar) ? scr.Statistics.GetValue<int>(CardPlayerStatType.Solar) : 0)}");
+
+			sb.AppendLine(
+				$"Entity HP: { (scr.Statistics.HasValue(CardPlayerStatType.HP) ? scr.Statistics.GetValue<int>(CardPlayerStatType.HP) : 0)}");
+
+			sb.AppendLine(
+				$"Entity Attack: { (scr.Statistics.HasValue(CardPlayerStatType.Attack) ? scr.Statistics.GetValue<int>(CardPlayerStatType.Attack) : 0)}");
+
+			sb.AppendLine(
+				$"Entity Range: { (scr.Statistics.HasValue(CardPlayerStatType.Range) ? scr.Statistics.GetValue<int>(CardPlayerStatType.Range) : 0)}");
+
+			sb.AppendLine(
+				$"Entity XRange: { (scr.Statistics.HasValue(CardPlayerStatType.CrossLaneRange) ? scr.Statistics.GetValue<int>(CardPlayerStatType.CrossLaneRange) : 0)}");
 
 
-		sb.AppendLine(
-			$"Entity Type: { (CardType)(scr.Statistics.HasValue(CardPlayerStatType.CardType) ? scr.Statistics.GetValue<int>(CardPlayerStatType.CardType) : 0)}");
+		}
+		catch (Exception e)
+		{
+			sb.AppendLine(
+				$"Client ID: {player.ClientID}");
 
-		sb.AppendLine(
-			$"Entity Solar: { (scr.Statistics.HasValue(CardPlayerStatType.Solar) ? scr.Statistics.GetValue<int>(CardPlayerStatType.Solar) : 0)}");
+			sb.AppendLine("Can not receive data for card.");
+			Debug.LogWarning(sb.ToString(), scr);
+		}
 
-		sb.AppendLine(
-			$"Entity HP: { (scr.Statistics.HasValue(CardPlayerStatType.HP) ? scr.Statistics.GetValue<int>(CardPlayerStatType.HP) : 0)}");
-
-		sb.AppendLine(
-			$"Entity Attack: { (scr.Statistics.HasValue(CardPlayerStatType.Attack) ? scr.Statistics.GetValue<int>(CardPlayerStatType.Attack) : 0)}");
-
-		sb.AppendLine(
-			$"Entity Range: { (scr.Statistics.HasValue(CardPlayerStatType.Range) ? scr.Statistics.GetValue<int>(CardPlayerStatType.Range) : 0)}");
-
-		sb.AppendLine(
-			$"Entity XRange: { (scr.Statistics.HasValue(CardPlayerStatType.CrossLaneRange) ? scr.Statistics.GetValue<int>(CardPlayerStatType.CrossLaneRange) : 0)}");
 		
 		GUILayout.TextArea(sb.ToString());
 

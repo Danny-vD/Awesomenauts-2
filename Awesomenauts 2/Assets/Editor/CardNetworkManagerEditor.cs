@@ -6,7 +6,7 @@ using AwsomenautsCardGame.Networking;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(CardNetworkManager))]
+//[CustomEditor(typeof(CardNetworkManager))]
 public class CardNetworkManagerEditor : UnityEditor.Editor
 {
 
@@ -14,6 +14,7 @@ public class CardNetworkManagerEditor : UnityEditor.Editor
 	{
 		CardNetworkManager scr = (CardNetworkManager)target;
 		base.OnInspectorGUI();
+		return;
 		if (GUILayout.Button("Reload Card Entry Names"))
 		{
 			for (int i = 0; i < scr.CardEntries.Length; i++)
