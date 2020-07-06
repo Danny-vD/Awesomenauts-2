@@ -158,6 +158,11 @@ namespace Networking
 				s.Close();
 				ShowDataPathScript.Write("Loaded: " + CardsInDeck.Length + " Entries");
 			}
+			else
+			{
+                SetCardsInDeck(GameInitializer.Instance.DefaultDeck);
+                ShowDataPathScript.Write("Loaded: Default Deck");
+			}
 
 			Application.quitting += Application_quitting;
 

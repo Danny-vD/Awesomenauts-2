@@ -42,6 +42,8 @@ namespace Utility
 		public GameInfo GameData;
 		private MasterServerComponent MasterServerComp;
 
+		public int[] DefaultDeck;
+
 		public List<string> AllPaths;
 
 		void Awake()
