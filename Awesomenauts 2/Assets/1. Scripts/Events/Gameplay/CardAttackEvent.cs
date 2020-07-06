@@ -1,5 +1,5 @@
-﻿using VDFramework.SharedClasses.EventSystem;
-using AwsomenautsCardGame.Player;
+﻿using AwsomenautsCardGame.Gameplay.Cards;
+using VDFramework.SharedClasses.EventSystem;
 
 namespace AwsomenautsCardGame.Events.Gameplay
 {	

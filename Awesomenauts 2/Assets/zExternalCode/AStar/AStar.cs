@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using AwsomenautsCardGame.Maps;
+using AwsomenautsCardGame.Gameplay;
 
-namespace ExternalCode.AStar
+namespace Assets.zExternalCode.AStar
 {
     /// <summary>
     /// Contains the code for A* Pathfinding.

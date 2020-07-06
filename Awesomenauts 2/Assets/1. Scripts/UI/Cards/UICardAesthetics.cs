@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AwsomenautsCardGame.DataObjects.Networking;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Gameplay.Cards;
+using AwsomenautsCardGame.Structs.Deckbuilder;
 using VDFramework.SharedClasses.Utility;
 using VDFramework.VDUnityFramework.BaseClasses;
-using AwsomenautsCardGame.Enums.Cards;
-using AwsomenautsCardGame.Networking;
-using AwsomenautsCardGame.Player;
-using AwsomenautsCardGame.Structs.Deckbuilder;
 using UnityEngine;
 using UnityEngine.UI;
 

@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
 using System.Linq;
-using AwsomenautsCardGame.Maps;
-using AwsomenautsCardGame.Player;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Gameplay;
+using AwsomenautsCardGame.Gameplay.Cards;
 using UnityEngine;
 
 namespace AwsomenautsCardGame.ScriptableObjects.Effects

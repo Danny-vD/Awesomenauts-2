@@ -1,10 +1,9 @@
 using System.Collections;
 using AwsomenautsCardGame.AnimationSystem;
 using AwsomenautsCardGame.Audio;
-using AwsomenautsCardGame.Maps;
-using AwsomenautsCardGame.Player;
+using AwsomenautsCardGame.Gameplay;
+using AwsomenautsCardGame.Gameplay.Cards;
 using UnityEngine;
-using EventType = AwsomenautsCardGame.Enums.Audio.EventType;
 
 namespace AwsomenautsCardGame.ScriptableObjects.Effects
 {

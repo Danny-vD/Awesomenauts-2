@@ -1,8 +1,8 @@
-﻿using VDFramework.VDUnityFramework.Singleton;
-using AwsomenautsCardGame.Enums.Cards;
+﻿using AwsomenautsCardGame.Enums.Cards;
 using AwsomenautsCardGame.Enums.Character;
 using AwsomenautsCardGame.Enums.Deckbuilder;
 using AwsomenautsCardGame.UI.Cards;
+using VDFramework.VDUnityFramework.Singleton;
 using UnityEngine;
 
 namespace AwsomenautsCardGame.Utility.UI

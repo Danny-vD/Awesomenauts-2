@@ -1,7 +1,7 @@
 using System.Collections.Generic;
+using AwsomenautsCardGame.Enums.Deckbuilder;
 using VDFramework.SharedClasses.Extensions;
 using VDFramework.VDUnityFramework.BaseClasses;
-using AwsomenautsCardGame.Enums.Deckbuilder;
 using UnityEngine;
 using UnityEngine.UI;
 

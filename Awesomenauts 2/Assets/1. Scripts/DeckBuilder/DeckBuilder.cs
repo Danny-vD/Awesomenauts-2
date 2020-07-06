@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
-using VDFramework.SharedClasses.EventSystem;
-using VDFramework.VDUnityFramework.BaseClasses;
 using AwsomenautsCardGame.DeckBuilder.DeckFilterUtil;
 using AwsomenautsCardGame.Enums.Deckbuilder;
 using AwsomenautsCardGame.Events.Deckbuilder;
 using AwsomenautsCardGame.Networking;
 using AwsomenautsCardGame.UI.Cards;
 using AwsomenautsCardGame.Utility.UI;
+using VDFramework.SharedClasses.EventSystem;
+using VDFramework.VDUnityFramework.BaseClasses;
 using UnityEngine;
 
 namespace AwsomenautsCardGame.DeckBuilder

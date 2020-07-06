@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ExternalCode.AStar
+namespace Assets.zExternalCode.AStar
 {
     /// <summary>
     /// Vector Struct with N Dimensions.

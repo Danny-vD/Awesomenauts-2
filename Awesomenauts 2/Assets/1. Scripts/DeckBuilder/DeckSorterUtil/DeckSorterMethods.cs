@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using VDFramework.SharedClasses.EventSystem;
 using AwsomenautsCardGame.Enums.Deckbuilder;
 using AwsomenautsCardGame.Events.Deckbuilder;
 using AwsomenautsCardGame.UI.Cards;
+using VDFramework.SharedClasses.EventSystem;
 using Object = UnityEngine.Object;
 
 namespace AwsomenautsCardGame.DeckBuilder.DeckSorterUtil

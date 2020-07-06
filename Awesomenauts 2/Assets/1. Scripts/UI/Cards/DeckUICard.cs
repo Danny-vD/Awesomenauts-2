@@ -1,5 +1,5 @@
-﻿using VDFramework.SharedClasses.EventSystem;
-using AwsomenautsCardGame.Events.Deckbuilder;
+﻿using AwsomenautsCardGame.Events.Deckbuilder;
+using VDFramework.SharedClasses.EventSystem;
 
 namespace AwsomenautsCardGame.UI.Cards
 {

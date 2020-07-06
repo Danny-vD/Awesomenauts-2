@@ -1,7 +1,6 @@
 ﻿using AwsomenautsCardGame.Enums.Audio;
 using FMODUnity;
 using UnityEngine;
-using EventType = AwsomenautsCardGame.Enums.Audio.EventType;
 
 namespace AwsomenautsCardGame.Audio
 {

@@ -1,6 +1,6 @@
-﻿using VDFramework.SharedClasses.EventSystem;
-using AwsomenautsCardGame.Enums.Character;
+﻿using AwsomenautsCardGame.Enums.Character;
 using AwsomenautsCardGame.Enums.Deckbuilder;
+using VDFramework.SharedClasses.EventSystem;
 
 namespace AwsomenautsCardGame.Events.Deckbuilder
 {

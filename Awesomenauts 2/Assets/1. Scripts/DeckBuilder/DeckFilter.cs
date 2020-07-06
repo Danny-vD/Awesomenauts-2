@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using VDFramework.SharedClasses.EventSystem;
 using AwsomenautsCardGame.Enums.Character;
 using AwsomenautsCardGame.Enums.Deckbuilder;
 using AwsomenautsCardGame.Events.Deckbuilder;
 using AwsomenautsCardGame.UI.Cards;
+using VDFramework.SharedClasses.EventSystem;
 
 namespace AwsomenautsCardGame.DeckBuilder
 {

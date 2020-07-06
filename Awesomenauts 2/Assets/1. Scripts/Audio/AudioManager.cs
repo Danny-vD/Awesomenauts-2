@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using VDFramework.VDUnityFramework.Singleton;
 using AwsomenautsCardGame.Enums.Audio;
 using AwsomenautsCardGame.Enums.Cards;
 using AwsomenautsCardGame.Structs.Audio;
 using AwsomenautsCardGame.Utility;
+using VDFramework.VDUnityFramework.Singleton;
 using EventType = AwsomenautsCardGame.Enums.Audio.EventType;
 
 namespace AwsomenautsCardGame.Audio

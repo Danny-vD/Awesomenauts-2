@@ -1,9 +1,10 @@
 using System.Collections.Generic;
-using ExternalCode.AStar;
-using AwsomenautsCardGame.Maps;
-using AwsomenautsCardGame.Networking.NetworkingHacks;
-using AwsomenautsCardGame.Player;
-using AwsomenautsCardGame.TooltipSystem;
+using Assets.zExternalCode.AStar;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Enums.Game;
+using AwsomenautsCardGame.Gameplay;
+using AwsomenautsCardGame.Gameplay.Cards;
+using AwsomenautsCardGame.UI.TooltipSystem;
 using UnityEngine;
 
 namespace AwsomenautsCardGame.ScriptableObjects.DragLogic

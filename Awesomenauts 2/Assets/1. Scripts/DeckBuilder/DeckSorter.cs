@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using VDFramework.SharedClasses.EventSystem;
 using AwsomenautsCardGame.DeckBuilder.DeckSorterUtil;
 using AwsomenautsCardGame.Enums.Deckbuilder;
 using AwsomenautsCardGame.Events.Deckbuilder;
 using AwsomenautsCardGame.UI.Cards;
+using VDFramework.SharedClasses.EventSystem;
 
 namespace AwsomenautsCardGame.DeckBuilder
 {

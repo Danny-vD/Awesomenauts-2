@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using AwsomenautsCardGame.DataObjects;
+using AwsomenautsCardGame.DataObjects.Game;
 using AwsomenautsCardGame.Networking;
 using AwsomenautsCardGame.UI;
 using AwsomenautsCardGame.Utility.Commands;

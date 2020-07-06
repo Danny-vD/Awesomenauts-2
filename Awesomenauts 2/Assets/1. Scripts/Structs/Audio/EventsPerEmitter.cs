@@ -2,7 +2,6 @@
 using AwsomenautsCardGame.Enums.Audio;
 using AwsomenautsCardGame.Interfaces;
 using UnityEngine;
-using EventType = AwsomenautsCardGame.Enums.Audio.EventType;
 
 namespace AwsomenautsCardGame.Structs.Audio
 {

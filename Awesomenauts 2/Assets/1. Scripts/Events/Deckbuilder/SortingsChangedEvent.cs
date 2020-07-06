@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using VDFramework.SharedClasses.EventSystem;
 using AwsomenautsCardGame.Enums.Deckbuilder;
+using VDFramework.SharedClasses.EventSystem;
 
 namespace AwsomenautsCardGame.Events.Deckbuilder
 {

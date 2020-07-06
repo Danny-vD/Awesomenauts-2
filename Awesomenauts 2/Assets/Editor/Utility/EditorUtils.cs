@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
+using VDFramework.SharedClasses.Extensions;
 using UnityEditor;
 using UnityEngine;
-using VDFramework.SharedClasses.Extensions;
 
 namespace Utility
 {

@@ -1,12 +1,12 @@
 using System;
-using VDFramework.SharedClasses.EventSystem;
-using VDFramework.VDUnityFramework.BaseClasses;
-using VDFramework.VDUnityFramework.UnityExtensions;
 using AwsomenautsCardGame.DeckBuilder.DeckFilterUtil;
 using AwsomenautsCardGame.Enums.Cards;
 using AwsomenautsCardGame.Enums.Character;
 using AwsomenautsCardGame.Enums.Deckbuilder;
 using AwsomenautsCardGame.Events.Deckbuilder;
+using VDFramework.SharedClasses.EventSystem;
+using VDFramework.VDUnityFramework.BaseClasses;
+using VDFramework.VDUnityFramework.UnityExtensions;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;

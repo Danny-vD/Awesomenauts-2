@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using VDFramework.SharedClasses.Extensions;
 using AwsomenautsCardGame.Enums.Audio;
 using AwsomenautsCardGame.Structs.Audio;
 using AwsomenautsCardGame.Utility;
+using VDFramework.SharedClasses.Extensions;
 using FMODUnity;
 using UnityEngine;
-using EventType = AwsomenautsCardGame.Enums.Audio.EventType;
 
 namespace AwsomenautsCardGame.Audio
 {

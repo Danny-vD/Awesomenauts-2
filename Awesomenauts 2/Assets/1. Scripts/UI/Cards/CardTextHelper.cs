@@ -1,4 +1,5 @@
-using AwsomenautsCardGame.Player;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Gameplay.Cards;
 using UnityEngine;
 using UnityEngine.UI;
 

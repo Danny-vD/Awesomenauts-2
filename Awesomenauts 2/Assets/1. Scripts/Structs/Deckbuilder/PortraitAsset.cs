@@ -1,5 +1,5 @@
 ﻿using System;
-using AwsomenautsCardGame.Networking;
+using AwsomenautsCardGame.DataObjects.Networking;
 using UnityEngine;
 
 namespace AwsomenautsCardGame.Structs.Deckbuilder {

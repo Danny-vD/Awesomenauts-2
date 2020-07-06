@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using VDFramework.SharedClasses.Extensions;
 using AwsomenautsCardGame.Interfaces;
+using VDFramework.SharedClasses.Extensions;
 
 namespace AwsomenautsCardGame.Utility
 {

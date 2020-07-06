@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using AwsomenautsCardGame.Enums.Character;
 using VDFramework.SharedClasses.Extensions;
 using VDFramework.VDUnityFramework.BaseClasses;
-using AwsomenautsCardGame.Enums.Character;
 using UnityEngine;
 using UnityEngine.UI;
 

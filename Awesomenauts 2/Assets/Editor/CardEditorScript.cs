@@ -1,6 +1,6 @@
 using System.Text;
 using AwsomenautsCardGame.Enums.Cards;
-using AwsomenautsCardGame.Player;
+using AwsomenautsCardGame.Gameplay.Cards;
 using AwsomenautsCardGame.ScriptableObjects.Effects;
 using UnityEditor;
 using UnityEngine;

@@ -1,5 +1,5 @@
 using System;
-using AwsomenautsCardGame.TooltipSystem;
+using AwsomenautsCardGame.UI.TooltipSystem;
 using UnityEditor;
 
 [CustomEditor(typeof(TooltipScript))]

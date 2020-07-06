@@ -1,11 +1,11 @@
 using System;
 using System.Reflection;
+using UnityEditor;
+using UnityEngine;
+using AwsomenautsCardGame.Audio;
 using AwsomenautsCardGame.Enums.Audio;
 using AwsomenautsCardGame.Structs.Audio;
 using AwsomenautsCardGame.Utility;
-using AwsomenautsCardGame.Audio;
-using UnityEditor;
-using UnityEngine;
 using EventType = AwsomenautsCardGame.Enums.Audio.EventType;
 using static Utility.EditorUtils;
 

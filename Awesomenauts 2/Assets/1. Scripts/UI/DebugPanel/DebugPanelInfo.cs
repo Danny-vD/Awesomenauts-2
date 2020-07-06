@@ -1,6 +1,7 @@
-using VDFramework.VDUnityFramework.Singleton;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Gameplay.Cards;
 using AwsomenautsCardGame.Networking;
-using AwsomenautsCardGame.Player;
+using VDFramework.VDUnityFramework.Singleton;
 using UnityEngine;
 using UnityEngine.UI;
 

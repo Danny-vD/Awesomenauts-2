@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using AwsomenautsCardGame.Networking;
+using AwsomenautsCardGame.Enums.Networking;
 using UnityEngine;
 using UnityEngine.UI;
 

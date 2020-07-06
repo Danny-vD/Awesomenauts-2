@@ -1,10 +1,10 @@
 using System;
 using System.Reflection;
 using System.Threading;
-using VDFramework.VDUnityFramework.Singleton;
-using AwsomenautsCardGame.DataObjects;
+using AwsomenautsCardGame.DataObjects.Game;
 using AwsomenautsCardGame.Networking;
 using AwsomenautsCardGame.Utility;
+using VDFramework.VDUnityFramework.Singleton;
 using MasterServer.Client;
 using MasterServer.Common.Networking.Packets;
 using UnityEngine;

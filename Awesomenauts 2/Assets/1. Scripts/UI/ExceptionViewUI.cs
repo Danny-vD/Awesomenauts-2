@@ -1,7 +1,7 @@
 using System;
 using System.IO;
-using VDFramework.VDUnityFramework.Singleton;
 using AwsomenautsCardGame.Networking;
+using VDFramework.VDUnityFramework.Singleton;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;

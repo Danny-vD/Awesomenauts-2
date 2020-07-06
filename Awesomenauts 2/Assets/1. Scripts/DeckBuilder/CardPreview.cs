@@ -1,7 +1,7 @@
-using VDFramework.SharedClasses.EventSystem;
-using VDFramework.VDUnityFramework.BaseClasses;
 using AwsomenautsCardGame.Events.Deckbuilder;
 using AwsomenautsCardGame.UI.Cards;
+using VDFramework.SharedClasses.EventSystem;
+using VDFramework.VDUnityFramework.BaseClasses;
 using UnityEngine;
 using UnityEngine.UI;
 

@@ -1,6 +1,6 @@
 using System;
 using System.Threading;
-using AwsomenautsCardGame.DataObjects;
+using AwsomenautsCardGame.DataObjects.Game;
 using MasterServer.Client;
 using MasterServer.Common;
 using MasterServer.Common.Networking.Packets;

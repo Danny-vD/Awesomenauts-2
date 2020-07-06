@@ -1,7 +1,7 @@
 using System;
+using AwsomenautsCardGame.Events.Deckbuilder;
 using VDFramework.SharedClasses.EventSystem;
 using VDFramework.VDUnityFramework.BaseClasses;
-using AwsomenautsCardGame.Events.Deckbuilder;
 using UnityEngine;
 using UnityEngine.UI;
 

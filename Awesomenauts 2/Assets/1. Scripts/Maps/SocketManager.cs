@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AwsomenautsCardGame.Networking.NetworkingHacks;
-using AwsomenautsCardGame.Player;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Enums.Game;
+using AwsomenautsCardGame.Gameplay;
+using AwsomenautsCardGame.Gameplay.Cards;
 using AwsomenautsCardGame.ScriptableObjects.Effects;
 using UnityEngine;
 

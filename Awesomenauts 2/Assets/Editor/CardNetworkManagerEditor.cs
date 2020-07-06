@@ -1,6 +1,8 @@
 using System.Linq;
+using AwsomenautsCardGame.DataObjects.Networking;
+using AwsomenautsCardGame.Enums.Cards;
+using AwsomenautsCardGame.Gameplay.Cards;
 using AwsomenautsCardGame.Networking;
-using AwsomenautsCardGame.Player;
 using UnityEditor;
 using UnityEngine;
 
