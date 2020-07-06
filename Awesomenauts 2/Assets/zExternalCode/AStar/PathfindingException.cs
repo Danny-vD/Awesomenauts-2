@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.zExternalCode.AStar
+namespace zExternalCode.AStar
 {
     /// <summary>
     /// A pathfinding exception is thrown when the Pathfinder encounters a critical error and can not continue.

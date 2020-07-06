@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Assets.zExternalCode.AStar
+namespace zExternalCode.AStar
 {
     /// <summary>
     /// Generic Priority Queue.

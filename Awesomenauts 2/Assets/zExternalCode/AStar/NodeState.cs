@@ -1,4 +1,4 @@
-﻿namespace Assets.zExternalCode.AStar
+﻿namespace zExternalCode.AStar
 {
     /// <summary>
     /// The states the nodes can have.

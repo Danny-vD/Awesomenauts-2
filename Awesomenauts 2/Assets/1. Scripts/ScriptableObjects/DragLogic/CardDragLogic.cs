@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Assets.zExternalCode.AStar;
+using zExternalCode.AStar;
 using AwsomenautsCardGame.Enums.Cards;
 using AwsomenautsCardGame.Enums.Game;
 using AwsomenautsCardGame.Gameplay;
