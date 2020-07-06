@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Algorithms.Search.AStar;
 using Maps;
-using NodeState = AStar.NodeState;
 
 namespace AStar
 {

@@ -9,7 +9,6 @@ using Mirror;
 using UI.DebugPanel;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using Version = System.Version;
 
 namespace Maps
 {

@@ -1,13 +1,11 @@
 using System.Collections.Generic;
 using DeckBuilder.DeckFilterUtil;
 using Enums.Deckbuilder;
-using Events.Deckbuilder;
 using Networking;
 using Player;
 using UI.Cards;
 using UnityEngine;
 using Utility.UI;
-using VDFramework.EventSystem;
 
 namespace DeckBuilder
 {

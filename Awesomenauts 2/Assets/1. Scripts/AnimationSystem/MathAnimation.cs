@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using Assets._1._Scripts.ScriptableObjects.Effects;
-using Player;
 using UnityEngine;
 
 namespace Assets._1._Scripts.AnimationSystem

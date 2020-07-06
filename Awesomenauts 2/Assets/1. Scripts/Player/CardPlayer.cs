@@ -6,13 +6,11 @@ using Assets._1._Scripts.AnimationSystem;
 using Assets._1._Scripts.ScriptableObjects.DragLogic;
 using Assets._1._Scripts.ScriptableObjects.Effects;
 using Enums.Cards;
-using Events.Gameplay;
 using Maps;
 using Networking;
 using Mirror;
 using UI.DebugPanel;
 using UnityEngine;
-using VDFramework.EventSystem;
 
 namespace Player
 {

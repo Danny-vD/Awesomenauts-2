@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
-using Byt3.Utilities.Exceptions;
 using Maps;
-using Networking;
 using Player;
 using UnityEngine;
 

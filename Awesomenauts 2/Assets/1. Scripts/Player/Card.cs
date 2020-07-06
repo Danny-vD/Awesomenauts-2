@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Diagnostics;
 using Assets._1._Scripts.AnimationSystem;
 using Assets._1._Scripts.ScriptableObjects.DragLogic;
 using Assets._1._Scripts.ScriptableObjects.Effects;
@@ -13,7 +12,6 @@ using UI.Cards;
 using UnityEngine;
 using UnityEngine.UI;
 using VDFramework.EventSystem;
-using Debug = UnityEngine.Debug;
 
 namespace Player
 {

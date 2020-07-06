@@ -1,6 +1,4 @@
 using System;
-using Assets._1._Scripts.ScriptableObjects.Effects;
-using Player;
 using UnityEngine;
 
 namespace Maps {
