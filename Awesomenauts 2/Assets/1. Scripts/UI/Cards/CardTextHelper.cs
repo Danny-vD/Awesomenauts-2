@@ -54,7 +54,7 @@ namespace AwsomenautsCardGame.UI.Cards
 			}
 			if (value != null && s != null)
 			{
-				s.value = (float)(int)value / 10;
+				s.value = (float)(int)value / RegisteredCard.Statistics.GetValue<int>(CardPlayerStatType.MaxHP);
 			}
 		}
 

@@ -9,5 +9,6 @@ namespace AwsomenautsCardGame.Enums.Cards {
 		CrossLaneRange,
 		CardType,
 		Range,
+		MaxHP,
 	}
 }

@@ -150,6 +150,10 @@ namespace AwsomenautsCardGame.Networking
 				CardEntry cardEntry = CardEntries[i];
 
 				cardEntry.index = i;
+				EntityStatistics.InternalStat stat =
+					cardEntry.Statistics.StartStatistics.FirstOrDefault(x => x.type == CardPlayerStatType.HP);
+				if (stat != null)
+					cardEntry.Statistics.StartStatistics.Add(new EntityStatistics.InternalStat() { dataType = EntityStatistics.CardPlayerStatDataType.Int, type = CardPlayerStatType.MaxHP, value = stat.value, name = "MaxHP" });
 
 				CardEntries[i] = cardEntry;
 			}
@@ -164,8 +168,8 @@ namespace AwsomenautsCardGame.Networking
 			}
 			else
 			{
-                SetCardsInDeck(GameInitializer.Instance.DefaultDeck);
-                MainMenuInfoTextScript.Write("Loaded: Default Deck");
+				SetCardsInDeck(GameInitializer.Instance.DefaultDeck);
+				MainMenuInfoTextScript.Write("Loaded: Default Deck");
 			}
 
 			Application.quitting += Application_quitting;
