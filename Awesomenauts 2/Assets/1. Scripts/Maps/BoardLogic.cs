@@ -232,6 +232,7 @@ namespace AwsomenautsCardGame.Maps
 
 
 			EndTurn();
+			CardPlayer.ServerPlayers[CurrentTurnClient].DrawCard(1);
 
 			RpcBroadcastEndTurn();
 
