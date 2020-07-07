@@ -117,7 +117,7 @@ public class CardPlayerEditorScript : UnityEditor.Editor
 
 
 		}
-		catch (Exception e)
+		catch
 		{
 			sb.AppendLine(
 				$"Client ID: {player.ClientID}");
