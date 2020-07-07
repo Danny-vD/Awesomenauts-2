@@ -3,18 +3,20 @@ using AwsomenautsCardGame.DataObjects.Networking;
 using AwsomenautsCardGame.Enums.Cards;
 using AwsomenautsCardGame.Gameplay.Cards;
 using AwsomenautsCardGame.Networking;
+using Mirror;
 using UnityEditor;
 using UnityEngine;
 
-//[CustomEditor(typeof(CardNetworkManager))]
+[CustomEditor(typeof(CardNetworkManager))]
 public class CardNetworkManagerEditor : UnityEditor.Editor
 {
-
 	public override void OnInspectorGUI()
 	{
-		CardNetworkManager scr = (CardNetworkManager)target;
-		base.OnInspectorGUI();
-		return;
+		CardNetworkManager scr = (CardNetworkManager) target;
+
+		Editor editor = CreateEditor(target, typeof(NetworkManagerEditor));
+		editor.OnInspectorGUI();
+
 		if (GUILayout.Button("Reload Card Entry Names"))
 		{
 			for (int i = 0; i < scr.CardEntries.Length; i++)
@@ -49,5 +51,4 @@ public class CardNetworkManagerEditor : UnityEditor.Editor
 		string s = stat == null ? "" : stat.value;
 		return s;
 	}
-
 }
