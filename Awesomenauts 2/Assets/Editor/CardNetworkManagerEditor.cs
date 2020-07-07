@@ -41,7 +41,7 @@ public class CardNetworkManagerEditor : UnityEditor.Editor
 		stat.name = $"{stat.type}[{stat.dataType}]: {stat.value}";
 	}
 
-	private CardEntry Apply(CardEntry e)
+	private static CardEntry Apply(CardEntry e)
 	{
 		e.name = GetEntryName(e);
 

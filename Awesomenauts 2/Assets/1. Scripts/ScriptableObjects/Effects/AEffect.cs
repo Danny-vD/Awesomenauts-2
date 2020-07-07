@@ -30,7 +30,11 @@ namespace AwsomenautsCardGame.ScriptableObjects.Effects
 		{
 			while (c.IsLocked)
 			{
-				Debug.Log("Source Card Locked by: " + targetSocket.DockedCard?.Locker);
+				if (targetSocket.DockedCard.Locker != null) 
+				{
+					Debug.Log("Source Card Locked by: " + targetSocket.DockedCard.Locker);
+				}
+
 				yield return 1; //Just spin until the card is unlocked again
 			}
 
@@ -38,9 +42,14 @@ namespace AwsomenautsCardGame.ScriptableObjects.Effects
 			{
 				while (targetSocket.DockedCard.IsLocked)
 				{
-					Debug.Log("Target Card Locked by: " + targetSocket.DockedCard?.Locker);
+					if (targetSocket.DockedCard.Locker != null)
+					{
+						Debug.Log("Target Card Locked by: " + targetSocket.DockedCard.Locker);
+					}
+					
 					yield return 1; //Just spin until the card is unlocked again
 				}
+
 				targetSocket.DockedCard.Lock(true, this);
 			}
 
@@ -50,14 +59,18 @@ namespace AwsomenautsCardGame.ScriptableObjects.Effects
 			{
 				PlaySound(soundToPlay);
 			}
+
 			if (c.Animator != null && Animation != null)
 			{
 				yield return c.Animator.Play(Animation, targetSocket?.CardTarget);
+
 				//yield return new WaitForSeconds(AnimationLength);
 			}
 
 			yield return TriggerEffect(c, containingSocket, targetSocket);
+
 			c.Lock(false, this);
+
 			if (targetSocket == null && targetSocket.HasCard)
 			{
 				targetSocket.DockedCard.Lock(false, this);
