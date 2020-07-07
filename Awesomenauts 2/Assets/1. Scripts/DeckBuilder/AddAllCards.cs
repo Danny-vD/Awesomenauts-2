@@ -22,6 +22,9 @@ namespace AwsomenautsCardGame.DeckBuilder
 			{
 				CardEntry entry = CardNetworkManager.Instance.CardEntries[id];
 
+				if(entry.InternalCard)continue;
+
+
 				if (entry.Sprites.TeamPortrait.Get(0) == null)
 				{
 					entry.Sprites.TeamPortrait = CardNetworkManager.Instance.DefaultCardPortrait;
