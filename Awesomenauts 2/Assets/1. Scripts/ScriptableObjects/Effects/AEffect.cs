@@ -12,7 +12,7 @@ namespace AwsomenautsCardGame.ScriptableObjects.Effects
 		public bool playSound = false;
 
 		public CardAnimation Animation;
-		
+
 		public Enums.Audio.EventType soundToPlay = Enums.Audio.EventType.SFX_CARDS_CardPlace;
 
 		public string Description;
@@ -30,7 +30,7 @@ namespace AwsomenautsCardGame.ScriptableObjects.Effects
 		{
 			while (c.IsLocked)
 			{
-				Debug.Log("Source Card Locked..");
+				Debug.Log("Source Card Locked by: " + targetSocket.DockedCard.Locker);
 				yield return 1; //Just spin until the card is unlocked again
 			}
 
@@ -38,13 +38,13 @@ namespace AwsomenautsCardGame.ScriptableObjects.Effects
 			{
 				while (targetSocket.DockedCard.IsLocked)
 				{
-					Debug.Log("Target Card Locked..");
+					Debug.Log("Target Card Locked by: " + targetSocket.DockedCard.Locker);
 					yield return 1; //Just spin until the card is unlocked again
 				}
-				targetSocket.DockedCard.Lock(true);
+				targetSocket.DockedCard.Lock(true, this);
 			}
 
-			c.Lock(true);
+			c.Lock(true, this);
 
 			if (playSound)
 			{
@@ -57,10 +57,10 @@ namespace AwsomenautsCardGame.ScriptableObjects.Effects
 			}
 
 			yield return TriggerEffect(c, containingSocket, targetSocket);
-			c.Lock(false);
+			c.Lock(false, this);
 			if (targetSocket == null && targetSocket.HasCard)
 			{
-				targetSocket.DockedCard.Lock(false);
+				targetSocket.DockedCard.Lock(false, this);
 			}
 		}
 
