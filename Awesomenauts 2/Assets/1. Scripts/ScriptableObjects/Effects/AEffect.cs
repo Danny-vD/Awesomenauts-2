@@ -58,7 +58,10 @@ namespace AwsomenautsCardGame.ScriptableObjects.Effects
 
 			yield return TriggerEffect(c, containingSocket, targetSocket);
 			c.Lock(false);
-			targetSocket?.DockedCard?.Lock(false);
+			if (targetSocket == null && targetSocket.HasCard)
+			{
+				targetSocket.DockedCard.Lock(false);
+			}
 		}
 
 		private static void PlaySound(Enums.Audio.EventType @event)
