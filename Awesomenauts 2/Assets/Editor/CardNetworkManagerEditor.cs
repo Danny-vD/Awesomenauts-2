@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using AwsomenautsCardGame.DataObjects.Networking;
 using AwsomenautsCardGame.Enums.Cards;
@@ -10,19 +11,27 @@ using UnityEngine;
 [CustomEditor(typeof(CardNetworkManager))]
 public class CardNetworkManagerEditor : UnityEditor.Editor
 {
+	private CardNetworkManager src;
+
+	private void OnEnable()
+	{
+		src = (CardNetworkManager) target;
+	}
+
 	public override void OnInspectorGUI()
 	{
-		CardNetworkManager scr = (CardNetworkManager) target;
-
-		Editor editor = CreateEditor(target, typeof(NetworkManagerEditor));
-		editor.OnInspectorGUI();
-
-		if (GUILayout.Button("Reload Card Entry Names"))
+		EditorGUI.BeginChangeCheck();
 		{
-			for (int i = 0; i < scr.CardEntries.Length; i++)
+			Editor editor = CreateEditor(target, typeof(NetworkManagerEditor));
+			editor.OnInspectorGUI();
+		}
+
+		if (EditorGUI.EndChangeCheck())
+		{
+			for (int i = 0; i < src.CardEntries.Length; i++)
 			{
-				CardEntry e = scr.CardEntries[i];
-				scr.CardEntries[i] = Apply(e);
+				CardEntry e = src.CardEntries[i];
+				src.CardEntries[i] = Apply(e);
 			}
 		}
 	}
