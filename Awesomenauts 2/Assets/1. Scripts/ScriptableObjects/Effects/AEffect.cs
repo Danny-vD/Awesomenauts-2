@@ -30,7 +30,7 @@ namespace AwsomenautsCardGame.ScriptableObjects.Effects
 		{
 			while (c.IsLocked)
 			{
-				Debug.Log("Source Card Locked by: " + targetSocket.DockedCard.Locker);
+				Debug.Log("Source Card Locked by: " + targetSocket.DockedCard?.Locker);
 				yield return 1; //Just spin until the card is unlocked again
 			}
 
@@ -38,7 +38,7 @@ namespace AwsomenautsCardGame.ScriptableObjects.Effects
 			{
 				while (targetSocket.DockedCard.IsLocked)
 				{
-					Debug.Log("Target Card Locked by: " + targetSocket.DockedCard.Locker);
+					Debug.Log("Target Card Locked by: " + targetSocket.DockedCard?.Locker);
 					yield return 1; //Just spin until the card is unlocked again
 				}
 				targetSocket.DockedCard.Lock(true, this);

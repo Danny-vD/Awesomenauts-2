@@ -23,7 +23,7 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 		private int lastHp;
 
 		public bool IsLocked { get; private set; }
-		public Object Locker { get; private set; }
+		public object Locker { get; private set; }
 		public Transform[] CardParts;
 		public Image CardImage;
 		public Text CardName;
@@ -60,10 +60,11 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 
 		}
 
-		public void Lock(bool lockState, Object locker)
+		public void Lock(bool lockState, object locker)
 		{
 			IsLocked = lockState;
-			Locker = locker;
+			if (IsLocked)
+				Locker = locker;
 		}
 
 
