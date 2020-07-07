@@ -20,6 +20,7 @@ namespace AwsomenautsCardGame.Maps
 		public bool GameStarted;
 		private bool gameStarting;
 
+		public int TotalTurns { get; private set; }
 		public int MaxSolar { get; private set; }
 		private int CurrentTurn = -1;
 		public int CurrentTurnClient { get; private set; }
@@ -67,11 +68,11 @@ namespace AwsomenautsCardGame.Maps
 				MapTransformInfo.Instance.SocketManager.CardSockets.Select(x => x.CardSockets).ToList()
 					.ForEach(x => socks.AddRange(x));
 				CardSocket ltS = socks.First(x => MapTransformInfo.Instance.SocketManager.IsFromTeam(CardPlayer.ServerPlayers[i].ClientID, x.transform) &&
-												  x.SocketType == SocketType.TurretLeft);
+												  x.SocketT == SocketType.TurretLeft);
 				CardSocket rtS = socks.First(x => MapTransformInfo.Instance.SocketManager.IsFromTeam(CardPlayer.ServerPlayers[i].ClientID, x.transform) &&
-												  x.SocketType == SocketType.TurretRight);
+												  x.SocketT == SocketType.TurretRight);
 				CardSocket awS = socks.First(x => MapTransformInfo.Instance.SocketManager.IsFromTeam(CardPlayer.ServerPlayers[i].ClientID, x.transform) &&
-												  x.SocketType == SocketType.Awsomenaut);
+												  x.SocketT == SocketType.Awsomenaut);
 				ltS.RpcDockCard(turretLeft.netIdentity);
 				ltS.DockCard(turretLeft);
 				rtS.RpcDockCard(turretRight.netIdentity);
@@ -126,12 +127,13 @@ namespace AwsomenautsCardGame.Maps
 
 			if (CurrentTurn != -1)
 			{
+				TotalTurns++;
 				MapTransformInfo.Instance.SocketManager.TriggerEffect(EffectTrigger.OnRoundEnd,
 					CardPlayer.ServerPlayers[CurrentTurn]);
 			}
 			else
 			{
-                MaxSolar++;
+				MaxSolar++;
 			}
 			CurrentTurn++;
 			if (CurrentTurn >= CardPlayer.ServerPlayers.Count)

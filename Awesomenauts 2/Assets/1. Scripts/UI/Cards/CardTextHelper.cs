@@ -28,29 +28,40 @@ namespace AwsomenautsCardGame.UI.Cards
 			c.Statistics.Register(CardPlayerStatType.Solar, OnSolarChange, true);
 		}
 
+		private void OnDestroy()
+		{
+			RegisteredCard?.Statistics.UnregisterAll();
+		}
+
 		private void OnSolarChange(object newvalue)
 		{
-			SolarText.text = newvalue == null ? string.Empty : newvalue.ToString();
+			if (SolarText != null)
+				SolarText.text = newvalue == null ? string.Empty : newvalue.ToString();
 		}
 
 		private void OnAtkChanged(object value)
 		{
 
-			AttackText.text = value == null ? string.Empty : value.ToString();
+			if (AttackText != null)
+				AttackText.text = value == null ? string.Empty : value.ToString();
 		}
 
 		private void OnDefChanged(object value)
 		{
-			DefenseText.text = value == null ? string.Empty : value.ToString();
+			if (DefenseText != null)
+			{
+				DefenseText.text = value == null ? string.Empty : value.ToString();
+			}
 			if (value != null && s != null)
 			{
-				s.value = (float) (int) value / 10;
+				s.value = (float)(int)value / 10;
 			}
 		}
 
 		private void OnDescriptionChanged(object value)
 		{
-			DescriptonText.text = value == null ? string.Empty : value.ToString();
+			if (DescriptonText != null)
+				DescriptonText.text = value == null ? string.Empty : value.ToString();
 		}
 
 		// Update is called once per frame

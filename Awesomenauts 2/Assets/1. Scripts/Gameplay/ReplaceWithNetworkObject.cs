@@ -43,7 +43,7 @@ namespace AwsomenautsCardGame.Gameplay {
 			GameObject inst= Instantiate(Prefab, transform.position, transform.rotation);
 			instance = inst.GetComponent<CardSocket>();
 			instance.SocketSide = SocketSide;
-			instance.SocketType = SocketType;
+			instance.SocketT = SocketType;
 
 			NetworkServer.Spawn(inst);
 			ApplyConnections += ApplyCons;

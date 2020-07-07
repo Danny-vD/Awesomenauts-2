@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using AwsomenautsCardGame.Networking;
 using VDFramework.VDUnityFramework.Singleton;
 using UnityEngine;
@@ -43,6 +44,7 @@ namespace AwsomenautsCardGame.UI {
 
 		public void SetException(Exception ex, string titleText = "Error:")
 		{
+			if (ex is TaskCanceledException) return;
 			this.ex = ex;
 			gameObject.SetActive(true);
 			Title.text = titleText;

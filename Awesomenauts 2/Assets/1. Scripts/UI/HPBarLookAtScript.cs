@@ -15,6 +15,10 @@ namespace AwsomenautsCardGame.UI {
 		private void Update()
 		{
 			transform.LookAt(c.transform);
+			transform.up = c.transform.up;
+			Vector3 forward = c.transform.position - transform.position;
+			forward.z = 0;
+			transform.forward = forward;
 		}
 	}
 }

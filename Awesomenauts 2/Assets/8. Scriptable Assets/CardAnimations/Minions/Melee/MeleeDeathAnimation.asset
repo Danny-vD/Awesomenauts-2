@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e33e93d31a4eb4c90028d217243fdb, type: 3}
   m_Name: MeleeDeathAnimation
   m_EditorClassIdentifier: 
-  Particles: []
+  Particles:
+  - {fileID: 7654996073474775364, guid: 519550f821e855740b739805257a8dbe, type: 3}
   AnimationName: Die
   AnimationDuration: 0.995

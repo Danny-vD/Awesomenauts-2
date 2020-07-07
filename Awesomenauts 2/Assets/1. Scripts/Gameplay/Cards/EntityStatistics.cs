@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using AwsomenautsCardGame.DataObjects.Game;
 using AwsomenautsCardGame.Enums.Cards;
 using UnityEngine;
@@ -33,6 +34,11 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 					registeredEvents[statisticsRegisteredEvent.Key] = statisticsRegisteredEvent.Value;
 				}
 			}
+		}
+
+		public void UnregisterAll()
+		{
+			registeredEvents.Clear();
 		}
 
 		public void Register(CardPlayerStatType type, OnStatTypeChanged del, bool directUpdate = false)

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e33e93d31a4eb4c90028d217243fdb, type: 3}
   m_Name: TurretHit
   m_EditorClassIdentifier: 
-  Particles: []
+  Particles:
+  - {fileID: 3244728831598475648, guid: 09b753a14aa93a54f97c2947b8d5d203, type: 3}
   AnimationName: hit
   AnimationDuration: 0.932

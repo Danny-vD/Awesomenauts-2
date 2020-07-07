@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using System.Threading;
 using AwsomenautsCardGame.DataObjects.Game;
+using AwsomenautsCardGame.Gameplay.Cards;
 using AwsomenautsCardGame.Networking;
 using AwsomenautsCardGame.Utility;
 using VDFramework.VDUnityFramework.Singleton;
@@ -28,6 +29,7 @@ namespace AwsomenautsCardGame.UI
 
 		public GameObject MainMenu;
 		public GameObject LoadingScreen;
+		public WinScreenScript ResultSceen;
 		private MatchMakingErrorCode ErrorCode = MatchMakingErrorCode.None;
 		private Exception Exception;
 		public Text QueueStatus;
@@ -54,6 +56,11 @@ namespace AwsomenautsCardGame.UI
 				ExceptionViewUI.Instance.SetException(new Exception("Game Error: " + CardNetworkManager.Exit.message));
 				//UpdateErrText("Game Error", CardNetworkManager.Exit.message);
 				CardNetworkManager.Exit = null;
+			}
+			else if (CardPlayer.LastGame != null && CardPlayer.LastGame.WinnerID != -1)
+			{
+				MainMenu.SetActive(false);
+				ResultSceen.SetContent();
 			}
 
 

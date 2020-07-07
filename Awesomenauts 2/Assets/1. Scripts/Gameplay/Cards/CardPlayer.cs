@@ -18,10 +18,19 @@ using UnityEngine;
 namespace AwsomenautsCardGame.Gameplay.Cards
 {
 
-
+	public class LastGameInformation
+	{
+		public int WinnerID = -1;
+		public int LoserID = -1;
+		public int LocalID = -1;
+		public int TotalRounds = 0;
+	}
 
 	public class CardPlayer : NetworkBehaviour
 	{
+
+		public static LastGameInformation LastGame { get; private set; }
+
 		public CameraController CameraController;
 
 		public EntityStatistics PlayerStatistics => Awsomenaut?.Statistics;
@@ -108,13 +117,14 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 			if (isClient && hasAuthority)
 			{
 				LocalPlayer = this;
+				LastGame = new LastGameInformation();
 				Camera.transform.parent = transform;
 			}
 			else
 			{
 				CameraController.enabled = false;
 			}
-			if(isServer)
+			if (isServer)
 			{
 				ClientID = ServerPlayers.Count;
 				ServerPlayers.Add(this);
@@ -165,7 +175,7 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 			MapTransformInfo.Instance.SocketManager.AddPlayers(clientIds);
 
 			Debug.Log("Client: " + id + " is ready.");
-			if(hasAuthority)
+			if (hasAuthority)
 			{
 				CmdSetReady(id);
 			}
@@ -181,13 +191,19 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 		public void SetAwsomenaut(NetworkIdentity id)
 		{
 			Awsomenaut = id.GetComponent<Card>();
-            Awsomenaut.SetSocketNoAnimation();
-            Awsomenaut.Statistics.Register(CardPlayerStatType.HP, OnHPChange);
-            //OnHPChange
+			Awsomenaut.Statistics.Register(CardPlayerStatType.HP, OnHPChange);
+			//OnHPChange
+		}
+
+		private void OnDestroy()
+		{
+			if (Awsomenaut != null)
+				Awsomenaut.Statistics.UnregisterAll();
 		}
 
 		private void OnHPChange(object newvalue)
 		{
+			if (this == null) return;
 			if (newvalue is int i)
 			{
 				if (i <= 0)
@@ -200,12 +216,18 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 
 		private IEnumerator EndGame()
 		{
+			LastGame.LoserID = ClientID;
+			LastGame.WinnerID = ServerPlayers.First(x => x.ClientID != ClientID).ClientID;
+			LastGame.TotalRounds = BoardLogic.Logic.TotalTurns / ServerPlayers.Count;
+			LastGame.LocalID = LocalPlayer.ClientID;
 			//Play Sound
 			ServerPlayers.ForEach(x => x.EnableInteractions = false);
 			yield return new WaitForSeconds(1);
 
 			//Log Statistics
-            CardNetworkManager.Instance.Stop();
+
+
+			CardNetworkManager.Instance.Stop();
 		}
 
 		// Update is called once per frame
@@ -283,7 +305,7 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 			if (modelPrefab != null)
 			{
 				GameObject model = Instantiate(modelPrefab, c.Model.position, modelPrefab.transform.rotation);
-                model.transform.SetParent(c.Model, true);
+				model.transform.SetParent(c.Model, true);
 				//model.transform.parent = c.Model;
 				if (c.Animator == null)
 				{
@@ -555,7 +577,7 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 						sourceCard.EffectManager.InvokeEffects(EffectTrigger.AfterMove, sourceCard.AttachedCardSocket, targetSocket, sourceCard);
 
 					}));
-					
+
 				}
 			}
 

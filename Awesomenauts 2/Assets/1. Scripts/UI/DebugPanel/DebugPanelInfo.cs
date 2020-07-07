@@ -29,6 +29,12 @@ namespace AwsomenautsCardGame.UI.DebugPanel
 			//UpdateVersionText(Application.version);
 		}
 
+		protected override void OnDestroy()
+		{
+			CardPlayer.LocalPlayer?.Awsomenaut?.Statistics.UnregisterAll();
+			base.OnDestroy();
+		}
+
 		public void UpdateVersionText(string serverVersion)
 		{
 			if (serverVersion != Application.version)

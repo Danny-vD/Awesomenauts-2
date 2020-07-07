@@ -14,9 +14,22 @@ namespace AwsomenautsCardGame.Gameplay
 	public enum SocketType { TurretLeft, TurretRight, Default, Awsomenaut }
 	public class CardSocket : NetworkBehaviour, IComparable<CardSocket>, IEquatable<CardSocket>
 	{
+		public SocketType SocketT
+		{
+			get => SocketType;
+			set
+			{
+				if (value != SocketType.Default)
+				{
+					timeScale = 0;
+					ResetY();
+				}
 
-
-		public SocketType SocketType = SocketType.Default;
+				SocketType = value;
+			}
+		}
+		[SerializeField]
+		private SocketType SocketType = SocketType.Default;
 		// Properties
 
 		/// <summary>

@@ -8,15 +8,15 @@ namespace AwsomenautsCardGame.AnimationSystem {
 
 		public virtual IEnumerator Play(AnimationPlayer player, Transform target)
 		{
-			CreateParticles();
+			CreateParticles(player);
 			return null;
 		}
 
-		private void CreateParticles()
+		private void CreateParticles(AnimationPlayer player)
 		{
 			for (int i = 0; i < Particles.Length; i++)
 			{
-				GameObject p = Instantiate(Particles[i]);
+				GameObject p = Instantiate(Particles[i], player.transform.position, Quaternion.identity, player.transform);
 			}
 		}
 	}

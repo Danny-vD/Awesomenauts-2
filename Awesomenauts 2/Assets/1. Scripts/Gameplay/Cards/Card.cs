@@ -62,12 +62,6 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 		}
 
 
-		public void SetSocketNoAnimation()
-		{
-			AttachedCardSocket.timeScale = 0;
-            AttachedCardSocket.ResetY();
-		}
-
 		public void SetPreviewLayer(bool set)
 		{
 			for (int i = 0; i < CardParts.Length; i++)
@@ -183,7 +177,10 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 			while (IsLocked) yield return 1;
 			action();
 		}
-
+		private void OnDestroy()
+		{
+			Statistics.UnregisterAll();
+		}
 
 		private void OnHPChanged(object newvalue)
 		{
