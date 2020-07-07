@@ -58,7 +58,7 @@ namespace AwsomenautsCardGame.Audio
 			return AudioParameterManager.GetBusVolume(EventPaths.GetPath(busType));
 		}
 
-		private static Enums.Audio.EventType GetAttackEventForCardType(CardType cardType)
+		private static EventType GetAttackEventForCardType(CardType cardType)
 		{
 			return cardType == CardType.Ranged ? EventType.SFX_CARDS_RangedAttack : EventType.SFX_CARDS_MeleeAttack;
 		}

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using AwsomenautsCardGame.AnimationSystem;
+using AwsomenautsCardGame.Audio;
 using AwsomenautsCardGame.DataObjects.Networking;
 using AwsomenautsCardGame.Enums.Cards;
 using AwsomenautsCardGame.Maps;
@@ -220,13 +221,16 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 			LastGame.WinnerID = ServerPlayers.First(x => x.ClientID != ClientID).ClientID;
 			LastGame.TotalRounds = BoardLogic.Logic.TotalTurns / ServerPlayers.Count;
 			LastGame.LocalID = LocalPlayer.ClientID;
-			//Play Sound
 			ServerPlayers.ForEach(x => x.EnableInteractions = false);
-			yield return new WaitForSeconds(1);
+			
+			AudioParameterManager.SetGlobalParameter("NexusDeath", 1);
+			
+			yield return new WaitForSeconds(9);
 
 			//Log Statistics
 
-
+			AudioParameterManager.SetGlobalParameter("NexusDeath", 0);
+			AudioParameterManager.SetGlobalParameter("IsInMenu", 1);
 			CardNetworkManager.Instance.Stop();
 		}
 
