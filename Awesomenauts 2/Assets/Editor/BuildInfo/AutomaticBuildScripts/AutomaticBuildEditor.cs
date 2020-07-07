@@ -16,7 +16,7 @@ namespace BuildInfo.AutomaticBuildScripts
 
 			if (!enable) return;
 			if (target == null) return;
-			AutomaticBuildScript myScript = (AutomaticBuildScript) target;
+			AutomaticBuildScript myScript = (AutomaticBuildScript)target;
 			//if (GUILayout.Button("Build All"))
 			//{
 			//	myScript.Build(myScript.ForceReleaseBuild);
@@ -39,11 +39,14 @@ namespace BuildInfo.AutomaticBuildScripts
 			//	myScript.Deploy();
 			//}
 
+			if (File.Exists("..\\..\\AwsomenautsDeploy\\Console\\ChangeVersion.bat") && GUILayout.Button("Increase Version"))
+			{
+				Process p = Process.Start("cmd.exe", "/C call ..\\..\\AwsomenautsDeploy\\Console\\ChangeVersion.bat");
+			}
+
 			if (File.Exists("../../AwsomenautsDeploy/upload.bat") && GUILayout.Button("Upload All"))
 			{
 				enable = false;
-				Process p = Process.Start("cmd.exe", "/C call ..\\..\\AwsomenautsDeploy\\Console\\ChangeVersion.bat");
-				p.EnableRaisingEvents = true;
 
 				myScript.Clean();
 				myScript.Build(true);
@@ -69,7 +72,7 @@ namespace BuildInfo.AutomaticBuildScripts
 
 
 			if (target == null) return;
-			BuildOpts myScript = (BuildOpts) target;
+			BuildOpts myScript = (BuildOpts)target;
 			if (GUILayout.Button("Build"))
 			{
 				AutomaticBuildScript.Build(myScript.ToBuildOptions(myScript.options));
