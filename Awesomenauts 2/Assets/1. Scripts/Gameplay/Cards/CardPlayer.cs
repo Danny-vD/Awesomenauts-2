@@ -245,6 +245,7 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 			AudioParameterManager.SetGlobalParameter("NexusDeath", 0);
 			AudioParameterManager.SetGlobalParameter("IsInMenu", 1);
 			AudioPlayer.StopEmitter(EmitterType.Ambient);
+			
 			CardNetworkManager.Instance.Stop();
 		}
 

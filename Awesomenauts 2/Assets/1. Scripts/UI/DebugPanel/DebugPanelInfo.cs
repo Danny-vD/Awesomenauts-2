@@ -1,3 +1,5 @@
+using AwsomenautsCardGame.Audio;
+using AwsomenautsCardGame.Enums.Audio;
 using AwsomenautsCardGame.Enums.Cards;
 using AwsomenautsCardGame.Gameplay.Cards;
 using AwsomenautsCardGame.Networking;
@@ -53,6 +55,11 @@ namespace AwsomenautsCardGame.UI.DebugPanel
 		//Connected to the UI in the Scene. Used to Disconnect from an active session.
 		public void DisconnectNetwork()
 		{
+			AudioParameterManager.SetGlobalParameter("LowHealth", 0);
+			AudioParameterManager.SetGlobalParameter("NexusDeath", 0);
+			AudioParameterManager.SetGlobalParameter("IsInMenu", 1);
+			AudioPlayer.StopEmitter(EmitterType.Ambient);
+			
 			CardNetworkManager.Instance?.Stop();
 		}
 
