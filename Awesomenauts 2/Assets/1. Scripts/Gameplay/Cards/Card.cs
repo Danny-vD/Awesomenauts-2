@@ -62,6 +62,12 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 		}
 
 
+		public void SetSocketNoAnimation()
+		{
+			AttachedCardSocket.timeScale = 0;
+            AttachedCardSocket.ResetY();
+		}
+
 		public void SetPreviewLayer(bool set)
 		{
 			for (int i = 0; i < CardParts.Length; i++)
@@ -143,11 +149,12 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 					if (modelPrefab != null)
 					{
 						GameObject model = Instantiate(modelPrefab, Model.position, modelPrefab.transform.rotation);
+						model.transform.SetParent(Model, true);
+
 						if (Animator == null)
 						{
-							Animator = model.GetComponent<AnimationPlayer>();
+							Animator = Model.GetComponentInChildren<AnimationPlayer>();
 						}
-						model.transform.parent = Model;
 					}
 				}
 				else
@@ -155,7 +162,7 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 					GameObject model = Model.GetChild(0).gameObject;
 					if (Animator == null)
 					{
-						Animator = model.GetComponent<AnimationPlayer>();
+						Animator = Model.GetComponentInChildren<AnimationPlayer>();
 					}
 				}
 			}

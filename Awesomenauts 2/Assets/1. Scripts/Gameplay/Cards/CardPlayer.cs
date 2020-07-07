@@ -181,6 +181,31 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 		public void SetAwsomenaut(NetworkIdentity id)
 		{
 			Awsomenaut = id.GetComponent<Card>();
+            Awsomenaut.SetSocketNoAnimation();
+            Awsomenaut.Statistics.Register(CardPlayerStatType.HP, OnHPChange);
+            //OnHPChange
+		}
+
+		private void OnHPChange(object newvalue)
+		{
+			if (newvalue is int i)
+			{
+				if (i <= 0)
+				{
+					StartCoroutine(EndGame());
+				}
+			}
+		}
+
+
+		private IEnumerator EndGame()
+		{
+			//Play Sound
+			ServerPlayers.ForEach(x => x.EnableInteractions = false);
+			yield return new WaitForSeconds(1);
+
+			//Log Statistics
+            CardNetworkManager.Instance.Stop();
 		}
 
 		// Update is called once per frame
@@ -258,12 +283,13 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 			if (modelPrefab != null)
 			{
 				GameObject model = Instantiate(modelPrefab, c.Model.position, modelPrefab.transform.rotation);
+                model.transform.SetParent(c.Model, true);
+				//model.transform.parent = c.Model;
 				if (c.Animator == null)
 				{
-					c.Animator = model.GetComponent<AnimationPlayer>();
+					c.Animator = c.Model.GetComponentInChildren<AnimationPlayer>();
 				}
 
-				model.transform.parent = c.Model;
 			}
 			NetworkServer.Spawn(cardInstance, GetComponent<NetworkIdentity>().connectionToClient);
 

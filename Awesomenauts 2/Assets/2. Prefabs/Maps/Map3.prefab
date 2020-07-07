@@ -2257,6 +2257,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NexusBlue
       objectReference: {fileID: 0}
+    - target: {fileID: 6948292394565159733, guid: 0309608147735074085a203432b9604c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0309608147735074085a203432b9604c, type: 3}
 --- !u!4 &5006512736481858689 stripped
@@ -4062,6 +4067,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NexusRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684816464478602200, guid: d13834cb2313ee74aa414ad0910cd3c1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8700918937432158667, guid: d13834cb2313ee74aa414ad0910cd3c1,
         type: 3}

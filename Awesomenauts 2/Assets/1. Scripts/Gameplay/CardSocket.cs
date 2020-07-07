@@ -215,6 +215,11 @@ namespace AwsomenautsCardGame.Gameplay
 			DockCard(dockedTransform.GetComponent<Card>());
 		}
 
+		public void ResetY()
+		{
+			transform.position = new Vector3(transform.position.x, origY, transform.position.z);
+		}
+
 
 		private void ResetPositions()
 		{
