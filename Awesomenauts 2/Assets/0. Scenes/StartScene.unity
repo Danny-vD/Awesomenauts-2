@@ -747,12 +747,12 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[4].Statistics.StartStatistics.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[5].Statistics.StartStatistics.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -1453,7 +1453,7 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[6].Statistics.StartStatistics.Array.data[0].value
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -2790,34 +2790,32 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[4].Statistics.StartStatistics.Array.data[4].type
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[4].Statistics.StartStatistics.Array.data[4].dataType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[4].Statistics.StartStatistics.Array.data[4].value
-      value: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur,
-        adipisci velit
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[5].Statistics.StartStatistics.Array.data[4].type
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
-        type: 3}
-      propertyPath: CardEntries.Array.data[5].Statistics.StartStatistics.Array.data[4].dataType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
+      propertyPath: CardEntries.Array.data[5].Statistics.StartStatistics.Array.data[4].type
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[5].Statistics.StartStatistics.Array.data[4].dataType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
       propertyPath: CardEntries.Array.data[5].Statistics.StartStatistics.Array.data[4].value
-      value: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur,
-        adipisci velit
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -3399,7 +3397,7 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[20].Statistics.StartStatistics.Array.data[0].value
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -3754,7 +3752,7 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[24].Statistics.StartStatistics.Array.data[3].value
-      value: HappyThoughts
+      value: Happy Thoughts
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -5668,7 +5666,7 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[24].name
-      value: HappyThoughts
+      value: Happy Thoughts
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -6636,7 +6634,7 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[2].Statistics.StartStatistics.Array.data[0].name
-      value: 
+      value: 'Solar[Int]: 1'
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -6721,7 +6719,7 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[6].Statistics.StartStatistics.Array.data[0].name
-      value: 'Solar[Int]: 4'
+      value: 'Solar[Int]: 3'
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -6981,7 +6979,7 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[20].Statistics.StartStatistics.Array.data[0].name
-      value: 'Solar[Int]: 1'
+      value: 'Solar[Int]: 2'
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -7076,7 +7074,7 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[24].Statistics.StartStatistics.Array.data[3].name
-      value: 'CardName[String]: HappyThoughts'
+      value: 'CardName[String]: Happy Thoughts'
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -7613,12 +7611,12 @@ PrefabInstance:
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[2].Statistics.StartStatistics.Array.data[4].name
-      value: 'CardName[String]: Humming Bird Baby'
+      value: 'Range[Int]: 2'
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
       propertyPath: CardEntries.Array.data[2].Statistics.StartStatistics.Array.data[5].name
-      value: 'CardName[String]: Humming Bird Baby'
+      value: 'CrossLaneRange[Int]: 1'
       objectReference: {fileID: 0}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -7629,6 +7627,16 @@ PrefabInstance:
         type: 3}
       propertyPath: CardEntries.Array.data[31].InternalCard
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[4].Statistics.StartStatistics.Array.data[4].name
+      value: 'Range[Int]: 2'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
+        type: 3}
+      propertyPath: CardEntries.Array.data[5].Statistics.StartStatistics.Array.data[4].name
+      value: 'Range[Int]: 2'
       objectReference: {fileID: 0}
     - target: {fileID: 4467022757310397675, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}

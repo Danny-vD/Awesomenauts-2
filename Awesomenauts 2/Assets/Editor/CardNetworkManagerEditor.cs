@@ -36,7 +36,7 @@ public class CardNetworkManagerEditor : UnityEditor.Editor
 		}
 	}
 
-	private void SetStatName(EntityStatistics.InternalStat stat)
+	private static void SetStatName(EntityStatistics.InternalStat stat)
 	{
 		stat.name = $"{stat.type}[{stat.dataType}]: {stat.value}";
 	}
@@ -53,7 +53,7 @@ public class CardNetworkManagerEditor : UnityEditor.Editor
 		return e;
 	}
 
-	private string GetEntryName(CardEntry e)
+	private static string GetEntryName(CardEntry e)
 	{
 		EntityStatistics.InternalStat stat = e.Statistics.StartStatistics.FirstOrDefault(x =>
 			x.type == CardPlayerStatType.CardName);
