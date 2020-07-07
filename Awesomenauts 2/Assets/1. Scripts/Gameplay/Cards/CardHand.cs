@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using AwsomenautsCardGame.Audio;
 using AwsomenautsCardGame.Enums.Cards;
 using AwsomenautsCardGame.ScriptableObjects.Effects;
 using Mirror;
 using UnityEngine;
+using EventType = AwsomenautsCardGame.Enums.Audio.EventType;
 
 namespace AwsomenautsCardGame.Gameplay.Cards {
 	public class CardHand : NetworkBehaviour
@@ -85,6 +87,8 @@ namespace AwsomenautsCardGame.Gameplay.Cards {
 			Card c = id.GetComponent<Card>();
 			if (c != null)
 			{
+				AudioPlayer.Play2DSound(EventType.SFX_CARDS_CardDraw);
+				
 				if (c.EffectManager.InvokeEffects(EffectTrigger.OnDraw, null, null, c))
 				{
 					Destroy(c.gameObject);

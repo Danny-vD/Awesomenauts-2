@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5252ded9e2102a439b69edc11a42eb9, type: 3}
   m_Name: ModelSpawnAnimation
   m_EditorClassIdentifier: 
-  playSound: 0
+  playSound: 1
   Animation: {fileID: 11400000, guid: 814890386f158344c91fa6babb5cdfca, type: 2}
   soundToPlay: 4
   Description: 

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5252ded9e2102a439b69edc11a42eb9, type: 3}
   m_Name: AttackedMeleeEffect
   m_EditorClassIdentifier: 
-  playSound: 0
+  playSound: 1
   Animation: {fileID: 11400000, guid: c16636f0eb286434baf7558aca3ec998, type: 2}
-  soundToPlay: 4
+  soundToPlay: 2
   Description: 
   TargetTrigger: 512

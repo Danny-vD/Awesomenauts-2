@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AwsomenautsCardGame.Audio;
+using AwsomenautsCardGame.Enums.Audio;
 using AwsomenautsCardGame.Enums.Cards;
 using AwsomenautsCardGame.Gameplay;
 using AwsomenautsCardGame.Gameplay.Cards;
@@ -134,6 +136,8 @@ namespace AwsomenautsCardGame.Maps
 			else
 			{
 				MaxSolar++;
+				AudioParameterManager.SetGlobalParameter("IsInMenu", 0);
+				AudioPlayer.PlayEmitter(EmitterType.Ambient);
 			}
 			CurrentTurn++;
 			if (CurrentTurn >= CardPlayer.ServerPlayers.Count)

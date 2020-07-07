@@ -5,6 +5,7 @@ using System.Linq;
 using AwsomenautsCardGame.AnimationSystem;
 using AwsomenautsCardGame.Audio;
 using AwsomenautsCardGame.DataObjects.Networking;
+using AwsomenautsCardGame.Enums.Audio;
 using AwsomenautsCardGame.Enums.Cards;
 using AwsomenautsCardGame.Maps;
 using AwsomenautsCardGame.Networking;
@@ -15,6 +16,7 @@ using AwsomenautsCardGame.UI.DebugPanel;
 using AwsomenautsCardGame.UI.TooltipSystem;
 using Mirror;
 using UnityEngine;
+using EventType = AwsomenautsCardGame.Enums.Audio.EventType;
 
 namespace AwsomenautsCardGame.Gameplay.Cards
 {
@@ -205,15 +207,25 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 		private void OnHPChange(object newvalue)
 		{
 			if (this == null) return;
+
 			if (newvalue is int i)
 			{
 				if (i <= 0)
 				{
 					StartCoroutine(EndGame());
+					return;
 				}
+
+				int initialHealth = Awsomenaut.Statistics.GetValue<int>(CardPlayerStatType.MaxHP);
+
+				if (i <= initialHealth * .2f) // below 80% health
+				{
+					AudioParameterManager.SetGlobalParameter("LowHealth", 1);
+				}
+				
+				AudioPlayer.Play2DSound(EventType.SFX_NEXUS_NexusHit);
 			}
 		}
-
 
 		private IEnumerator EndGame()
 		{
@@ -229,8 +241,10 @@ namespace AwsomenautsCardGame.Gameplay.Cards
 
 			//Log Statistics
 
+			AudioParameterManager.SetGlobalParameter("LowHealth", 0);
 			AudioParameterManager.SetGlobalParameter("NexusDeath", 0);
 			AudioParameterManager.SetGlobalParameter("IsInMenu", 1);
+			AudioPlayer.StopEmitter(EmitterType.Ambient);
 			CardNetworkManager.Instance.Stop();
 		}
 

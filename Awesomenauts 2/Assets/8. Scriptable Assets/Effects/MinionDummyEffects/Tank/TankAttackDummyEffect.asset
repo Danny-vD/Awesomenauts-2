@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5252ded9e2102a439b69edc11a42eb9, type: 3}
   m_Name: TankAttackDummyEffect
   m_EditorClassIdentifier: 
-  playSound: 0
+  playSound: 1
   Animation: {fileID: 11400000, guid: 3ca0d4da2a1d5d24f92f24986019514c, type: 2}
-  soundToPlay: 4
+  soundToPlay: 3
   Description: 
   TargetTrigger: 256

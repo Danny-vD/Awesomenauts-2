@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using AwsomenautsCardGame.AnimationSystem;
+using AwsomenautsCardGame.Audio;
 using AwsomenautsCardGame.DataObjects.Networking;
 using AwsomenautsCardGame.Enums.Cards;
 using AwsomenautsCardGame.Events.Gameplay;
@@ -12,6 +13,7 @@ using VDFramework.SharedClasses.EventSystem;
 using Mirror;
 using UnityEngine;
 using UnityEngine.UI;
+using EventType = AwsomenautsCardGame.Enums.Audio.EventType;
 
 namespace AwsomenautsCardGame.Gameplay.Cards
 {

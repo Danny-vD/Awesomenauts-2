@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5252ded9e2102a439b69edc11a42eb9, type: 3}
   m_Name: AttackRangedEffect
   m_EditorClassIdentifier: 
-  playSound: 0
+  playSound: 1
   Animation: {fileID: 11400000, guid: bf6634c16b3b40344b03601d1df490c9, type: 2}
-  soundToPlay: 4
+  soundToPlay: 5
   Description: 
   TargetTrigger: 256

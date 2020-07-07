@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5252ded9e2102a439b69edc11a42eb9, type: 3}
   m_Name: DeathRangedEffect
   m_EditorClassIdentifier: 
-  playSound: 0
+  playSound: 1
   Animation: {fileID: 11400000, guid: cc87162e66597f9448ec05effff75830, type: 2}
-  soundToPlay: 4
+  soundToPlay: 0
   Description: 
   TargetTrigger: 1

@@ -48,7 +48,7 @@ namespace AwsomenautsCardGame.ScriptableObjects.Effects
 
 			if (playSound)
 			{
-				PlaySound(soundToPlay, c.gameObject);
+				PlaySound(soundToPlay);
 			}
 			if (c.Animator != null && Animation != null)
 			{
@@ -61,9 +61,9 @@ namespace AwsomenautsCardGame.ScriptableObjects.Effects
 			targetSocket?.DockedCard?.Lock(false);
 		}
 
-		private static void PlaySound(Enums.Audio.EventType @event, GameObject @object)
+		private static void PlaySound(Enums.Audio.EventType @event)
 		{
-			AudioPlayer.PlaySound(@event, @object);
+			AudioPlayer.Play2DSound(@event);
 		}
 
 		public override string ToString()

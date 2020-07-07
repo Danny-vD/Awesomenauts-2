@@ -367,7 +367,7 @@ MonoBehaviour:
     value: 1
     isMuted: 0
   - key: 2
-    value: 0.5
+    value: 0.2
     isMuted: 0
   - key: 3
     value: 1

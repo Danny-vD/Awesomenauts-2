@@ -38,5 +38,10 @@ namespace AwsomenautsCardGame.Audio
 		{
 			RuntimeManager.PlayOneShotAttached(AudioManager.Instance.EventPaths.GetPath(@event), AudioManager.Instance.gameObject);
 		}
+		
+		public static void Play2DSound(Enums.Audio.EventType @event)
+		{
+			RuntimeManager.PlayOneShot(@AudioManager.Instance.EventPaths.GetPath(@event));
+		}
 	}
 }
