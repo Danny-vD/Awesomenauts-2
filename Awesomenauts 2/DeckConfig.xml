@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <DeckConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <CardIDs>
+    <int>17</int>
+    <int>11</int>
+    <int>27</int>
+    <int>4</int>
     <int>25</int>
     <int>7</int>
-    <int>27</int>
     <int>8</int>
-    <int>8</int>
-    <int>4</int>
-    <int>11</int>
-    <int>4</int>
-    <int>8</int>
-    <int>13</int>
     <int>7</int>
+    <int>4</int>
     <int>12</int>
     <int>4</int>
-    <int>17</int>
+    <int>13</int>
+    <int>8</int>
+    <int>8</int>
   </CardIDs>
 </DeckConfig>

@@ -12,8 +12,10 @@ public class VolumeSliderScript : MonoBehaviour
 		if (!AudioManager.IsInitialized) return;
 
 		float v = AudioManager.Instance.GetVolume(BusType.Master);
-		v *= v;
-		slider.value = Mathf.SmoothStep(0, 1, v);
+
+		v = Mathf.Sqrt(v);
+		
+		slider.value = v;
 	}
 
 
