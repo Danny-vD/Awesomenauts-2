@@ -8,20 +8,19 @@ using UnityEngine;
 
 namespace AwsomenautsCardGame.ScriptableObjects.Effects
 {
-	[CreateAssetMenu(menuName = "Scriptable Objects/Effects/StatModifierEffect")]
-	public class StatModifierEffect : AEffect
+	[CreateAssetMenu(menuName = "Scriptable Objects/Effects/MedicanEffect")]
+	public class MedicanEffect : AEffect
 	{
 		public override EffectTrigger Trigger => ETrigger;
 		public EffectTrigger ETrigger = EffectTrigger.None;
-		public CardPlayerStatType StatType;
+		public CardPlayerStatType StatType => CardPlayerStatType.HP;
 
 		public float Amount;
-		public bool Multiply;
-		public EffectTarget EffectTarget;
+		public EffectTarget EffectTarget => EffectTarget.TargetSocket;
 
 		void Awake()
 		{
-			
+
 		}
 
 		public override IEnumerator TriggerEffect(Card c, CardSocket containingSocket, CardSocket targetSocket)
@@ -32,16 +31,19 @@ namespace AwsomenautsCardGame.ScriptableObjects.Effects
 
 			foreach (EntityStatistics stat in stats)
 			{
-				if (stat.HasValue(StatType))
+				if (stat.HasValue(StatType) && stat.HasValue(CardPlayerStatType.MaxHP))
 				{
 					object val = stat.GetValue(StatType);
 					Type t = val.GetType();
 
 					float fval = val is float f ? f : (int)val;
 
+					object val2 = stat.GetValue(CardPlayerStatType.MaxHP);
+					float maxHP = val is float f2 ? f2 : (int)val2;
 
 
-					fval = Multiply ? fval * Amount : fval + Amount;
+
+					fval = fval + maxHP * Amount;
 
 					stat.SetValue(StatType, Convert.ChangeType(fval, t));
 					//base.TriggerEffect(c, containingSocket, targetSocket);
@@ -54,7 +56,7 @@ namespace AwsomenautsCardGame.ScriptableObjects.Effects
 		{
 			string ret = base.ToString();
 			ret +=
-				$"\n\tStatType: {StatType}\n\tEffectTarget: {EffectTarget}\n\tAmount: {Amount}\n\tMultiply: {Multiply}";
+				$"\n\tStatType: {StatType}\n\tEffectTarget: {EffectTarget}\n\tAmount: {Amount}";
 			return ret;
 		}
 	}

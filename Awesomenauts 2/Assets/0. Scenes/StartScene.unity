@@ -3064,7 +3064,7 @@ PrefabInstance:
         type: 3}
       propertyPath: AllEffects.Array.data[6]
       value: 
-      objectReference: {fileID: 11400000, guid: 96aa034151fd5bd42838d8c57e2f92b1,
+      objectReference: {fileID: 11400000, guid: 26115fb8d96da2a4e8515de17cfe2c8a,
         type: 2}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}
@@ -3242,7 +3242,7 @@ PrefabInstance:
         type: 3}
       propertyPath: CardEntries.Array.data[17].effects.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 96aa034151fd5bd42838d8c57e2f92b1,
+      objectReference: {fileID: 11400000, guid: 26115fb8d96da2a4e8515de17cfe2c8a,
         type: 2}
     - target: {fileID: 3886979512818707335, guid: 373286347beb8fa41be897173f56d6cd,
         type: 3}

@@ -10,5 +10,6 @@ namespace AwsomenautsCardGame.Enums.Cards {
 		CardType,
 		Range,
 		MaxHP,
+		None,
 	}
 }
