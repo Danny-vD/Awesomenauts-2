@@ -13,8 +13,6 @@ using VDFramework.SharedClasses.EventSystem;
 using Mirror;
 using UnityEngine;
 using UnityEngine.UI;
-using EventType = AwsomenautsCardGame.Enums.Audio.EventType;
-using Object = System.Object;
 
 namespace AwsomenautsCardGame.Gameplay.Cards
 {

@@ -30,28 +30,28 @@ namespace AwsomenautsCardGame.ScriptableObjects.Effects
 		{
 			while (c.IsLocked)
 			{
-				if (targetSocket.DockedCard.Locker != null) 
+				if (c.Locker != null) 
 				{
-					Debug.Log("Source Card Locked by: " + targetSocket.DockedCard.Locker);
+					Debug.Log("Source Card Locked by: " + c.Locker);
 				}
 
 				yield return 1; //Just spin until the card is unlocked again
 			}
 
-			if (targetSocket != null && targetSocket.HasCard)
-			{
-				while (targetSocket.DockedCard.IsLocked)
-				{
-					if (targetSocket.DockedCard.Locker != null)
-					{
-						Debug.Log("Target Card Locked by: " + targetSocket.DockedCard.Locker);
-					}
+			//if (targetSocket != null && targetSocket.HasCard)
+			//{
+			//	while (targetSocket.DockedCard.IsLocked)
+			//	{
+			//		if (targetSocket.DockedCard.Locker != null)
+			//		{
+			//			Debug.Log("Target Card Locked by: " + targetSocket.DockedCard.Locker);
+			//		}
 					
-					yield return 1; //Just spin until the card is unlocked again
-				}
+			//		yield return 1; //Just spin until the card is unlocked again
+			//	}
 
-				targetSocket.DockedCard.Lock(true, this);
-			}
+			//	targetSocket.DockedCard.Lock(true, this);
+			//}
 
 			c.Lock(true, this);
 
@@ -71,10 +71,10 @@ namespace AwsomenautsCardGame.ScriptableObjects.Effects
 
 			c.Lock(false, this);
 
-			if (targetSocket == null && targetSocket.HasCard)
-			{
-				targetSocket.DockedCard.Lock(false, this);
-			}
+			//if (targetSocket != null && targetSocket.HasCard)
+			//{
+			//	targetSocket.DockedCard.Lock(false, this);
+			//}
 		}
 
 		private static void PlaySound(Enums.Audio.EventType @event)
