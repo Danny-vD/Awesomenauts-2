@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 691e311f53faca44bb0343cd617b3529, type: 3}
   m_Name: Medican
   m_EditorClassIdentifier: Assembly-CSharp:AwsomenautsCardGame.ScriptableObjects.Effects:MedicanEffect
   playSound: 1
   Animation: {fileID: 0}
   soundToPlay: 0
-  Description: Heals the target by 50% of its HP
+  Description: Heals the target for 50% of its max HP
   ETrigger: 128
   Amount: 0.5

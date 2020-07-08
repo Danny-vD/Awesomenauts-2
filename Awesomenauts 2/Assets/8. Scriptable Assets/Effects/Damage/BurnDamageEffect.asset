@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BurnDamageEffect
   m_EditorClassIdentifier: 
   playSound: 1
+  Animation: {fileID: 0}
   soundToPlay: 0
   Description: 
   ETrigger: 0

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: BurnStatusEffect
   m_EditorClassIdentifier: 
   playSound: 1
+  Animation: {fileID: 0}
   soundToPlay: 0
-  Description: Gives the target Sick Burns.
+  Description: Will light the target on fire, dealing damage every turn
   Rounds: 5
   Effect: {fileID: 11400000, guid: 44238f4a4173fd44382fcb9ad58ba2bb, type: 2}

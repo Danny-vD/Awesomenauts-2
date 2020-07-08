@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Solar+1Effect
   m_EditorClassIdentifier: 
   playSound: 1
-  AnimationName: 
-  AnimationLength: 0
+  Animation: {fileID: 0}
   soundToPlay: 0
-  Description: Adds one Solar.
+  Description: Adds +1 Solar
   ETrigger: 128
   StatType: 0
   Amount: 1

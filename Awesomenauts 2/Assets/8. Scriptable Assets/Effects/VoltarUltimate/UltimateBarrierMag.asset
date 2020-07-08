@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: UltimateBarrierMag
   m_EditorClassIdentifier: 
   playSound: 0
-  AnimationName: 
-  AnimationLength: 0
+  Animation: {fileID: 0}
   soundToPlay: 4
-  Description: Adds a Barrier Magazine to every Card on the specified lane.
+  Description: Adds a Barrier Magazine to every Card on the specified lane
   Effect: {fileID: 11400000, guid: a96d7cf2176c0d24498321451e8ccc48, type: 2}
   EffectTarget: 18
