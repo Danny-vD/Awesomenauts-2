@@ -5,6 +5,7 @@ using AwsomenautsCardGame.Enums.Game;
 using AwsomenautsCardGame.Gameplay;
 using AwsomenautsCardGame.Gameplay.Cards;
 using AwsomenautsCardGame.UI.TooltipSystem;
+using Mirror.Examples.Tanks;
 using UnityEngine;
 
 namespace AwsomenautsCardGame.ScriptableObjects.DragLogic
@@ -108,8 +109,8 @@ namespace AwsomenautsCardGame.ScriptableObjects.DragLogic
 
 			//if ((socket.SocketSide & SocketSide.NonPlacable) != 0) return false;
 			if ((socket.SocketSide & (SocketSide.SideA | SocketSide.SideB)) != 0 &&
-			    (socketOfDraggedCard.SocketSide & (SocketSide.SideA | SocketSide.SideB)) != 0 &&
-			    (socket.SocketSide & SocketSide.SideA) != (socketOfDraggedCard.SocketSide & SocketSide.SideA))  //When both sockets belong to a lane and the lanes are different
+				(socketOfDraggedCard.SocketSide & (SocketSide.SideA | SocketSide.SideB)) != 0 &&
+				(socket.SocketSide & SocketSide.SideA) != (socketOfDraggedCard.SocketSide & SocketSide.SideA))  //When both sockets belong to a lane and the lanes are different
 			{
 				if ((socket.SocketSide & (SocketSide.BlueSide | SocketSide.RedSide)) != 0 && //If the cards are one of the sides
 					(socketOfDraggedCard.SocketSide & (SocketSide.BlueSide | SocketSide.RedSide)) != 0)
@@ -140,10 +141,17 @@ namespace AwsomenautsCardGame.ScriptableObjects.DragLogic
 			List<CardSocket> path = AStar.Compute(socketOfDraggedCard, socket);
 
 			//Debug.Log("A* Distance:" + path.Count);
+			if (socket && socket.HasCard && socketOfDraggedCard && socketOfDraggedCard.HasCard)
+			{
+				bool tankInTheWay = TankInTheWay(path, socketOfDraggedCard.DockedCard, true, out Card tank);
+				if (tankInTheWay)
+				{
+					TooltipScript.Instance.SetTooltip(TooltipType.TankIsInTheWay);
+					return false;
+				}
+			}
 
-
-
-			bool ret= path.Count <= range; //Not factoring in the "cross lane"
+			bool ret = path.Count <= range; //Not factoring in the "cross lane"
 
 			if (!ret)
 			{
@@ -152,6 +160,24 @@ namespace AwsomenautsCardGame.ScriptableObjects.DragLogic
 
 			return ret;
 
+		}
+
+		private bool TankInTheWay(List<CardSocket> sockets, Card source, bool enemies, out Card tank)
+		{
+			for (int i = 0; i < sockets.Count; i++)
+			{
+				CardSocket cardSocket = sockets[i];
+				if (cardSocket.HasCard && cardSocket.DockedCard.CardType == CardType.Tank && i != sockets.Count - 1 &&
+					(enemies ? source.Statistics.GetValue<int>(CardPlayerStatType.TeamID) != cardSocket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.TeamID) :
+						source.Statistics.GetValue<int>(CardPlayerStatType.TeamID) == cardSocket.DockedCard.Statistics.GetValue<int>(CardPlayerStatType.TeamID)))
+				{
+					tank = cardSocket.DockedCard;
+					return true;
+				}
+			}
+
+			tank = null;
+			return false;
 		}
 	}
 
