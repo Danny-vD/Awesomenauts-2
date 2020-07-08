@@ -1,4 +1,6 @@
-﻿using VDFramework.VDUnityFramework.BaseClasses;
+﻿using System;
+using UnityEngine;
+using VDFramework.VDUnityFramework.BaseClasses;
 
 namespace AwsomenautsCardGame.Utility
 {
@@ -22,6 +24,14 @@ namespace AwsomenautsCardGame.Utility
 		public void ToggleActive()
 		{
 			SetActiveState(!gameObject.activeSelf);
+		}
+
+		private void Update()
+		{
+			if (Input.anyKey)
+			{
+				SetDisabled();
+			}
 		}
 	}
 }
